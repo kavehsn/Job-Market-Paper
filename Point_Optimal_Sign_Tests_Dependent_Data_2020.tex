@@ -1,0 +1,1750 @@
+%2multibyte Version: 5.50.0.2960 CodePage: 65001
+%\input{tcilatex}
+%\usepackage[latin1]{inputenc}
+%\input{tcilatex}
+%\input{tcilatex}
+%\input{tcilatex}
+%\\usepackage{harvard}
+%\input{tcilatex}
+
+
+\documentclass[harvard,11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=black,      
+    urlcolor=blue,
+    citecolor=black,	
+}
+\usepackage{placeins}
+\usepackage{amsmath}
+\usepackage[abs]{overpic}
+\usepackage{linegoal}
+\usepackage[FIGBOTCAP]{subfigure}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage[round]{natbib}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{tabu}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{booktabs}
+\usepackage{graphicx,epstopdf}
+\usepackage{setspace,caption}
+\captionsetup{font=doublespacing}%
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{subfigure}
+\usepackage{xargs}
+\usepackage[pdftex,dvipsnames]{xcolor}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{Codepage=65001}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=BibTeX}
+%TCIDATA{LastRevised=Saturday, July 16, 2016 00:41:23}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Z}{\mathbb{Z}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{criterion}{Criterion}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{solution}{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\  \rule{0.5em}{0.5em}}
+\newcommand{\cqfd}
+{\mbox{}\nolinebreak \hfill \rule{2.5mm}{2.5mm}\medbreak \par}
+\renewcommand{\cite}{\citeasnoun}
+\geometry{left=0.8in,right=0.8in,top=0.8in,bottom=0.8in}
+\renewcommand{\baselinestretch}{1.5}
+\newcommand*\samethanks[1][\value{footnote}]{\footnotemark[#1]}
+%\input{tcilatex}
+\begin{document}
+
+\title{{Exact point-optimal sign-based tests for predictive linear and nonlinear regressions}}
+\author{Jean-Marie Dufour\thanks{%
+William Dow Professor of Economics, McGill University, Centre interuniversitaire de recherche en analyse des
+organisations (CIRANO), and Centre interuniversitaire de recherche en économie quantitative (CIREQ).Mailing address:
+Department of Economics, McGill University, Leacock Building, Room 519, 855 Sherbrooke Street West, Montréal,
+Québec H3A 2T7, Canada. TEL: (1) 514 398 8879; FAX: (1) 514 398 4938; e-mail: \href{emailto:jean-marie.dufour@mcgill.ca}{jean-marie.dufour@mcgill.ca}. Web
+page: \href{http://www.jeanmariedufour.com}{http://www.jeanmariedufour.com}}\\
+%EndAName
+McGill University\and Kaveh Salehzadeh Nobari\thanks{%
+Department of Economics and Finance, Durham University Business School, Durham DH1 3LB, UK
+(\href{emailto: kaveh.salehzadeh-nobari@durham.ac.uk)}{kaveh.salehzadeh-nobari@durham.ac.uk}, \href{emailto: abderrahim.taamouti@durham.ac.uk)}{abderrahim.taamouti@durham.ac.uk})}\\
+%EndAName
+Durham University \and Abderrahim Taamouti\samethanks[2]\\
+%EndAName
+Durham University}
+\date{\today}
+\maketitle
+\begin{center}
+[\href{https://kavehsn.github.io/Job-Market-Paper/Point_Optimal_Sign_Tests_Dependent_Data_2020.pdf}{\underline{LATEST VERSION HERE}}]
+\end{center}
+
+
+\begin{abstract}
+We propose point-optimal sign-based tests for linear and nonlinear models that are valid
+ in the presence of heteroskedasticity of unknown form and persistent volatility, as well as persistent regressors and heavy-tailed errors. These tests are exact, distribution-free, and may be inverted to build confidence regions for the parameters of the
+regression function. Point-optimal tests maximize power at a predetermined point in the alternative hypothesis parameter space, which in practice is unknown. Therefore, we suggest an adaptive approach based on the split-sample technique to shift the power function close to that of the power envelope. We then present a Monte Carlo study to assess the performance of the proposed \textquotedblleft quasi\textquotedblright -point-optimal sign test by comparing its size and
+power to those of certain existing tests which are intended to be robust
+against heteroskedasticity. The results show that our procedures outperform classical tests. Finally, as predictors of stock returns are often highly persistent and lead to invalid inference using conventional tests, we consider an empirical application to
+illustrate the usefulness of our proposed tests for testing the
+predictability of stock returns.
+\end{abstract}
+
+
+\noindent \textbf{Keywords}: predictive regressions, persistency, sign test, point-optimal test, exact inference, endogeneity, split-sample, adaptive method, projection technique
+
+\noindent \textbf{JEL Codes}: C12, C15, C22
+
+
+\newpage
+
+\section{Introduction \label{Introduction}}
+{\hskip 1.5em} Numerous studies investigate the predictability of financial and economic variables using the past values of one or more predictors. Most commonly encountered examples concern the predictability of stock returns using the lag of certain fundamental variables, such as the dividend-price and earnings-price ratios or the interest rates [see \citet{campbell1988dividend}, \citet{fama1988dividend}, \citet{campbell2006efficient}, \citet{campbell2008predicting}, and \citet{golez2018four}, among others]. Predictability in this context is generally assessed using the OLS regression of returns against said predictors and tested with conventional \textit{t}-type tests. 
+However, the regressors frequently considered in these studies are often highly persistent (near nonstationarity) with 
+innovations that are correlated with the disturbances in the predictive
+regression of returns [see \citet{phillips2015halbert} for a review]. In such situations, we know that the OLS estimator of the
+coefficients, although consistent, will suffer from significant bias [see \citet{magdalinos2009limit}]. As a result, the \textit{t}-statistic will have a nonstandard distribution in finite samples which leads to invalid inference [see \citet{mankiw1986we}, \citet{banerjee1993co} and \citet{stambaugh1999predictive} among others]. Moreover, inference based on consistent heteroscedasticity and autocorrelation corrected (HAC) approaches are shown to have poor finite sample performance under different forms of heteroskedasity and nonlinear dependencies [see \citet{dufour2010exact}]. In this paper, we address the endogeneity issue inherent within a predictive regression framework, by deriving point-optimal sign-based tests (POS-based tests hereafter) in the context of linear and nonlinear models that are distribution-free, robust against heteroskedasticity of unknown form as well as serial (nonlinear) dependence, provided that errors have zero median conditional on their past and the past of the explanatory variables.% This assumption allows the signs to be i.i.d under the null hypothesis of orthogonality according to a known distribution, despite the fact that the variables to which the indicator functions are applied are dependent [see \citet{coudin2009finite}].	
+
+\citet{nelson1993predictable} reduce the small-sample bias using bootstrap simulations and  \citet{stambaugh1999predictive} shows that in the case of stationary regressors said bias can be corrected. However, in later studies \citet{phillips2013predictive} and \citet{phillips2014confidence} show this to be infeasible in the presence of predictors that exhibit local-to-unity, unit-root or explosive persistency. Therefore, many inference procedures in this context address the issue of size distortions by considering local-to-unity asymptotics, where the key predictor variable is assumed to be integrated
+[\citet{lewellen2004predicting}], or can be modeled as having a local-to-unit root [\citet{elliott1994inference}, \citet{torous2004predicting}, and \citet{campbell2006efficient}, among others]. Notable studies under the local-to-unity dynamics employ an array of procedures, such as Bonferroni corrections [e.g. \citet{cavanagh1995inference} and \citet{campbell2006efficient}], a conditional likelihood based approach [e.g. \citet{jansson2006optimal}], as well as the nearly optimal tests proposed by \citet{elliott2015nearly}. In more recent works, \citet{kostakis2015robust} and \citet{phillips2016robust} expand on the predictability literature by utilizing an extension of the instrumental variable procedure suggested by \citet{phillips2009econometric} to generalize inference to multivariate regressors with integrated and mildly explosive persistency. 
+
+The contribution of the POS-based tests proposed in our study is twofold: firstly, as the tests are distribution-free, they are valid in the presence of regressors with general persistency and different forms of nonlinear dependencies in finite samples, and do not suffer from discontinuity in the limiting distribution of conventional test statistics between stationary, local-to-unity and explosive autoregressions. Secondly, our tests possess the greatest power among certain parametric and non-parametric tests that are frequently encountered in practice and can easily be extended to multivariate testing problems. 
+
+
+%In addition to these issues, many financial models suggest nonlinear relationships between returns and the predictors, and use linear approximations [see
+%\citet{bansal1993new} and \citet{linton2003shape}]. However, tests based on linear regressions are unable to
+%handle nonlinear relationships and are shown to
+%have little to no power in detecting nonlinearity [see \citet{song2018measuring}]. 
+
+%The existing tests in the literature that tackle the issue of size distortions in testing predictability are based on linear
+%regressions and can generally be classified into two categories: (a) tests based on 
+%exact finite-sample theory with the assumption of normality [e.g. \citet{stambaugh1999predictive}]; and (b) tests
+%. Thus, those tests cannot be used to test nonlinear
+%predictability of stock returns. They provide an accurate approximation of
+%the finite-sample distribution of test statistics only when the predictor
+%contains or is close to the unit root; otherwise they may not control size
+%and could have very little power. %In contrast, our
+%sign-based tests have the following properties: (1) they can be used to test both
+%linear and nonlinear predictability of stock returns; (2) they are robust against
+%heteroskedasticity of unknown form; (3) they are valid in the presence and
+%absence of unit root, whatever the sample size; and (4) they are most powerful
+%among tests based on the signs. Thus, our testing procedure is particularly useful
+%to practitioners, as it precludes the necessity for testing for unit root of the predictors, and it further deals with
+%heteroskedasticity observed in financial data.
+
+
+In a recent study, \citet{dufour2010exact} propose simple
+point-optimal sign-based tests in the context of linear and nonlinear regression models,
+which are valid under non-normality and hetero\-skedasticity of unknown form,
+provided the errors have zero median conditional on the explanatory
+variables. These tests are exact, distribution-free, and robust against
+hetero\-skedasticity of unknown form, and may be inverted to build confidence
+regions for the vector of unknown parameters. This work, however, is
+developed under the assumption that the errors are independent. The
+main motivation is to build point-optimal sign-based tests for linear and
+nonlinear predictive regressions that retain the advantages of the POS-based tests proposed by \citet{dufour2010exact}. To extend this work, we recognize that under the alternative hypothesis the signs are no longer necessarily independent and the test-statistic now depends on calculating the joint distribution of the signs, which is computationally infeasible. Therefore, an additional
+assumption on the dependence structure of the conditional signs is needed to obtain \textit{feasible} test
+statistics; namely, a Markovian assumption on the conditional signs. 
+
+By construction, our POS-based tests control size for any given sample. Under the null hypothesis of unpredictability, the
+tests are valid even in the presence of the bias problem pointed out by
+\citet{mankiw1986we} and \citet{stambaugh1985bias,stambaugh1999predictive}, which affects the
+classical testing procedure for stock returns predictability. In addition,
+our tests do not impose any modeling assumptions on the predictors and are robust against heteroskedasticity of unknown form and/or serial (nonlinear) dependencies. The tests are point-optimal tests, which are
+useful in a number of ways and are particularly attractive when testing
+one financial theory against another. An important feature of these tests
+stems from the fact that they trace out the power envelope - i.e. the maximum
+attainable power for a given testing problem, which may be used as a
+benchmark against which other testing procedures can be evaluated. Finally, our
+tests may be inverted to build confidence regions for the parameters
+of the regression function.
+
+As point-optimal tests maximize power at a nominated point in the alternative hypothesis parameter space, a practical problem concerns finding an alternative at which the power curve of the POS-based test is close to that of the power envelope. Following \citet{dufour1998union}, \citet{dufour2001finite} and \citet{dufour2010exact}, we propose an adaptive approach based on the split-sample technique to choose the alternative hypothesis. The latter consists of splitting the sample into two independent sub-samples, where the first part is used to estimate the alternative hypothesis and the second part to compute the POS-based test statistic [see \citet{2008finite}]. In a simulations exercise, \citet{dufour2010exact} find that using the first 10\% of the sample to estimate the alternative and the rest to compute the test statistic, achieves a power that traces out the power envelope. We present a Monte Carlo study to assess the performance of the proposed \textquotedblleft quasi\textquotedblright-POS-based tests by comparing its size and power to certain existing tests that are intended to be robust against heteroskedasticity. We show the superiority of our procedures in the presence of nearly integrated regressors and under different distributional assumptions and forms of heteroskedasticity. 
+
+
+The rest of the paper is organized as follows: in Section \ref{Point-optimal sign testC1}, we
+propose exact POS-based tests in the context of linear and nonlinear predictive
+regressions. Section \ref{optimal alternative hypothesisC1} discusses the
+adaptive approach based on the split-sample technique for choosing the alternative hypothesis and computing the POS-based
+test statistic. Section \ref{POS confidence regions} expands on the details of construction of confidence regions using the projection techniques and provides a numerical example.
+Section \ref{sec: Monte Carlo studyC1} presents a Monte Carlo study to assess
+the performance of the POS-based tests by comparing their size and power to those of
+certain popular tests. Section \ref{Empirical ApplicationC1} is devoted to an
+empirical application, in which the predictability power of certain fundamental variables on future stock returns is tested at different horizons and sampling frequencies. Finally, the paper is concluded in
+Section \ref{ConclusionC1}. Proofs are presented in Appendix \ref{Appendix:
+ProofsC1}.
+
+
+\section{POS tests in linear and nonlinear regression models \label{Point-optimal sign testC1}}
+
+In this Section, we follow the structure of \citet{dufour2010exact} to derive POS-based tests in the context of linear and
+nonlinear regression models. However, in our study stochastic regressors may as well be considered. First, we divert our attention to the problem of testing whether the conditional median of a vector of observations is zero against a linear
+regression alternative. This is is later generalized to test whether the coefficients of a
+possibly nonlinear median regression function have a given value against
+an alternative nonlinear median regression. Although the former problem is a special case of the latter, for the simplicity of exposition the linear regression model is considered first.
+
+\subsection{Testing independence (zero coefficients) hypothesis in linear
+reg\-ressions \label{sec: Testing zero coefficient hypothesis in linear model}}
+
+ Consider a stochastic process $Z=\{Z_t=(y_t,x_{t}'):\Omega\rightarrow\R^{(k+1)}:t=0,1,\cdots\}$ defined on a probability space $(\Omega,\mathcal{F},P)$. Let $\{Z_t,\mathcal{F}_t\}_{t=0,1,\cdots}$ be an adapted stochastic sequence, such that $\mathcal{F}_t$ is a $\sigma$-field in $\Omega$, $\mathcal{F}_s\subseteq \mathcal{F}_t$ for $s< t$, $\sigma(Z_0,\cdots,Z_t)\subset \mathcal{F}_t$, where $\sigma(Z_0,\cdots,Z_t)$ is the $\sigma$-field generated by $Z_0,\cdots,Z_t$. Suppose that $y_{t}$ can linearly be explained by a vector variable $x_{t}$%
+\begin{equation}
+y_{t}=\beta'x_{t-1}+\varepsilon_{t},\quad t=1,...,n,  \label{model}
+\end{equation}%
+where $x_{t-1}$ is an $(k+1)\times 1$ vector of stochastic explanatory 
+variables, say $x_{t-1}=[1,x_{1,t-1},...,x_{k,t-1}]'$, $\beta \in \mathbb{R}^{(k+1)}$ is an unknown vector of parameters with $\beta=[\beta_0,\beta_1,...,\beta_k]'$ and
+\[
+ \varepsilon_t\mid X\sim F_t(.\mid X)
+\] 
+where $F_{t}(.\mid X)$ is an unknown conditional distribution function and X=$[x_0,\cdots,x_{n-1}]'$ is an $n\times (k+1)$ matrix. 
+
+In the context of general forms of (nonlinear) dependence, an assumption that is commonly made on the error terms $\{\varepsilon_t,t=1\cdots,n\}$ is that the error process is a martingale difference sequence (MDS hereafter) with respect to $\mathcal{F}_t=\sigma(Z_0,\cdots,Z_t)$ for $t=0,1,\cdots$, - i.e. $\E\{\varepsilon_t\mid \mathcal{F}_{t-1}\}=0$,\quad $\forall t\geq1$. As the latter assumption relies on the first moment of the residuals, we follow \citet{coudin2009finite} by departing from this assumption and considering the median as an alternative measure of central tendency. This implies imposing a median-based analogue of the MDS on the error process - namely we suppose that $\varepsilon_t$ is a strict conditional mediangale
+\begin{equation}
+P[\varepsilon_{t}> 0\mid \bm{{\varepsilon}}_{t-1},X]=P[\varepsilon_{t}<0\mid \bm{\varepsilon}_{t-1},X]=\frac{1}{2},
+\label{eq: mediane}
+\end{equation}%
+with
+\[
+\bm{\varepsilon}_{0}=\{\emptyset\},\quad\bm{\varepsilon}_{t-1}=\{\varepsilon_1,\cdots,\varepsilon_{t-1}\},\quad\text{for}\quad t\geq2
+\]
+ Note (\ref{eq: mediane}) entails
+that $\varepsilon _{t}\mid X$ has no mass at zero for all $t$, which is only true if $\varepsilon_{t}\mid X$\ is a
+continuous variable. Model (\ref{model}) in conjunction with assumption (\ref{eq: mediane}) allows the error terms to possess asymmetric, heteroskedastic and serially (nonlinear) dependent distributions, so long as the conditional medians are zero. Assumption \ref{eq: mediane} allows for many dependent schemes, such as those of the form $\varepsilon_1=\sigma_1(x_0,\cdots,x_{t-2})\epsilon_1$, $\varepsilon_t=\sigma_t(x_0,\cdots,x_{t-2},\varepsilon_1,\cdots,\varepsilon_{t-1})\epsilon_t$, $t=2,\cdots,n$, where $\epsilon_1,\cdots,\epsilon_n$ are independent with a zero median. In time-series context this includes models such as ARCH, GARCH or stochastic volatility with non-Gaussian errors. Furthermore, in the mediangale framework the disturbances need not be second order stationary.
+ 
+
+
+We wish to test the null hypothesis%
+\begin{equation}
+\left. H_{0}:\beta =0\right.   \label{eq: hypothesis1}
+\end{equation}%
+against the alternative $H_{1}$%
+\begin{equation}
+\left. H_{1}:\beta =\beta _{1}.\right.   \label{alternative}
+\end{equation}%
+We define the following vector of signs%
+\begin{equation*}
+U(n)=(s(y_{1}),...,s(y_{n}))',
+\end{equation*}%
+where, for $1\leq t\leq n,$%
+\begin{equation*}
+s(y_{t})=\left\{ 
+\begin{tabular}{l}
+$1,$ $if$ $y_{t}\geq 0$ \\ 
+$0,$ $if$ $y_{t}<0$%
+\end{tabular}%
+\ \right. \text{.}
+\end{equation*}
+
+The test is Neyman-Pearson type test based on signs [see \citet{lehmann2006testing}] which maximize the
+power function under the constraint $P\left[ \text{reject }%
+H_{0}\mid H_{0}\right] \leq \alpha$. The idea is to build		
+point-optimal sign-based tests to test the null hypothesis (\ref{eq:
+hypothesis1}) against the alternative hypothesis (\ref{alternative}). To do
+so, we first define the likelihood function of sample in terms of signs $%
+s(y_{1}),...,s(y_{n})$ conditional on $X$%
+\begin{equation*}
+L\left( U(n),\beta \right) =P\left[
+s(y_{1})=s_{1},...,s(y_{n})=s_{n}\mid X\right] =\prod\limits_{t=1}^{n} P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1}, X\right] ,
+\end{equation*}%
+with 
+\begin{equation*}
+\text{\b{S}}_{0}=\left\{ \emptyset \right\} ,\text{ \ \b{S}}_{t-1}=\left\{
+s(y_{1})=s_{1},...,s(y_{t-1})=s_{t-1}\right\} ,\text{ for }t\geq 2,
+\end{equation*}%
+and%
+\begin{equation*}
+P\left[ s(y_{1})=s_{1}\mid \text{\b{S}}_{0},X\right] =P%
+\left[ s(y_{1})=s_{1}\mid X\right] ,
+\end{equation*}%
+where each $s_{t}$, for $1\leq t\leq n$, takes two possible values $0$ and $1
+$. 
+
+ As the error terms satisfy the strict conditional mediangale assumption (\ref{eq: mediane}), the distribution of the signs $s(\varepsilon_1),\cdots,s(\varepsilon_n)$, and in turn $s(y_1),\cdots, s(y_n)$ under the null hypothesis of orthogonality is specified and are mutually independent [see \citet{coudin2009finite}].
+
+\begin{theorem}\label{Theorem1}
+Under model (\ref{model}) and assumption (\ref{eq: mediane}), the variables $s(\varepsilon_1),\cdots,s(\varepsilon_n)$ are i.i.d conditional on $X$, according to the distribution
+\[
+P[s(\varepsilon_1)=1\mid X]=P[s(\varepsilon_1)=0\mid X]=\frac{1}{2},\quad t=1,\cdots,n
+\]
+This result holds true iff  for any combination of $t=1,\cdots,n$ there is a permutation $\pi: i\rightarrow j$ such that the mediangale assumption holds for $j$. Then the signs $s(\varepsilon_1),\cdots,s(\varepsilon_n)$ are i.i.d.
+
+\noindent\textbf{Proof:} See Appendix.
+\end{theorem} A sign-based test for testing the null hypothesis (\ref{eq: hypothesis1})
+against the alternative hypothesis (\ref{alternative}) is given by the
+following proposition.
+
+\begin{proposition}
+\label{proposition1C1} Under assumptions (\ref{eq: mediane}) and (\ref{model}%
+), let $H_{0}$ and $H_{1}$ be defined by (\ref{eq: hypothesis1}) - (\ref%
+{alternative})$,$%
+\begin{equation*}
+SL_{n}(\beta _{1})=\sum\limits_{t=1}^{n}a_{t}(\beta _{1})s(y_{t}),
+\end{equation*}%
+where, for $t=1,...,n,$%
+\begin{equation}
+a_{t}(\beta _{1})=\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid \text{%
+\b{S}}_{t-1},X\right] }{P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] 
+}\right\} \,,  \label{weights1}
+\end{equation}%
+and suppose the constant $c_{1}(\beta _{1})$ satisfies $P\left[
+\sum_{t=1}^{n}a_{t}(\beta _{1})s(y_{t})>c_{1}(\beta _{1})\right] =\alpha $
+under $H_{0},$ with $0<\alpha <1.$ Then the test that rejects $H_{0}$ when 
+\begin{equation}
+SL_{n}(\beta _{1})>c_{1}(\beta _{1})  \label{eq: SLn critical region}
+\end{equation}%
+is most powerful for testing $H_{0}$ against $H_{1}$ among level-$\alpha $
+tests based on the signs $\big(s(y_{1}),...,s(y_{n})\big)%
+'.$
+\noindent\textbf{Proof:} See Appendix.
+\end{proposition}
+\begin{sloppypar}
+Notice that the calculation of the test statistic $SL_{n}(\beta _{1})$
+depends on the weights $a_{t}(\beta _{1}),$ which in turn depends on the
+calculation of the conditional probabilities $P\left[ y_{t}\geq 0\mid \text{\b{S%
+}}_{t-1},X\right] $ and $P\left[ y_{t}<0\mid \text{\b{S}}%
+_{t-1},X\right] .$ The latter terms are not easy to compute and involves the
+distribution of the joint process of signs $\big(s(y_{1}),...,s(y_{n})\big)'$ conditional on $X$, which is unknown. An alternative way to compute the
+terms $P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] $ and $%
+P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] $ is to use
+simulations, however again this will be time consuming as it requires to
+simulate the joint distribution of the process of signs $\big(%
+s(y_{1}),...,s(y_{n})\big)',$ which depends on the sample size $n$.
+For all these reasons and to make the test statistic $SL_{n}(\beta _{1})$
+feasible, we make the following assumption.
+\end{sloppypar}
+
+\noindent \textbf{Assumption A1: }\textit{Let $\{y_t,t=0,1,\cdots\}$ follow a Markov process of order one. Then under the alternative hypothesis, the sign process }$\left\{
+s(y_{t})\right\} _{t=0}^{\infty }$\textit{ follows a Markov process of the same order.}\newline
+\noindent\textit{\textbf{Proof:} See Appendix.}
+
+As the mediangale assumption allows for nonlinear serial dependence, testing assumption \textbf{A1} by considering linear correlation is inappropriate. One approach involves fitting copula models, which provides the means of separating the marginal distributions of the process from their respective dependence structure. The latter stems from \citet{sklar1959fonctions}, which decomposes the joint conditional distribution function of $\bm{Y}=[y_1,\cdots,y_n]'$ conditional on $X$ as
+\[
+\bm{Y}\mid X \sim H(.\mid X)=C\left(F_1(.\mid X),\cdots,F_n(.\mid X)\right),
+\] 
+where $F_t(.\mid X)$ for $t=1,\cdots,n$ are uniformly distributed marginals - i.e. $F_t(.\mid X):= u_t\sim U[0,1]$. Note that the elements of $\bm{Y}$ are uncorrelated, yet exhibit serial dependence which is captured by the copula $C(.)$. The issue with specifying a copula for $\bm{Y}$ is that the no serial correlation assumption implies an identity correlation matrix. As a result, in the literature, the means of allowing for nonlinear serial dependence for processes which are linearly unrelated is often accompanied by assuming that $\bm{Y}$ conditional on $X$ is distributed as a multivariate Student's $t$ distribution - i.e. $\bm{Y}\mid X\sim t_{\nu}(0,I)$, where $I$ is an identity matrix. When $I$ is imposed on the multivariate Student's $t$ distribution, the conditional joint distribution of $\bm{Y}$ does not factorize into the product of its marginals. Alternatively, we may consider the \textquotedblleft jointly symmetric\textquotedblright copulae proposed by \citet{oh2016high}, where the latter can be constructed with any given (possibly asymmetric) copula family. In addition, when they are combined with symmetric marginals, they ensure an identity correlation matrix. A \textquotedblleft jointly symmetric\textquotedblright copula is defined as follows
+\begin{definition}
+The $n$ dimensional copula $C^{JS}$, is jointly symmetric:
+\[
+C^{JS}\left(u_1,\cdots,u_n\right)=\frac{1}{2^n}\sum\limits_{k_1=0}^{2}\cdots\sum\limits_{k_n=0}^{2}\left(-1\right)^R C(\tilde{u}_1,\cdots,\tilde{u}_i,\cdots,\tilde{u}_n)
+\] 
+\[
+\text{where}\quad R=\sum\limits_{i=1}^n\bm{1}\{k_i=2\},\quad\text{and}\quad\tilde{u}_i=
+\begin{cases}
+1,& k_i=0\\
+u_i,&k_i=1\\
+1-u_i,& k_i=2
+\end{cases}
+\]
+ \end{definition}
+ The general idea is that the average of mirror image rotations of a possibly asymmetric copula along each axis generates a jointly symmetric copula [see \citet{oh2016high}. For instance, the marginals can be assumed to possess standard normal distributions, while the nonlinear dependency is modeled using the jointly symmetric copulae. The Markovian assumption can then be tested by considering in turn, the independent, bivariate, trivariate and higher order multivariate copulae (or multivariate Student's $t$ distributions of varying orders), where the model with the lowest Akaike Information Criterion (AIC hereafter) is then chosen. However, in an extensive simulation analysis, we observe that the order of the Markovianity does not have a significant impact on the power of the test, and as such the assumption that under the alternative hypothesis $\{y_t:t=1,\cdots,n\}$ and in turn $\{s(y_t):t=1,\cdots,n\}$ follow a Markov process of order one is sufficient for testing the null hypothesis of orthogonality. 
+
+ Now, under assumption \textbf{A1}, the probability terms $P\left[
+y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] $ and $P\left[
+y_{t}<0\mid \text{\b{S}}_{t-1},X\right] $ in the weight function $a_{t}(\beta
+_{1})$ can be written as follows:%
+\begin{equation*}
+\left\{ 
+\begin{tabular}{l}
+$P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] =P%
+\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right] ^{s(y_{t-1})}P\left[
+y_{t}\geq 0\mid y_{t-1}<0,X\right] ^{1-s(y_{t-1})},$ \\ 
+\\ 
+$P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] =P\left[
+y_{t}<0\mid y_{t-1}\geq 0,X\right] ^{s(y_{t-1})}P\left[ y_{t}<0\mid
+y_{t-1}<0,X\right] ^{1-s(y_{t-1})}.$%
+\end{tabular}%
+\right. 
+\end{equation*}%
+The use of the above expressions of $P\left[ y_{t}\geq 0\mid \text{%
+\b{S}}_{t-1},X\right] $ and $P\left[ y_{t}<0\mid \text{\b{S}}%
+_{t-1},X\right] $ simplifies a lot the calculation of the test statistic $%
+SL_{n}(\beta _{1})$. We have the following result.
+
+\begin{corollary}
+\label{CorollaryC1} Under assumptions (\ref{eq: mediane}) and (\ref{model}),
+let $H_{0}$ and $H_{1}$ be defined by (\ref{eq: hypothesis1}) - (\ref%
+{alternative})$,$%
+\begin{equation*}
+\tilde{S}L_{n}(\beta _{1})=\sum\limits_{t=1}^{n}\tilde{a}_{t}(\beta _{1})%
+s(y_{t})+\sum\limits_{t=1}^{n}\tilde{b}_{t}(\beta _{1})%
+s(y_{t})s(y_{t-1}),
+\end{equation*}%
+where%
+\begin{equation*}
+\tilde{a}_{1}(\beta _{1})=\ln \left\{ \frac{1-P\left[ \varepsilon_{1}<-\beta
+_{1}'x_{0}\mid X\right] }{P\left[ \varepsilon_{1}<-\beta _{1}^{^{\prime
+}}x_{0}\mid X\right] }\right\} ,\quad\tilde{b}_{1}(\beta _{1})=0
+\end{equation*}%
+and for $t=2,...,n,$%
+\begin{equation*}
+\begin{tabular}{l}
+$\tilde{a}_{t}(\beta _{1})=\ln \left\{ \frac{1-\frac{P\left[
+\varepsilon_{t}<-\beta_1'x_{t-1},\text{ }\varepsilon_{t-1}<-\beta _{1}'
+x_{t-2}\mid X\right] }{P\left[ \varepsilon_{t-1}<-\beta _{1}'
+x_{t-2}\mid X\right] }}{\frac{P\left[ \varepsilon_{t}<-\beta _{1}'
+x_{t-1},\text{ }\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }{P%
+\left[ \varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }}\right\} $ \\ 
+\\ 
+$\tilde{b}_{t}(\beta _{1})=\ln \left\{ \frac{1-\left( \frac{P\left[
+\varepsilon_{t}<-\beta_1'x_{t-1}\mid X\right] }{1-P\left[
+\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }-\frac{P\left[ 
+\text{ }\varepsilon_{t-1}<-\beta_1'x_{t-2},\text{ }\varepsilon_{t}<-\beta
+_{1}'x_{t-1}\mid X\right] }{1-P\left[ \varepsilon_{t-1}<-\beta
+_{1}'x_{t-2}\mid X\right] }\right) }{\frac{P\left[
+\varepsilon_{t}<-\beta_1'x_{t-1}\mid X\right] }{1-P\left[
+\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }-\frac{P\left[ 
+\text{ }\varepsilon_{t-1}<-\beta_1'x_{t-2},\text{ }\varepsilon_{t}<-\beta
+_{1}'x_{t-1}\mid X\right] }{1-P\left[ \varepsilon_{t-1}<-\beta
+_{1}'x_{t-2}\mid X\right] }}\right\} -\ln \left\{ \frac{1-\frac{%
+P\left[ \varepsilon_{t}<-\beta_1'x_{t-1},\text{ }%
+\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }{P\left[
+\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }}{\frac{P\left[
+\varepsilon_{t}<-\beta_1'x_{t-1},\text{ }\varepsilon_{t-1}<-\beta _{1}'
+x_{t-2}\mid X\right] }{P\left[ \varepsilon_{t-1}<-\beta _{1}'
+x_{t-2}\mid X\right] }}\right\} $%
+\end{tabular}%
+\end{equation*}%
+and suppose the constant $\tilde{c}_{1}(\beta _{1})$ satisfies $P%
+\left[ \sum\limits_{t=1}^{n}\tilde{a}_{t}(\beta _{1})\text{ }%
+s(y_{t})+\sum\limits_{t=1}^{n}\tilde{b}_{t}(\beta _{1})\text{ }%
+s(y_{t})s(y_{t-1})>\tilde{c}_{1}(\beta _{1})\right] =\alpha $ under $H_{0},$
+with $0<\alpha <1.$ Then the test that rejects $H_{0}$ when 
+\begin{equation}
+\tilde{S}L_{n}(\beta _{1})>\tilde{c}_{1}(\beta _{1})
+\label{eq: SLn critical region2}
+\end{equation}%
+is most powerful for testing $H_{0}$ against $H_{1}$ among level-$\alpha $
+tests based on the signs $\big(s(y_{1}),...,s(y_{n})\big)%
+'.$
+\noindent\textbf{Proof:} See Appendix.
+\end{corollary}
+Now, the calculation of the test statistic $\tilde{S}L_{n}(\beta _{1})$
+depends on the univariate and bivariate distributions $%
+P\left[ \varepsilon_{t}<\cdot \mid X \right] $ and $P\left[ \text{ }%
+\varepsilon_{t-1}<\cdot ,\text{ }\varepsilon_{t}<\cdot \mid X\right]$,
+
+\begin{sloppypar}
+Observe that under the null hypothesis, the signs $s(y_{1}),...
+,s(y_{n})$ are i.i.d. according to a Bernoulli $Bi(1,$\thinspace $0.5)$.
+Thus, the distribution of the test statistic $\tilde{S}L_{n}(\beta _{1})$
+only depends on the known weights $\tilde{a}_{t}(\beta _{1})$ and $\tilde{b}%
+_{t}(\beta _{1})$ and does not involve any nuisance parameter under the null
+hypothesis. Nonparametric assumption (\ref{eq:
+mediane}) implies that tests based on $\tilde{S}L_{n}(\beta _{1})$, such
+as the test given by (\ref{eq: SLn critical region2}), are distribution-free
+and robust against heteroskedasticity of unknown form, and thus, a nonparametric 
+\emph{pivotal function}. Under the alternative hypothesis, however, the
+power function of the test depends on the form of the distributions $P\left[\varepsilon_t<.\mid X\right]$ and $P\left[ \text{ }\varepsilon_{t-1}<\cdot ,\-
+\text{ }\varepsilon_{t}<\cdot \mid X\right]$.
+\end{sloppypar}
+ %An interesting special case is the one where $%
+%\varepsilon _{1},\,\ldots \,,\,\varepsilon _{n}$ are i.i.d. according to a $%
+%N(0,I)$ distribution. In this case the weights $\tilde{a}_{t}(\beta _{1})$
+%and $\tilde{b}_{t}(\beta _{1})$ will depend on the univariate and bivariate
+%standard normal distribution functions.
+
+ A special case is where $\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_{n-1},\varepsilon_n$ are distributed according to $N(0,1)$. As suggested before, since the form of the serial dependence of the errors is nonlinear, we may calculate the bivariate probabilities using \textquotedblleft jointly-symmetric\textquotedblright copulae by considering the Archimedean Frank, Clayton or Gumbel as the copula family [see \citet{joe2014dependence}]. Alternatively, we may evaluate the bivariate probabilities $P\left[ \text{ }\varepsilon_{t-1}<\cdot ,\-
+\text{ }\varepsilon_{t}<\cdot \mid X\right]$ using a multivariate Student's $t$ distribution by imposing the identity matrix $I$.
+ Then the optimal test statistic takes the form 
+\begin{equation*}
+\tilde{S}L_{n}(\beta _{1})=\sum\limits_{t=1}^{n}\tilde{a}_{t}(\beta _{1})%
+s(y_{t})+\sum\limits_{t=1}^{n}\tilde{b}_{t}(\beta _{1})%
+s(y_{t})s(y_{t-1}),
+\end{equation*}%
+where%
+\begin{equation*}
+\tilde{a}_{1}(\beta _{1})=\ln \left\{ \frac{\Phi(\beta_1'x_0) }{1-\Phi(\beta_1'x_0)}\right\} ,\text{ }\tilde{b}_{1}(\beta _{1})=0
+\end{equation*}%
+and for $t=2,...,n,$%
+\begin{equation*}
+\begin{tabular}{l}
+$\tilde{a}_{t}(\beta _{1})=\ln \left\{ \frac{1-\frac{C^{JS}(\Phi(-\beta_1'x_{t-1}),\Phi(-\beta_1'x_{t-2})) }{1-\Phi\left(\beta_1'x_{t-2}\right)}}{\frac{C^{JS}(\Phi(-\beta_1'x_{t-1}),\Phi(-\beta_1'x_{t-2})) }{1-\Phi\left(\beta_1'x_{t-2}\right)}}\right\} $ \\ 
+\\ 
+$\tilde{b}_{t}(\beta _{1})=\ln \left\{ \frac{1-\left( \frac{1-\Phi\left(\beta_1'x_{t-1}\right) }{\Phi\left(\beta_1'x_{t-2}\right) }-\frac{C^{JS}(\Phi(-\beta_1'x_{t-1}),\Phi(-\beta_1'x_{t-2})) }{\Phi\left(\beta_1'x_{t-2}\right) }\right) }{\frac{1-\Phi\left(\beta_1'x_{t-1}\right)}{\Phi\left(\beta_1'x_{t-2}\right) }-\frac{C^{JS}(\Phi(-\beta_1'x_{t-1}),\Phi(-\beta_1'x_{t-2})) }{\Phi\left(\beta_1'x_{t-2}\right)}}\right\} -\ln \left\{ \frac{1-\frac{C^{JS}(\Phi(-\beta_1'x_{t-1}),\Phi(-\beta_1'x_{t-2})) }{1-\Phi\left(\beta_1'x_{t-2}\right) }}{\frac{C^{JS}(\Phi(-\beta_1'x_{t-1}),\Phi(-\beta_1'x_{t-2}))}{1-\Phi\left(\beta_1'x_{t-2}\right)}}\right\} $%
+\end{tabular}%
+\end{equation*}%
+where $\Phi(.)$ is the standard normal distribution function and $C^{JS}(u_1,u_2)$ is the bivariate \textquotedblleft jointly symmetric\textquotedblright copula with uniformly distributed margins.
+
+The distribution of $\tilde{S}%
+L_{n}(\beta _{1}),$ can be simulated under the null
+hypothesis and the relevant critical values can be evaluated to any degree
+of precision with a sufficient number of replications. %Consider the special case
+%where $u_{1},...,u_{n}$ are i.i.d. and distributed according to a standard
+%normal distribution, thus the weights $\tilde{a}_{t}(\beta _{1})$ and $%
+%\tilde{b}_{t}(\beta _{1})$ in the test statistic $\tilde{S}L_{n}(\beta _{1})$
+%can be expressed in terms of standard normal distribution functions. 
+Since the test statistic $\tilde{S}L_{n}(\beta _{1})$ is a continuous random variable, its quantiles are easy to compute. To simulate the distribution of 
+$\tilde{S}L_{n}(\beta _{1}),$ the following algorithm is implemented:
+\begin{enumerate}
+\item Compute the test statistic $\tilde{S}L_{n}(\beta _{1})$ based on the
+observed data, say $\tilde{S}L_{n}^{0}(\beta _{1})$;
+
+\item Generate a sample $\left\{ y_{t}\right\} _{t=1}^{n}$ of length $n$
+under the null $H_{0}$ and compute $\tilde{S}L_{n}^{j}(\beta _{1})$ using
+that generated sample;
+
+\item Choose $B$ such that $\alpha (B+1)$ is an integer and repeat steps 1-2
+B times;
+
+\item Computer the $(1-\alpha )\%$ quantile, say $\tilde{c}_{1}(\beta _{1})$%
+, of the sequence $\{\tilde{S}L_{n}^{j}(\beta _{1})\}_{j=1}^{B}$;
+
+\item Reject the null hypothesis at level $\alpha $ if $\tilde{S}L_{n}^{0}(\beta
+_{1})\geq c(\beta _{1})$.
+\end{enumerate}
+
+\subsection{Testing general full coefficient hypotheses in nonlinear
+regressions \label{sec: Testing general full coefficient hypotheses in
+nonlinear regressions}}
+
+We now consider a nonlinear regression model%
+\begin{equation}
+y_{t}=f(x_{t-1},\beta )+\varepsilon_{t},\text{ }t=1,...,\,n\text{,}
+\label{nonlinearC1}
+\end{equation}%
+where $x_{t-1}$ is an observable $(k+1)\times 1$ vector of stochastic
+explanatory variables, such that $x_{t-1}=[1,x_{1,t-1},...,x_{k,t-1}]'$, $f(\,\cdot \,)$ is a scalar function, $\beta \in 
+\mathbb{R}^{(k+1)}$ is an unknown vector of parameters and
+\begin{equation*}
+\varepsilon_{t}\mid X \sim F_{t}(.\mid X)
+\end{equation*}%
+where as before $F_{t}(.\mid X)$ is a distribution function and $X=[x_0,...,x_{n-1}]$ is an $n\times (k+1)$ matrix. Once again, we suppose that the error terms process $\{\varepsilon_t,t=1,2,\cdots\}$ is a strict conditional mediangale, such that
+
+\begin{equation}\label{eq: mediane1}
+P[\varepsilon_{t}> 0\mid \bm{{\varepsilon}}_{t-1},X]=P[\varepsilon_{t}<0\mid \bm{\varepsilon}_{t-1},X]=\frac{1}{2},
+\end{equation}%
+with
+\[
+\bm{\varepsilon}_{0}=\{\emptyset\},\quad\bm{\varepsilon}_{t-1}=\{\varepsilon_1,\cdots,\varepsilon_{t-1}\},\quad\text{for}\quad t\geq2
+\]
+and where (\ref{eq: mediane1}) entails that $\varepsilon_t\mid X$ has no mass at zero, \emph{i.e.} $P[\varepsilon_t=0\mid X]$=0 for all $t$. We do not require that the
+parameter vector $\beta $ be identified. We consider the problem of testing
+the null hypothesis%
+\begin{equation}
+H(\beta _{0}):\beta =\beta _{0}  \label{h01}
+\end{equation}%
+against the alternative hypothesis%
+\begin{equation}
+H(\beta _{1}):\beta =\beta _{1}\text{.}  \label{h02}
+\end{equation}%
+A test for $H(\beta _{0})$ against $H(\beta _{1})$ can be constructed as in
+Section \ref{sec: Testing zero coefficient hypothesis in linear model}.
+First, we note that model (\ref{nonlinearC1}) is equivalent to the
+transformed model%
+\begin{equation*}
+\tilde{y}_{t}=g(x_{t-1},\,\beta ,\,\beta _{0})+\varepsilon_{t},
+\end{equation*}%
+where $\tilde{y}_{t}=y_{t}-f(x_{t-1},\beta _{0})$ and\ $g(x_{t-1},\beta
+,\beta _{0})=f(x_{t-1},\beta )-f(x_{t-1},\beta _{0})$. Thus, testing $%
+H(\beta _{0})$ against $H(\beta _{1})$ is equivalent to testing%
+\begin{equation*}
+\bar{H}_{0}:g(x_{t-1},\,\beta ,\beta _{0})=0,\text{\ for }t=1,...,n,
+\end{equation*}%
+against%
+\begin{equation*}
+\bar{H}_{1}:g(x_{t-1},\beta ,\beta _{0})=f(x_{t},\beta _{1})-f(x_{t},\beta
+_{0}),\;\text{for }t=1,...,n.
+\end{equation*}%
+For $\tilde{U}(n)=(s(\tilde{y}_{1}),...,s(\tilde{y}_{n}))',$
+where, for $1\leq t\leq n,$%
+\begin{equation*}
+s(\tilde{y}_{t})=\left\{ 
+\begin{tabular}{l}
+$1,$ $if$ $\tilde{y}_{t}\geq 0$ \\ 
+$0,$ $if$ $\tilde{y}_{t}<0$%
+\end{tabular}%
+\ \right. \text{,}
+\end{equation*}%
+the likelihood function of new random sample $\left\{ s(\tilde{y})_{t}\right\}
+_{t=1}^{n}$ conditional on $X$ is given by:%
+\begin{equation*}
+L\left( \tilde{U}(n),\beta \right) =P\left[ s(\tilde{y}%
+_{1})=\tilde{s}_{1},...,s(\tilde{y}_{n})=\tilde{s}_{n}\mid X\right] =\prod\limits_{t=1}^{n} P\left[ s(\tilde{y}_{t})=\tilde{s}_{t}\mid 
+\text{\~{S}}_{t-1},X\right] ,
+\end{equation*}%
+with 
+\begin{equation*}
+\text{\~{S}}_{0}=\left\{ \emptyset \right\} ,\text{\ \~{S}}_{t-1}=\left\{
+s(\tilde{y}_{1})=\tilde{s}_{1},...,s(\tilde{y}_{t-1})=\tilde{s}%
+_{t-1}\right\} ,\text{ for }t\geq 2,
+\end{equation*}%
+and%
+\begin{equation*}
+P\left[ s(\tilde{y}_{1})=\tilde{s}_{1}\mid \text{\~{S}}_{0},X\right] =%
+P\left[ s(\tilde{y}_{1})=\tilde{s}_{1}\mid X\right] ,
+\end{equation*}%
+where each $\tilde{s}_{t}$, for $1\leq t\leq n$, takes two possible values $%
+0 $ and $1$. Thus, we can use the result of proposition \ref{proposition1C1}
+to derive a sign-based test for the null hypothesis $H(\beta _{0})$ against
+the alternative hypothesis $H(\beta _{1})$, which leads to the following proposition:
+
+\begin{proposition}\label{proposition2C1}
+Under assumptions (\ref{eq: mediane}) and (\ref{nonlinearC1}),let $H(\beta
+_{0})$ and $H(\beta _{1})$ be defined by $(\ref{h01})$ - $(\ref{h02}),$%
+\begin{equation*}
+SN_{n}(\beta _{0}|\beta _{1})=\sum\limits_{t=1}^{n}a_{t}(\beta _{0}|\beta
+_{1})s\left( y_{t}-f(x_{t-1},\beta _{0})\right) 
+\end{equation*}%
+where, for $t=1,...,n,$%
+\begin{equation*}
+a_{t}(\beta _{0}|\beta _{1})=\ln \left\{ \frac{P\left[ \tilde{y}%
+_{t}\geq 0\mid \text{\~{S}}_{t-1},X\right] }{P\left[ \tilde{y}%
+_{t}<0\mid \text{\~{S}}_{t-1},X\right] }\right\} \,,
+\end{equation*}%
+and suppose the constant $c_{1}(\beta _{0},\,\beta _{1})$ satisfies $%
+P\left[ \sum\limits_{t=1}^{n}a_{t}(\beta _{0}|\beta _{1})\text{ }s\left(
+y_{t}-f(x_{t},\beta _{0})\right) >c_{1}(\beta _{0},\,\beta _{1})\right]
+=\alpha $ under $H(\beta _{0}),$ with $0<\alpha <1.$ Then the test that
+rejects $H(\beta _{0})$ when 
+\begin{equation*}
+SN_{n}(\beta _{0}|\beta _{1})>c_{1}(\beta _{0},\,\beta _{1})
+\end{equation*}%
+is most powerful for testing $H(\beta _{0})$ against $H(\beta _{1})$ among
+level-$\alpha $ tests based on the signs $\big(s(\tilde{y}_{1}),...,s(\tilde{y}_{n})\big)'.$
+\end{proposition}
+
+As in Section \ref{sec: Testing zero coefficient hypothesis in linear model}%
+, to make the calculation of the weight function $a_{t}(\beta _{0}|\beta
+_{1})$ that depends on the terms $P\left[ \tilde{y}_{t}\geq 0\mid \text{\b{S%
+}}_{t-1},X\right] $ and $P\left[ \tilde{y}_{t}<0\mid \text{\b{S}}%
+_{t-1},X\right] $ feasible, we consider the following assumption.\newline
+
+\noindent \textbf{Assumption A2: }\textit{Let $\{\tilde{y}_t,t=0,1,\cdots\}$ follow a Markov process of order one. Then under the alternative hypothesis, the sign process }$\left\{
+s(\tilde{y}_{t})\right\} _{t=0}^{\infty }$\textit{ is a Markov process of the same order.}\newline
+
+Under Assumption \textbf{A2}, the terms $P\left[ \tilde{y}_{t}\geq
+0\mid \text{\~{S}}_{t-1},X\right] $ and $P\left[ \tilde{y}_{t}<0\mid 
+\text{\~{S}}_{t-1},X\right] $ simplify and can be expressed as
+follows:%
+\begin{equation*}
+\left\{ 
+\begin{tabular}{l}
+$P\left[ \tilde{y}_{t}\geq 0\mid \text{\~{S}}_{t-1},X\right] =%
+P\left[ \tilde{y}_{t}\geq 0\mid \tilde{y}_{t-1}\geq 0,X\right] ^{s(\tilde{y}%
+_{t-1})}P\left[ \tilde{y}_{t}\geq 0\mid \tilde{y}_{t-1}<0,X\right]
+^{1-s(\tilde{y}_{t-1})},$ \\ 
+\\ 
+$P\left[ \tilde{y}_{t}<0\mid \text{\~{S}}_{t-1},X\right] =P%
+\left[ \tilde{y}_{t}<0\mid \tilde{y}_{t-1}\geq 0,X\right] ^{s(\tilde{y}_{t-1})}%
+P\left[ \tilde{y}_{t}<0\mid \tilde{y}_{t-1}<0,X\right] ^{1-s(\tilde{y}%
+_{t-1})}.$%
+\end{tabular}%
+\right.
+\end{equation*}%
+The use of the new expressions of the probabilities $P\left[ \tilde{%
+y}_{t}\geq 0\mid \text{\~{S}}_{t-1},X\right] $ and $P\left[ \tilde{y}%
+_{t}<0\mid \text{\~{S}}_{t-1},X\right] $ simplifies the calculation of the
+test statistic $SN_{n}(\beta _{0}|\beta _{1})$. We have the following results:
+\begin{corollary}
+\label{Corollary2} Under assumptions (\ref{eq: mediane}) and (\ref{model}),
+let $H(\beta _{0})$ and $H(\beta _{1})$ be defined by $(\ref{h01})$ - $(\ref%
+{h02}),$%
+\begin{equation*}
+\widehat{SN}_{n}(\beta _{0}|\beta _{1})=\sum\limits_{t=1}^{n}\tilde{a}%
+_{t}(\beta _{0}|\beta _{1})s(y_{t}-f(x_{t-1},\beta
+_{0}))+\sum\limits_{t=1}^{n}\tilde{b}_{t}(\beta _{1})\text{ }%
+s(y_{t}-f(x_{t-1},\beta _{0}))s(y_{t-1}-f(x_{t-2},\beta _{0})),
+\end{equation*}%
+where%
+\begin{equation*}
+\tilde{a}_{1}(\beta _{0}|\beta _{1})=\ln \left\{ \frac{1-P\left[
+\varepsilon_{1}<f(x_{0},\beta _{0})-f(x_{0},\beta _{1})\mid X\right] }{P\left[
+\varepsilon_{1}<f(x_{0},\beta _{0})-f(x_{0},\beta _{1})\mid X\right] }\right\} ,\text{ }%
+\tilde{b}_{1}(\beta _{0}|\beta _{1})=0
+\end{equation*}%
+and for $t=2,...,n,$%
+\begin{equation*}
+\tilde{a}_{t}(\beta _{0}|\beta _{1})=\ln \left\{ \frac{1-\frac{P%
+\left[ \varepsilon_{t}<f(x_{t-1},\beta _{0})-f(x_{t-1},\beta _{1}),\text{ }%
+\varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta _{1})\mid X\right] }{P%
+\left[ \varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta _{1})\mid X\right] }}{\frac{%
+P\left[ \varepsilon_{t}<f(x_{t-1},\beta _{0})-f(x_{t-1},\beta _{1}),\text{ }%
+\varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta _{1})\mid X\right] }{P%
+\left[ \varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta _{1})\mid X\right] }}\right\} 
+\end{equation*}
+\begin{equation*}
+\begin{tabular}{l}
+$\tilde{b}_{t}(\beta _{0}|\beta _{1})=\ln \left\{ \frac{1-\left( \frac{%
+P\left[ \varepsilon_{t}<f(x_{t-1},\beta _{0})-f(x_{t-1},\beta _{1})\mid X\right] }{%
+1-P\left[ \varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta
+_{1})\mid X\right] }-\frac{P\left[ \text{ }\varepsilon_{t-1}<f(x_{t-2},\beta
+_{0})-f(x_{t-2},\beta_{1}),\text{ }\varepsilon_{t}<f(x_{t-1},\beta
+_{0})-f(x_{t-1},\beta _{1})\mid X\right] }{1-P\left[
+\varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta _{1})\mid X\right] }\right) }{\frac{%
+P\left[ \varepsilon_{t}<f(x_{t-1},\beta _{0})-f(x_{t-1},\beta _{1})\mid X\right] }{%
+1-P\left[ \varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta
+_{1})\mid X\right] }-\frac{P\left[ \text{ }\varepsilon_{t-1}<f(x_{t-2},\beta
+_{0})-f(x_{t-2},\beta _{1}),\text{ }\varepsilon_{t}<f(x_{t-1},\beta
+_{0})-f(x_{t-1},\beta _{1})\mid X\right] }{1-P\left[
+\varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta _{1})\mid X\right] }}\right\} $ \\ 
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \\ 
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $-\ln \left\{ \frac{1-\frac{P\left[
+\varepsilon_{t}<f(x_{t-1},\beta _{0})-f(x_{t-1},\beta _{1}),\text{ }%
+\varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta _{1})\mid X\right] }{P%
+\left[ \varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta _{1})\mid X\right] }}{\frac{%
+P\left[ \varepsilon_{t}<f(x_{t-1},\beta _{0})-f(x_{t-1},\beta _{1}),\text{ }%
+\varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta _{1})\mid X\right] }{P%
+\left[ \varepsilon_{t-1}<f(x_{t-2},\beta _{0})-f(x_{t-2},\beta _{1})\mid X\right] }}\right\} 
+$%
+\end{tabular}%
+\end{equation*}%
+and suppose the constant $\tilde{c}_{1}(\beta _{0},\beta _{1})$ satisfies $%
+P\left[ \widehat{SN}_{n}(\beta _{0}|\beta _{1})>\tilde{c}_{1}(\beta
+_{0},\beta _{1})\right] =\alpha $ under $H(\beta _{0}),$ with $0<\alpha <1.$
+Then the test that rejects $H(\beta _{0})$ when 
+\begin{equation*}
+\widehat{SN}_{n}(\beta _{0}|\beta _{1})>\tilde{c}_{1}(\beta _{0},\beta _{1})
+\end{equation*}%
+is most powerful for testing $H(\beta _{0})$ against $H(\beta _{1})$ among
+level-$\alpha $ tests based on the signs $\big(s(\tilde{y}_{1}),...,s(\tilde{y}_{n})\big)'.$
+\end{corollary}
+
+If we consider a linear function $f(x_{t-1}',\beta)=\beta'x_{t-1}$, as before we may suppose that $\varepsilon_{t}$ for $t=1,\cdots,n$ follow $N(0,1)$, which allows us to evaluate the bivariate probabilities by utilizing the \textquotedblleft jointly symmetric\textquotedblright copula or the multivariate Student's $t$ distribution with the identity matrix imposed. Then the test statistic for the null hypothesis $H(\beta_0)$ against the alternative $H(\beta_1)$ is given by
+\begin{equation*}
+\widehat{SN}_{n}(\beta _{0}|\beta _{1})=\sum\limits_{t=1}^{n}\tilde{a}%
+_{t}(\beta _{0}|\beta _{1})s(y_{t}-\beta_0'x_{t-1})+\sum\limits_{t=1}^{n}\tilde{b}_{t}(\beta _{1})%
+s(y_{t}-\beta_0'x_{t-1})s(y_{t-1}-\beta_0'x_{t-2}),
+\end{equation*}%
+where%
+\begin{equation*}
+\tilde{a}_{1}(\beta _{0}|\beta _{1})=\ln \left\{ \frac{\Phi\left(\left(\beta_1-\beta_0\right)'x_0\right) }{1-\Phi\left(\left(\beta_1-\beta_0\right)'x_0\right) }\right\} ,\quad%
+\tilde{b}_{1}(\beta _{0}|\beta _{1})=0,
+\end{equation*}%
+and for $t=2,...,n,$%
+\begin{equation*}
+\begin{tabular}{l}
+$\tilde{a}_{t}(\beta _{0}|\beta _{1})=\ln \left\{ \frac{1-\frac{C^{JS}(\Phi((\beta_0-\beta_1)'x_{t-1}),\Phi((\beta_0-\beta_1)'x_{t-2}) ) }{1-\Phi\left(\left(\beta_1-\beta_0\right)'x_{t-2}\right)}}{\frac{C^{JS}(\Phi((\beta_0-\beta_1)'x_{t-1}),\Phi((\beta_0-\beta_1)'x_{t-2}) )}{1-\Phi\left(\left(\beta_1-\beta_0\right)'x_{t-2}\right)}}\right\} 
+$ ,\\ 
+\\ 
+$\tilde{b}_{t}(\beta _{0}|\beta _{1})=\ln \left\{ \frac{1-\left( \frac{1-\Phi\left(\left(\beta_1-\beta_0\right)'x_{t-1}\right) }{\Phi\left(\left(\beta_1-\beta_0\right)'x_{t-2}\right)}-\frac{C^{JS}(\Phi((\beta_0-\beta_1)'x_{t-1}),\Phi((\beta_0-\beta_1)'x_{t-2}) )}{\Phi\left(\left(\beta_1-\beta_0\right)'x_{t-2}\right) }\right) }{\frac{1-\Phi\left(\left(\beta_1-\beta_0\right)'x_{t-1}\right)}{\Phi\left(\left(\beta_1-\beta_0\right)'x_{t-2}\right)}-\frac{C^{JS}(\Phi((\beta_0-\beta_1)'x_{t-1}),\Phi((\beta_0-\beta_1)'x_{t-2}) ) }{\Phi\left(\left(\beta_1-\beta_0\right)'x_{t-2}\right)}}\right\} $ \\ 
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \\ 
+\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $-\ln \left\{ \frac{1-\frac{C^{JS}(\Phi((\beta_0-\beta_1)'x_{t-1}),\Phi((\beta_0-\beta_1)'x_{t-2}) ) }{1-\Phi\left(\left(\beta_1-\beta_0\right)'x_{t-2}\right) }}{\frac{C^{JS}(\Phi((\beta_0-\beta_1)'x_{t-1}),\Phi((\beta_0-\beta_1)'x_{t-2}) )}{1-\Phi\left(\left(\beta_1-\beta_0\right)'x_{t-2}\right)}},\right\} 
+$%
+\end{tabular}%
+\end{equation*}%
+where $\Phi(.)$ is the standard normal distribution function and $C^{JS}(u_1,u_2)$ is the \textquotedblleft jointly-symmetric\textquotedblright bivariate copula with uniformly distributed marginals. As in Section \ref{sec: Testing zero coefficient hypothesis in linear model}%
+, the test statistic $\widehat{SN}_{n}(\beta _{0}|\beta _{1})$ depends on a
+particular alternative hypothesis $\beta _{1}$. In practice, the latter is unknown, which makes the proposed POS test infeasible.
+However, in Section \ref{optimal alternative hypothesisC1} we will suggest an
+adaptive approach [see \citet{dufour2010exact}] which can be used to
+choose an optimal alternative hypothesis at which the
+power of the test is maximized.
+\section{Choice of the optimal alternative hypothesis \label{optimal
+alternative hypothesisC1}}
+
+Point-optimal tests depend on the alternative $\beta=\beta_1$, which in practice is unknown. Formally, the test statistic $\widehat{SN}_{n}(\beta _{0}|\beta _{1})$ for testing the linear full-coefficient hypothesis (\ref{h01}) is a function
+of $\beta _{1}$
+\begin{equation*}
+\widehat{SN}_{n}(\beta _{0}|\beta _{1})=\sum\limits_{t=1}^{n}\tilde{a}%
+_{t}(\beta _{0}|\beta _{1})s(y_{t}-x_{t-1}'\beta
+_{0})+\sum\limits_{t=1}^{n}\tilde{b}_{t}(\beta _{1})%
+s(y_{t}-x_{t-1}'\beta _{0})s(y_{t-1}-x_{t-2}'\beta _{0}),
+\end{equation*}%
+which in turn implies that its power function, say $\Pi (\beta_0 ,\beta _{1})$, is also a
+function of $\beta _{1}$. Therefore, the choice of the alternative $\beta_1$ has a direct impact on its power function. In  other words,
+\begin{equation*}
+\Pi (\beta_0 ,\beta _{1})=P[\widehat{SN}_{n}(\beta _{0}|\beta _{1})>\tilde{c}%
+_{1}(\beta_0,\beta _{1})\mid H(\beta_1)],
+\end{equation*}%
+where $\tilde{c}_{1}(\beta_0,\beta _{1})$ satisfies the constraint
+\begin{equation*}
+P[\widehat{SN}_{n}(\beta _{0}|\beta _{1})>\tilde{c}_{1}(\beta_0,\beta _{1})|H(\beta_0)]\leq
+\alpha. 
+\end{equation*}
+Our objective is to choose the value of $\beta_1$ at which the power of the POS-based test statistic is maximized and is close to that of the power envelope. This can be accomplished in a number of ways.
+\citet{dufour2010exact} suggest an adaptive approach based on the split-sample technique [see \citet{dufour2001finite}] for estimating the optimal alternative to make size control easier and maximize the power. For a review of adaptive approach for parametric tests with non-standard distributions see \citet{dufour2003point} and \citet{dufour2008finite}.
+
+ This approach consists of splitting the sample into two independent parts, where
+the alternative $\beta_1$ is estimated using the first part, while the POS test-statistic $\widehat{SN}_{n}(\beta _{0}|\beta _{1})%
+$ is calculated using the second part of the sample, along with the alternative $\beta_1$ estimated using the first part. By adopting this technique, size control is easier and the power function of the POS-test traces out the power envelope.
+Let $n=n_{1}+n_{2}$, 
+$y=(y_{(1)}',y_{(2)}')'$, $X=(X_{(1)}',X_{(2)}')'$, and $\varepsilon=(\varepsilon_{(1)}',\varepsilon_{(2)}')'$, where $y_{(i)}$, $X_{(i)}$ and $u_{(i)}$ for $i\in \{1,2\}$ each have $%
+n_{i}$ rows. The first $n_{1}$ observations of $y$ and $X$ can thus be denoted by $y_{(1)}$ and $X_{(1)}$, which
+are used for estimating the alternative hypothesis $\beta _{1}$ with the OLS estimator: 
+\begin{equation*}
+\hat{\beta} _{(1)}=(X_{(1)}'X_{(1)})^{-1}X_{(1)}'y_{(1)}.
+\end{equation*}%
+Alternatively, in the case of extreme outliers other robust estimators that are less sensitive to outliers can be utilized [see \citet{maronna2019robust} for a review of robust estimators]. Since $\hat{\beta}_{(1)}$ is independent of $X_{(2)}$, the last $n_{2}$
+observations can be used to calculate the test statistic and obtain a valid POS
+test
+\begin{equation*}
+\widehat{SN}_{n}(\beta _{0}|\beta _{(1)})=\sum\limits_{t=n_1+1}^{n}\tilde{a}%
+_{t}(\beta _{0}|\beta _{(1)})s(y_{t}-x_{t-1}'\beta
+_{0})+\sum\limits_{t=n_1+1}^{n}\tilde{b}_{t}(\beta _{(1)})%
+s(y_{t}-x_{t-1}'\beta _{0})s(y_{t-1}-x_{t-2}'\beta _{0}),
+\end{equation*}%
+
+Different choices for $n_{1}$ and $n_{2}$ is possible. However, as
+\citet{dufour2010exact} have noted, the number of observations retained
+for the first and the second sub-samples has a direct impact on the power of
+the test, and a more powerful test is obtained
+when a relatively small number of observations is used for estimating the
+alternative and more observations are saved for calculating
+the test statistic. Having conducted a simulation
+study to compare the power-curves of split-sample-based POS tests to the
+power envelope, they find that using approximately $10\%$ of the sample to
+estimate the alternative yields a power which is very close to that of the power
+envelope. Therefore, we follow \citet{dufour2010exact} by using the first 10\% of the sample to estimate 
+the alternative and the remaining 90\% to calculate the test statistic. 
+
+\section{POS confidence regions \label{POS confidence regions}}
+
+In this Section, we follow \citet{dufour2010exact} and \citet{coudin2009finite} to discuss the process of building confidence regions at a given
+significance level $\alpha $, say $C_{\beta }(\alpha )$, for a vector
+(sub-vector) of the unknown parameters $\beta $ using the proposed POS test.
+ We consider again the linear regression (\ref{nonlinearC1}) and
+suppose we wish to test the null hypothesis (\ref{h01})
+against the alternative hypothesis (\ref{h02}). Formally, the idea
+involves finding all the values of $\beta _{0}\in \mathbb{R}^{(k+1)}$ such
+that
+\begin{equation}
+\widehat{SN}_{n}(\left. \beta _{0}\right\vert \beta
+_{1})=\sum\limits_{t=1}^{n}\tilde{a}_{t}(\beta_0\mid\beta _{1})s(y_{t}-\beta
+_{0}'x_{t-1})+\sum\limits_{t=1}^{n}\tilde{b}_{t}(\beta
+_{1})s(y_{t}-\beta _{0}'x_{t-1})s(y_{t-1}-\beta _{0}^{\prime
+}x_{t-2})<\tilde{c}_1(\beta _{0},\beta _{1})  \label{decision}
+\end{equation}%
+where the critical value $\tilde{c}_1(\beta _{0},\beta _{1})$ satisfies the constraint
+\begin{equation*}
+P\left[\widehat{SN}_{n}(\left. \beta _{0}\right\vert \beta
+_{1})>\tilde{c}_1(\beta _{0},\beta _{1}) |\beta =\beta _{0}\right]\leq\alpha 
+\end{equation*}%
+Thus, the confidence region $C_{\beta}(\alpha)$ of the vector of parameters $\beta $ is defined as
+\begin{equation*}
+C_{\beta }(\alpha )=\left\{ \beta _{0}:\widehat{SN}_{n}(\left. \beta _{0}\right\vert \beta
+_{1})<\tilde{c}_1(\beta _{0},\beta _{1}) |P[\widehat{SN}_{n}(\left. \beta _{0}\right\vert \beta
+_{1})>\tilde{c}_1(\beta _{0},\beta _{1}) |\beta =\beta _{0}]\leq \alpha \right\} .
+\end{equation*}%
+Given the confidence region $C_{\beta }(\alpha )$, confidence intervals for the components of vector $\beta $ can be obtained using the
+projection techniques. Confidence sets in the form of transformations $T$ of $\beta\in%
+\mathbb{R}^{m}$, $T(C_{\beta }(\alpha ))$ for $m\leq (k+1)$ can easily be found using the said techniques. Since, for any set $C_{\beta }(\alpha )$
+\begin{equation}
+\beta \in C_{\beta }(\alpha )\implies T(\beta )\in T(C_{\beta }(\alpha )),
+\label{cr1C1}
+\end{equation}%
+we have
+\begin{equation}
+P[\beta \in C_{\beta }(\alpha )]\geq 1-\alpha \implies P%
+[T(\beta )\in T(C_{\beta }(\alpha ))]\geq 1-\alpha,   \label{cr2C1}
+\end{equation}%
+where
+\begin{equation*}
+T(C_{\beta }(\alpha ))=\{\delta \in \mathbb{R}^{m}:\exists \beta \in
+C_{\beta }(\alpha ),T(\beta )=\delta \}.
+\end{equation*}%
+From (\ref{cr1C1}) and (\ref{cr2C1}), it is evident that the set $T(C_{\beta }(\alpha ))$ is a
+conservative confidence set for $T(\beta )$ with level $1-\alpha $. If $%
+T(\beta )$ is a scalar, then we have
+\begin{equation*}
+P[\inf \{T(\beta _{0}),\;\;\text{for}\;\;\beta _{0}\in C_{\beta
+}(\alpha )\}\leq T(\beta )\leq \sup \{T(\beta _{0}),\;\;\text{for}\;\;\beta
+_{0}\in C_{\beta }(\alpha )\}]>1-\alpha .
+\end{equation*}
+To obtain valid conservative confidence intervals for the individual component $\beta_j$ in (\ref{nonlinearC1}) under assumption (\ref{eq: mediane}), we follow \citet{coudin2009finite} by implementing a global numerical optimization search algorithm to solve the problem
+\begin{equation}\label{eq: SA} 
+\min\limits_{\beta\in\mathbb{R}^{(k+1)}}\;\;\beta_j\;\;s.c.\;\;\widehat{SN}_{n}(\beta_0\mid\beta_1)<\tilde{c}_1(\beta _{0},\beta _{1}),\quad\max\limits_{\beta\in\mathbb{R}^{(k+1)}}\;\;\beta_j\;\;s.c.\;\;\widehat{SN}_{n}(\beta_0\mid\beta_1)<\tilde{c}_1(\beta _{0},\beta _{1}) 
+\end{equation}
+where the critical value $c(\beta_0,\beta_1)$ at level $\alpha$, is computed using $B$ replications of the statistic $\widehat{SN}_{n}^{(i)}(\beta_0\mid\beta_1)$ under the null hypothesis and finding its $(1-\alpha)$ quantile. Using the projection technique, multiple tests maintain control of the overall level when performed on an arbitrary number of hypotheses. 
+
+\subsection{Numerical illustration}\label{Numerical illustration}
+
+Following Coudin and Dufour (2009), we illustrate the projection technique by generating a process with sample size $n=500$, such that
+\begin{equation*}
+y_t=\beta_0+\beta_1x_{1,t-1}+\beta_2x_{2,t-1}+\varepsilon_t\overset{i.i.d}{\sim}\left\{ 
+\begin{array}{cc}
+N(0,1) & \text{with probability 0.95}  \\ 
+N(0,100^2) & \text{with probability 0.05} %
+\end{array}%
+\right. \,
+\end{equation*}
+where $\beta_0=\beta_1=\beta_2=0$ and
+\begin{eqnarray*}
+x_{1,t}=\theta_1x_{1,t-1}+u_{1,t}\\
+x_{2,t}=\theta_2x_{2,t-1}+u_{2,t}
+\end{eqnarray*}
+with $\theta_1=\theta_2=0.9$ 
+ The initial values of $x_1$ and $x_2$ are respectively given by: $x_{1,0}=\frac{u_{1,0}}{\sqrt{1-\theta_1^2}}$ and  $x_{2,0}=\frac{u_{2,0}}{\sqrt{1-\theta_2^2}}$, and $u_{1,t}$ and $u_{2,t}$ are generated from $N(0,1)$. 
+
+The exact inference procedure is conducted with $B=1,000$ replications of the test statistic under the null hypothesis. As $\beta$ is a vector in three-dimensional space, the confidence region and the projections can be illustrated graphically. The tests of $H_0(\beta^*):\beta=\beta^*$ are performed on a grid for $\beta^*=(\beta_0^*,\beta_1^*,\beta_2^*)$. Due to the curse of dimensionality encountered in the process of creating a grid for the parameters, the \textit{simulated annealing optimization algorithm} is initially used to solve problem (\ref{eq: SA}) for each parameter $\beta_i$, to obtain a realistic size dimension of the grid [see \citet{goffe1994global} for a review of the simulated annealing algorithm].
+
+\begin{figure}[tbph]
+\caption{95\% confidence region for the unknown vector $\beta=(\beta_0,\beta_1,\beta_2)$ obtained by searching a three-dimensional grid $\beta^*$ using the 10\% SS-POS test.}
+\begin{center}
+\includegraphics[scale=0.75]{100.png} %
+\end{center}
+
+Note: The shaded regions on the $\beta_0-\beta_1$ and $\beta_2-\beta_1$ planes are the shadows casted by the three-dimensional confidence region, which simplify the visual identification of the 95\% confidence intervals for each parameter $\beta_i$.
+\label{fig: Confidence Region}
+\end{figure}
+
+The optimizations were performed using MATLAB software on a high-performance computing (HPC) cluster, by utilizing six nodes each equipped with Intel(R) Xeon(R) 16-core processors (2.40GHz). The simulated annealing algorithm's speed of adjustment was set to $0.25$, with a temperature reduction factor of $75\%$, an initial temperature of $50$ and a convergence criteria of $0.01$. All algorithms converged in less than an hour. Once the global maximum and minimum for each parameter $\beta_i$ were obtained, the grid was constructed by the Cartesian product of the linearly spaced distance between the $\beta_i$'s maxima and minima. 
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[hbtp!]
+\caption{Comparison of the 95\% confidence intervals obtained for the unknown parameters $\beta_0$, $\beta_1$ and $\beta_2$ using the 10\% SS-POS-test, with those achieved using the T-test and T-test based on White (1980) variance correction.}
+\begin{center}
+\begin{tabu} to \textwidth{XXXXX}
+\toprule
+          &           &   OLS                & White            & \multicolumn{1}{l}{10\% SS-POS} \\ \midrule
+$\beta_0$   & 95\% CI   & $\textbf{[-0.01, -0.00]}$   & $[-0.01, 0.00]$  & $[-0.37,0.55]$               \\
+          &          &                      &                    &                                 \\
+$\beta_1$   & 95\% CI    & $\textbf{[-1.04, -0.60]}$   &$\textbf{ [-1.09, -0.56]}$   & $[-0.05, 0.07]$                \\
+          &         &                      &                    &                                 \\
+$\beta_2$   & 95\% CI    & $\textbf{[0.47, 0.67]}$   & $\textbf{[0.45, 0.69]}$   & $[-0.12, 0.16]$                \\ \bottomrule
+\end{tabu}
+\vspace{1pt}
+\end{center}
+
+Note: The confidence intervals in bold do not contain the value of zero and imply significance at the 5\% level.
+\label{tab: Confidence Intervals}
+\end{table}
+\FloatBarrier
+It is evident that the 10\% split-sample POS-based test outperforms the T-test and the T-test based on white (1980) variance correction test, as the former correctly fails to reject the null hypothesis of orthogonality at the 5\% level, whereas the latter two tests reject the null hypothesis in favor of the alternative for almost all parameters.  
+
+\section{Monte Carlo study \label{sec: Monte Carlo studyC1}}
+
+In this Section, we provide simulation results that illustrate the performance
+of the POS-based tests proposed in the previous Sections. We have limited our
+results to two groups of data generating processes (DGPs) which correspond
+to different symmetric and asymmetric distributions and different forms of
+heteroskedasticity.
+
+\subsection{Simulation setup \label{sec: Simulated models}}
+
+ We assess the performance of the proposed 10\% SS-POS tests in terms of size and power, by considering various DGPs with symmetric and asymmetric distributions and different forms of heteroskedasticity. The DGPs under consideration are supposed to mimic different scenarios that are often encountered in practical settings within the domains of predictive regressions. The performance of the 10\% SS-POS tests is compared to that of a few other tests, by considering the following linear predictive regression model
+\begin{equation}
+y_{t}=\beta x_{t-1}+\varepsilon _{t}  \label{DGP}
+\end{equation}%
+where $\beta $ is an unknown parameter. Furthermore, we follow \citet{mankiw1986we} by assuming that $x_{t}$ is a stationary AR($1$) process 
+\begin{equation}\label{x}
+x_{t}=\theta x_{t-1}+u_{t}
+\end{equation}%
+such that $u_t$ are mutually independent, and each $u_t$ is independent of $x_{t-k}$ for $k\geq 1$. Moreover, the disturbances $(\varepsilon_t,u_t)$ are distributed as bivariate normal, with the contemporaneous covariance matrix
+\[
+\Sigma_{\varepsilon u}=
+\begin{bmatrix}
+1&\sigma_{\varepsilon u}\\
+\sigma_{\varepsilon u}&\sigma^2_{u}
+\end{bmatrix}
+\]
+Therefore, there is feedback from $u_t$ to $x_t$ through $\varepsilon_t$, which implies that $corr(\varepsilon_t,x_{t+k})\neq 0$ for $k\geq0$. Thus, as the disturbance vector $[\varepsilon_1,\cdots,\varepsilon_n]'$ is not independent of the regressor vector $[x_0,\cdots,x_{n-1}]'$, the OLS estimator is biased in finite-samples and the T-statistic has a non-standard distribution. \citet{mankiw1986we} perform an extensive simulations exercise by considering different values of the correlation between $u_t$ and $\varepsilon_t$ (say $\rho$) and find that in small samples, as $\theta$ and $\rho$ approach unity, the T-test using asymptotic critical values leads to oversized tests; however, this size distortion improves as $n\rightarrow \infty$.
+
+To compare the performance of certain parametric and non-parametric tests to that of the POS-based tests, the data is generated from model (\ref{DGP}), with the stationary process $x_t$ specified as (\ref{x}) and by further setting
+\begin{equation}
+u_{t}=\rho \varepsilon _{t}+w_{t}\sqrt{1-\rho ^{2}}  \label{error}
+\end{equation}%
+for $\rho =0,$ $0.1$, $0.5$, $0.9$, where $\varepsilon _{t}$ and $w_{t}$ are
+assumed to be independent. The initial value of $x$ is given by: $x_{0}=%
+\frac{w_{0}}{\sqrt{1-\theta ^{2}}}.$ Further, $w_{t}$ are generated from $%
+N\left( 0,1\right)$ and we assign $\theta=0.9$. 
+
+The errors $\varepsilon_t$ are i.n.i.d and are categorized by two groups in our simulation study. In the first group, we consider DGPs where the residuals $\varepsilon_t$ possess symmetric and asymmetric distributions:
+\begin{enumerate}
+\item[\textbf{1.}] normal distribution: $\varepsilon _{t}\sim N(0,1);$
+\item[\textbf{2.}] Cauchy distribution: $\varepsilon _{t}\sim Cauchy;$
+\item[\textbf{3.}] Student $t$ distribution with two degrees of freedom: $%
+\varepsilon _{t}\sim t(2);$
+\item[\textbf{4.}] Mixture of normal and Cauchy distributions: $%
+\varepsilon _{t}\sim s_{t}\mid \varepsilon _{t}^{C}\mid -(1-s_{t})\mid
+\varepsilon _{t}^{N}\mid ,$ where $\varepsilon _{t}^{C}$ follows Cauchy
+distribution, $\varepsilon _{t}^{N}$ follows $N(0,1)$ distribution$,$ and 
+\begin{equation*}
+P\left( s_{t}=1\right) =P\left( s_{t}=0\right) =\frac{1}{2}%
+.
+\end{equation*}%
+\end{enumerate}
+The second group of DGPs represents different forms of heteroskedasticity:
+\begin{enumerate}
+\item[\textbf{5.}] break in variance: 
+\begin{equation*}
+\varepsilon _{t}\sim \left\{ 
+\begin{array}{cc}
+N(0,1) & \text{for}\ t\neq 25 \\ 
+\sqrt{1000}N(0,1) & \text{for}\ t=25%
+\end{array}%
+\,;\right.
+\end{equation*}%
+\item[\textbf{6.}] exponential variance: $\varepsilon_{t}\sim N(0,\sigma_{\varepsilon }^{2}(t))$ and $\sigma _{\varepsilon}(t)=\exp(0.5t)$;
+\item[\textbf{7.}] GARCH$(1,\,1)$ plus jump variance:%
+\begin{equation*}
+\sigma _{\varepsilon }^{2}(t)=0.00037+0.0888\varepsilon
+_{t-1}^{2}+0.9024\sigma _{\varepsilon }^{2}(t-1)\,,
+\end{equation*}%
+\begin{equation*}
+\varepsilon _{t}\sim \left\{ 
+\begin{array}{cc}
+N(0,\sigma _{\varepsilon }^{2}(t)) & \text{for}\ t\neq 25 \\ 
+50N(0,\sigma _{\varepsilon }^{2}(t)) & \text{for}\ t=25%
+\end{array}%
+\right. \,;
+\end{equation*}%
+\item[\textbf{8.}] nonstationary GARCH$(1,\,1)$ variance: $\varepsilon
+_{t}\sim N(0,\sigma _{\varepsilon }^{2}(t))$ and%
+\begin{equation*}
+\sigma _{\varepsilon }^{2}(t)=0.75\varepsilon _{t-1}^{2}+0.75\sigma
+_{\varepsilon }^{2}(t-1)\,.
+\end{equation*}%
+\end{enumerate}
+We implement the POS-based test and other tests, which are intended to be robust against
+heteroskedasticity and non-normality, to test the null hypothesis of orthogonality - i.e. $%
+H_{0}:\beta =0.$ As in \citet{dufour2010exact}, Monte Carlo simulations are used to compare the size and
+power of the 10\% split-sample POS-based tests (10\% SS-POS test hereafter) to those of T-test, T-test
+based on \citet{white1980heteroskedasticity} variance correction (hereafter WT-test), and
+sign-based test proposed by 
+\citet{dufour1995exact} (CD(1995)%
+\textit{\ }test hereafter). The simulation study involves $M_{1}=10,000$ iterations for evaluating the
+probability distribution of POS test statistic and $M_{2}=5,000$ iterations
+to estimate the power functions of POS test and other tests. We consider a sample size of $n=50$ for conducting the simulation exercise. 
+Note that the sign-based test statistic of \citet{dufour1995exact} possesses a discrete distribution, as a result of which it is not possible
+(without randomization) to attain test whose size is exactly $5\%.$ In our
+simulations study, the size of the aforementioned test is $5.95\%$ for $n=50$.
+
+As in \citet{mankiw1986we}, it is further possible to consider values of $\rho$ and $\theta$ closer to unity at which the size distortions of T-type tests are magnified. For instance, the size of the T-test in their study is shown to be severely distorted with values of $\theta=0.999$ and $\rho=1.0$, given a sample size of $n=50$. The simulations for the latter scenario can be found in the Appendix for standard normal disturbances. It must be noted that as the exact finite-sample distribution of the POS-based tests are simulated, our tests control size regardless of the values of $\rho$ and $\theta$ - the results in figure (\ref{fig: Power comparison using different n}) confirm these findings. It is further evident that although the size distortions for the T-test and T-test based on \citet{white1980heteroskedasticity} variance correction improve in large samples, these tests still reject the null hypothesis at twice and thrice their nominal level respectively given a sample of $n=500$ observations.
+
+The DGPs considered in this paper have been inspired by the simulation exercises conducted in the previous studies [see \citet{mankiw1986we}, \citet{dufour1995exact}, \citet{coudin2009finite} and \citet{dufour2010exact}]. The first three DGPs all possess symmetrical distributions that are independent and identical across different observations $t=1,\cdots,n$. Evidently, as depicted in figure (\ref{fig: distos1}), the Cauchy and Student's $t$ distribution possess heavier tails in comparison to that of the normal distribution. The standard error of the coefficients are inflated in the presence of heavy tails, as a result of which the power of the T-type tests tend to be poor in comparison to other measures of central tendency (such as the median). Furthermore, the length of the confidence intervals are extended when the data is sampled from heavy tailed distributions. DGP 4 is a mixture of Cauchy and Gaussian distribution; as such, while the errors are independent, they are not identically distributed across different observations [see figure \ref{fig: distos2}]. DGP 4 is inspired by \citet{magdalinos2009limit}, who note that when $x_t$ is moderately explosive (with $\theta>1$), the least squares estimator is mixed normal with Cauchy-type tail behavior with an explosive convergence rate. The second group of DGPs covers different forms of heteroskedasticity, such as conditional heteroskedasticity (e.g. stationary and non-stationary GARCH models) and other forms of nonlinear dependencies. \citet{dufour2010exact} show that under certain forms of heteroskedasticity, T-type tests are not valid; hence, these DGPs fit well within the domains of our study.  
+
+\subsection{Simulation results \label{sec: Simulation results}}
+
+Monte Carlo simulation results are presented in Figures \ref{fig: Power
+comparison using different tests NormalC1}-\ref{fig: Power comparison using different tests Normal ExpC1}. These results correspond to different DGPs
+described in Section \ref{sec: Simulated models}. The figures compare the
+power of the $10\%$ SS-POS test to the T-test, WT-test, and CD (1995) test. The results are detailed below. 
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Normal error distributions with
+different values of $\protect\rho $ in (\protect\ref{error}) and $\protect%
+\theta =0.9$ in (\protect\ref{x}).}
+\begin{center}
+\subfigure{\includegraphics[scale=0.65]{normalteta9roh0.eps}} %
+\subfigure{\includegraphics[scale=0.65]{Normalteta9roh1.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.65]{Normalteta9roh5.eps}} %
+\subfigure{\includegraphics[scale=0.65]{Normalteta9roh9.eps}}\\[0pt]
+\end{center}
+
+Note: These figures compare the power
+function of the 10\% SS-POS test with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: Power comparison using different tests NormalC1}
+\end{figure}
+
+First, Figure \ref{fig: Power comparison using different tests NormalC1}
+compares the power function of the above tests in the case where the error
+term $\varepsilon _{t}$ in the model (\ref{DGP}) is normally distributed.
+From this we see that all these tests control size, except WT-test which is
+undersized. We also find that T-test is more powerful than $10\%$ SS-POS
+test, CD (1995) test, and WT-test\textit{.} This result is expected since under
+normality T-test is the most powerful test. However, the power of $10\%$
+SS-POS test has the second best power among the other tests. These results
+are still the same when we increase the correlation coefficient $\rho ,$
+except that when there high correlation between the error terms $\varepsilon
+_{t}$ and $w_{t}$ the power curves of T-test, $10\%$ SS-POS test and CD (1995)
+test become closer to each other. 
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Cauchy error distributions with
+different values of $\protect\rho $ in (\protect\ref{error}) and $\protect%
+\theta =0.9$ in (\protect\ref{x}).}
+\begin{center}
+\subfigure{\includegraphics[scale=0.65]{cauchyteta9roh0.eps}} %
+\subfigure{\includegraphics[scale=0.65]{cauchyteta9roh1.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.65]{cauchyteta9roh5.eps}} %
+\subfigure{\includegraphics[scale=0.65]{cauchyteta9roh9.eps}}\\[0pt]
+\end{center}
+
+Note: These figures compare the power
+function of the 10\% SS-POS test with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: Power comparaison using different tests CauchyC1}
+\end{figure}
+
+Second, Figure \ref{fig: Power comparaison using different tests CauchyC1}
+corresponds to the cases where the error term $\varepsilon _{t}$ follows
+Cauchy distribution. From this we see that $10\%$ SS-POS test is more
+powerful than CD (1995) test, WT-test, and the T-test. It seems that the latter two
+tests are undersized. $10\%$ SS-POS test and CD (1995) test have much more power
+than WT-test and T-test for small values (0 and 0.1) of correlation
+coefficient $\rho ,$ but the difference in power decreases when we increase $%
+\rho $ even if it still quite important. 
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Mixture error distributions
+with different values of $\protect\rho $ in (\protect\ref{error}) and $%
+\protect\theta =0.9$ in (\protect\ref{x}).}
+\begin{center}
+\subfigure{\includegraphics[scale=0.65]{mixtureteta9roh0.eps}} %
+\subfigure{\includegraphics[scale=0.65]{mixtureteta9roh1.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.65]{mixtureteta9roh5.eps}} %
+\subfigure{\includegraphics[scale=0.65]{mixtureteta9roh9.eps}}\\[0pt]
+\end{center}
+
+Note: These figures compare the power
+function of the 10\% SS-POS test with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: Power comparaison using different tests MixtureC1}
+\end{figure}
+
+Third, Figure \ref{fig: Power comparaison using different tests MixtureC1}
+corresponds to the cases where the error term $\varepsilon _{t}$ follows a
+mixture of normal and Cauchy distributions. The results show that $10\%$
+SS-POS test is again more powerful than CD (1995), T-test, and the WT-test. The
+difference in power is much more significant when the correlation coefficient $%
+\rho $ is smaller. 
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Normal error distributions with
+break in variance, different values of $\protect\rho $ in (\protect\ref%
+{error}) and $\protect\theta =0.9$ in (\protect\ref{x}).} 
+\begin{center}
+\subfigure{\includegraphics[scale=0.65]{breakteta9roh0.eps}} %
+\subfigure{\includegraphics[scale=0.65]{breakteta9roh1.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.65]{breakteta9roh5.eps}} %
+\subfigure{\includegraphics[scale=0.65]{breakteta9roh9.eps}}\\[0pt]
+\end{center}
+
+Note: These figures compare the power
+function of the 10\% SS-POS test with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: Power comparison using different tests Normal BreakC1}
+\end{figure}
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Normal error distributions with
+Exp(t) variance, different values of $\protect\rho $ in (\protect\ref{error}%
+) and $\protect\theta =0.9$ in (\protect\ref{x}).}
+\begin{center}
+\subfigure{\includegraphics[scale=0.65]{expteta9roh0.eps}} %
+\subfigure{\includegraphics[scale=0.65]{expteta9roh1.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.65]{expteta9roh5.eps}} %
+\subfigure{\includegraphics[scale=0.65]{expteta9roh9.eps}}\\[0pt]
+\end{center}
+
+Note: These figures compare the power
+function of the 10\% SS-POS test with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: Power comparison using different tests Normal ExpC1}
+\end{figure}
+
+Finally, Figures \ref{fig: Power comparison using different tests Normal
+BreakC1} and \ref{fig: Power comparison using different tests Normal ExpC1}
+compare the power function of the $10\%$ SS-POS test, CD (1995) test, WT-test,
+and T-test \ in the case where $\varepsilon _{t}$ follows normal
+distribution with a break in variance and an exponential variance,
+respectively. Figure \ref{fig: Power comparison using different tests
+Normal BreakC1} shows that in the presence of break in variance, WT-test and
+T-test are undesized, whereas $10\%$ SS-POS test and CD (1995) test control size.
+In addition, $10\%$ SS-POS test has more power that the other tests. The
+CD (1995) test has the second best power followed by WT-test and T-test. The
+power of these tests improve when we increase the correlation coefficient $%
+\rho .$ Figure \ref{fig: Power comparison using different tests Normal ExpC1}
+shows that in the case of exponential variance, the WT-test, and T-test are
+oversized. We find that $10\%$ SS-POS test has more power than CD (1995) test
+when $\rho $ is equal to zero. However, CD (1995) test becomes more powerful than 
+$10\%$ SS-POS test when correlation coefficient $\rho $ increases. The
+difference in power between the latter two tests becomes small for higher
+values of $\rho .$
+\FloatBarrier
+\section{Empirical application \label{Empirical
+ApplicationC1}}
+In this Section, we consider an empirical application of the proposed 10\% SS-POS tests to illustrate its practical relevance. Valuation ratios are widely considered as predictors of stock returns and are generally known to be persistent. Therefore, they fit well within the framework of our study. In what follows, we specifically divert our attention to an application in the context of stock return predictability using the said ratios.
+
+\subsection{Stock return predictability using valuation ratios  \label{StockReturnPredictability}}
+
+Many studies have investigated the predictive power of valuation ratios on excess stock returns. Dividend-price and earnings-price ratios
+are among few that were the focus of study in the early 1980s. The attention to these ratios was heightened
+ when \citet{rozeff1984dividend}, \citet{fama1988dividend}, and \citet{campbell1988dividend} showed the ratios positive correlation with ex-post stock returns. \citet{fama1988dividend} find that in short horizons dividend yields only explain a small fraction of the variation
+ in time-varying returns, yet in longer horizons (beyond one year) 
+this proportion is significantly increased. \citet{campbell1988dividend} employ a two-variable system approach with the lagged
+log of the dividend-price ratio together with the lagged real dividend growth rate, to show significant predictive
+power on stock returns. 
+
+These studies are typically performed by regressing the excess returns on a constant and a lagged variable. The conventional T-test is then used to make inference concerning predictability. However, most of these studies are based on the presumption of the stationarity of the predictors, where the T-statistic is approximately normally distributed in large samples. Unfortunately, this is not the case in the presence of highly persistent variables. Even when the predictors are stationary, asymptotic critical values are not a good approximation for those obtained in finite-sample distributions. In the presence of highly persistent predictors, the innovations are greatly correlated with the returns, and thus, the T-statistic has a non-standard distribution which leads to the over-rejection of the null hypothesis of orthogonality [see. \citet{elliott1994inference}, \citet{mankiw1986we}, \citet{stambaugh1999predictive} and \citet{campbell2006efficient}].
+
+ Most studies address the issue of persistency by making inference based on more accurate appro\-ximations of the finite-sample distribution of the test-statistic. This is accomplished either by relying on exact finite-sample theory under the assumption of normality [see. \citet{evans1981calculation,evans1984testing} and \citet{stambaugh1999predictive}] or local-to-unity asymptotics [see \citet{elliott1994inference}, \citet{campbell2006efficient} and \citet{torous2004predicting}]. More recently \citet{taamouti2014nonparametric} confirm the predictability power of the valuation ratios using monthly data, in a nonparametric and model-free copula-based Granger causality framework. 
+
+In this Section, we use our exact $10\%$ SS-POS-based test to make inference and compare the
+predictive power of the valuation ratios (dividend-price ratio, smoothed earnings-price ratio, and total return smoothed earnings-price ratio) on stock market returns. The smoothed earnings-price ratio is proposed by \citet{campbell1988dividend,campbell2001valuation} upon observing numerous spikes in the plot of the earnings-price ratio that had not been observed in the dividend-price ratio. The spikes were explained to be caused by recessions, which temporarily suppress corporate earnings. The latter measure is the ratio of the ten-year moving average of real earnings to current real prices and is said to possess better forecasting powers. Furthermore, the total return smoothed earnings-price ratio is recently incorporated in forecasting, as a consequence of the changes in corporate payout policy documented by \citet{bunn2014cape} and \citet{jivraj2017many}. Share repurchases (as opposed to dividends) have become the dominant approach for distributing cash to shareholders in the U.S. which may impact the smoothed earnings-price ratio through changes in growth of earnings per share. The total return smoothed earnings-price ratio corrects for this bias by reinvesting the dividends into the price index, such that the earnings per share is appropriately scaled. 
+
+\subsubsection{Data description}
+
+Our data consists of monthly and quarterly observations of the aggregate S\&P500 composite index for the period spanning from March 1980 to December 2019 for a total of 480 trading months or 160 trading quarters. We consider the logarithmic returns on the S\&P500 in excess of the 30-day and 90-day T-bill rate. The valuation ratios under consideration are: dividend-price ratio, smoothed earnings-price ratio, and total return smoothed earnings-price ratio. The nominal monthly and quarterly prices of the value-weighted S\&P500 composite index, as well as the corresponding dividends and earnings are obtained from a database provided on Robert Shiller's website. The 30-day and 90-day Treasury bill returns, on the other hand, have been retrieved from the Center for Research in Security Prices (CRSP). 
+
+\begin{figure}[hbtp!]
+\caption{Monthly and quarterly S\&P500 excess stock returns, dividend-price, smoothed earnings-price and total return smoothed earnings-price ratios.}
+\begin{center}
+\subfigure{\includegraphics[scale=0.55]{rets.eps}} %
+\subfigure{\includegraphics[scale=0.55]{DivYield.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.55]{EvYield.eps}} %
+\subfigure{\includegraphics[scale=0.55]{CAEvYield.eps}}\\[0pt]
+\end{center}
+Note: The data spans from March 1980 to December 2019 for a total of 480 trading months and 160 trading quarters respectively. The red and the blue lines in turn correspond to the quarterly and monthly samples. To assess the predictability power of the valuation ratios, we further consider two sub-periods separated by the dashed line: one spanning from March 1980 to January 2002 and another in the period of January 2002 to January 2019.
+\label{fig: Plots of Time-seriesC1}
+\end{figure}
+  in different At first glance figure \ref{fig: Plots of Time-seriesC1} suggests that the predictors under consideration are highly persistent and potentially non-stationary. This visual assessment is confirmed in table \ref{tabu: ADF}, which presents the test statistics for the augmented Dickey-Fuller test (ADF hereafter) for all the time series. Evidently, for the full sample and the two sub-periods we fail to reject the null hypothesis of nonstationarity. The testing procedure entails estimating and testing the model in its most general form using more deterministic components than the hypothesized DGP (i.e. including both an intercept and a trend), and following \citet{phillips1988testing} sequential testing strategy thereafter, eliminating the unnecessary nuisance parameters in the process. At each stage, if the null hypothesis of orthogonality is rejected, we conclude that the model is correctly specified and that the process is stationary. Otherwise, the test is performed on a more restricted model. This procedure is continued until we arrive at the most basic form of the model (with no intercept or a trend), or until the null hypothesis of unit root is rejected. As it is evident, all valuation ratios reject the null hypothesis of non-stationarity at the 5\% level. 
+\subsubsection{Predictability results}
+\begin{table}[!hbtp]
+\caption{Results of the ADF test on the real and nominal time-series using the general-to-specific sequential testing procedure} 
+\begin{center}
+\begin{tabu} to \textwidth{XXXXXXX}
+\toprule
+Series &Obs.&Predictor & $p$ & \multicolumn{1}{l}{$\delta+\mu$} & $\mu$     & None                         \\ \midrule
+\multicolumn{5}{l}{\textit{Panel A: 1980-2002}}  &      &                          \\
+Monthly&264 &$r_t^m-r_t^f$  &$1$      &$-10.959^{***}$&$--$& $--$                          \\
+   &&$d/p_t$   &$2$&$-2.217$                            &$-0.657$  &$2.026$                          \\
+  &&$e/p_t^{'}$&$2$  &$-2.248$                                &$-1.171$  & $1.721$                           \\
+&&$e/p_t^{''}$ &$2$  &$-2.160$                                &$-1.376$  & $1.544$                         \\
+Quarterly&88&$r_t^m-r_t^f$  &0      &$-9.026^{***}$&$--$&$--$                          \\
+   &&$d/p_t$   &0&$-2.209$                            &$-0.777$  &$1.830$                          \\
+  &&$e/p_t^{'}$&0  &$-1.816$                                &$-1.210$ &$1.576$                           \\
+&&$e/p_t^{''}$ &0  &$-1.669$                                &$-1.400$  &$1.391$                          \\
+\multicolumn{5}{l}{\textit{Panel B: 2002-2019}}  &      &                          \\
+Monthly&215&$r_t^m-r_t^f$    & $0$ &$-11.369^{***}$                            & $--$ & $--$                           \\
+   & &$d/p_t$ & $1$&$-2.853$                                & $-2.983^{**}$ & $--$                          \\
+  &&$e/p_t^{'}$ & $1$   &$-2.317$                                & $-1.938$ & $-0.027$                           \\
+&&$e/p_t^{''}$  & $1$ &$-2.389$                                & $-1.935$ & $0.009$                         \\
+Quarterly&72&$r_t^m-r_t^f$  &0      &$-7.513^{***}$&$--$&$--$                          \\
+   &&$d/p_t$   &1&$-3.261^{*}$                            &$-3.278^{**}$  &$--$                          \\
+  &&$e/p_t^{'}$&0  &$-2.374$                                &$-1.915$ &$-0.095$                           \\
+&&$e/p_t^{''}$ &0  &$-2.448$                                &$-1.901$  &$-0.057$                          \\
+\multicolumn{5}{l}{\textit{Panel C: 1980-2019}}  &      &                          \\
+Monthly&479&$r_t^m-r_t^f$   & $1$ &$-14.347^{***}$                            & $--$ & $--$                            \\
+   &&$d/p_t$  & $2$ &$-1.861$                                & $-2.104$ & $0.935$                           \\
+  &&$e/p_t^{'}$ &$2$  &$-1.802$                                & $-2.042$ & $1.136$                           \\
+&&$e/p_t^{''}$  & $2$ &$-1.965$                                & $-2.161$ & $1.056$                         \\
+Quarterly&160&$r_t^m-r_t^f$  &0      &$-11.848^{***}$&$--$&$--$                          \\
+   &&$d/p_t$   &0&$-1.762$                            &$-2.051$  &$0.876$                          \\
+  &&$e/p_t^{'}$&0  &$-1.732$                                &$-1.995$ &$1.084$                           \\
+&&$e/p_t^{''}$ &0  &$-1.897$                                &$-2.114$  &$0.998$                          \\\bottomrule
+\end{tabu}
+\vspace{1pt}
+\end{center}
+
+Note: This table reports the results of the ADF test on the time-series in the predictive regression model. The appraoch involves using the general-to-specific sequential testing procedure to test the null hypothesis of non-stationarity, where the general form of the model is:
+\begin{minipage}{\linewidth}
+\begin{equation*}
+\Delta x_t=\rho x_{t-1}+\sum\limits_{i=1}^{p-1}\psi_i\Delta x_{t-i}+\mu+\delta t+u_t\quad u_t\sim IID(0,\sigma^2)
+\end{equation*}
+\end{minipage}. 
+The corresponding test statistics are reported in turn for the general form of the model (including the trend $\delta$ and intercept $c$), the more restrictive form constituting only of an intercept $c$, and the case where neither the trend nor the intercept are present. The variables are defined as follows: $r_t^m-t_t^f$ are the excess logarithmic stock returns, $d/p_t$ is the dividend-price ratio, $e/p_t'$ is the smoothed earnings-price ratio and $e/p_t''$ is the total return smoothed earnings-price ratio respectively. The statistics with three asterisks (***), two asterisks (**) and one asterisk (*) are significant at the 1\%, 5\%. and the 10\% levels respectively.
+\label{tabu: ADF}
+\end{table}
+
+
+
+\begin{table}[hbtp!]
+\begin{center}
+\caption{Predictability results for the dividend-price, earnings-price and the smoothed earnings-price ratios}
+\begin{tabu} to \textwidth{XXXXX}
+\hline
+Series               &Predictor           & $\hat{\beta}$ & \multicolumn{2}{c}{$95\%$ confidence interval}                                                              \\ \hline
+                        &           &               & 10\% SS-POST                       &WT-test \\ \cline{4-5} 
+\multicolumn{3}{l}{\textit{Panel A: 1980-2002}}  & &\\
+Monthly         & $d/p_t$ &0.002         &$[-0.024,0.036]$                           &$[-0.008,0.011]$                                             \\
+         & $e/p_t^{'}$ &-0.001          &$[-0.044,0.046]$                           & $[-0.009,0.008]$                                            \\
+         & $e/p_t^{''}$ &-0.001          &$[-0.052,0.049]$                           &$[-0.010,0.010]$                                             \\
+Quarterly         & $d/p_t$ &0.009          &$[-0.104,0.106]$                           &$[-0.028,0.047]$                                             \\
+         & $e/p_t^{'}$ &0.003           &$[-0.116,0.104]$                          & $[-0.029,0.036]$                                            \\
+         & $e/p_t^{''}$ & 0.004          &$ [-0.126,0.104]$                         &$[-0.033,0.040]$                                             \\
+\multicolumn{3}{l}{\textit{Panel B: 2002-2019}}  & &\\
+Monthly         & $d/p_t$ &0.019          &$[-0.220,0.330]$                           &$[-0.015,0.053]$                                             \\
+         & $e/p_t^{'}$ &0.012          &$[-0.079,0.191]$                           &$[-0.018,0.042]$                                             \\
+         & $e/p_t^{''}$ &0.010          & $[-0.080,0.180]$                          &$[-0.021,0.040]$                                             \\
+Quarterly         & $d/p_t$ & 0.119         &$\mathbf{[0.159,0.899]}$                           &$[-0.001,0.238]$                                             \\
+         & $e/p_t^{'}$ &0.089          &$\mathbf{[0.042,0.632]}$                           &$[-0.018,0.197]$                                             \\
+         & $e/p_t^{''}$ &0.084          &$\mathbf{[0.058,0.697]}$                           &$[-0.026,0.194]$                                             \\
+\multicolumn{3}{l}{\textit{Panel C: 1980-2019}}  & &\\
+Monthly         & $d/p_t$ &0.002          &$[-0.041,0.069]$                           &$[-0.006,0.010]$                                             \\
+         & $e/p_t^{'}$ &0.0003          &$[-0.021,0.049]$                           & $[-0.007,0.007]$                                            \\
+         & $e/p_t^{''}$ &0.0001          &$[-0.039,0.061]$                           &$[-0.008,0.008]$                                             \\
+Quarterly         & $d/p_t$ &0.136          &$[-0.094,0.146]$                           &$[-0.017,0.044]$                                             \\
+         & $e/p_t^{'}$ &0.008          &$[-0.099,0.121]$                           &$[-0.020,0.036]$                                             \\
+         & $e/p_t^{''}$ &0.009          &$[-0.113,0.147]$                           & $[-0.023,0.041]$                                            \\\hline
+\end{tabu}\label{tabu: Regressions}
+\vspace{1pt}
+\end{center}
+
+\begin{minipage}{\linewidth}
+\vspace{1pt}
+Note: This table presents the coefficient estimates, as well as the 95\% confidence intervals for the variables considered in our study, by inverting the proposed 10\% SS-POS-based tests and the T-test based on White (1980) variance correction. The alternatives for the 10\% SS-POS tests are obtained by running OLS regressions of the excess returns against the dividend-price, smoothed earnings-price and the total return smoothed earnings-price ratios. The regressions assume the form 
+\begin{equation}\label{eq: Regressions}
+r_t^m-r_t^f=\beta_0+\beta_1 x_{t-1}+\varepsilon_t
+\end{equation}
+where $r_t$ is the ex-post excess returns and $x_{t-1}$ is the ex-ante predictor. The projection-based 95\% confidence intervals for the 10\% SS-POS tests are obtained by testing $H_0(\beta^{*}):\beta=\beta^{*}$ on a grid for $\beta^{*}=(\beta_0^{*},\beta_1^{*})$, where the grid dimension is found by solving the optimization problem (\ref{eq: SA}) for each parameter $\beta_0$ and $\beta_1$ using the simulated annealing algorithm, and consequently equally dividing each interval and finding their Cartesian product. The intervals in bold do not contain the value of zero and imply significance at the 5\% level.
+\end{minipage}
+\end{table}
+
+
+The projection technique based on the proposed 10\% SS-POS test is used to build simultaneous confidence sets for the parameters of the regressions of the excess returns against the
+dividend-price ratio, smoothed earnings-price ratio of \citet{campbell1988dividend} and the total return smoothed earnings-price ratio of \citet{bunn2014cape} and \citet{jivraj2017many} respectively. The results for different sub-periods and the full sample are reported in table \ref{tabu: Regressions}. As explained in Section \ref{POS confidence regions}, each simultaneous confidence set is obtained by
+collecting all pairs of $(\beta_0 ,\beta_1 )$ that are not rejected using our 10\% SS-POS test. Thus, a grid search is applied over an appropriate range\footnote{See Section \ref{Numerical illustration}.} and 95\% level confidence sets are constructed by retaining all the pairs $(\beta_0 ,\beta_1 )$ that are not
+rejected by the 10\% SS-POS test. Alternatively, the simulated annealing algorithm can be used to solve the optimization problem (\ref{eq: SA}) for each parameter $\beta_i$. 
+
+The 95\% confidence intervals for the parameters $\beta_0$ and $\beta_1$ contain zero for the regressions of the excess returns against all the predictors using the T-test based on \citet{white1980heteroskedasticity} for all periods in our study. However, using the 10\% SS-POS based test, there is evidence of predictability in quarterly data in favor of all predictors for the period spanning from January 2002 to January 2019. Our findings are in line with those of \citet{campbell2006efficient} who do not find any evidence of predictability in favor of any of the predictors in the period spanning from 1952-2002. 
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+
+
+
+\section{Conclusion \label{ConclusionC1}}
+
+In this paper, we proposed simple point-optimal sign-based tests for inference in linear
+and nonlinear predictive regression models in the presence of stochastic (or fixed) regressors.
+One motivation of the paper is to build valid (control the size whatever the
+sample size) tests for linear and nonlinear predictability of stock returns.
+The most popular predictors of stock returns (e.g. dividend-price ratio,
+earning-price ratio, etc.) are known to be persistent with residuals that are correlated with
+the shock in the stock returns. This makes the classical predictability tests
+not valid, especially when the sample size is small or moderate. In
+addition, the proposed sign-based tests are exact, distribution-free, and
+robust against heteroskedasticity of unknown form and allow for serial (nonlinear). Additionally, they may be inverted to build
+confidence regions for the parameters of the regression function. Since the
+point-optimal sign tests depend on the alternative hypothesis, an adaptive
+approach based on the split-sample technique was suggested in order to choose
+the appropriate alternative that controls the size and maximizes the power.
+
+We presented a Monte Carlo study to assess the performance of the proposed
+\textquotedblleft quasi\textquotedblright -point-optimal sign test by
+comparing its size and power to those of certain existing tests which are
+supposed to be robust against heteroskedasticity. We considered different
+DGPs to illustrate different contexts that one can encounter in practice.
+The results show that the $10\%$ split-sample point-optimal sign test is
+more powerful than the T-test, \citet{dufour1995exact} sign-based test,
+and the T-test based on \citet{white1980heteroskedasticity} variance correction.
+
+Finally, the proposed tests were used to assess the predictive power of some
+financial predictors, such as the dividend-price ratio, earnings-price ratio and the smoothed earnings-price ratio of \citet{campbell1988dividend,campbell2001valuation} on the annualized monthly excess stock returns. Our study suggests predictability in favor of all the predictors for the quarterly data in the period spanning from 2002 to 2009. which is consistent with the findings of \citet{campbell2006efficient}, Our findings are in line with those of \citet{campbell2006efficient} who do not find any evidence of predictability in favor of any of the predictors in the period spanning from 1952-2002. 
+
+\newpage
+\bibliographystyle{apa}
+ \bibliography{References_Final}
+
+\newpage
+
+\section{Appendix: Proofs \label{Appendix: ProofsC1}}
+
+\begin{proof}[Proof of Theorem \protect\ref{proposition1C1}]
+ From Assumption (\ref{eq: mediane}), the following two equalities are derived
+\[
+P[\varepsilon_t\geq0\mid X]=\E\left(P[\varepsilon_t\geq 0\mid\bm{\varepsilon_{t-1}},X ]\right)=\frac{1}{2}
+\]
+with
+\[
+\bm{\varepsilon}_0=\{\emptyset\},\quad \bm{\varepsilon}_{t-1}=\{\varepsilon_1,\cdots,\varepsilon_{t-1}\},\quad\text{for}\quad t\geq 2
+\]
+and
+\[
+P[\varepsilon_t\geq0\mid \text{\b{S}}^{\varepsilon}_{t-1}, X]=P[\varepsilon_t\geq 0\mid\bm{\varepsilon_{t-1}},X ]=\frac{1}{2},
+\]
+with
+\[
+\text{\b{S}}^{\varepsilon}_{0}=\left\{ \emptyset \right\} ,\text{ \ \b{S}}^{\varepsilon}_{t-1}=\left\{
+s(\varepsilon_{1})=s_{1},...,s(\varepsilon_{t-1})=s_{t-1}\right\} ,\text{ for }t\geq 2,
+\]
+We define the vector of signs $U(n)=(s(y_1),\cdots,s(y_n))'$, where $s(y_t)=\mathbbm{1}_{\mathbb{R}^+\cup 0}\{y_t\}$. Thus, the likelihood function of the sample in terms of signs under the null hypothesis is
+\begin{eqnarray*}
+L(U(n),0)&=&P[s(y_1)=s_1,\cdots,s(y_n)=s_n\mid X]\\
+&=&P[s(\varepsilon_1)=s_1,\cdots,s(\varepsilon_n)=s_n\mid X]\\
+&=&\prod\limits_{t=1}^{n}P[\varepsilon_t\geq0\mid\bm{\varepsilon}_{t-1},X]^{s(\varepsilon_t)}\left(1-P[\varepsilon_t\geq0\mid\bm{\varepsilon}_{t-1},X]\right)^{1-s(\varepsilon_t)}\\
+&=&\prod\limits_{t=1}^{n}\left(\frac{1}{2}\right)^{s(\varepsilon_t)}\left(1-\frac{1}{2}\right)^{1-s(\varepsilon_t)}\\
+&=&\left(\frac{1}{2}\right)^n
+\end{eqnarray*}
+Hence, it can be concluded that conditional on $X$ and under the null hypothesis of orthogonality $s(y_1),\cdots,s(y_n)\overset{i.i.d}{\sim}Bi(1,0.5)$.
+\end{proof}
+
+\begin{proof}[Proof of Proposition \protect\ref{proposition1C1}]
+The likelihood function of sample in terms of signs $s(y_{1}),...,s(y_{n})$%
+\begin{equation*}
+L\left( U(n),\beta \right) =P\left[
+s(y_{1})=s_{1},...,s(y_{n})=s_{n}\mid X\right] =\prod\limits_{t=1}^{n}%
+P\left( s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right) ,
+\end{equation*}%
+for 
+\begin{equation*}
+\text{\b{S}}_{0}=\left\{ \emptyset \right\} ,\text{ \ \b{S}}_{t-1}=\left\{
+s(y_{1})=s_{1},...,s(y_{t-1})=s_{t-1}\right\} ,\text{ for }t\geq 2,
+\end{equation*}%
+and%
+\begin{equation*}
+P\left[ s(y_{1})=s_{1}\mid \text{\b{S}}_{0},X\right] =P%
+\left[ s(y_{1})=s_{1}\mid X\right] ,
+\end{equation*}%
+where each $s_{i}$, for $1\leq t\leq n$, takes two possible values $0$ and $%
+1 $. According to model (\ref{model}) and assumption (\ref{eq: mediane}), under the null hypothesis the signs $s(y_1),\cdots,s(y_n)$ are i.i.d according to $Bi(1,0.5)$,
+\begin{equation*}
+P\left[ s(y_{t})=1\mid X\right] =P\left[ s(y_{t})=0\mid X\right] =%
+\frac{1}{2},\text{ for }t=1,...,n.
+\end{equation*}%
+Consequently, under $H_{0}$%
+\begin{equation*}
+L_{0}\left( U(n),0\right) =\prod\limits_{t=1}^{n}P\left[ s(y_{t})=s_{t}\mid X\right] =\left( \frac{1}{2}\right) ^{n}
+\end{equation*}%
+and under $H_{1}$ we have%
+\begin{equation*}
+L_{1}\left( U(n),\beta _{1}\right) =\prod\limits_{t=1}^{n}%
+P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1}, X\right]
+\end{equation*}%
+where now, for $t=1,...,n,$%
+\begin{equation*}
+y_{t}=\beta_1'x_{t-1}+\varepsilon_{t}
+\end{equation*}%
+The log-likelihood ratio is given by%
+\begin{equation*}
+\ln \left\{ \frac{L_{1}\left( U(n),\beta _{1}\right) }{L%
+_{0}\left( U(n),0\right) }\right\} =\sum\limits_{t=1}^{n}\ln \left\{ 
+P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] \right\} -\text{n}\ln
+\left\{ \frac{1}{2}\right\} .
+\end{equation*}%
+According to Neyman-Pearson lemma [see e.g. Lehmann (1959), page 65], the
+best test to test $H_{0}$ against $H_{1},$ based on $s(y_{1}),...,s(y_{n}),$
+rejects $H_{0}$ when%
+\begin{equation*}
+\ln \left\{ \frac{L_{1}\left( U(n),\beta _{1}\right) }{L%
+_{0}\left( U(n),0\right) }\right\} \geq c
+\end{equation*}%
+or when%
+\begin{equation*}
+\sum\limits_{t=1}^{n}\ln \left\{ P\left[ s(y_{t})=s_{t}\mid \text{%
+\b{S}}_{t-1},X\right] \right\} \geq c,
+\end{equation*}%
+The critical value, say $c,$ is given by the smallest constant $c$ such that%
+\begin{equation*}
+P\left( \ln \left\{ \frac{L_{1}\left( U(n),\beta
+_{1}\right) }{L_{0}\left( U(n),0\right) }\right\} >c\mid
+H_{0}\right) \leq \alpha .
+\end{equation*}%
+Notice that, for $t=1,...n,$%
+\begin{equation}
+P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] =P%
+\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] ^{s(y_t)}P\left[
+y_{t}<0\mid \text{\b{S}}_{t-1},X\right] ^{(1-s(y_t))},\text{ for }t=1,...n.
+\label{probC1}
+\end{equation}%
+From (\ref{probC1}), we have%
+\begin{eqnarray*}
+\ln \left\{ \prod\limits_{t=1}^{n}P\left[
+s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] \right\} &=&\ln \left\{ \prod\limits_{t=1}^{n} 
+P[y_{t}\geq 0\mid \text{\b{S}}%
+_{t-1},X]^{s(y_t)}P[y_{i}<0\mid \text{\b{S}}_{t-1},X]^{(1-s(y_t))}\right\}
+\\
+&=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ P\left[ y_{t}\geq 0\mid 
+\text{\b{S}}_{t-1},X\right] \right\}\\
+&\textcolor{white}{=}&+\sum\limits_{t=1}^{n}\left(
+1-s(y_{t})\right) \ln \left\{ P[y_{t}<0\mid \text{\b{S}}%
+_{t-1},X]\right\} 
+\end{eqnarray*}
+\begin{eqnarray*}
+\textcolor{white}{\ln \left\{ \prod\limits_{t=1}^{n}P\left[
+s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] \right\} }&=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ P\left[ y_{t}\geq 0\mid 
+\text{\b{S}}_{t-1},X\right] \right\} +\sum\limits_{t=1}^{n}\ln \left\{ P [y_{t}<0\mid \text{\b{S}}_{t-1},X]\right\} \\
+&&-\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ P[y_{t}<0\mid \text{\b{S%
+}}_{t-1},X]\right\} \\
+&=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ \frac{P\left[ y_{t}\geq
+0\mid \text{\b{S}}_{t-1},X\right] }{P\left[ y_{t}<0\mid \text{\b{S}}%
+_{t-1},X\right] }\right\} +\sum\limits_{t=1}^{n}\ln \left\{ P%
+[y_{t}<0\mid \text{\b{S}}_{t-1},X]\right\}
+\end{eqnarray*}%
+Thus, the best test to test $H_{0}$ against $H_{1},$ based on $%
+s(y_{1}),...,s(y_{n}),$ rejects $H_{0}$ when%
+\begin{equation*}
+\ln \left\{ \frac{L_{1}\left( U(n),\beta _{1}\right) }{L%
+_{0}\left( U(n),0\right) }\right\} =\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ 
+\frac{P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] }{P%
+\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\}
++\sum\limits_{t=1}^{n}\ln \left\{ P[y_{t}<0\mid \text{\b{S}}%
+_{t-1},X]\right\} -\text{n}\ln \left\{ \frac{1}{2}\right\} \geq c
+\end{equation*}%
+or when%
+\begin{equation*}
+\ln \left\{ \frac{L_{1}\left( U(n),\beta _{1}\right) }{L%
+_{0}\left( U(n),0\right) }\right\} =\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ 
+\frac{P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] }{P%
+\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\} \geq c_{1}(\beta _{1})
+\end{equation*}%
+where the critical value $c_{1}(\beta _{1})$ is chosen so that%
+\begin{equation*}
+P\left[ S_{n}(\beta _{1})>c_{1}(\beta _{1})\mid H_{0}\right] \leq
+\alpha
+\end{equation*}%
+$\alpha $ is an arbitrary significance level.
+\end{proof}
+
+\begin{proof}[Proof of Assumption 1]
+
+Let $y_1,\cdots,y_t$ be linearly explained by a vector variable $x_t$
+\begin{equation*}
+y_{t}=\beta_1'x_{t-1}+\varepsilon_{t}
+\end{equation*}%
+and suppose $y_t$ follows a Markov process of order one, such that
+\[
+y_t,y_{t-1}\mid X\sim N\left( 
+\underbrace{\begin{bmatrix}
+\beta'x_{t-1}\\
+\beta'x_{t-2}
+\end{bmatrix}}_{\bm{\mu}},
+\underbrace{
+\begin{bmatrix}
+\sigma^2_{\varepsilon_t}&\sigma_{\varepsilon_t\varepsilon_{t-1}}\\
+\sigma_{\varepsilon_{t-1}\varepsilon_t} &\sigma^2_{\varepsilon_{t-1}}
+\end{bmatrix}}_{\Sigma}
+\right),\quad t=2,\cdots,n.
+\]
+where it is assumed, without loss of generality, that $\varepsilon_t$ and $\varepsilon_{t-1}$ are serially correlated with $\sigma_{\varepsilon_{t-1}\varepsilon_t}\neq0$. Then the signs $s(y_1),\cdots,s(y_t)$ are Bernoulli variables with conditional joint distributions fully determined by $P_{s(y_t)\mid X}$, $P_{s(y_{t-1})\mid X}$, and either $P_{s(y_t)\mid s(y_{t-1}),X}$ or $P_{s(y_t),s(y_{t-1})\mid X}$, where
+\begin{eqnarray*}
+P_{s(y_t)\mid s(y_{t-1}),X}:=P[s(y_t)=1\mid s(y_{t-1})=1,X]\\
+P_{s(y_t),s(y_{t-1})\mid X}:=P[s(y_t)=1, s(y_{t-1})=1\mid X],
+\end{eqnarray*}
+which may alternatively be expressed as
+\begin{eqnarray*}
+P[s(y_t)=1\mid s(y_{t-1})=1,X]=P[y_t\geq0\mid y_{t-1}\geq0\mid X]=P[\varepsilon_t\geq -\beta'x_{t-1}\mid \varepsilon_{t-1}\geq -\beta'x_{t-2}, X]\\
+P[s(y_t)=1,s(y_{t-1})=1\mid X]=P[y_t\geq0, y_{t-1}\geq0\mid X]=P[\varepsilon_t\geq -\beta'x_{t-1}, \varepsilon_{t-1}\geq -\beta'x_{t-2}\mid X].
+\end{eqnarray*}
+As the dependence in the pair-wise probabilities is determined by the covariance matrix $\Sigma$, with $\sigma_{\varepsilon_t,\varepsilon_{t-1}\neq0}$, this in turn implies that the signs $s(y_t),s(y_{t-1})$ for $t=1,\cdots,n$ are dependent and follow a Markov process of order one. These findings are extended to the case where the signs exhibit nonlinear serial dependence.
+\end{proof}
+
+\begin{proof}[Proof of Corollary \protect\ref{CorollaryC1}]
+From test statistic $S_{n}(\beta _{1})$ in Proposition \ref{proposition1C1}
+and under assumption \textbf{A1}, we have: 
+\begin{eqnarray*}
+\tilde{S}_{n}(\beta _{1}) &=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ \frac{%
+P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] }{P%
+\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\} \\
+&=&\sum\limits_{t=1}^{n}s(y_{t})\left\{ \ln \left\{ P\left[
+y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] \right\} -\ln \left\{ P%
+\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] \right\} \right\} \\
+&=&\sum\limits_{t=1}^{n}s(y_{t})\left\{ 
+\begin{array}{c}
+\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right]
+^{s(y_{t-1})}P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right]
+^{1-s(y_{t-1})}\right\} \\ 
+-\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right] ^{s(y_{t-1})}%
+P\left[ y_{t}<0\mid y_{t-1}<0,X\right] ^{1-s(y_{t-1})}\right\}%
+\end{array}%
+\right\} \\
+&=&\sum\limits_{t=1}^{n}s(y_{t})\left\{ 
+\begin{array}{c}
+s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right]
+\right\} +\left( 1-s(y_{t-1})\right) \ln \left\{ P\left[ y_{t}\geq
+0\mid y_{t-1}<0,X\right] \right\} \\ 
+-s(y_{t-1})\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right]
+\right\} -\left( 1-s(y_{t-1})\right) \ln \left\{ P\left[
+y_{t}<0\mid y_{t-1}<0,X\right] \right\}%
+\end{array}%
+\right\}
+\end{eqnarray*}%
+Observe that:%
+\begin{eqnarray*}
+\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] 
+}{P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\} &=&\ln
+\left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right] ^{s(y_{t-1})}%
+P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right] ^{1-s(y_{t-1})}\right\} \\
+&&-\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right]
+^{s(y_{t-1})}P\left[ y_{t}<0\mid y_{t-1}<0,X\right]
+^{1-s(y_{t-1})}\right\} \\
+&=&s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq
+0,X\right] \right\}\\
+ &&+\left( 1-s(y_{t-1})\right) \ln \left\{ P\left[
+y_{t}\geq 0\mid y_{t-1}<0,X\right] \right\} \\
+&&-s(y_{t-1})\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right]
+\right\}\\
+&& -\left( 1-s(y_{t-1})\right) \ln \left\{ P\left[
+y_{t}<0\mid y_{t-1}<0,X\right] \right\} 
+\end{eqnarray*}
+\begin{eqnarray*}
+\textcolor{white}{\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] 
+}{P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\}}&=&s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq
+0,X\right] \right\} +\ln \left\{ P\left[ y_{t}\geq 0\mid
+y_{t-1}<0,X\right] \right\} \\
+&&-s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right]
+\right\} -s(y_{t-1})\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}\geq
+0,X\right] \right\} \\
+&&-\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}<0,X\right] \right\}
++s(y_{t-1})\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}<0,X\right] \right\}
+\end{eqnarray*}
+\begin{eqnarray*}
+\textcolor{white}{\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] 
+}{P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\}}&=&s(y_{t-1})\left\{ \ln \left\{ \frac{P\left[ y_{t}\geq 0\mid
+y_{t-1}\geq 0,X\right] }{P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right] }%
+\right\} -\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid
+y_{t-1}<0,X\right]}{P\left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\}
+\right\} \\
+&&+\ln \left\{ \frac{P\left[y_{t}\geq 0\mid y_{t-1}<0,X\right] }{%
+P\left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\}
+\end{eqnarray*}%
+Hence,%
+\begin{eqnarray*}
+\tilde{S}_{n}(\beta _{1}) &=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ \frac{%
+P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] }{P%
+\left[ y_{i}<0\mid \text{\b{S}}_{t-1},X\right] }\right\} \\
+&=&\sum\limits_{t=1}^{n}s(y_{t})\left\{ 
+\begin{array}{c}
+s(y_{t-1})\left\{ \ln \left\{ \frac{P\left[ y_{t}\geq 0\mid
+y_{t-1}\geq 0,X\right] }{P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right] }%
+\right\} -\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid
+y_{t-1}<0,X\right] }{P\left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\}
+\right\} \\ 
++\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right] }{%
+P\left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\}%
+\end{array}%
+\right\} \\
+&=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ \frac{P\left[ y_{t}\geq
+0\mid y_{t}<0,X\right] }{P\left[ y_{t}<0\mid y_{t}<0,X\right] }\right\}
++\sum\limits_{t=1}^{n}s(y_{t})s(y_{t-1})\left\{ 
+\begin{array}{c}
+\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right] }{%
+P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right] }\right\} \\ 
+-\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right] }{%
+P\left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\}%
+\end{array}%
+\right\} \\
+&=&\sum\limits_{t=1}^{n}a_{t}\text{ }s(y_{t})+\sum\limits_{t=1}^{n}b_{t}%
+\text{ }s(y_{t})s(y_{t-1})
+\end{eqnarray*}%
+where%
+\begin{equation*}
+\tilde{a}_{1}=\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
+P\left[ y_{1}<0\mid X\right] }\right\} =\ln \left\{ \frac{1-P%
+\left[ \varepsilon_{1}<-\beta_1'x_{0}\mid X\right] }{P\left[
+\varepsilon_{1}<-\beta_1'x_{0}\mid X\right] }\right\}
+\end{equation*}%
+\begin{equation*}
+\tilde{b}_{1}=\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
+P\left[ y_{1}<0\mid X\right] }\right\} -\ln \left\{ \frac{P%
+\left[ y_{1}\geq 0\mid X\right] }{P\left[ y_{1}<0\mid X\right] }\right\} =0
+\end{equation*}%
+and for $t=2,...,n$%
+\begin{eqnarray*}
+a_{t} &=&\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t}<0,X\right] }{%
+P\left[ y_{t}<0\mid y_{t}<0,X\right] }\right\} , \\
+&& \\
+b_{t} &=&\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t-1}\geq
+0,X\right] }{P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right] }\right\} -\ln
+\left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right] }{P%
+\left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\} .
+\end{eqnarray*}
+Observe that:%
+\begin{eqnarray*}
+P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right] &=&1-P\left[
+y_{t}<0\mid y_{t-1}<0,X\right] \\
+&=&1-\frac{P\left[ y_{t}<0,\text{ }y_{t-1}<0\mid X\right] }{P%
+\left[ y_{t-1}<0\mid X\right] } \\
+&=&1-\frac{P\left[ \varepsilon_{t}<-\beta_1'x_{t-1},\text{ }%
+\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }{P\left[
+\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] },\\
+P\left[ y_{t}<0\mid y_{t-1}<0,X\right] &=&\frac{P\left[
+y_{t}<0,\text{ }y_{t-1}<0\mid X\right] }{P\left[ y_{t-1}<0\mid X\right] } \\
+&=&\frac{P\left[ \varepsilon_{t}<-\beta_1'x_{t-1},\text{ }%
+\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }{P\left[
+\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }\\
+P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right] &=&1-P\left[
+y_{t}<0\mid y_{t-1}\geq 0,X\right] \\
+&=&1-\frac{P\left[ y_{t}<0,\text{ }y_{t-1}\geq 0\mid X\right] }{P%
+\left[ \text{ }y_{t-1}\geq 0\mid X\right] } \\
+&=&1-\frac{P\left[ y_{t}<0\mid X\right] }{P\left[ \text{ }%
+y_{t-1}\geq 0\mid X\right] }\left( P\left[ \text{ }y_{t-1}\geq 0\mid
+y_{t}<0,X\right] \right) \\
+&=&1-\frac{P\left[ y_{t}<0\mid X\right] }{P\left[ \text{ }%
+y_{t-1}\geq 0\mid X\right] }\left( 1-P\left[ \text{ }y_{t-1}<0\mid
+y_{t}<0,X\right] \right) \\
+&=&1-\left( \frac{P\left[ y_{t}<0\mid X\right] }{P\left[ \text{ }%
+y_{t-1}\geq 0\mid X\right] }-\frac{P\left[ \text{ }y_{t-1}<0,\text{ }%
+y_{t}<0\mid X\right] }{P\left[ \text{ }y_{t-1}\geq 0\mid X\right] }\right) \\
+&=&1-\left( \frac{P\left[ y_{t}<0\mid X\right] }{1-P\left[
+y_{t-1}<0\mid X\right] }-\frac{P\left[ \text{ }y_{t-1}<0,\text{ }%
+y_{t}<0\mid X\right] }{1-P\left[ y_{t-1}<0\mid X\right] }\right) \\
+&=&1-\left[ \frac{P\left[ \varepsilon_{t}<-\beta _{1}^{^{\prime
+}}x_{t-1}\mid X\right] }{1-P\left[ \varepsilon_{t-1}<-\beta _{1}^{^{\prime
+}}x_{t-2}\mid X\right] }-\frac{P\left[ \text{ }\varepsilon_{t-1}<-\beta
+_{1}'x_{t-2},\text{ }\varepsilon_{t}<-\beta _{1}^{^{\prime
+}}x_{t-1}\mid X\right] }{1-P\left[ \varepsilon_{t-1}<-\beta _{1}^{^{\prime
+}}x_{t-2}\mid X\right] }\right)
+\end{eqnarray*}%
+\begin{eqnarray*}
+P\left[ y_{t}<0\mid y_{t-1}\geq 0, X\right] &=&\frac{P\left[
+y_{t}<0,\text{ }y_{t-1}\geq 0\mid X\right] }{P\left[ y_{t-1}\geq 0\mid X\right] 
+} \\
+&=&\frac{P\left[ y_{t-1}\geq 0\mid \text{ }y_{t}<0, X\right] P%
+\left[ y_{t}<0\mid X\right] }{P\left[ y_{t-1}\geq 0\mid X\right] } \\
+&=&\frac{P\left[ y_{t}<0\mid X\right] }{P\left[ y_{t-1}\geq
+0\mid X\right] }\left( 1-P\left[ y_{t-1}<0\mid \text{ }y_{t}<0,X\right]
+\right) \\
+&=&\frac{P\left[ y_{t}<0\mid X\right] }{1-P\left[ y_{t}<0\mid X\right] 
+}-\frac{P\left[ y_{t-1}<0,\text{ }y_{t}<0\mid X\right] }{1-P%
+\left[ y_{t}<0\mid X\right] } \\
+&=&1-P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right]
+\end{eqnarray*}%
+We also have:%
+\begin{eqnarray*}
+\tilde{a}_{1} &=&\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
+P\left[ y_{1}<0\mid X\right] }\right\} \\
+&=&\ln \left\{ \frac{1-P\left[ y_{1}<0\mid X\right] }{P\left[
+y_{1}<0\mid X\right] }\right\} \\
+&=&\ln \left\{ \frac{1-P\left[ \varepsilon_{1}<-\beta _{1}^{^{\prime
+}}x_{0}\mid X\right] }{P\left[ \varepsilon_{1}<-\beta_1'x_{0}\mid X\right] 
+}\right\}\\
+\tilde{b}_{1}&=&\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
+P\left[ y_{1}<0\mid X\right] }\right\} -\ln \left\{ \frac{P%
+\left[ y_{1}\geq 0\mid X\right] }{P\left[ y_{1}<0\mid X\right] }\right\} =0
+\end{eqnarray*}
+\end{proof}
+
+\begin{proof}[Additional simulations]
+\begin{figure}[hbtp!]
+\caption{Power comparisons: different tests. Normal distributions with contemporaneous correlation of $\rho=1$, in (\protect\ref%
+{error}) and local-to-unity autoregression parameter $\theta=0.999$, in (\protect\ref{x}) for different sample sizes.}
+\begin{center}
+\subfigure{\includegraphics[scale=0.55]{LTU50.eps}} %
+\subfigure{\includegraphics[scale=0.55]{LTU100.eps}}\\[0pt]
+\subfigure{\includegraphics[scale=0.55]{LTU250.eps}} %
+\subfigure{\includegraphics[scale=0.55]{LTU500.eps}} 
+\end{center}
+Note: These figures compare the power
+function of the 10\% SS-POS test with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: Power comparison using different n}
+\end{figure}
+\FloatBarrier
+\end{proof}
+\end{document}
