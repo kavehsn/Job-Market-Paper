@@ -185,7 +185,7 @@ hetero\-skedasticity of unknown form, and may be inverted to build confidence
 regions for the vector of unknown parameters. This work, however, is
 developed under the assumption that the errors are independent. The
 main motivation is to build point-optimal sign-based tests for linear and
-nonlinear predictive regressions that retain the advantages of the POS-based tests proposed by \citet{dufour2010exact}. To extend this work, we recognize that under the alternative hypothesis the signs are no longer necessarily independent and the test-statistic now depends on calculating the joint distribution of the signs, which is computationally infeasible. Therefore, an additional
+nonlinear predictive regressions that retain the advantages of the POS-based tests proposed by \citet{dufour2010exact}. To extend this work, we recognize that under the alternative hypothesis the signs are no longer necessarily independent and the tes$t$-statistic now depends on calculating the joint distribution of the signs, which is computationally infeasible. Therefore, an additional
 assumption on the dependence structure of the conditional signs is needed to obtain \textit{feasible} test
 statistics; namely, a Markovian assumption on the conditional signs. 
 
@@ -865,7 +865,7 @@ N(0,100^2) & \text{with probability 0.05} %
 \right. \,
 \end{equation*}
 where $\beta_0=\beta_1=\beta_2=0$ and
-\begin{eqnarray*}
+\begin{align*}
 \begin{bmatrix}
 x_{1,t}\\%\theta_1x_{1,t-1}+u_{1,t},
 x_{2,t}%\theta_2x_{2,t-1}+u_{2,t}
@@ -884,7 +884,7 @@ x_{2,t-1}
 u_{1,t}\\
 u_{2,t}
 \end{bmatrix}
-\end{eqnarray*}
+\end{align*}
 with $\theta_1=\theta_2=0.9$. The initial vector variable $(x_{1,t},x_{2,t})'$ is given by: $\left(\frac{u_{1,0}}{\sqrt{1-\theta_1^2}},\frac{u_{2,0}}{\sqrt{1-\theta_2^2}}\right)'$ and $(u_{1,t},u_{2,t})'$ is generated according to $N(\bm{0},I)$, where $\bm{0}$ is a $2\times 1$ zero vector and $I$ is the identity matrix. 
 
 The exact inference procedure is conducted with $B=999$ replications of the test statistic under the null hypothesis. As $\bm{\beta}$ is a vector in three-dimensional space, the confidence region and the projections can be illustrated graphically. The tests of $H_0(\bm{\beta}^*):\bm{\beta}=\bm{\beta}^*$ are performed on a 3D grid for $\bm{\beta}^*=(\bm{\beta}_0^*,\bm{\beta}_1^*,\bm{\beta}_2^*)$. Due to the curse of dimensionality encountered in the process of creating a grid for the parameters, the \textit{simulated annealing optimization algorithm} is initially used to solve problem (\ref{eq: SA}) for each parameter $\beta_i$, to obtain a practical dimension of the grid size [see \citet{goffe1994global} for a review of the simulated annealing algorithm].
@@ -904,7 +904,7 @@ The optimizations were performed using MATLAB software on a high-performance com
 % Please add the following required packages to your document preamble:
 % \usepackage{booktabs}
 \begin{table}[hbtp!]
-\caption{Comparison of the 95\% confidence intervals obtained for the unknown parameters $\beta_0$, $\beta_1$ and $\beta_2$ using the 10\% SS-POS-test, with those achieved using the $t$-test and $t$-test based on White (1980) variance correction.}
+\caption{Comparison of the 95\% confidence intervals obtained for the unknown parameters $\beta_0$, $\beta_1$ and $\beta_2$ using the 10\% SS-POS-test, with those achieved using the $t$-test and $t$-test based on \citet{white1980heteroskedasticity} variance correction.}
 \begin{center}
 \begin{tabu} to \textwidth{XXXXX}
 \toprule
@@ -922,7 +922,7 @@ Note: The confidence intervals in bold do not contain the value of zero and impl
 \label{tab: Confidence Intervals}
 \end{table}
 
-It is evident that the 10\% split-sample POS-based test outperforms the $t$-test and the $t$-test based on white (1980) variance correction test, as the former correctly fails to reject the null hypothesis of orthogonality at the 5\% level, whereas the latter two tests reject the null hypothesis in favor of the alternative for almost all parameters.  
+It is evident that the 10\% split-sample POS-based test outperforms the $t$-test and the $t$-test based on \citet{white1980heteroskedasticity} variance correction test, as the former correctly fails to reject the null hypothesis of orthogonality at the 5\% level, whereas the latter two tests reject the null hypothesis in favor of the alternative for almost all parameters.  
 
 \section{Monte Carlo study \label{sec: Monte Carlo studyC1}}
 
@@ -934,13 +934,13 @@ heteroskedasticity and serial non-linear dependence.
 
 \subsection{Simulation setup \label{sec: Simulated models}}
 
- {\hskip 1.5em}We assess the performance of the proposed 10\% SS-POS-based tests in terms of size control and power, by considering various DGPs with symmetric and asymmetric distributions and different forms of heteroskedasticity. The DGPs under consideration are supposed to mimic different scenarios that are often encountered in practical settings within the domains of predictive regressions. The performance of the 10\% SS-POS tests is compared to that of a few other tests, by considering the following linear predictive regression model
+ {\hskip 1.5em}We assess the performance of the proposed 10\% SS-POS-based tests in terms of size control and power, by considering various DGPs with symmetric and asymmetric distributions and different forms of heteroskedasticity. The DGPs under consideration are supposed to mimic different scenarios that are often encountered in practical settings within the context of predictive regressions. The performance of the 10\% SS-POS test is compared to that of a few other tests, by considering the following linear predictive regression model
 \begin{equation}
-y_{t}=\beta x_{t-1}+\varepsilon _{t}  \label{DGP}
+y_{t}=\beta x_{t-1}+\varepsilon _{t},  \label{DGP}
 \end{equation}%
 where $\beta $ is an unknown parameter. Furthermore, we follow \citet{mankiw1986we} by assuming that $x_{t}$ is a stationary AR($1$) process 
 \begin{equation}\label{x}
-x_{t}=\theta x_{t-1}+u_{t}
+x_{t}=\theta x_{t-1}+u_{t},
 \end{equation}%
 such that $u_t$ are mutually independent, and each $u_t$ is independent of $x_{t-k}$ for $k\geq 1$. Moreover, the disturbances $(\varepsilon_t,u_t)$ are distributed as bivariate normal, with the contemporaneous covariance matrix
 \[
@@ -948,11 +948,11 @@ such that $u_t$ are mutually independent, and each $u_t$ is independent of $x_{t
 \begin{bmatrix}
 1&\sigma_{\varepsilon u}\\
 \sigma_{\varepsilon u}&\sigma^2_{u}
-\end{bmatrix}
+\end{bmatrix}.
 \]
-Therefore, there is feedback from $u_t$ to $x_t$ through $\varepsilon_t$, which implies that $corr(\varepsilon_t,x_{t+k})\neq 0$ for $k\geq0$. Thus, as the disturbance vector $[\varepsilon_1,\cdots,\varepsilon_n]'$ is not independent of the regressor vector $[x_0,\cdots,x_{n-1}]'$, the OLS estimator is biased in finite-samples and the T-statistic has a non-standard distribution. \citet{mankiw1986we} perform an extensive simulations exercise by considering different values of the correlation between $u_t$ and $\varepsilon_t$ (say $\rho$) and find that in small samples, as $\theta$ and $\rho$ approach unity, the $t$-test using asymptotic critical values leads to oversized tests; however, this size distortion improves as $n\rightarrow \infty$.
+Therefore, there is feedback from $u_t$ to $x_t$ through $\varepsilon_t$, which implies that $corr(\varepsilon_t,x_{t+k})\neq 0$ for $k\geq0$. Thus, as the disturbance vector $[\varepsilon_1,\cdots,\varepsilon_T]'$ is not independent of the regressor vector $[x_0,\cdots,x_{T-1}]'$, the OLS estimator is biased in finite-samples and the $t$-statistic has a non-standard distribution. \citet{mankiw1986we} perform an extensive simulations exercise by considering different values of the correlation between $u_t$ and $\varepsilon_t$ (say $\rho$) and find that in small samples, as $\theta$ and $\rho$ approach unity, the $t$-test using asymptotic critical values leads to over rejection of the null hypothesis of unpredictability; however, the size distortions improve as $T\rightarrow \infty$.
 
-To compare the performance of certain parametric and non-parametric tests to that of the POS-based tests, the data is generated from model (\ref{DGP}), with the stationary process $x_t$ specified as (\ref{x}) and by further setting
+To compare the performance of certain parametric and non-parametric tests to that of the 10\% SS-POS-based test, the data is generated from model (\ref{DGP}), with the stationary process $x_t$ specified as (\ref{x}), and by further setting
 \begin{equation}
 u_{t}=\rho \varepsilon _{t}+w_{t}\sqrt{1-\rho ^{2}}  \label{error}
 \end{equation}%
@@ -1008,23 +1008,23 @@ _{t}\sim N(0,\sigma _{\varepsilon }^{2}(t))$ and%
 _{\varepsilon }^{2}(t-1)\,.
 \end{equation*}%
 \end{enumerate}
-We implement the POS-based test and other tests, which are intended to be robust against
-heteroskedasticity and non-normality, to test the null hypothesis of orthogonality - i.e. $%
+We implement the 10\% SS-POS-based test and other tests which are intended to be robust against
+heteroskedasticity and non-normality, to test the null hypothesis of unpredictability - i.e. $%
 H_{0}:\beta =0.$ As in \citet{dufour2010exact}, Monte Carlo simulations are used to compare the size and
-power of the 10\% split-sample POS-based tests (10\% SS-POS test hereafter) to those of $t$-test, $t$-test
-based on \citet{white1980heteroskedasticity} variance correction (hereafter W$t$-test), and
+power of the 10\% SS-POS test hereafter to that of the $t$-test, $t$-test
+based on \citet{white1980heteroskedasticity} variance correction (hereafter WT-test), and
 sign-based test proposed by 
-\citet{dufour1995exact} (CD(1995)%
+\citet{dufour1995exact} (CD (1995)%
 \textit{\ }test hereafter). The simulation study involves $M_{1}=10,000$ iterations for evaluating the
 probability distribution of POS test statistic and $M_{2}=5,000$ iterations
-to estimate the power functions of POS test and other tests. We consider a sample size of $n=50$ for conducting the simulation exercise. 
+to estimate the power functions of POS test and other tests. We consider a sample size of $T=50$ for conducting the simulation exercise. 
 Note that the sign-based test statistic of \citet{dufour1995exact} possesses a discrete distribution, as a result of which it is not possible
 (without randomization) to attain test whose size is exactly $5\%.$ In our
-simulations study, the size of the aforementioned test is $5.95\%$ for $n=50$.
+simulations study, the size of the aforementioned test is $5.95\%$ for $T=50$.
 
-As in \citet{mankiw1986we}, it is further possible to consider values of $\rho$ and $\theta$ closer to unity at which the size distortions of T-type tests are magnified. For instance, the size of the $t$-test in their study is shown to be severely distorted with values of $\theta=0.999$ and $\rho=1.0$, given a sample size of $n=50$. The simulations for the latter scenario can be found in the Appendix for standard normal disturbances. It must be noted that as the exact finite-sample distribution of the POS-based tests are simulated, our tests control size regardless of the values of $\rho$ and $\theta$ - the results in figure (\ref{fig: Power comparison using different n}) confirm these findings. It is further evident that although the size distortions for the $t$-test and $t$-test based on \citet{white1980heteroskedasticity} variance correction improve in large samples, these tests still reject the null hypothesis at twice and thrice their nominal level respectively given a sample of $n=500$ observations.
+As in \citet{mankiw1986we}, it is further possible to consider values of $\rho$ and $\theta$ closer to unity at which the size distortions of T-type tests are magnified. For instance, the size of the $t$-test in their study is shown to be severely distorted with values of $\theta=0.999$ and $\rho=1.0$, given a sample size of $T=50$. The simulations for the latter scenario can be found in the Appendix for standard normal disturbances. It must be noted that as the exact finite-sample distribution of the POS-based tests are simulated, our tests control size regardless of the values of $\rho$ and $\theta$ - the results in figure (\ref{fig: Power comparison using different n}) confirm these findings. It is further evident that although the size distortions for the $t$-test and $t$-test based on \citet{white1980heteroskedasticity} variance correction improve in large samples, these tests still reject the null hypothesis at twice and thrice their nominal level respectively given a sample of $n=500$ observations.
 
-The DGPs considered in this paper have been inspired by the simulation exercises conducted in the previous studies [see \citet{mankiw1986we}, \citet{dufour1995exact}, \citet{coudin2009finite} and \citet{dufour2010exact}]. The first three DGPs all possess symmetrical distributions that are independent and identical across different observations $t=1,\cdots,n$. Evidently, as depicted in figure (\ref{fig: distos1}), the Cauchy and Student's $t$ distribution possess heavier tails in comparison to that of the normal distribution. The standard error of the coefficients are inflated in the presence of heavy tails, as a result of which the power of the T-type tests tend to be poor in comparison to other measures of central tendency (such as the median). Furthermore, the length of the confidence intervals are extended when the data is sampled from heavy tailed distributions. DGP 4 is a mixture of Cauchy and Gaussian distribution; as such, while the errors are independent, they are not identically distributed across different observations [see figure \ref{fig: distos2}]. DGP 4 is inspired by \citet{magdalinos2009limit}, who note that when $x_t$ is moderately explosive (with $\theta>1$), the least squares estimator is mixed normal with Cauchy-type tail behavior with an explosive convergence rate. The second group of DGPs covers different forms of heteroskedasticity, such as conditional heteroskedasticity (e.g. stationary and non-stationary GARCH models) and other forms of nonlinear dependencies. \citet{dufour2010exact} show that under certain forms of heteroskedasticity, T-type tests are not valid; hence, these DGPs fit well within the domains of our study.  
+The DGPs considered in this paper have been inspired by the simulation exercises conducted in previous studies [see \citet{mankiw1986we}, \citet{dufour1995exact}, \citet{coudin2009finite} and \citet{dufour2010exact}]. The first three DGPs all possess symmetrical distributions that are independent and identical across different observations $t=1,\cdots,T$. The Cauchy and the Student's $t$ distribution possess heavier tails in comparison to that of the normal distribution. The standard error of the coefficients are inflated in the presence of heavy tails, as a result of which the power of the $t$-type tests tend to be poor in comparison to other measures of central tendency (such as the median). Furthermore, the length of the confidence intervals are extended when the data is sampled from heavy tailed distributions. DGP 4 is a mixture of Cauchy and Gaussian distribution; as such, while the errors are independent, they are not identically distributed across different observations [see figure \ref{fig: distos2}]. DGP 4 is inspired by \citet{magdalinos2009limit}, who note that when $x_t$ is moderately explosive (with $\theta>1$), the least squares estimator is mixed normal with Cauchy-type tail behavior with an explosive convergence rate. The second group of DGPs covers different forms of heteroskedasticity, such as conditional heteroskedasticity (e.g. stationary and non-stationary GARCH models) and other forms of nonlinear dependencies. \citet{dufour2010exact} show that under certain forms of heteroskedasticity, $t$-type tests are not valid; hence, these DGPs fit well within the domains of our study.  
 
 \subsection{Simulation results \label{sec: Simulation results}}
 
@@ -1180,9 +1180,9 @@ this proportion is significantly increased. \citet{campbell1988dividend} employ 
 log of the dividend-price ratio together with the lagged real dividend growth rate, to show significant predictive
 power on stock returns. 
 
-These studies are typically performed by regressing the excess returns on a constant and a lagged variable. The conventional $t$-test is then used to make inference concerning predictability. However, most of these studies are based on the presumption of the stationarity of the predictors, where the T-statistic is approximately normally distributed in large samples. Unfortunately, this is not the case in the presence of highly persistent variables. Even when the predictors are stationary, asymptotic critical values are not a good approximation for those obtained in finite-sample distributions. In the presence of highly persistent predictors, the innovations are greatly correlated with the returns, and thus, the T-statistic has a non-standard distribution which leads to the over-rejection of the null hypothesis of orthogonality [see. \citet{elliott1994inference}, \citet{mankiw1986we}, \citet{stambaugh1999predictive} and \citet{campbell2006efficient}].
+These studies are typically performed by regressing the excess returns on a constant and a lagged variable. The conventional $t$-test is then used to make inference concerning predictability. However, most of these studies are based on the presumption of the stationarity of the predictors, where the $t$-statistic is approximately normally distributed in large samples. Unfortunately, this is not the case in the presence of highly persistent variables. Even when the predictors are stationary, asymptotic critical values are not a good approximation for those obtained in finite-sample distributions. In the presence of highly persistent predictors, the innovations are greatly correlated with the returns, and thus, the $t$-statistic has a non-standard distribution which leads to the over-rejection of the null hypothesis of orthogonality [see. \citet{elliott1994inference}, \citet{mankiw1986we}, \citet{stambaugh1999predictive} and \citet{campbell2006efficient}].
 
- Most studies address the issue of persistency by making inference based on more accurate appro\-ximations of the finite-sample distribution of the test-statistic. This is accomplished either by relying on exact finite-sample theory under the assumption of normality [see. \citet{evans1981calculation,evans1984testing} and \citet{stambaugh1999predictive}] or local-to-unity asymptotics [see \citet{elliott1994inference}, \citet{campbell2006efficient} and \citet{torous2004predicting}]. More recently \citet{taamouti2014nonparametric} confirm the predictability power of the valuation ratios using monthly data, in a nonparametric and model-free copula-based Granger causality framework. 
+ Most studies address the issue of persistency by making inference based on more accurate appro\-ximations of the finite-sample distribution of the tes$t$-statistic. This is accomplished either by relying on exact finite-sample theory under the assumption of normality [see. \citet{evans1981calculation,evans1984testing} and \citet{stambaugh1999predictive}] or local-to-unity asymptotics [see \citet{elliott1994inference}, \citet{campbell2006efficient} and \citet{torous2004predicting}]. More recently \citet{taamouti2014nonparametric} confirm the predictability power of the valuation ratios using monthly data, in a nonparametric and model-free copula-based Granger causality framework. 
 
 In this Section, we use our exact $10\%$ SS-POS-based test to make inference and compare the
 predictive power of the valuation ratios (dividend-price ratio, smoothed earnings-price ratio, and total return smoothed earnings-price ratio) on stock market returns. The smoothed earnings-price ratio is proposed by \citet{campbell1988dividend,campbell2001valuation} upon observing numerous spikes in the plot of the earnings-price ratio that had not been observed in the dividend-price ratio. The spikes were explained to be caused by recessions, which temporarily suppress corporate earnings. The latter measure is the ratio of the ten-year moving average of real earnings to current real prices and is said to possess better forecasting powers. Furthermore, the total return smoothed earnings-price ratio is recently incorporated in forecasting, as a consequence of the changes in corporate payout policy documented by \citet{bunn2014cape} and \citet{jivraj2017many}. Share repurchases (as opposed to dividends) have become the dominant approach for distributing cash to shareholders in the U.S. which may impact the smoothed earnings-price ratio through changes in growth of earnings per share. The total return smoothed earnings-price ratio corrects for this bias by reinvesting the dividends into the price index, such that the earnings per share is appropriately scaled. 
@@ -1287,7 +1287,7 @@ Quarterly         & $d/p_t$ &0.136          &$[-0.094,0.146]$                   
 
 \begin{minipage}{\linewidth}
 \vspace{1pt}
-Note: This table presents the coefficient estimates, as well as the 95\% confidence intervals for the variables considered in our study, by inverting the proposed 10\% SS-POS-based tests and the $t$-test based on White (1980) variance correction. The alternatives for the 10\% SS-POS tests are obtained by running OLS regressions of the excess returns against the dividend-price, smoothed earnings-price and the total return smoothed earnings-price ratios. The regressions assume the form 
+Note: This table presents the coefficient estimates, as well as the 95\% confidence intervals for the variables considered in our study, by inverting the proposed 10\% SS-POS-based tests and the $t$-test based on \citet{white1980heteroskedasticity} variance correction. The alternatives for the 10\% SS-POS tests are obtained by running OLS regressions of the excess returns against the dividend-price, smoothed earnings-price and the total return smoothed earnings-price ratios. The regressions assume the form 
 \begin{equation}\label{eq: Regressions}
 r_t^m-r_t^f=\beta_0+\beta_1 x_{t-1}+\varepsilon_t
 \end{equation}
@@ -1362,22 +1362,25 @@ with
 \text{\b{S}}^{\varepsilon}_{0}=\left\{ \emptyset \right\} ,\text{ \ \b{S}}^{\varepsilon}_{t-1}=\left\{
 s(\varepsilon_{1})=s_{1},...,s(\varepsilon_{t-1})=s_{t-1}\right\} ,\text{ for }t\geq 2,
 \]
-We define the vector of signs $U(n)=(s(y_1),\cdots,s(y_n))'$, where $s(y_t)=\mathbbm{1}_{\mathbb{R}^+\cup 0}\{y_t\}$. Thus, the likelihood function of the sample in terms of signs under the null hypothesis is
-\begin{eqnarray*}
-L(U(n),0)&=&P[s(y_1)=s_1,\cdots,s(y_n)=s_n\mid X]\\
-&=&P[s(\varepsilon_1)=s_1,\cdots,s(\varepsilon_n)=s_n\mid X]\\
-&=&\prod\limits_{t=1}^{n}P[\varepsilon_t\geq0\mid\bm{\varepsilon}_{t-1},X]^{s(\varepsilon_t)}\left(1-P[\varepsilon_t\geq0\mid\bm{\varepsilon}_{t-1},X]\right)^{1-s(\varepsilon_t)}\\
-&=&\prod\limits_{t=1}^{n}\left(\frac{1}{2}\right)^{s(\varepsilon_t)}\left(1-\frac{1}{2}\right)^{1-s(\varepsilon_t)}\\
-&=&\left(\frac{1}{2}\right)^n
-\end{eqnarray*}
-Hence, it can be concluded that conditional on $X$ and under the null hypothesis of orthogonality $s(y_1),\cdots,s(y_n)\overset{i.i.d}{\sim}Bi(1,0.5)$.
+We define the vector of signs $U(T)=(s(y_1),\cdots,s(y_T))'$, where $s(y_t)=\mathbbm{1}_{\mathbb{R}^+\cup 0}\{y_t\}$. Thus, the likelihood function of the sample in terms of signs under the null hypothesis is
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+L(U(T),\bm{0},X)&=P[s(y_1)=s_1,\cdots,s(y_T)=s_T\mid X]\\
+&=P[s(\varepsilon_1)=s_1,\cdots,s(\varepsilon_T)=s_T\mid X]\\
+&=\prod\limits_{t=1}^{T}P[\varepsilon_t\geq0\mid\bm{\varepsilon}_{t-1},X]^{s(\varepsilon_t)}\left(1-P[\varepsilon_t\geq0\mid\bm{\varepsilon}_{t-1},X]\right)^{1-s(\varepsilon_t)}\\
+&=\prod\limits_{t=1}^{T}\left(\frac{1}{2}\right)^{s(\varepsilon_t)}\left(1-\frac{1}{2}\right)^{1-s(\varepsilon_t)}\\
+&=\left(\frac{1}{2}\right)^T
+\end{align*}
+\endgroup
+Hence, it can be concluded that conditional on $X$ and under the null hypothesis of orthogonality $s(y_1),\cdots,s(y_T)\overset{i.i.d}{\sim}Bi(1,0.5)$.
 \end{proof}
 
 \begin{proof}[Proof of Proposition \protect\ref{proposition1C1}]
-The likelihood function of sample in terms of signs $s(y_{1}),...,s(y_{n})$%
+The likelihood function of sample in terms of signs $s(y_{1}),...,s(y_{T})$%
 \begin{equation*}
-L\left( U(n),\beta \right) =P\left[
-s(y_{1})=s_{1},...,s(y_{n})=s_{n}\mid X\right] =\prod\limits_{t=1}^{n}%
+L\left( U(T),\bm{\beta},X \right) =P\left[
+s(y_{1})=s_{1},...,s(y_{T})=s_{T}\mid X\right] =\prod\limits_{t=1}^{T}%
 P\left( s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right) ,
 \end{equation*}%
 for 
@@ -1390,150 +1393,121 @@ and%
 P\left[ s(y_{1})=s_{1}\mid \text{\b{S}}_{0},X\right] =P%
 \left[ s(y_{1})=s_{1}\mid X\right] ,
 \end{equation*}%
-where each $s_{i}$, for $1\leq t\leq n$, takes two possible values $0$ and $%
-1 $. According to model (\ref{model}) and assumption (\ref{eq: mediane}), under the null hypothesis the signs $s(y_1),\cdots,s(y_n)$ are i.i.d according to $Bi(1,0.5)$,
+where each $s_{t}$, for $1\leq t\leq T$, takes two possible values $0$ and $%
+1 $. According to model (\ref{model}) and assumption (\ref{eq: mediane}), under the null hypothesis the signs $s(y_1),\cdots,s(y_T)$ are i.i.d according to $Bi(1,0.5)$,
 \begin{equation*}
 P\left[ s(y_{t})=1\mid X\right] =P\left[ s(y_{t})=0\mid X\right] =%
-\frac{1}{2},\text{ for }t=1,...,n.
+\frac{1}{2},\text{ for }t=1,...,T,
 \end{equation*}%
 Consequently, under $H_{0}$%
 \begin{equation*}
-L_{0}\left( U(n),0\right) =\prod\limits_{t=1}^{n}P\left[ s(y_{t})=s_{t}\mid X\right] =\left( \frac{1}{2}\right) ^{n}
+L_{0}\left( U(T),\bm{0},X\right) =\prod\limits_{t=1}^{T}P\left[ s(y_{t})=s_{t}\mid X\right] =\left( \frac{1}{2}\right) ^{T}
 \end{equation*}%
 and under $H_{1}$ we have%
 \begin{equation*}
-L_{1}\left( U(n),\beta _{1}\right) =\prod\limits_{t=1}^{n}%
+L_{1}\left( U(T),\bm{\beta}_{1},X\right) =\prod\limits_{t=1}^{T}%
 P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1}, X\right]
 \end{equation*}%
-where now, for $t=1,...,n,$%
+where now, for $t=1,...,T,$%
 \begin{equation*}
-y_{t}=\beta_1'x_{t-1}+\varepsilon_{t}
+y_{t}=\bm{\beta}_1'\bm{x}_{t-1}+\varepsilon_{t}
 \end{equation*}%
 The log-likelihood ratio is given by%
 \begin{equation*}
-\ln \left\{ \frac{L_{1}\left( U(n),\beta _{1}\right) }{L%
-_{0}\left( U(n),0\right) }\right\} =\sum\limits_{t=1}^{n}\ln \left\{ 
-P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] \right\} -\text{n}\ln
+\ln \left\{ \frac{L_{1}\left( U(T),\bm{\beta}_{1},X\right) }{L%
+_{0}\left( U(T),\bm{0},X\right) }\right\} =\sum\limits_{t=1}^{T}\ln \left\{ 
+P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] \right\} -\text{T}\ln
 \left\{ \frac{1}{2}\right\} .
 \end{equation*}%
 According to Neyman-Pearson lemma [see e.g. Lehmann (1959), page 65], the
-best test to test $H_{0}$ against $H_{1},$ based on $s(y_{1}),...,s(y_{n}),$
+best test to test $H_{0}$ against $H_{1},$ based on $s(y_{1}),...,s(y_{T}),$
 rejects $H_{0}$ when%
 \begin{equation*}
-\ln \left\{ \frac{L_{1}\left( U(n),\beta _{1}\right) }{L%
-_{0}\left( U(n),0\right) }\right\} \geq c
+\ln \left\{ \frac{L_{1}\left( U(T),\bm{\beta} _{1},X\right) }{L%
+_{0}\left( U(T),\bm{0},X\right) }\right\} \geq c
 \end{equation*}%
 or when%
 \begin{equation*}
-\sum\limits_{t=1}^{n}\ln \left\{ P\left[ s(y_{t})=s_{t}\mid \text{%
+\sum\limits_{t=1}^{T}\ln \left\{ P\left[ s(y_{t})=s_{t}\mid \text{%
 \b{S}}_{t-1},X\right] \right\} \geq c,
 \end{equation*}%
 The critical value, say $c,$ is given by the smallest constant $c$ such that%
 \begin{equation*}
-P\left( \ln \left\{ \frac{L_{1}\left( U(n),\beta
-_{1}\right) }{L_{0}\left( U(n),0\right) }\right\} >c\mid
+P\left( \ln \left\{ \frac{L_{1}\left( U(T),\bm{\beta}
+_{1},X\right) }{L_{0}\left( U(T),\bm{0},X\right) }\right\} >c\mid
 H_{0}\right) \leq \alpha .
 \end{equation*}%
-Notice that, for $t=1,...n,$%
+Notice that, for $t=1,...,T$%
 \begin{equation}
 P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] =P%
 \left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] ^{s(y_t)}P\left[
-y_{t}<0\mid \text{\b{S}}_{t-1},X\right] ^{(1-s(y_t))},\text{ for }t=1,...n.
+y_{t}<0\mid \text{\b{S}}_{t-1},X\right] ^{(1-s(y_t))},\text{ for }t=1,...,T.
 \label{probC1}
 \end{equation}%
 From (\ref{probC1}), we have%
-\begin{eqnarray*}
-\ln \left\{ \prod\limits_{t=1}^{n}P\left[
-s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] \right\} &=&\ln \left\{ \prod\limits_{t=1}^{n} 
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\ln \left\{ \prod\limits_{t=1}^{T}P\left[
+s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] \right\} &=\ln \left\{ \prod\limits_{t=1}^{T} 
 P[y_{t}\geq 0\mid \text{\b{S}}%
-_{t-1},X]^{s(y_t)}P[y_{i}<0\mid \text{\b{S}}_{t-1},X]^{(1-s(y_t))}\right\}
+_{t-1},X]^{s(y_t)}P[y_{t}<0\mid \text{\b{S}}_{t-1},X]^{(1-s(y_t))}\right\}
 \\
-&=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ P\left[ y_{t}\geq 0\mid 
+&=\sum\limits_{t=1}^{T}s(y_{t})\ln \left\{ P\left[ y_{t}\geq 0\mid 
 \text{\b{S}}_{t-1},X\right] \right\}\\
-&\textcolor{white}{=}&+\sum\limits_{t=1}^{n}\left(
+&\textcolor{white}{=}+\sum\limits_{t=1}^{T}\left(
 1-s(y_{t})\right) \ln \left\{ P[y_{t}<0\mid \text{\b{S}}%
-_{t-1},X]\right\} 
-\end{eqnarray*}
-\begin{eqnarray*}
-\textcolor{white}{\ln \left\{ \prod\limits_{t=1}^{n}P\left[
-s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] \right\} }&=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ P\left[ y_{t}\geq 0\mid 
-\text{\b{S}}_{t-1},X\right] \right\} +\sum\limits_{t=1}^{n}\ln \left\{ P [y_{t}<0\mid \text{\b{S}}_{t-1},X]\right\} \\
-&&-\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ P[y_{t}<0\mid \text{\b{S%
+_{t-1},X]\right\} \\
+\textcolor{white}{\ln \left\{ \prod\limits_{t=1}^{T}P\left[
+s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] \right\} }&=\sum\limits_{t=1}^{T}s(y_{t})\ln \left\{ P\left[ y_{t}\geq 0\mid 
+\text{\b{S}}_{t-1},X\right] \right\} +\sum\limits_{t=1}^{T}\ln \left\{ P [y_{t}<0\mid \text{\b{S}}_{t-1},X]\right\} \\
+&\textcolor{white}{=}-\sum\limits_{t=1}^{T}s(y_{t})\ln \left\{ P[y_{t}<0\mid \text{\b{S%
 }}_{t-1},X]\right\} \\
-&=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ \frac{P\left[ y_{t}\geq
+&=\sum\limits_{t=1}^{T}s(y_{t})\ln \left\{ \frac{P\left[ y_{t}\geq
 0\mid \text{\b{S}}_{t-1},X\right] }{P\left[ y_{t}<0\mid \text{\b{S}}%
-_{t-1},X\right] }\right\} +\sum\limits_{t=1}^{n}\ln \left\{ P%
+_{t-1},X\right] }\right\} +\sum\limits_{t=1}^{T}\ln \left\{ P%
 [y_{t}<0\mid \text{\b{S}}_{t-1},X]\right\}
-\end{eqnarray*}%
+\end{align*}%
+ \endgroup
 Thus, the best test to test $H_{0}$ against $H_{1},$ based on $%
-s(y_{1}),...,s(y_{n}),$ rejects $H_{0}$ when%
+s(y_{1}),...,s(y_{T}),$ rejects $H_{0}$ when%
 \begin{equation*}
-\ln \left\{ \frac{L_{1}\left( U(n),\beta _{1}\right) }{L%
-_{0}\left( U(n),0\right) }\right\} =\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ 
+\ln \left\{ \frac{L_{1}\left( U(T),\bm{\beta} _{1},X\right) }{L%
+_{0}\left( U(T),\bm{0},X\right) }\right\} =\sum\limits_{t=1}^{T}s(y_{t})\ln \left\{ 
 \frac{P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] }{P%
 \left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\}
-+\sum\limits_{t=1}^{n}\ln \left\{ P[y_{t}<0\mid \text{\b{S}}%
-_{t-1},X]\right\} -\text{n}\ln \left\{ \frac{1}{2}\right\} \geq c
++\sum\limits_{t=1}^{T}\ln \left\{ P[y_{t}<0\mid \text{\b{S}}%
+_{t-1},X]\right\} -\text{T}\ln \left\{ \frac{1}{2}\right\} \geq c
 \end{equation*}%
 or when%
 \begin{equation*}
-\ln \left\{ \frac{L_{1}\left( U(n),\beta _{1}\right) }{L%
-_{0}\left( U(n),0\right) }\right\} =\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ 
+\ln \left\{ \frac{L_{1}\left( U(T),\bm{\beta} _{1},X\right) }{L%
+_{0}\left( U(T),\bm{0},X\right) }\right\} =\sum\limits_{t=1}^{T}s(y_{t})\ln \left\{ 
 \frac{P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] }{P%
-\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\} \geq c_{1}(\beta _{1})
+\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\} \geq c_{1}(\bm{\beta}_{1})
 \end{equation*}%
-where the critical value $c_{1}(\beta _{1})$ is chosen so that%
+where the critical value $c_{1}(\bm{\beta}_{1})$ is chosen so that%
 \begin{equation*}
-P\left[ S_{n}(\beta _{1})>c_{1}(\beta _{1})\mid H_{0}\right] \leq
+P\left[ S_{T}(\bm{\beta}_{1})>c_{1}(\bm{\beta}_{1})\mid H_{0}\right] \leq
 \alpha
 \end{equation*}%
 $\alpha $ is an arbitrary significance level.
 \end{proof}
 
-\begin{proof}[Proof of Assumption 1]
-
-Let $y_1,\cdots,y_t$ be linearly explained by a vector variable $x_t$
-\begin{equation*}
-y_{t}=\beta_1'x_{t-1}+\varepsilon_{t}
-\end{equation*}%
-and suppose $y_t$ follows a Markov process of order one, such that
-\[
-y_t,y_{t-1}\mid X\sim N\left( 
-\underbrace{\begin{bmatrix}
-\beta'x_{t-1}\\
-\beta'x_{t-2}
-\end{bmatrix}}_{\bm{\mu}},
-\underbrace{
-\begin{bmatrix}
-\sigma^2_{\varepsilon_t}&\sigma_{\varepsilon_t\varepsilon_{t-1}}\\
-\sigma_{\varepsilon_{t-1}\varepsilon_t} &\sigma^2_{\varepsilon_{t-1}}
-\end{bmatrix}}_{\Sigma}
-\right),\quad t=2,\cdots,n.
-\]
-where it is assumed, without loss of generality, that $\varepsilon_t$ and $\varepsilon_{t-1}$ are serially correlated with $\sigma_{\varepsilon_{t-1}\varepsilon_t}\neq0$. Then the signs $s(y_1),\cdots,s(y_t)$ are Bernoulli variables with conditional joint distributions fully determined by $P_{s(y_t)\mid X}$, $P_{s(y_{t-1})\mid X}$, and either $P_{s(y_t)\mid s(y_{t-1}),X}$ or $P_{s(y_t),s(y_{t-1})\mid X}$, where
-\begin{eqnarray*}
-P_{s(y_t)\mid s(y_{t-1}),X}:=P[s(y_t)=1\mid s(y_{t-1})=1,X]\\
-P_{s(y_t),s(y_{t-1})\mid X}:=P[s(y_t)=1, s(y_{t-1})=1\mid X],
-\end{eqnarray*}
-which may alternatively be expressed as
-\begin{eqnarray*}
-P[s(y_t)=1\mid s(y_{t-1})=1,X]=P[y_t\geq0\mid y_{t-1}\geq0\mid X]=P[\varepsilon_t\geq -\beta'x_{t-1}\mid \varepsilon_{t-1}\geq -\beta'x_{t-2}, X]\\
-P[s(y_t)=1,s(y_{t-1})=1\mid X]=P[y_t\geq0, y_{t-1}\geq0\mid X]=P[\varepsilon_t\geq -\beta'x_{t-1}, \varepsilon_{t-1}\geq -\beta'x_{t-2}\mid X].
-\end{eqnarray*}
-As the dependence in the pair-wise probabilities is determined by the covariance matrix $\Sigma$, with $\sigma_{\varepsilon_t,\varepsilon_{t-1}\neq0}$, this in turn implies that the signs $s(y_t),s(y_{t-1})$ for $t=1,\cdots,n$ are dependent and follow a Markov process of order one. These findings are extended to the case where the signs exhibit nonlinear serial dependence.
-\end{proof}
 
 \begin{proof}[Proof of Corollary \protect\ref{CorollaryC1}]
-From test statistic $S_{n}(\beta _{1})$ in Proposition \ref{proposition1C1}
+From test statistic $S_{T}(\bm{\beta} _{1})$ in Proposition \ref{proposition1C1}
 and under assumption \textbf{A1}, we have: 
-\begin{eqnarray*}
-\tilde{S}_{n}(\beta _{1}) &=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ \frac{%
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\tilde{S}_{T}(\beta _{1}) &=\sum\limits_{t=1}^{T}s(y_{t})\ln \left\{ \frac{%
 P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] }{P%
 \left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\} \\
-&=&\sum\limits_{t=1}^{n}s(y_{t})\left\{ \ln \left\{ P\left[
+&=\sum\limits_{t=1}^{T}s(y_{t})\left\{ \ln \left\{ P\left[
 y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] \right\} -\ln \left\{ P%
 \left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] \right\} \right\} \\
-&=&\sum\limits_{t=1}^{n}s(y_{t})\left\{ 
+&=\sum\limits_{t=1}^{T}s(y_{t})\left\{ 
 \begin{array}{c}
 \ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right]
 ^{s(y_{t-1})}P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right]
@@ -1542,7 +1516,7 @@ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] \right\} -\ln \left\{ P%
 P\left[ y_{t}<0\mid y_{t-1}<0,X\right] ^{1-s(y_{t-1})}\right\}%
 \end{array}%
 \right\} \\
-&=&\sum\limits_{t=1}^{n}s(y_{t})\left\{ 
+&=\sum\limits_{t=1}^{T}s(y_{t})\left\{ 
 \begin{array}{c}
 s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right]
 \right\} +\left( 1-s(y_{t-1})\right) \ln \left\{ P\left[ y_{t}\geq
@@ -1552,52 +1526,54 @@ s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right]
 y_{t}<0\mid y_{t-1}<0,X\right] \right\}%
 \end{array}%
 \right\}
-\end{eqnarray*}%
+\end{align*}%
+\endgroup
 Observe that:%
-\begin{eqnarray*}
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
 \ln \left\{ \frac{P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] 
-}{P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\} &=&\ln
+}{P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\} &=\ln
 \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right] ^{s(y_{t-1})}%
 P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right] ^{1-s(y_{t-1})}\right\} \\
-&&-\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right]
+&\textcolor{white}{=}-\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right]
 ^{s(y_{t-1})}P\left[ y_{t}<0\mid y_{t-1}<0,X\right]
 ^{1-s(y_{t-1})}\right\} \\
-&=&s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq
+&=s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq
 0,X\right] \right\}\\
- &&+\left( 1-s(y_{t-1})\right) \ln \left\{ P\left[
+ &\textcolor{white}{=}+\left( 1-s(y_{t-1})\right) \ln \left\{ P\left[
 y_{t}\geq 0\mid y_{t-1}<0,X\right] \right\} \\
-&&-s(y_{t-1})\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right]
+&\textcolor{white}{=}-s(y_{t-1})\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right]
 \right\}\\
-&& -\left( 1-s(y_{t-1})\right) \ln \left\{ P\left[
-y_{t}<0\mid y_{t-1}<0,X\right] \right\} 
-\end{eqnarray*}
-\begin{eqnarray*}
+&\textcolor{white}{=}-\left( 1-s(y_{t-1})\right) \ln \left\{ P\left[
+y_{t}<0\mid y_{t-1}<0,X\right] \right\}\\
 \textcolor{white}{\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] 
-}{P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\}}&=&s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq
+}{P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\}}&=s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}\geq
 0,X\right] \right\} +\ln \left\{ P\left[ y_{t}\geq 0\mid
 y_{t-1}<0,X\right] \right\} \\
-&&-s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right]
+&\textcolor{white}{=}-s(y_{t-1})\ln \left\{ P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right]
 \right\} -s(y_{t-1})\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}\geq
 0,X\right] \right\} \\
-&&-\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}<0,X\right] \right\}
-+s(y_{t-1})\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}<0,X\right] \right\}
-\end{eqnarray*}
-\begin{eqnarray*}
+&\textcolor{white}{=}-\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}<0,X\right] \right\}
++s(y_{t-1})\ln \left\{ P\left[ y_{t}<0\mid y_{t-1}<0,X\right] \right\}\\
 \textcolor{white}{\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] 
-}{P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\}}&=&s(y_{t-1})\left\{ \ln \left\{ \frac{P\left[ y_{t}\geq 0\mid
+}{P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\}}&=s(y_{t-1})\left\{ \ln \left\{ \frac{P\left[ y_{t}\geq 0\mid
 y_{t-1}\geq 0,X\right] }{P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right] }%
 \right\} -\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid
 y_{t-1}<0,X\right]}{P\left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\}
 \right\} \\
-&&+\ln \left\{ \frac{P\left[y_{t}\geq 0\mid y_{t-1}<0,X\right] }{%
+&\textcolor{white}{=}+\ln \left\{ \frac{P\left[y_{t}\geq 0\mid y_{t-1}<0,X\right] }{%
 P\left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\}
-\end{eqnarray*}%
+\end{align*}%
+\endgroup
 Hence,%
-\begin{eqnarray*}
-\tilde{S}_{n}(\beta _{1}) &=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ \frac{%
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\tilde{S}_{T}(\bm{\beta} _{1}) &=\sum\limits_{t=1}^{T}s(y_{t})\ln \left\{ \frac{%
 P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] }{P%
-\left[ y_{i}<0\mid \text{\b{S}}_{t-1},X\right] }\right\} \\
-&=&\sum\limits_{t=1}^{n}s(y_{t})\left\{ 
+\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] }\right\} \\
+&=\sum\limits_{t=1}^{T}s(y_{t})\left\{ 
 \begin{array}{c}
 s(y_{t-1})\left\{ \ln \left\{ \frac{P\left[ y_{t}\geq 0\mid
 y_{t-1}\geq 0,X\right] }{P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right] }%
@@ -1608,9 +1584,9 @@ y_{t-1}<0,X\right] }{P\left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\}
 P\left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\}%
 \end{array}%
 \right\} \\
-&=&\sum\limits_{t=1}^{n}s(y_{t})\ln \left\{ \frac{P\left[ y_{t}\geq
+&=\sum\limits_{t=1}^{T}s(y_{t})\ln \left\{ \frac{P\left[ y_{t}\geq
 0\mid y_{t}<0,X\right] }{P\left[ y_{t}<0\mid y_{t}<0,X\right] }\right\}
-+\sum\limits_{t=1}^{n}s(y_{t})s(y_{t-1})\left\{ 
++\sum\limits_{t=1}^{T}s(y_{t})s(y_{t-1})\left\{ 
 \begin{array}{c}
 \ln \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right] }{%
 P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right] }\right\} \\ 
@@ -1618,95 +1594,101 @@ P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right] }\right\} \\
 P\left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\}%
 \end{array}%
 \right\} \\
-&=&\sum\limits_{t=1}^{n}a_{t}\text{ }s(y_{t})+\sum\limits_{t=1}^{n}b_{t}%
+&=\sum\limits_{t=1}^{T}a_{t}\text{ }s(y_{t})+\sum\limits_{t=1}^{T}b_{t}%
 \text{ }s(y_{t})s(y_{t-1})
-\end{eqnarray*}%
+\end{align*}%
+\endgroup
 where%
-\begin{equation*}
-\tilde{a}_{1}=\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\tilde{a}_{1}&=\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
 P\left[ y_{1}<0\mid X\right] }\right\} =\ln \left\{ \frac{1-P%
-\left[ \varepsilon_{1}<-\beta_1'x_{0}\mid X\right] }{P\left[
-\varepsilon_{1}<-\beta_1'x_{0}\mid X\right] }\right\}
-\end{equation*}%
-\begin{equation*}
-\tilde{b}_{1}=\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
+\left[ \varepsilon_{1}<-\bm{\beta}_1'\bm{x}_{0}\mid X\right] }{P\left[
+\varepsilon_{1}<-\bm{\beta}_1'\bm{x}_{0}\mid X\right] }\right\}\\
+\tilde{b}_{1}&=\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
 P\left[ y_{1}<0\mid X\right] }\right\} -\ln \left\{ \frac{P%
 \left[ y_{1}\geq 0\mid X\right] }{P\left[ y_{1}<0\mid X\right] }\right\} =0
-\end{equation*}%
-and for $t=2,...,n$%
-\begin{eqnarray*}
-a_{t} &=&\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t}<0,X\right] }{%
+\end{align*}%
+\endgroup
+and for $t=2,...,T$%
+\begin{align*}
+a_{t} &=\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t}<0,X\right] }{%
 P\left[ y_{t}<0\mid y_{t}<0,X\right] }\right\} , \\
-&& \\
-b_{t} &=&\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t-1}\geq
+& \\
+b_{t} &=\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t-1}\geq
 0,X\right] }{P\left[ y_{t}<0\mid y_{t-1}\geq 0,X\right] }\right\} -\ln
 \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right] }{P%
 \left[ y_{t}<0\mid y_{t-1}<0,X\right] }\right\} .
-\end{eqnarray*}
+\end{align*}
 Observe that:%
-\begin{eqnarray*}
-P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right] &=&1-P\left[
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+P\left[ y_{t}\geq 0\mid y_{t-1}<0,X\right] &=1-P\left[
 y_{t}<0\mid y_{t-1}<0,X\right] \\
-&=&1-\frac{P\left[ y_{t}<0,\text{ }y_{t-1}<0\mid X\right] }{P%
+&=1-\frac{P\left[ y_{t}<0,\text{ }y_{t-1}<0\mid X\right] }{P%
 \left[ y_{t-1}<0\mid X\right] } \\
-&=&1-\frac{P\left[ \varepsilon_{t}<-\beta_1'x_{t-1},\text{ }%
-\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }{P\left[
-\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] },\\
-P\left[ y_{t}<0\mid y_{t-1}<0,X\right] &=&\frac{P\left[
+&=1-\frac{P\left[ \varepsilon_{t}<-\bm{\beta}_1'\bm{x}_{t-1},\text{ }%
+\varepsilon_{t-1}<-\bm{\beta}_1'\bm{x}_{t-2}\mid X\right] }{P\left[
+\varepsilon_{t-1}<-\bm{\beta}_1'\bm{x}_{t-2}\mid X\right] },\\
+P\left[ y_{t}<0\mid y_{t-1}<0,X\right] &=\frac{P\left[
 y_{t}<0,\text{ }y_{t-1}<0\mid X\right] }{P\left[ y_{t-1}<0\mid X\right] } \\
-&=&\frac{P\left[ \varepsilon_{t}<-\beta_1'x_{t-1},\text{ }%
-\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }{P\left[
-\varepsilon_{t-1}<-\beta_1'x_{t-2}\mid X\right] }\\
-P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right] &=&1-P\left[
+&=\frac{P\left[ \varepsilon_{t}<-\bm{\beta}_1'\bm{x}_{t-1},\text{ }%
+\varepsilon_{t-1}<-\bm{\beta}_1'\bm{x}_{t-2}\mid X\right] }{P\left[
+\varepsilon_{t-1}<-\bm{\beta}_1'\bm{x}_{t-2}\mid X\right] }\\
+P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right] &=1-P\left[
 y_{t}<0\mid y_{t-1}\geq 0,X\right] \\
-&=&1-\frac{P\left[ y_{t}<0,\text{ }y_{t-1}\geq 0\mid X\right] }{P%
+&=1-\frac{P\left[ y_{t}<0,\text{ }y_{t-1}\geq 0\mid X\right] }{P%
 \left[ \text{ }y_{t-1}\geq 0\mid X\right] } \\
-&=&1-\frac{P\left[ y_{t}<0\mid X\right] }{P\left[ \text{ }%
+&=1-\frac{P\left[ y_{t}<0\mid X\right] }{P\left[ \text{ }%
 y_{t-1}\geq 0\mid X\right] }\left( P\left[ \text{ }y_{t-1}\geq 0\mid
 y_{t}<0,X\right] \right) \\
-&=&1-\frac{P\left[ y_{t}<0\mid X\right] }{P\left[ \text{ }%
+&=1-\frac{P\left[ y_{t}<0\mid X\right] }{P\left[ \text{ }%
 y_{t-1}\geq 0\mid X\right] }\left( 1-P\left[ \text{ }y_{t-1}<0\mid
 y_{t}<0,X\right] \right) \\
-&=&1-\left( \frac{P\left[ y_{t}<0\mid X\right] }{P\left[ \text{ }%
+&=1-\left( \frac{P\left[ y_{t}<0\mid X\right] }{P\left[ \text{ }%
 y_{t-1}\geq 0\mid X\right] }-\frac{P\left[ \text{ }y_{t-1}<0,\text{ }%
 y_{t}<0\mid X\right] }{P\left[ \text{ }y_{t-1}\geq 0\mid X\right] }\right) \\
-&=&1-\left( \frac{P\left[ y_{t}<0\mid X\right] }{1-P\left[
+&=1-\left( \frac{P\left[ y_{t}<0\mid X\right] }{1-P\left[
 y_{t-1}<0\mid X\right] }-\frac{P\left[ \text{ }y_{t-1}<0,\text{ }%
 y_{t}<0\mid X\right] }{1-P\left[ y_{t-1}<0\mid X\right] }\right) \\
-&=&1-\left[ \frac{P\left[ \varepsilon_{t}<-\beta _{1}^{^{\prime
-}}x_{t-1}\mid X\right] }{1-P\left[ \varepsilon_{t-1}<-\beta _{1}^{^{\prime
-}}x_{t-2}\mid X\right] }-\frac{P\left[ \text{ }\varepsilon_{t-1}<-\beta
-_{1}'x_{t-2},\text{ }\varepsilon_{t}<-\beta _{1}^{^{\prime
-}}x_{t-1}\mid X\right] }{1-P\left[ \varepsilon_{t-1}<-\beta _{1}^{^{\prime
-}}x_{t-2}\mid X\right] }\right)
-\end{eqnarray*}%
-\begin{eqnarray*}
-P\left[ y_{t}<0\mid y_{t-1}\geq 0, X\right] &=&\frac{P\left[
+&=1-\left[ \frac{P\left[ \varepsilon_{t}<-\bm{\beta}_{1}^{^{\prime
+}}\bm{x}_{t-1}\mid X\right] }{1-P\left[ \varepsilon_{t-1}<-\bm{\beta}_{1}^{^{\prime
+}}\bm{x}_{t-2}\mid X\right] }-\frac{P\left[ \text{ }\varepsilon_{t-1}<-\bm{\beta}
+_{1}'\bm{x}_{t-2},\text{ }\varepsilon_{t}<-\bm{\beta}_{1}^{^{\prime
+}}\bm{x}_{t-1}\mid X\right] }{1-P\left[ \varepsilon_{t-1}<-\bm{\beta}_{1}^{^{\prime
+}}\bm{x}_{t-2}\mid X\right] }\right)\\
+P\left[ y_{t}<0\mid y_{t-1}\geq 0, X\right] &=\frac{P\left[
 y_{t}<0,\text{ }y_{t-1}\geq 0\mid X\right] }{P\left[ y_{t-1}\geq 0\mid X\right] 
 } \\
-&=&\frac{P\left[ y_{t-1}\geq 0\mid \text{ }y_{t}<0, X\right] P%
+&=\frac{P\left[ y_{t-1}\geq 0\mid \text{ }y_{t}<0, X\right] P%
 \left[ y_{t}<0\mid X\right] }{P\left[ y_{t-1}\geq 0\mid X\right] } \\
-&=&\frac{P\left[ y_{t}<0\mid X\right] }{P\left[ y_{t-1}\geq
+&=\frac{P\left[ y_{t}<0\mid X\right] }{P\left[ y_{t-1}\geq
 0\mid X\right] }\left( 1-P\left[ y_{t-1}<0\mid \text{ }y_{t}<0,X\right]
 \right) \\
-&=&\frac{P\left[ y_{t}<0\mid X\right] }{1-P\left[ y_{t}<0\mid X\right] 
+&=\frac{P\left[ y_{t}<0\mid X\right] }{1-P\left[ y_{t}<0\mid X\right] 
 }-\frac{P\left[ y_{t-1}<0,\text{ }y_{t}<0\mid X\right] }{1-P%
 \left[ y_{t}<0\mid X\right] } \\
-&=&1-P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right]
-\end{eqnarray*}%
+&=1-P\left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right]
+\end{align*}%
+\endgroup
 We also have:%
-\begin{eqnarray*}
-\tilde{a}_{1} &=&\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\tilde{a}_{1} &=\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
 P\left[ y_{1}<0\mid X\right] }\right\} \\
-&=&\ln \left\{ \frac{1-P\left[ y_{1}<0\mid X\right] }{P\left[
+&=\ln \left\{ \frac{1-P\left[ y_{1}<0\mid X\right] }{P\left[
 y_{1}<0\mid X\right] }\right\} \\
-&=&\ln \left\{ \frac{1-P\left[ \varepsilon_{1}<-\beta _{1}^{^{\prime
-}}x_{0}\mid X\right] }{P\left[ \varepsilon_{1}<-\beta_1'x_{0}\mid X\right] 
+&=\ln \left\{ \frac{1-P\left[ \varepsilon_{1}<-\bm{\beta} _{1}^{^{\prime
+}}\bm{x}_{0}\mid X\right] }{P\left[ \varepsilon_{1}<-\bm{\beta}_1'\bm{x}_{0}\mid X\right] 
 }\right\}\\
-\tilde{b}_{1}&=&\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
+\tilde{b}_{1}&=\ln \left\{ \frac{P\left[ y_{1}\geq 0\mid X\right] }{%
 P\left[ y_{1}<0\mid X\right] }\right\} -\ln \left\{ \frac{P%
 \left[ y_{1}\geq 0\mid X\right] }{P\left[ y_{1}<0\mid X\right] }\right\} =0
-\end{eqnarray*}
+\end{align*}
+\endgroup
 \end{proof}
 
 \begin{proof}[Additional simulations]
