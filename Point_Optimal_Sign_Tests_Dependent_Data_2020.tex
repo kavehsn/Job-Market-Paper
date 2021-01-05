@@ -218,7 +218,7 @@ Section \ref{ConclusionC1}. Proofs are presented in Appendix \ref{Appendix:
 ProofsC1}.
 
 
-\section{framework}
+\section{Framework}
 
 {\hskip 1.5em} In this Section, we adapt the framework by \citet{coudin2009finite} to a predictive regression setup. Consider a stochastic process $Z=\{Z_t=(y_t,\bm{x}_{t-1}'):\Omega\rightarrow\R^{(k+1)}, t=1,2,\cdots\}$ defined on a probability space $(\Omega,\mathcal{F},P)$. Suppose that $y_{t}$ can linearly be explained by the vector variable $\bm{x}_{t-1}$%
 \begin{equation}
@@ -246,7 +246,7 @@ with
 
  Note (\ref{eq: mediane}) entails that $\varepsilon _{t}\mid X$ has no mass at zero for all $t$, which is only true if $\varepsilon_{t}\mid X$\ is continuous. Model (\ref{model}) in conjunction with assumption (\ref{eq: mediane}) allows the error terms to possess asymmetric, heteroskedastic and serially (nonlinear) dependent distributions, so long as the conditional medians are zero. Assumption \ref{eq: mediane} allows for many dependent schemes, such as those of the form $\varepsilon_1=\sigma_1(x_0,\cdots,x_{t-2})\epsilon_1$, $\varepsilon_t=\sigma_t(x_0,\cdots,x_{t-2},\varepsilon_1,\cdots,\varepsilon_{t-1})\epsilon_t$, $t=2,\cdots,T$, where $\epsilon_1,\cdots,\epsilon_T$ are independent with a zero median. In time-series context this includes models such as ARCH, GARCH or stochastic volatility with non-Gaussian errors. Furthermore, in the mediangale framework the disturbances need not be second order stationary.
  
-As pointed out by \citet{coudin2009finite}, the strict mediangale assumption on the error process $\bm{\varepsilon}$ with respect to $\mathcal{F}$ is equivalent to the MDS assumption on the sign process $s(\bm{\varepsilon})=\{s(\varepsilon)_t, t=1,2,\cdots\}$, where $s(\nu)=\mathbbm{1}_{\mathbb{R}^+\cup 0}$, $\forall{\nu}\in\mathbb{R}$, with respect to the same sub-$\sigma$ fields $\mathcal{F}$. However, in their study the errors are conditioned on the entire process $X=[\bm{x}_0',\cdots,\bm{x}_{T-1}']'$, which violates the MDS assumption unless the matrix $\bm{x}_t$s are strongly exogenous. However, within a predictive regression framework, the error process is conditioned on the past values, as such the MDS assumption on the sign process holds without imposing any strong exogeneity assumptions.
+%As pointed out by \citet{coudin2009finite}, the strict mediangale assumption on the error process $\bm{\varepsilon}$ with respect to $\mathcal{F}$ is equivalent to the MDS assumption on the sign process $s(\bm{\varepsilon})=\{s(\varepsilon)_t, t=1,2,\cdots\}$, where $s(\nu)=\mathbbm{1}_{\mathbb{R}^+\cup 0}$, $\forall{\nu}\in\mathbb{R}$, with respect to the same sub-$\sigma$ fields $\mathcal{F}$. However, in their study the errors are conditioned on the entire process $X=[\bm{x}_0',\cdots,\bm{x}_{T-1}']'$, which violates the MDS assumption unless the matrix $\bm{x}_t$s are strongly exogenous. However, within a predictive regression framework, the error process is conditioned on the past values, as such the MDS assumption on the sign process holds without imposing any strong exogeneity assumptions.
 
 \section{POS tests in linear and nonlinear predictive regressions \label{Point-optimal sign testC1}}
 
