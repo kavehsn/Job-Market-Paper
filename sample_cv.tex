@@ -1,0 +1,337 @@
+\documentclass[margin,line,pifont,palatino,courier]{res}
+
+\usepackage{pifont}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{paracol}
+\usepackage{supertabular}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,      
+    urlcolor=blue,
+}
+
+\usepackage[latin1] { inputenc}
+
+%\topmargin .5in
+%\oddsidemargin -.5in
+%\evensidemargin -.5in
+%\textwidth=6.0in
+ \textheight=9.0in
+%\itemsep=0in
+%\parsep=0in
+\usepackage{fancyhdr}
+%\topmargin=0in
+%\textheight=8.5in
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\newcommand{\ts}{\textsuperscript}
+\fancyhf{}
+%\cfoot{\thepage}
+%\lfoot{\emph{\footnotesize Research Statement}}
+\rfoot{{\footnotesize Curriculum Vitae, Kaveh Salehzadeh Nobari, \thepage}}
+
+
+\newenvironment{list1}{
+  \begin{list}{\ding{113}}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in}
+      \setlength{\leftmargin}{0.17in}}}{\end{list}}
+\newenvironment{list2}{
+  \begin{list}{$\bullet$}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in}
+      \setlength{\leftmargin}{0.2in}}}{\end{list}}
+
+\begin{document}
+
+\name{Kaveh Salehzadeh Nobari \vspace*{.1in}}
+
+\begin{resume}
+
+\section{\sc \bf Personal\\ Details}
+
+\vspace{.05in}
+
+\begin{tabular}{@{}p{2.0in}p{0.70in}p{3.5in}}
+23A Graham Road & Phone &+44 (0) 7813 903045 \\
+Chiswick                        &Email &\href{mailto: cnobari@gmail.com}{cnobari@gmail.com}\\
+London, W4 5DR      &Webpage &\href{https://sites.google.com/view/kavehnobari}{sites.google.com/view/kavehnobari}\\
+United Kingdom      & Citizenship &British\\
+\end{tabular}
+
+\hrulefill
+\section{\sc \bf Research\\ Interests}
+\begin{tabular}{@{}p{0.65in}p{5in}}
+Primary & Econometric Theory, Financial Econometrics \\
+\rule{0pt}{4ex}Secondary      &Machine Learning, Financial Economics, Market Microstructure  \\
+\end{tabular}
+
+\hrulefill
+
+\section{\sc \bf Education}
+
+Ph.D. Economics, Durham University, 2020
+\vspace*{+4ex}
+\begin{list2}
+\item Awards: Ph.D. Funding award by the Department of Economics and Finance
+\item Thesis: \emph{Finite Sample Sign-Based Procedures In Linear And nonlinear Statistical Models: With Applications To Granger Causality Analysis}
+\item Supervisors: Professor. Abderrahim Taamouti, Dr. Xing Wang
+\item Thesis committee: Professor. Jose Olmo, Dr. Majid Al. Sadoon
+\end{list2}
+
+M.Sc. Economics and Finance, Durham University, 2015
+\vspace*{+4ex}
+\begin{list2}
+\item Awards: Ranked 1\ts{st} out of the entire M.Sc. Finance programmes (1\ts{st} out of 650+ students), Ranked 1\ts{st} out of the entire M.Sc. Economics and Finance programme (1\ts{st} out of 30+ students)
+\item Honors: Submitted the 2\ts{nd} best dissertation out of the entire M.Sc. Finance programmes (2\ts{nd} out of 650+ students)
+\item Dissertation:  \emph{Explaining The Comovement Between European Market Indices Using High-Frequency Data}
+\end{list2}
+
+M.A. International Financial Analysis, Newcastle University, 2013
+\vspace*{+4ex}
+\begin{list2}
+\item Honors: Ranked 2\ts{nd} out of the entire programme, Submitted the 2\ts{nd} best dissertation out of the entire programme (2\ts{nd} out of 100+ students)
+\item Dissertation:  \emph{Financial Analyst's Report of Debenhams PLC}
+\end{list2}
+B.A. (HONS) Accounting and Finance, Newcastle University, 2011
+
+\hrulefill
+
+\section{\sc \bf Job Market\\ Paper}
+
+Dufour, J.-M., Salehzadeh-Nobari, K., Taamouti, A. \emph{Exact point-optimal sign-based tests for predictive linear and nonlinear regressions,} Working Paper.
+
+\underline{Short abstract}: \emph{We propose point-optimal sign-based tests for linear and nonlinear predictive regressions that are valid in the presence of heteroskedasticity of unknown form and persistent volatility, as well as persistent
+regressors and heavy-tailed errors. These tests are exact, distribution-free, and may be inverted to
+build confidence regions for the parameters of the regression function. A Monte Carlo study reveals
+that our procedures outperform classical tests.}
+
+\hrulefill
+
+\section{\sc \bf Working \\
+Papers}
+
+Salehzadeh-Nobari, K. \emph{Pair-copula constructions of point-optimal sign-based tests for predictive linear and nonlinear regressions,} Working Paper.
+
+\underline{Short abstract}: \emph{We extend the flexibility of the exact point-optimal sign-based tests by considering the entire dependence structure of the signs and building feasible test statistics based on pair copula constructions of the sign process. In a Monte Carlo study, we compare the performance of the proposed tests based on pair copula constructions by comparing its size and power to those of certain existing tests that are intended to be robust against heteroskedasticity. The simulation results maintain the superiority of our procedures to existing popular tests.}
+
+\vspace{+4ex}
+Salehzadeh-Nobari, K. \emph{Sign-based measures and tests of Granger causality,} Working Paper.
+
+\underline{Short abstract}:  \emph{We propose sign-based measures of Granger causality based on the Kullback-Leibler distance that quantify the degree of causalities. Furthermore, we show that by using bound-type procedures, Granger non-causality tests between random variables can be developed as a byproduct of the sign-based measures. The tests are exact, distribution-free and robust against heteroskedasticity of unknown form. We further suggest the VAR sieve bootstrap to reduce the bias and obtain bias-corrected estimators. A Monte Carlo simulation study reveals that the bootstrap bias-corrected estimator of the causality measures produce the desired outcome. Furthermore, the tests of Granger non-causality based on the signs perform well in terms of size control and power.}
+
+\hrulefill
+
+\section{\sc \bf Work in\\
+Progress}
+
+Muller, C., Salehzadeh-Nobari, K., Taamouti, A. \emph{Executive constraints and stock volatility in MENA region,} Work in Progress.
+
+\underline{Short abstract}: \emph{We study the impact of executive constraints on the volatility and the risk of listed MENA region firms. Using a two-step estimation approach, we first measure and test the impact of a proxy of executive constraints on the ratio of idiosyncratic volatility and subsequently examine the impact of executive constraints on the firms' performance. Finally, we assess the predictability power of executive constraints on the future returns and examine whether in the presence of predictability power, this measure is of economic value to an investor who makes capital allocation choices.}
+
+\vspace{+4ex}
+Ma, X., Salehzadeh-Nobari, K. \emph{Non-parametric estimation and inference of Granger causality measures for high-dimensional Markov chains,} Work in Progress.
+
+\underline{Short abstract}: \emph{We propose Granger causality measures based on Kullback Information Criterion for stationary and non-stationary Markov chains. We then suggest consistent non-parametric estimators for these measures and establish the asymptotic normality of the said estimators. Finally, we propose a local smoothed bootstrap in finite sample to compute a bootstrap bias-corrected estimator. A Monte Carlo simulation study reveals that the bootstrap bias-corrected estimator performs well and the corresponding tests control and size and have good power properties in finite samples.}
+
+\hrulefill
+
+\section{\sc \textbf{Conference \\ Presentations}}
+CFE-CMStatistics (Seville, Spain, December 2016)\\
+\begin{list2}
+\item Paper: \emph{Point-optimal sign-based tests for stock return predictability}
+\item Session: Quantiles, predictability, and heavy-tailed distributions
+\item Chair: Richard Luger (Universite Laval)
+\end{list2}
+
+
+The Econometric Society (Cotonou, Benin, July 2018)\\
+\begin{list2}
+\item Paper: \emph{Exact point-optimal sign-based tests for predictive linear and nonlinear regressions}
+\item Session: Prediction
+\item Chair: Hector Galindo-Silva (Pontificia Universidad Javeriana)
+\end{list2}
+
+The Econometric Society (Rabat, Morocco, July 2019)\\
+\begin{list2}
+\item Paper: \emph{Pair-copula constructions of point-optimal sign-based tests for predictive linear and nonlinear regressions}
+\item Session: Econometrics
+\item Chair: Taoufik Bouezmarni (Universite de Sherbrooke)
+\end{list2} 
+
+\hrulefill
+
+\section{\sc \textbf{Other\\ Talks}}
+
+\emph{Point-optimal sign-based tests for stock return predictability}, Newcastle University. (Newcastle upon Tyne, UK, February 2017)
+
+\hrulefill
+
+\section{\sc \textbf{Teaching Experience}}
+
+\begin{tabular}{@{}p{1.3in}p{0.8in}p{4in}}
+Winter--Spring & 2017 & Teaching Assistant, 2\ts{nd} year undergraduate \\
+&&Introduction to Financial Econometrics\\
+\rule{0pt}{4ex}Fall & 2017 & Teaching Assistant, postgraduate (Taught)\\
+&& Fundamentals of Finance\\
+\rule{0pt}{4ex}Winter--Spring & 2019 &Teaching Assistant, 3\ts{rd} year undergraduate\\
+&&Development Economics
+\end{tabular}
+
+\hrulefill
+
+\section{\sc \bf Academic Appointments}
+
+\begin{tabular}{@{}p{1.3in}p{0.7in}p{4in}}
+Spring--Summer & 2017 &Visiting Researcher, Aix-Marseille University\\
+&&Marseille , France
+\end{tabular}
+
+\hrulefill
+
+\section{\sc \bf Awards and Honors}
+
+\begin{longtable}{@{}p{0.7in}p{4in}}
+2016 & Ph.D. Funding Award \\
+           &Department of Economics and Finance - Durham University  \\
+\rule{0pt}{4ex}2016 & Best Overall Performance Award (Ranked 1\ts{st} out of 650+ students)  \\
+           & M.Sc. Finance Programmes - Durham University  \\
+\rule{0pt}{4ex}2016 & Outstanding Performance Award (Ranked 1\ts{st} out of 30+ students)  \\
+           & M.Sc. Finance (Economics and Finance) - Durham University  \\
+\rule{0pt}{4ex}2016 & Recognition in Durham University's Alumni Magazine\\
+           & Durham University\\
+\rule{0pt}{4ex}2016 & 2\ts{nd} Best Dissertation (out of 650+ students)\\
+           & M.Sc. Finance Programmes - Durham University\\
+\rule{0pt}{4ex}2016 & Recognition in Durham University's Alumni Magazine\\
+           & Durham University\\
+\rule{0pt}{4ex}2013 & 2\ts{nd} Best Overall Performance (out of 100+ students)\\
+           & M.A. International Financial Analysis - Newcastle University\\
+\rule{0pt}{4ex}2013 & 2\ts{nd} Best Dissertation (out of 100+ students)\\
+           & M.A. International Financial Analysis - Newcastle University
+\end{longtable}
+
+\hrulefill
+
+\section{\sc \bf Industry Experience}
+
+\begin{tabular}{@{}p{0.8in}p{0.5in}p{4in}}
+
+Feb --Aug &2012 & Investment Analyst Intern, Lowes Financial Management \\
+&&Newcastle upon Tyne, UK\\
+\rule{0pt}{4ex}June --Sept & 2014& Credit Controller, Southern Cross Healthcare Group PLC \\
+&&Darlington, UK
+\end{tabular}
+
+\hrulefill
+
+\section{\sc \bf Certificates}
+
+\begin{tabular}{@{}p{0.8in}p{4in}}
+
+2016 & Financial Risk Manager (FRM) \\
+& Global Association of Risk Professionals (GARP)\\
+ \rule{0pt}{4ex}2014 & Passed Chartered Financial Analyst (CFA) Level 2 Exam \\
+& CFA Institute
+\end{tabular}
+
+\hrulefill
+
+\section{\sc \bf Professional Development}
+
+\begin{tabular}{@{}p{0.8in}p{4in}}
+
+2019 & Parallel Design Patterns\\
+&EPCC Training Team (The University of Edinburgh)\\
+&Department of Computer Science, Durham University\\
+
+\rule{0pt}{4ex}2018 & Scientific Programming with Python\\
+&EPCC Training Team (The University of Edinburgh)\\
+&Department of Computer Science, Durham University\\
+
+\rule{0pt}{4ex}2016 & Introduction to Hamilton Cluster\\
+&The Institute of Advanced Research Computing\\
+&Department of Computer Science, Durham University\\
+
+\rule{0pt}{4ex}2016 & IARC's Data Science: A Primer\\
+&The Institute of Advanced Research Computing\\
+&Department of Computer Science, Durham University\\
+\end{tabular}
+
+\hrulefill
+
+\section{\sc \bf Programming \\ Experience}
+\begin{tabular}{@{}p{2.3in}p{3in}}
+\begin{list1}
+\item MATLAB
+\item R
+\item \LaTeX
+\item Linux
+\item Python
+\item HPC (SLURM)
+\end{list1}
+&
+\begin{list1}
+\item Stata
+\item SPSS,
+\item Minitab
+\item Excel VBA
+\item Fortran
+\end{list1}
+
+\end{tabular}
+
+\hrulefill
+
+\section{\sc \bf Additional \\ Skills}
+
+\begin{tabular}{@{}p{0.8in}p{4in}}
+
+Languages& Fluent in English, Russian and Persian; Intermediate Italian\\
+\rule{0pt}{4ex}Interests& Played the piano (classically) for 7 years\\
+&Received vocal training at the Rimsky-Korsakov conservatoire in St. Petersburg (Russia)\\
+&In addition, I enjoy cooking and attending classical concerts in my spare time
+\end{tabular}
+
+\hrulefill
+
+\section{\sc \bf References}
+
+\begin{tabular}{@{}p{0.8in}p{4in}}
+& Professor. Abderrahim Taamouti \\
+Position&Professor in Economics\\
+Employer&\href{https://www.dur.ac.uk/business/}{Business School}\\
+&\href{https://www.dur.ac.uk/}{\textit{Durham University}}\\
+Email & \href{mailto: abderrahim.taamouti@durham.ac.uk}{abderrahim.taamouti@durham.ac.uk}\\
+Phone &+44 (0) 191 33 45423 (Work)\\
+Webpage&\href{https://sites.google.com/view/ataamouti}{sites.google.com/view/ataamouti}
+\end{tabular}
+
+\begin{tabular}{@{}p{0.8in}p{4in}}
+& Dr. Majid Al Sadoon\\
+Position&Associate Professor in Economics\\
+Employer&\href{https://www.dur.ac.uk/business/}{Business School}\\
+&\href{https://www.dur.ac.uk/}{\textit{Durham University}}\\
+Email & \href{mailto:majid.al-sadoon@durham.ac.uk}{majid.al-sadoon@durham.ac.uk}\\
+Phone &+44 (0) 191 33 47164 (Work)\\
+Webpage&\href{https://majidalsadoon.wordpress.com/}{majidalsadoon.wordpress.com}
+\end{tabular}
+
+
+\begin{tabular}{@{}p{0.8in}p{4in}}
+& Professor. Jose Olmo\\
+Position&Professor in Financial Economics\\
+Employer&\href{https://www.southampton.ac.uk/economics/}{Economics Department}\\
+&\href{https://www.southampton.ac.uk/}{\textit{University of Southampton}}\\
+Email & \href{mailto: joseolmo@unizar.es}{ joseolmo@unizar.es}\\
+Phone &+34 876 55 4682 (Work)\\
+Webpage&\href{https://sites.google.com/site/joseolmobadenas/}{sites.google.com/site/joseolmobadenas/}
+\end{tabular}
+
+
+
+\end{resume}
+\end{document}
