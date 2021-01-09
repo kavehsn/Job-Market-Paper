@@ -302,16 +302,15 @@ P\left[ s(y_{1})=s_{1}\mid \text{\b{S}}_{0},X\right] =P%
 where each $s_{t}$, for $1\leq t\leq T$, takes two possible values $0$ and $1
 $. 
 
- As the errors satisfy the strict conditional mediangale assumption (\ref{eq: mediane}), the distribution of the signs $s(\varepsilon_1),\cdots,s(\varepsilon_T)$, and in turn $s(y_1),\cdots, s(y_T)$ under the null hypothesis of unpredictability, is well-specified and the signs are mutually independent [see \citet{coudin2009finite}].
 
 \begin{theorem}\label{Theorem1}
-Under model (\ref{model}) and assumption (\ref{eq: mediane}), the variables $s(\varepsilon_1),\cdots,s(\varepsilon_T)$ are i.i.d conditional on $X$, according to the distribution
+Under model (\ref{model}) and assumption (\ref{eq: mediane}), the variables $s(\varepsilon_1),\cdots,s(\varepsilon_T)$, and in turn $s(y_1),\cdots,s(y_T)$ under the null hypothesis of unpredictability, are i.i.d conditional on $X$ according to the distribution
 \[
 P[s(\varepsilon_1)=1\mid X]=P[s(\varepsilon_1)=0\mid X]=\frac{1}{2},\quad t=1,\cdots,T.
 \]
 This result holds true iff for any combination of $t=1,\cdots,T$ there is a permutation $\pi: i\rightarrow j$ such that the mediangale assumption holds for $j$. Then the signs $s(\varepsilon_1),\cdots,s(\varepsilon_T)$ are i.i.d.
 
-\end{theorem} A sign-based test for testing the null hypothesis (\ref{eq: hypothesis1})
+\end{theorem}  As the errors satisfy the strict conditional mediangale assumption (\ref{eq: mediane}), the distribution of the signs $s(\varepsilon_1),\cdots,s(\varepsilon_T)$, and in turn $s(y_1),\cdots, s(y_T)$ under the null hypothesis of unpredictability, is well-specified and the signs are mutually independent [see \citet{coudin2009finite}]. Thus, a sign-based test for testing the null hypothesis (\ref{eq: hypothesis1})
 against the alternative hypothesis (\ref{alternative}) is given by the
 following proposition:
 
@@ -1010,7 +1009,7 @@ _{t}\sim N(0,\sigma _{\varepsilon }^{2}(t))$ and%
 _{\varepsilon }^{2}(t-1)\,.
 \end{equation*}%
 \end{enumerate}
-We implement the 10\% SS-POS-based test and other tests which are intended to be robust against
+{\hskip 1.5em}We implement the 10\% SS-POS-based test and other tests which are intended to be robust against
 heteroskedasticity and non-normality, to test the null hypothesis of unpredictability - i.e. $%
 H_{0}:\beta =0.$ As in \citet{dufour2010exact}, Monte Carlo simulations are used to compare the size and
 power of the 10\% SS-POS test hereafter to that of the $t$-test, $t$-test
@@ -1026,11 +1025,11 @@ simulations study, the size of the aforementioned test is $5.95\%$ for $T=50$.
 
 As in \citet{mankiw1986we}, it is further possible to consider values of $\rho$ and $\theta$ closer to unity at which the size distortions of T-type tests are magnified. For instance, the size of the $t$-test in their study is shown to be severely distorted with values of $\theta=0.999$ and $\rho=1.0$, given a sample size of $T=50$. The simulations for the latter scenario can be found in the Appendix for standard normal disturbances. It must be noted that as the exact finite-sample distribution of the POS-based tests are simulated, our tests control size regardless of the values of $\rho$ and $\theta$ - the results in figure (\ref{fig: Power comparison using different n}) confirm these findings. It is further evident that although the size distortions for the $t$-test and $t$-test based on \citet{white1980heteroskedasticity} variance correction improve in large samples, these tests still reject the null hypothesis at twice and thrice their nominal level respectively given a sample of $n=500$ observations.
 
-The DGPs considered in this paper have been inspired by the simulation exercises conducted in previous studies [see \citet{mankiw1986we}, \citet{dufour1995exact}, \citet{coudin2009finite} and \citet{dufour2010exact}]. The first three DGPs all possess symmetrical distributions that are independent and identical across different observations $t=1,\cdots,T$. The Cauchy and the Student's $t$ distribution possess heavier tails in comparison to that of the normal distribution. The standard error of the coefficients are inflated in the presence of heavy tails, as a result of which the power of the $t$-type tests tend to be poor in comparison to other measures of central tendency (such as the median). Furthermore, the length of the confidence intervals are extended when the data is sampled from heavy tailed distributions. DGP 4 is a mixture of Cauchy and Gaussian distribution; as such, while the errors are independent, they are not identically distributed across different observations [see figure \ref{fig: distos2}]. DGP 4 is inspired by \citet{magdalinos2009limit}, who note that when $x_t$ is moderately explosive (with $\theta>1$), the least squares estimator is mixed normal with Cauchy-type tail behavior with an explosive convergence rate. The second group of DGPs covers different forms of heteroskedasticity, such as conditional heteroskedasticity (e.g. stationary and non-stationary GARCH models) and other forms of nonlinear dependencies. \citet{dufour2010exact} show that under certain forms of heteroskedasticity, $t$-type tests are not valid; hence, these DGPs fit well within the domains of our study.  
+The DGPs considered in this paper have been inspired by the simulation exercises conducted in previous studies [see \citet{mankiw1986we}, \citet{dufour1995exact}, \citet{coudin2009finite} and \citet{dufour2010exact}]. The first three DGPs all possess symmetrical distributions that are independent and identical across different observations $t=1,\cdots,T$. The Cauchy and the Student's $t$ distribution possess heavier tails in comparison to that of the normal distribution. The standard error of the coefficients are inflated in the presence of heavy tails, as a result of which the power of the $t$-type tests tend to be poor in comparison to other measures of central tendency (such as the median). Furthermore, the length of the confidence intervals are extended when the data is sampled from heavy tailed distributions. DGP 4 is a mixture of Cauchy and Gaussian distribution; as such, while the errors are independent, they are not identically distributed across different observations. DGP 4 is inspired by \citet{magdalinos2009limit}, who note that when $x_t$ is moderately explosive (with $\theta>1$), the least squares estimator is mixed normal with Cauchy-type tail behavior and an explosive convergence rate. The second group of DGPs covers different forms of heteroskedasticity, such as conditional heteroskedasticity (e.g. stationary and non-stationary GARCH models) and other forms of nonlinear dependencies. \citet{dufour2010exact} show that under certain forms of heteroskedasticity, $t$-type tests are not valid; hence, these DGPs fit well within the domains of our study.  
 
 \subsection{Simulation results \label{sec: Simulation results}}
 
-Monte Carlo simulation results are presented in Figures \ref{fig: Power
+{\hskip 1.5em}Monte Carlo simulation results are presented in Figures \ref{fig: Power
 comparison using different tests NormalC1}-\ref{fig: Power comparison using different tests Normal ExpC1}. These results correspond to different DGPs
 described in Section \ref{sec: Simulated models}. The figures compare the
 power of the $10\%$ SS-POS test to the $t$-test, W$t$-test, and CD (1995) test. The results are detailed below. 
@@ -1170,11 +1169,11 @@ values of $\rho .$
 \FloatBarrier
 \section{Empirical application \label{Empirical
 ApplicationC1}}
-In this Section, we consider an empirical application of the proposed 10\% SS-POS tests to illustrate its practical relevance. Valuation ratios are widely considered as predictors of stock returns and are generally known to be persistent. Therefore, they fit well within the framework of our study. In what follows, we specifically divert our attention to an application in the context of stock return predictability using the said ratios.
+{\hskip 1.5em}In this Section, we consider an empirical application of the proposed 10\% SS-POS tests to illustrate its practical relevance. Valuation ratios are widely considered as predictors of stock returns and are generally known to be persistent. Therefore, they fit well within the framework of our study. In what follows, we specifically divert our attention to an application in the context of stock return predictability using the said ratios.
 
 \subsection{Stock return predictability using valuation ratios  \label{StockReturnPredictability}}
 
-Many studies have investigated the predictive power of valuation ratios on excess stock returns. Dividend-price and earnings-price ratios
+{\hskip 1.5em}Many studies have investigated the predictive power of valuation ratios on excess stock returns. Dividend-price and earnings-price ratios
 are among few that were the focus of study in the early 1980s. The attention to these ratios was heightened
  when \citet{rozeff1984dividend}, \citet{fama1988dividend}, and \citet{campbell1988dividend} showed the ratios positive correlation with ex-post stock returns. \citet{fama1988dividend} find that in short horizons dividend yields only explain a small fraction of the variation
  in time-varying returns, yet in longer horizons (beyond one year) 
@@ -1191,7 +1190,7 @@ predictive power of the valuation ratios (dividend-price ratio, smoothed earning
 
 \subsubsection{Data description}
 
-Our data consists of monthly and quarterly observations of the aggregate S\&P500 composite index for the period spanning from March 1980 to December 2019 for a total of 480 trading months or 160 trading quarters. We consider the logarithmic returns on the S\&P500 in excess of the 30-day and 90-day T-bill rate. The valuation ratios under consideration are: dividend-price ratio, smoothed earnings-price ratio, and total return smoothed earnings-price ratio. The nominal monthly and quarterly prices of the value-weighted S\&P500 composite index, as well as the corresponding dividends and earnings are obtained from a database provided on Robert Shiller's website. The 30-day and 90-day Treasury bill returns, on the other hand, have been retrieved from the Center for Research in Security Prices (CRSP). 
+{\hskip 1.5em}Our data consists of monthly and quarterly observations of the aggregate S\&P500 composite index for the period spanning from March 1980 to December 2019 for a total of 480 trading months or 160 trading quarters. We consider the logarithmic returns on the S\&P500 in excess of the 30-day and 90-day T-bill rate. The valuation ratios under consideration are: dividend-price ratio, smoothed earnings-price ratio, and total return smoothed earnings-price ratio. The nominal monthly and quarterly prices of the value-weighted S\&P500 composite index, as well as the corresponding dividends and earnings are obtained from a database provided on Robert Shiller's website. The 30-day and 90-day Treasury bill returns, on the other hand, have been retrieved from the Center for Research in Security Prices (CRSP). 
 
 \begin{figure}[hbtp!]
 \caption{Monthly and quarterly S\&P500 excess stock returns, dividend-price, smoothed earnings-price and total return smoothed earnings-price ratios.}
@@ -1298,7 +1297,7 @@ where $r_t$ is the ex-post excess returns and $x_{t-1}$ is the ex-ante predictor
 \end{table}
 
 
-The projection technique based on the proposed 10\% SS-POS test is used to build simultaneous confidence sets for the parameters of the regressions of the excess returns against the
+{\hskip 1.5em}The projection technique based on the proposed 10\% SS-POS test is used to build simultaneous confidence sets for the parameters of the regressions of the excess returns against the
 dividend-price ratio, smoothed earnings-price ratio of \citet{campbell1988dividend} and the total return smoothed earnings-price ratio of \citet{bunn2014cape} and \citet{jivraj2017many} respectively. The results for different sub-periods and the full sample are reported in table \ref{tabu: Regressions}. As explained in Section \ref{POS confidence regions}, each simultaneous confidence set is obtained by
 collecting all pairs of $(\beta_0 ,\beta_1 )$ that are not rejected using our 10\% SS-POS test. Thus, a grid search is applied over an appropriate range\footnote{See Section \ref{Numerical illustration}.} and 95\% level confidence sets are constructed by retaining all the pairs $(\beta_0 ,\beta_1 )$ that are not
 rejected by the 10\% SS-POS test. Alternatively, the simulated annealing algorithm can be used to solve the optimization problem (\ref{eq: SA}) for each parameter $\beta_i$. 
@@ -1311,32 +1310,32 @@ The 95\% confidence intervals for the parameters $\beta_0$ and $\beta_1$ contain
 \FloatBarrier
 \section{Conclusion \label{ConclusionC1}}
 
-In this paper, we proposed simple point-optimal sign-based tests for inference in linear
-and nonlinear predictive regression models in the presence of stochastic (or fixed) regressors.
+{\hskip 1.5em}In this paper, we proposed point-optimal sign-based tests for inference in linear
+and nonlinear predictive regressions in the presence of stochastic (or fixed) regressors.
 One motivation of the paper is to build valid (control the size whatever the
 sample size) tests for linear and nonlinear predictability of stock returns.
 The most popular predictors of stock returns (e.g. dividend-price ratio,
 earning-price ratio, etc.) are known to be persistent with residuals that are correlated with
 the shock in the stock returns. This makes the classical predictability tests
-not valid, especially when the sample size is small or moderate. In
-addition, the proposed sign-based tests are exact, distribution-free, and
-robust against heteroskedasticity of unknown form and allow for serial (nonlinear). Additionally, they may be inverted to build
+invalid, particularly when the sample size is small or moderate. In
+addition, the proposed sign-based tests are exact, distribution-free and
+robust against heteroskedasticity of unknown form and allow for serial (nonlinear) dependence. Additionally, they may be inverted to build
 confidence regions for the parameters of the regression function. Since the
 point-optimal sign tests depend on the alternative hypothesis, an adaptive
-approach based on the split-sample technique was suggested in order to choose
+approach based on the split-sample technique is suggested to choose
 the appropriate alternative that controls the size and maximizes the power.
 
 We presented a Monte Carlo study to assess the performance of the proposed
 \textquotedblleft quasi\textquotedblright -point-optimal sign test by
-comparing its size and power to those of certain existing tests which are
-supposed to be robust against heteroskedasticity. We considered different
+comparing its size and power to those of certain existing tests that are
+intended to be robust against heteroskedasticity. We considered different
 DGPs to illustrate different contexts that one can encounter in practice.
 The results show that the $10\%$ split-sample point-optimal sign test is
 more powerful than the $t$-test, \citet{dufour1995exact} sign-based test,
 and the $t$-test based on \citet{white1980heteroskedasticity} variance correction.
 
-Finally, the proposed tests were used to assess the predictive power of some
-financial predictors, such as the dividend-price ratio, earnings-price ratio and the smoothed earnings-price ratio of \citet{campbell1988dividend,campbell2001valuation} on the annualized monthly excess stock returns. Our study suggests predictability in favor of all the predictors for the quarterly data in the period spanning from 2002 to 2009. which is consistent with the findings of \citet{campbell2006efficient}, Our findings are in line with those of \citet{campbell2006efficient} who do not find any evidence of predictability in favor of any of the predictors in the period spanning from 1952-2002. 
+Finally, the proposed tests are used to assess the predictive power of some
+financial predictors, such as the dividend-price and earnings-price ratios, as well as the smoothed earnings-price ratio of \citet{campbell1988dividend,campbell2001valuation} on the annualized monthly excess stock returns. Our study suggests predictability in favor of all the predictors for the quarterly data in the period spanning from 2002 to 2009, which is consistent with the findings of \citet{campbell2006efficient}. We further reaffirm the findings of \citet{campbell2006efficient} who do not find any evidence of predictability in favor of any of the predictors in the period spanning from 1952-2002. 
 
 \newpage
 \bibliographystyle{apa}
