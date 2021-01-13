@@ -1,0 +1,1591 @@
+%2multibyte Version: 5.50.0.2960 CodePage: 65001
+%\input{tcilatex}
+%\usepackage[latin1]{inputenc}
+%\input{tcilatex}
+%\input{tcilatex}
+%\input{tcilatex}
+%\\usepackage{harvard}
+%\input{tcilatex}
+
+
+\documentclass[harvard,11pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amssymb}
+\usepackage{longtable}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage{amsmath}
+\usepackage[abs]{overpic}
+\usepackage{linegoal}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=black,      
+    urlcolor=blue,
+    citecolor=blue,	
+}
+\usepackage[FIGBOTCAP]{subfigure}
+\usepackage{bbm}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage[round]{natbib}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{caption}
+\usepackage{tabu}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{booktabs}
+\usepackage{graphicx,epstopdf}
+\usepackage{setspace,caption}
+\captionsetup{font=doublespacing}%
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{subfigure}
+\usepackage{xargs}
+%\usepackage[pdftex,dvipsnames]{xcolor}
+
+
+
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2960}
+%TCIDATA{Codepage=65001}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=BibTeX}
+%TCIDATA{LastRevised=Saturday, July 16, 2016 00:41:23}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{Language=American English}
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\Z}{\mathbb{Z}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{acknowledgement}[theorem]{Acknowledgement}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{case}[theorem]{Case}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conclusion}[theorem]{Conclusion}
+\newtheorem{condition}[theorem]{Condition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{criterion}{Criterion}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{solution}{Solution}
+\newtheorem{summary}[theorem]{Summary}
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\  \rule{0.5em}{0.5em}}
+\newcommand{\cqfd}
+{\mbox{}\nolinebreak \hfill \rule{2.5mm}{2.5mm}\medbreak \par}
+\renewcommand{\cite}{\citeasnoun}
+\geometry{left=0.8in,right=0.8in,top=0.8in,bottom=0.8in}
+\renewcommand{\baselinestretch}{1.5}
+%\input{tcilatex}
+\begin{document}
+
+
+
+\title{{Pair copula constructions of point-optimal sign-based tests for predictive linear and non-linear regressions}}
+\author{Kaveh Salehzadeh Nobari\thanks{%
+Department of Economics and Finance, Durham University Business School, Durham DH1 3LB, UK
+(\href{emailto: kaveh.salehzadeh-nobari@durham.ac.uk}{kaveh.salehzadeh-nobari@durham.ac.uk}), 
+%EndAName
+Durham University	}}
+\date{\today}
+\maketitle
+\begin{center}
+[\href{https://kavehsn.github.io/Job-Market-Paper/PCC_POS_2020.pdf}{\underline{LATEST VERSION HERE}}]
+\end{center}
+
+
+\begin{abstract}
+We propose pair copula constructed point-optimal sign tests in the context of predictive regressions with endogenous, persistent regressors, and disturbances exhibiting serial (nonlinear) dependence. The proposed approaches entail considering the entire dependence structure of the signs and building feasible test statistics based on pair copula constructions of the sign process. The tests are exact and valid in the presence of heavy tailed and nonstandard errors, as well as heterogeneous and persistent volatility. Furthermore, they may be inverted to build confidence regions for the parameters of the regression function. Finally, we adopt an adaptive approach based on the split-sample technique to Maximize the power of the test. In a Monte Carlo study, we compare the performance of the proposed \textquotedblleft quasi\textquotedblright-point-optimal sign tests based on pair copula constructions by comparing its size and power to those of certain existing tests that are intended to be robust against heteroskedasticity. The simulation results maintain the superiority of our procedures to existing popular tests.   
+\end{abstract}
+
+
+\noindent \textbf{Keywords}: predictive regressions, D-vine, Truncation, sequential estimation, persistent regressors, sign test, exact inference, adaptive method, power envelope.
+
+\noindent \textbf{JEL Codes}: C12, C13, C15, C22, C52
+
+\newpage
+\section{Introduction \label{Introduction}}
+
+ The disturbances of regressions often exhibit non-normal distributions and heteroskedasiticty of unknown form, in the presence of which parametric tests perform poorly in terms of size control and power in finite samples. In an extensive simulations exercise, \citet{dufour2010exact} show that the heteroskedasticity and autocorrelation corrected tests developed by \citet{white1980heteroskedasticity} (more commonly referred to as \textquotedblleft HAC\textquotedblright procedures) are plagued with low power when the errors follow GARCH structures or there is a break in the variance. To address these issues, \citet{dufour2010exact} propose point-optimal sign-based inference to test whether the conditional median of a response variable is zero against a linear regression alternative, where this procedure is further extended to non-linear models. These tests are constructed by considering fixed regressors and error terms that are independent with zero median conditional on the explanatory variables. In an earlier paper we proposed we propose an extension of the sign tests developed by \citet{dufour2010exact}, in which exact point-optimal sign-based tests (POS-based tests hereafter) to test for predictability in the presence of highly persistent stochastic regressors for both  linear and non-linear models. However, in order to obtain \textit{feasible} POS-based test statistics, we had to impose a Markovian assumption on the sign process. The aim of this paper is to relax the Markovianity assumption for the POS-based tests. This can be achieved using the models introduced by \citet{panagiotelis2012pair} for multivariate discrete data based on pair copula constructions (PCC hereafter). These models would allow us to build feasible test statistics that are robust against heavy-tailed and asymmetric distributions, provided that the errors have zero median conditional on their own past and the explanatory variables, without the necessity to impose any additional (and potentially restrictive) assumptions.
+
+
+ When the predictors follow a local-to-unity autoregression, there is a high degree of contemporaneous correlation between the errors in the regressors and the disturbances of the predictive regresssion. In such situation, least-squares based T-type tests possess a non-standard distribution and inference using asymptotic critical values is no longer valid [see \citet{mankiw1986we} and \citet{stambaugh1999predictive} among others]. As the POS-based type tests such as those introduced by \citet{dufour2010exact} are randomized tests with a randomized distribution under the null hypothesis [see \citet{pratt2012concepts}], the said procedures do not suffer from the issues encountered by T-type statistics in finite samples. Therefore, by relaxing the independence assumption on the error terms and by allowing the disturbances to exhibit serial (non-linear) dependence, the POS-based tests are easily extended to a predictive regression framework. The POS-based tests are shown to be robust against non-standard distributions and heteroskedasticity of unknown form and to have the highest power among parametric and nonparametric tests that are supposed to be robust against heteroskedasticity. Moreover, as in \citet{dufour2010exact} they can be inverted to produce a confidence region for the vector (sub-vector) of parameters.  
+
+Although, the literature surrounding sign-based and sign-ranked inference is vast [see \citet{taamouti2015finite} and \citet{boldin1997sign} among others], the focus of the POS-based tests constructed by \citet{dufour2010exact} is to maximize power at a nominated point in the alternative parameter space. As such, the power of the POS-based test is close to that of the power envelope - i.e. maximum attainable power for a given testing problem [see \citet{king1987towards}]. Therefore, the POS-based tests in \citet{dufour2010exact} and those developed in this paper using the pair copula construction of discrete data (PCC-POS-based tests hereafter) are Neyman-Pearson type tests based on the signs, and as in \citet{dufour2010exact} a practical problem concerns finding an alternative at which the power of the PCC-POS-based tests is close to that of the power envelope. By  conducting an intensive simulations exercise, \citet{dufour2010exact}  find that when 10\% of the sample is used to estimate the alternative and the remaining portion is used to calculate the test-statistic, the power of the POS-based test traces out the power envelope. Our simulations results using the 10\% split-sample PCC-POS-based tests confirm these findings.
+
+
+Many studies have developed distribution-free sign and sign-ranked statistics that are exact and robust against different forms of heteroskedasticity. These range from the procedures proposed for bivariate regressions [see. \citet{campbell1991over, dufour1995exact, campbell1997exact} and \citet{luger2003exact} among others], to those for multivariate regressions [see \citet{dufour2010exact}]. In the context of dependent data, \citet{coudin2009finite} extend the procedures proposed by \citet{boldin1997sign} to further consider serial dependence, as well as discrete distributions. The work in this paper, as well as the POS-based test for predictive regressions fall within the latter category (i.e. sign-based testing procedures for dependent data), and they are particularly motivated by the regressions capturing the predictability of stock returns. Predictors of stock returns, such as earnings-price and dividend price ratios often possess relatively static numerators and contain the non-stationary price series in their denominator; hence, as noted earlier, these predictors are shown to be highly persistent, with innovations that are correlated with the residuals of the predictive regressions, which lead to invalid inference [see \citet{mankiw1986we} and \citet{stambaugh1985bias,stambaugh1999predictive}]. 
+
+Due to the non-linear nature of the signs, there is inherent uncertainty regarding the structure of sign dependence. Therefore, it is important to consider the entire dependence structure of the signs. One approach for computing the joint distribution of the signs $s(y_1),...,s(y_n)$, where $s(y_i)=\mathbbm{1}_{\R^+ \cup\{0\} }\{y_i\}$, entails taking advantage of copula functions [see \citet{sklar1959fonctions}], which express the joint distribution of the signs in terms of the i) marginal distributions of the individual signs; and ii) copula models capturing the dependence of the $n$ signs. As the signs are discrete, the likelihood function of the POS-based tests under the alternative hypothesis can then be calculated using rectangle probabilities and in turn estimated using copulas with closed analytical form. However, this approach would not yield feasible test statistics, as the number of \textit{multivariate} copulas that need to be evaluated increase at an exponential rate as the sample size $n$ increases. As a result of this curse of dimensionality, the literature surrounding calculating probability mass functions (p.m.f hereafter) using discrete data is limited to low-dimensional data and copulas that are fast to calculate [see \citet{nikoloulopoulos2008multivariate,nikoloulopoulos2009finite} and \citet{li2010two}]. 
+
+To propose feasible test statistics, we build POS-based tests in the context of stochastic regressors for linear and non-linear models, using a discrete analogue of the vine PCCs proposed by \citet{panagiotelis2012pair}. The likelihood function of the signs under the alternative hypothesis can be decomposed as a vine PCC under a set of conditions that are later outlined in the paper. The most important advantage of the latter method is that for a sample of size $n$, only $2n(n-1)$ \textit{bivariate} copula evaluations are required, as opposed to $2^n$ \textit{multivariate} copula evaluations using the rectangle probabilities approach. Another advantage of the vine PCC methodology is that model selection techniques can be used to identify the conditional independence in the process of signs in order to create more parsimonious PCC models. 
+
+
+ An issue that needs considerable attention is whether estimating $2n(n-1)$ parameters for evaluating the bivariate copulas in the PCC-POS-based tests is feasible as $n$ tends to infinity. Even when more parsimonius PCC models are selected, this approach is only feasible in finite samples. However, in a strict stationarity framework, the parameters are invariant to time shifts and as such this number drastically reduces to $n-1$ parameter estimates, which may further reduce to as small as one parameter in the case of truncated PCC models. A Monte Carlo study reveals that pair copula constructions of POS-based tests are valid. Furthermore, under \textit{most} distributional assumptions, they possess the maximum power among tests that are intended to be robust against non-standard distributions and heteroskedasticity of unknown form.  
+
+The outline of the paper is as follows: in Section \ref{Framework}, we motivate the use of the discrete analogue of the vine PCC for building POS-based tests. In Section \ref{Point-optimal sign
+test based on PCC}, we outline the conditions under which vine PCCs can be implemented and we also discuss the choice of the PCC model. We then propose PCC-POS-based tests for linear and non-linear models. In secion \ref{EstimationC3}, we discuss the estimation approach implemented for the vine PCCs. In Section \ref{optimal alternative hypothesis}, we discuss the choice of the alternative hypothesis for computing the PCC-POS-based test statistic. In Section \ref{projectiontechniqueC3}, we discuss the problem of finding a confidence set for a vector (subvector) of parameters using the projection techniques. In Section \ref{sec: Monte Carlo study}, we assess the performance of the proposed tests in terms of size and power. Finally, in Section \ref{ConclusionC3} we conclude the findings of the paper.
+
+\section{Framework \label{Framework}}
+
+
+ Consider a stochastic process $Z=\{Z_t=(y_t,x_{t}'):\Omega\rightarrow\R^{(k+1)}:t=0,1,\cdots\}$ defined on a probability space $(\Omega,\mathcal{F},P)$. Suppose that $y_{t}$ can linearly be explained by a vector variable $x_{t}$%
+\begin{equation}
+y_{t}=\beta'x_{t-1}+\varepsilon_{t},\quad t=1,...,n,  \label{eq: DGP}
+\end{equation}%
+where $x_{t-1}$ is an $(k+1)\times 1$ vector of stochastic explanatory 
+variables, say $x_{t-1}=[1,x_{1,t-1},...,x_{k,t-1}]'$, $\beta \in \mathbb{R}^{(k+1)}$ is an unknown vector of parameters with $\beta=[\beta_0,\beta_1,...,\beta_k]'$ and
+\[
+ \varepsilon_t\mid X\sim F_t(.\mid X)
+\] 
+where $F_{t}(.\mid X)$ is an unknown conditional distribution function and X=$[x_0,\cdots,x_{n-1}]'$ is an $n\times (k+1)$ matrix. 
+
+We follow \citet{coudin2009finite} by considering the median as an alternative measure of central tendency. This implies imposing a median-based analogue of the martingale difference sequence (MDS) on the error process - namely we suppose that $\varepsilon_t$ is a strict conditional mediangale
+\begin{equation}\label{eq: median}
+P[\varepsilon_{t}> 0\mid \bm{{\varepsilon}}_{t-1},X]=P[\varepsilon_{t}<0\mid \bm{\varepsilon}_{t-1},X]=\frac{1}{2},
+\end{equation}%
+with
+\[
+\bm{\varepsilon}_{0}=\{\emptyset\},\quad\bm{\varepsilon}_{t-1}=\{\varepsilon_1,\cdots,\varepsilon_{t-1}\},\quad\text{for}\quad t\geq2
+\]
+
+ Note (\ref{eq: median}) entails
+that $\varepsilon _{t}\mid X$ has no mass at zero for all $t$, which is only true if $\varepsilon_{t}\mid X$\ is a
+continuous variable. Model (\ref{eq: DGP}) in conjunction with assumption (\ref{eq: median}) allows the error terms to possess asymmetric, heteroskedastic and serially dependent distributions, so long as the conditional medians are zero. Assumption (\ref{eq: median}) allows for many dependent schemes, such as those of the form $\varepsilon_1=\sigma_1(x_1,\cdots,x_{t-2})\epsilon_1$, $\varepsilon_t=\sigma_1(x_1,\cdots,x_{t-2},\varepsilon_1,\cdots,\varepsilon_{t-1})\epsilon_t$ ,$t=2,\cdots,n$, where $\epsilon_1,\cdots,\epsilon_n$ are independent with a zero median. In time-series context this includes models such as ARCH, GARCH or stochastic volatility with non-Gaussian errors. Furthermore, in the mediangale framework the disturbances need not be second order stationary. 
+
+Suppose, we wish to test the null hypothesis
+\begin{equation}\label{eq: null}
+H_0:\beta=0,
+\end{equation}
+against the alternative
+\begin{equation}\label{eq: alt}
+H_1:\beta=\beta_1.
+\end{equation}
+Define the vector of signs as follows
+\begin{equation*}
+U(n)=(s(y_1),...,s(y_n))',
+\end{equation*}
+where for $t=1,...,n$
+\begin{equation*}
+s(y_{t})=\left\{ 
+\begin{tabular}{l}
+$1,$ $if$ $y_{t}\geq 0$ \\ 
+$0,$ $if$ $y_{t}<0$%
+\end{tabular}%
+\ \right. \text{.}
+\end{equation*}
+We consider Neyman-Pearson type test based on the signs. Thus, to build POS-based tests for testing the null hypothesis (\ref{eq: null}) against the alternative (\ref{eq: alt}), we first define the likelihood function of the sample in terms of signs $s(y_1),...,s(y_n)$
+\begin{equation}\label{eq: likelihood}
+L(U(n),\beta)=P[s(y_1)=s_1,...,s(y_n)=s_n\mid X]=\prod\limits_{t=1}^{n}P\left[s(y_t)=s_t\mid \text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X\right],
+\end{equation}
+with 
+\begin{equation*}
+\text{\b{S}}_{0}=\{\emptyset\},\quad \text{\b{S}}_{t-1}=\{s(y_1),...,s(y_{t-1})\},\quad\text{for}\quad t\geq 2,
+\end{equation*}
+and
+\[
+P[s(y_1)=s_1\mid\text{\b{S}}_{0}=\text{\b{s}}_{0},X]=P[s(y_1)=s_1\mid X],
+\]
+where each $s_t$ for $1\leq t\leq n$ takes two possible values of 0 and 1. Under model (\ref{eq: DGP}) and assumption (\ref{eq: median}), the variables $s(\varepsilon_1),\cdots,s(\varepsilon_n)$ and in turn $s(y_1),\cdots,s(y_n)$ are i.i.d conditional on $X$, according to the distribution
+\[
+P[s(\varepsilon_1)=1\mid X]=P[s(\varepsilon_1)=0\mid X]=\frac{1}{2},\quad t=1,\cdots,n
+\]
+This results holds true iff  for any combination of $t=1,\cdots,n$ there is a permutation $\pi: i\rightarrow j$ such that the mediangale assumption holds for $j$. Then the signs $s(\varepsilon_1),\cdots,s(\varepsilon_n)$ are i.i.d. [see Theorem \ref{Theorem1}]. Therefore, under the null hypothesis we have
+
+\begin{equation}
+P[s(y_t)=1\mid X]=P[s(y_t)=0\mid X]=\frac{1}{2},\quad t=1,...,n.
+\end{equation}
+Consequently, under the null hypothesis of orthogonality, the log-likelihood function is given by
+\[
+L_0(U(n),0)=\prod\limits_{t=1}^{n}P[s(y_t)=s_t\mid X]=\left(\frac{1}{2}\right)^n.
+\]
+On the other hand, under the alternative we have
+\[
+L_1(U(n),\beta_1)=\prod\limits_{t=1}^{n}P[s(y_t)=s_t\mid \text{\b{S}}_{t-1}=\text{\b{s}}_{t-1}, X],
+\]
+where now for $t=1,..,n$
+\[
+y_t=\beta_1'x_{t-1}+\varepsilon_t.
+\]
+In the first chapter, we considered optimal sign-based tests (in the Neyman-Pearson sense), which maximize power under the constraint $P[\text{Reject }  H_0\mid H_0]\leq \alpha$, where $\alpha$ is an arbitrary significance level [see \citet{lehmann2006testing}]. Let $H_0$ and $H_1$ be defined by (\ref{eq: null}) and (\ref{eq: alt}) respectively. Then under the assumptions (\ref{eq: DGP}) and (\ref{eq: median}), the log-likelihood ratio
+\begin{equation}\label{eq: teststat}
+SL_n(\beta_1)=\ln\left\{\frac{L_1(U(n),\beta_1)}{L_0(U(n),0)}\right\}>c,
+\end{equation} 
+is most powerful for testing $H_0$ against $H_1$ among level $\alpha$ tests based on the signs $(s(y_1),...,s(y_n))'$, where $c$ is the smallest constant such that 
+\[
+P[SL_n(\beta_1)>c\mid H_0]\leq \alpha,
+\]
+where $\alpha$ is an arbitrary significance level and where $L_0(U(n),0)$ is the likelihood function under $H_0$.
+
+ For POS-based tests in the contex of stochastic regressors, the test statistic requires the calculation of $P[y_t\geq0\mid\text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X]$ and $P[y_t<0\mid\text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X]$. The latter is not easy to compute, as it involves the distribution of the joint process of signs  $s(y_1),...,s(y_n)$, conditional on $X$ which is unknown. Therefore, to obtain feasible test statistics, we made an assumption that the sign process $\{s(y_t)\}_{t=0}^{\infty}$ follows a Markov process of finite order; in our study, we considered a Markov process of order one. However, it may be important to capture the dependence structure of the entire process.
+
+An approach by which we may consider the entire dependence structure of the vector of signs is to take advantage of copulas. The Theorem of  \citet{sklar1959fonctions} states that there exists a copula $C$ such that
+\begin{equation}
+F(s_1,...,s_n\mid X)=C(F_1(s_1\mid X),...,F_n(s_n\mid X)),
+\end{equation}
+where $F$ is a conditional joint cumulative distribution function (CDF hereafter) of the vector of signs $\text{\b{S}}=(s(y_1),...,s(y_n))'$ with conditional marginal distribution functions $F_j$ for $j=1,2,...,n$. Copula $C$ is unique for continuous variables, but for discrete variables it is unique only on the set
+\[
+\text{Range}(F_1)\times...\times\text{Range}(F_n),
+\]
+which is the Cartesian product of the ranges of the marginal distribution functions. To illustrate an example of non-uniqueness in the discrete case, let us consider a sample of two discrete binary variables, say $s(y_1)$ and $s(y_2)$, with corresponding marginal distribution functions $F_1$ and $F_2$. We know that $F_j\sim\text{Bernoulli}(p_j)$ for $j=1,2$, such that
+\begin{equation}\label{eq: BernoulliCDF}
+F_j(s_j\mid X)=\left\{ 
+\begin{tabular}{lll}
+$0,$ &$\text{for}$& $s_j< 0$ \\ 
+$1-p_j,$ &$\text{for}$ &$0\leq s_j< 1$ \\
+$1,$& $\text{for}$& $s_j\geq 1$
+\end{tabular}%
+\right.
+\end{equation} 
+Thus, $\text{Range}(F_1)=\{0,1-p_1,1\}$ and $\text{Range}(F_2)=\{0,1-p_2,1\}$, with the copula only being unique for $C(1-p_1,1-p_2)$, noting that $C(0,1-p_j)=0$ and $C(1,1-p_j)=1-p_j$ for $j=1,2$. However, this non-uniqueness does not preclude the use of parametric copulas for modelling discrete data [see. \citet{joe1997multivariate}, \citet{song2009joint}]. Considering this bivariate example, the p.m.f can be expressed in terms of rectangle probabilities, 
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+P[s(y_1)=s_1,s(y_2)=s_2\mid X]&=P[s_1-1<s(y_1)\leq s_1,s_2-1<s(y_2)\leq s_2\mid X]\\
+&=F(s_1,s_2\mid X)-F(s_1-1,s_2\mid X)\\
+&-F(s_1,s_2-1\mid X)+F(s_1-1,s_2-1\mid X)
+\end{align*}
+\endgroup
+and in turn in terms of copulas as follows
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+P[s(y_1)=s_1,s(y_2)=s_2\mid X]&=F(s_1,s_2\mid X)-F(s_1-1,s_2\mid X)\\
+&-F(s_1,s_2-1\mid X)+F(s_1-1,s_2-1\mid X)\\
+&=C(F_1(s_1\mid X),F_2(s_2\mid X))-C(F_1(s_1-1\mid X),F_2(s_2\mid X))\\
+&\textcolor{white}{=}-C(F_1(s_1\mid X),F_2(s_2-1\mid X))+C(F_1(s_1-1\mid X),F_2(s_2-1\mid X)),
+\end{align*}
+\endgroup
+which implies that the $n$-variate likelihood function (\ref{eq: likelihood}) can be expressed in terms of $2^n$ finite differences
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+P[s(y_1)=s_1,...,s(y_n)=s_n\mid X]&=\sum\limits_{i_1=0,1}...\sum\limits_{i_n=0,1}(-1)^{i_1+...+i_n}P[s(y_1)\leq s_1-i_1,...,s(y_n)\leq s_n-i_n\mid X]\\
+&=\sum\limits_{i_1=0,1}...\sum\limits_{i_n=0,1}(-1)^{i_1+...+i_n}C(F_1(s_1-i_1\mid X),...,F_n(s_n-i_n\mid X)).
+\end{align*}
+\endgroup 
+Evidently, the calculation of likelihood function (\ref{eq: likelihood}) using this approach would require $2^n$ \textit{multi\-variate} copula evaluations, which is not computationally feasible. However, by employing the vine PCC introduced later in the paper, we will show that this number can be reduced to only $2n(n-1)$ \textit{bivariate} copula evaluations. The latter method provides us with flexibility, since any multivariate discrete distribution can be decomposed as a vine PCC under a set of conditions that are discussed in the following Section. 
+\section{Pair copula constructions of point-optimal tests \label{Point-optimal sign test based on PCC}}
+In this Section, we derive POS-based tests in the context of linear and non-linear regression models based on vine PCC decomposition. Following a structure similar to \citet{dufour2010exact}, we first consider the problem of testing whether the conditional median of a vector of observations is zero against a linear regression alternative. We further consider the conditions under which the likelihood function under the alternative can be decomposed as a vine PCC, and as such, choose an appropriate vine model. These results are later generalized to test whether the coefficients of a possibly non-linear median regression function have a given value against an alternative non-linear median regression.  
+\subsection[Testing independence (zero coefficients) hypothesis in linear regressions ]{Testing independence (zero coefficients) hypothesis in linear reg\-ressions \label{Linear}}
+Consider the problem of testing the null hypothesis (\ref{eq: null}) against the alternative (\ref{eq: alt}), using the test statistic (\ref{eq: teststat}) and given the assumptions (\ref{eq: DGP}) and (\ref{eq: median}). As it was shown in Section \ref{Framework}, under the alternative hypothesis the likelihood function can be expressed as
+\begin{equation}\label{eq: likelihood1}
+L_1(U(n),\beta_1)=\prod\limits_{t=1}^{n}P\left[s(y_t)=s_t\mid \text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X\right].
+\end{equation}
+Let $s(y_j)$ be a scalar element of $\text{\b{S}}_{t-1}$, with $\text{\b{S}}_{t-1}^{\backslash j}=\text{\b{S}}_{t-1}\backslash s(y_j)$ such that
+\[
+ \text{\b{S}}_{t-1}^{\backslash j}=\left\{s(y_1),s(y_2),...,s(y_{j-1}),s(y_{j+1}),...,s(y_{t-1})\right\}
+\] 
+and $s(y_t)\notin \text{\b{S}}_{t-1}$. By choosing a single element of $\text{\b{S}}_{t-1}$, say $s(y_j)$, we would have
+\begingroup
+\allowdisplaybreaks
+\begin{align}\label{eq: bayes}
+\begin{split}
+P\left[s(y_t)=s_t\mid\text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X\right]&=\frac{P[s(y_t)=s_t,s(y_j)=s_j\mid\text{\b{S}}_{t-1}^{\backslash j}=\text{\b{s}}_{t-1}^{\backslash j},X]}{P[s(y_j)=s_j\mid\text{\b{S}}_{t-1}^{\backslash j}=\text{\b{s}}_{t-1}^{\backslash j},X]}\\
+&=\sum\limits_{k_t=0,1}\sum\limits_{k_j=0,1}(-1)^{k_t+k_j}\times\\
+&\textcolor{white}{=}\left\{P[s(y_t)\leq s_t-k_t,s(y_j)\leq s_j-k_j\mid \text{\b{S}}_{t-1}^{\backslash j}=\text{\b{s}}_{t-1}^{\backslash j},X]\right\}\\
+&\textcolor{white}{=}/P[s(y_j)=s_j\mid \text{\b{S}}_{t-1}^{\backslash j}=\text{\b{s}}_{t-1}^{\backslash j},X],
+\end{split}
+\end{align}
+\endgroup
+where the bivariate conditional probability in (\ref{eq: bayes}) can be expressed in terms of copulas as follows
+\begingroup
+\allowdisplaybreaks
+\begin{align}\label{eq: copulas}
+\begin{split}
+P[s(y_t)=s_t\mid \text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X]&=\sum\limits_{k_t=0,1}\sum\limits_{k_j=0,1}(-1)^{k_t+k_j}\bigg\{\\
+&\textcolor{white}{=}C_{s(y_t),s(y_j)\mid \text{\b{S}}_{t-1}^{\backslash j} }\left(F_{s(y_t)\mid\text{\b{S}}_{t-1}^{\backslash j}}(s_t-k_t\mid\text{\b{s}}_{t-1}^{\backslash j},X),F_{s(y_j)\mid\text{\b{S}}_{t-1}^{\backslash j}}(s_j-k_j\mid \text{\b{s}}_{t-1}^{\backslash j},X)\right)\bigg\}\\
+&\textcolor{white}{=}/P[s(y_j)=s_j\mid \text{\b{S}}_{t-1}^{\backslash j}=\text{\b{s}}_{t-1}^{\backslash j},X].
+\end{split}
+\end{align}
+\endgroup
+Further, let $\text{\b{S}}_{t-1}^{\backslash i,j}=\text{\b{S}}_{t-1}^{\backslash j}\backslash s(y_ i)$, such that $s(y_ i)$ is a scalar element of $\text{\b{S}}_{t-1}^{\backslash j}$. Then the arguments $F_{s(y_t)\mid\text{\b{S}}_{t-1}^{\backslash j}}$ and $F_{s(y_j)\mid\text{\b{S}}_{t-1}^{\backslash j}}$ in copula expression (\ref{eq: copulas}) can be expressed by the general form
+\begingroup
+\allowdisplaybreaks
+\begin{align}\label{eq: copulas1}
+\begin{split}
+&F_{s(y_t)\mid s(y_{i}),\text{\b{S}}_{t-1}^{\backslash i,j}}(s_t-k_t\mid s_{i},\text{\b{s}}_{t-1}^{\backslash i,j},X)=\\
+&\left\{C_{s(y_t),s(y_ i)\mid \text{\b{S}}_{t-1}^{\backslash i,j}}\left(F_{s(y_t)\mid \text{\b{S}}_{t-1}^{\backslash i,j}}(s_t-k_t\mid \text{\b{s}}_{t-1}^{\backslash i,j},X),F_{s(y_ i)\mid \text{\b{S}}_{t-1}^{\backslash i,j}}(s(y_ i)\mid \text{\b{s}}_{t-1}^{\backslash i,j},X)\right)\right.-\\
+&\textcolor{white}{=}\left.C_{s(y_t),s(y_ i)\mid \text{\b{S}}_{t-1}^{\backslash i,j}}\left(F_{s(y_t)\mid \text{\b{S}}_{t-1}^{\backslash i,j}}(s_t-k_t\mid \text{\b{s}}_{t-1}^{\backslash i,j},X),F_{s(y_ i)\mid \text{\b{S}}_{t-1}^{\backslash i,j}}(s(y_ i)-1\mid \text{\b{s}}_{t-1}^{\backslash i,j},X)\right)\right\}\\
+&/P[s(y_ i)=s_ i\mid \text{\b{S}}_{t-1}^{\backslash i,j}=\text{\b{s}}_{t-1}^{\backslash i,j},X].
+\end{split}
+\end{align}
+\endgroup
+Thus, decomposition (\ref{eq: copulas}), and in turn (\ref{eq: copulas1}) can be applied recursively to the elements of the likelihood function (\ref{eq: likelihood}), such that it is expressed in terms of bivariate copulas. Let $\text{\b{S}}_{t-1}=\{s(y_1),...,s(y_{t-1})\}$ be the variables that $s(y_t)$ for $t=2,...,n$ is conditioned on. We follow \citet{joe2014dependence}, by letting $\underline{\sigma}_{t-1}=\{\sigma(1,t),...,\sigma(t-1,t)\}$ be a permutation of $\text{\b{S}}_{t-1}$, such that $s(y_t)$ is paired sequentially, first to $\sigma(1,t)$, then $\sigma(2,t)$ and finally $\sigma(t-1,t)$, where in the $r^{\text{th}}$ step $(2\leq r\leq t-1)$, $\sigma(r,t)$ is paired to $t$ conditional on $\sigma(1,t),...,\sigma(r-1,t)$. For $n\leq3$ (i.e. $t=2,3$) there are only three possible permutations with $\underline{\sigma}_1=\{s(y_1)\}$ for $t=2$, and $\underline{\sigma}_2=\{s(y_1),s(y_2)\}$, as well as $\underline{\sigma}_2=(s(y_2),s(y_1))$ for $t=3$ respectively. Therefore, under assumptions (\ref{eq: DGP}) and (\ref{eq: median}%
+), and with $n\leq 3$, let $H_{0}$ and $H_{1}$ be defined by (\ref{eq: null}) - (\ref%
+{eq: alt}), then the Neyman-Pearson type test-statistic based on the signs $(s(y_1),...,s(y_n))'$ can be expressed as
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+SL_{n}(\beta _{1})=\ln P\left[s(y_1)=s_1\mid X\right]&+\sum\limits_{t=2}^{n}\ln\Delta_{s_t^-}^{s_t^+}\Delta_{s_{t-1}^-}^{s_{t-1}^+}C_{t,t-1\mid t-2}\\
+&-\sum\limits_{t=2}^{n}\ln P[s(y_{t-1})=s_{t-1}\mid \text{\b{S}}_{t-2}=\text{\b{s}}_{t-2},X]-n\ln\left\{\frac{1}{2}\right\},
+\end{align*}
+\endgroup
+for $t=2,...,n$, where
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\Delta_{s_t^-}^{s_t^+}\Delta_{s_{t-1}^-}^{s_{t-1}^+}C_{t,t-1\mid t-2}&=\sum\limits_{k_t=0,1}\sum\limits_{k_{t-1}=0,1}(-1)^{k_t+k_{t-1}}\\
+&\textcolor{white}{\times}\times \left(C_{s(y_t),s(y_{t-1})\mid \text{\b{S}}%
+_{t-2}}\left(F_{s(y_t)\mid \text{\b{S}}%
+_{t-2} }(s_t-k_t\mid \text{\b{s}}%
+_{t-2},X),F_{s(y_{t-1})\mid \text{\b{S}}%
+_{t-2}}(s_{t-1}-k_{t-1}\mid \text{\b{s}}%
+_{t-2},X)\right)\right)
+\end{align*}
+\endgroup
+and such that
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\ln P\left[s(y_1)=s_1\mid \text{\b{S}}_{0}=\text{\b{s}}_{0},X\right]=s(y_1)\ln \left\{\frac{P[y_1\geq 0\mid X]}{P[y_1< 0\mid X]}\right\}+\ln P[y_1< 0\mid X].
+\end{align*}
+\endgroup
+where $X=[x_0,...,x_{n-1}]'$ is a $n\times (k+1)$ matrix of stochastic explanatory variables.
+
+{}
+
+For $n>3$, the permutations $\underline{\sigma}_{t-1}$ are dependent on the choice of the permutations at stages $3,...,t-1$. Therefore, an issue that requires considerable attention is whether there \textit{exists} a decomposition such as the one considered in the earlier example, for $n>3$. Furthermore, the likelihood function expressed in terms of bivariate copulas using by recursively using (\ref{eq: copulas}) and (\ref{eq: copulas1}), assumes that a single copula is specified for each conditional bivariate distribution $F_{s(y_t),s(y_j)\mid \text{\b{S}}_{t-1}^{\backslash j}}$ in decomposition (\ref{eq: likelihood1}) over all possible values of $\text{\b{S}}_{t-1}^{\backslash j}$, which implies that the copula is unique for the Cartesian product of the ranges of conditional CDFs $F_{s(y_t)\mid \text{\b{S}}_{t-1}^{\backslash j}}$ and $F_{s(y_j)\mid \text{\b{S}}_{t-1}^{\backslash j}}$. Therefore, the decomposition must be such that each conditional bivariate distribution in the said vine has a constant conditional copula [see \citet{panagiotelis2012pair}]. For a constant conditional copula to exist, the following conditions outlined by \citet{panagiotelis2012pair} must be satisfied.
+\newline
+\noindent\textbf{Existence of constant conditional copula:} \textit{Consider the bivariate distribution function $F_{s(y_t),s(y_j)\mid \text{\b{S}}_{t-1}^{\backslash j}}$. We say that a copula $C=C_{s(y_t),s(y_j)\mid\text{\b{S}}_{t-1}^{\backslash j}}$ is constant over all possible values of $\text{\b{S}}_{t-1}^{\backslash j}$ if}
+\[
+\sum\limits_{m=0,1}\sum\limits_{n=0,1}(-1)^{m+n}C(a_{k-m},b_{l-n})\geq 0,\quad \forall k,l\in\{1,2\}\times\{1,2\},
+\] 
+\textit{where $a_0<a_1<a_2$ and $b_0<b_1<b_2$, are the distinct points corresponding to the ranges of the conditional Bernoulli CDFs $F_{s(y_t)\mid \text{\b{S}}_{t-1}^{\backslash j}}$ and $F_{s(y_j)\mid \text{\b{S}}_{t-1}^{\backslash j}}$ respectively, such that $a_0=b_0=0$ and $a_{2}=b_{2}=1$, and where further, the following constraints are satisfied:}
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+&C_{s(y_t),s(y_j)\mid \text{\b{S}}_{t-1}^{\backslash j}}\left(a_{s(y_t)\mid\text{\b{S}}_{t-1}^{\backslash j}},b_{s(y_j)\mid\text{\b{S}}_{t-1}^{\backslash j}}\right)=P[s(y_t)\leq s_t,s(y_j)\leq s_j\mid \text{\b{S}}_{t-1}^{\backslash j}=\text{\b{s}}_{t-1}^{\backslash j},X],\\
+&C_{s(y_t),s(y_j)\mid  \text{\b{S}}_{t-1}^{\backslash j}}\left(1,b_{s(y_j)\mid\text{\b{S}}_{t-1}^{\backslash j}}\right)=b_{s(y_j)\mid\text{\b{S}}_{t-1}^{\backslash j}},\quad C_{s(y_t),s(y_j)\mid  \text{\b{S}}_{t-1}^{\backslash j}}\left(a_{s(y_t)\mid\text{\b{S}}_{t-1}^{\backslash j}},1\right)=a_{s(y_t)\mid\text{\b{S}}_{t-1}^{\backslash j}},
+\end{align*}
+\endgroup
+\textit{where $a_{s(y_t)\mid\text{\b{S}}_{t-1}^{\backslash j}}:=P[s(y_t)\leq s_t\mid \text{\b{S}}_{t-1}^{\backslash j}=\text{\b{s}}_{t-1}^{\backslash j},X]$ and $b_{s(y_j)\mid\text{\b{S}}_{t-1}^{\backslash j}}:=P[s(y_j)\leq s_j\mid \text{\b{S}}_{t-1}^{\backslash j}=\text{\b{S}}_{t-1}^{\backslash j},X]$.}
+
+To satisfy the above conditions, the vine decomposition must be such that the strength of the dependence of the conditional bivariate distribution does not vary much across different values of the conditioning set [see \citet{panagiotelis2012pair}]. As we are dealing with time-series data, the D-vine decomposition yields a constant dependence structure over different values of $\text{\b{S}}_{t-1}^{\backslash j}$, and is thus, the most appropriate and intuitive choice for the decomposition of the likelihood function (\ref{eq: likelihood1}). 
+
+The D-vine PCC (which is depicted in figure \ref{fig: D-vineC3}) is constructed by $n-1$ trees, say $D=\{T_1,...,T_{n-1}\}$, comprised of the edges $\xi(D)=\xi(T_1)\cup...\cup \xi(T_{n-1})$, where $\xi(T_l)$ refers to the edges of the tree $T_l$. In the first tree $T_1$, the marginals $F(s_1),F(s_2),...,F(s_n)$, are arranged as nodes in consecutive order, say $N(T_1):=\{1,2,...,n-1,n\}$, where the nodes are of degree two, meaning that no more than two edges is connected to each node. The corresponding edges join the adjacent nodes, such that $\xi(T_1):=\{12,23,...,(n-1,n)\}$. Next, the edges of the first tree $\xi(T_1)$ become the nodes of $T_2$, a process which is completed in a recursive manner, such that $N(T_{l+1})=\xi(T_l)$, with the edges of each tree joining the adjacent nodes, and with the mutual elements between the nodes becoming the conditioning set.  
+\begin{figure}[hbtp!]
+\caption{D-vine PCC for the $n$-variate case}
+\begin{center}
+\begin{tikzpicture}[shorten >=1pt,node distance=4.15cm,auto]%,on grid
+\tikzstyle{state}=[shape=rectangle,thick,draw,minimum size=2.5cm]
+
+\node[state] (1) {$1$};
+\node[state,right of=1] (2) {$2$};
+\node[state,right of=2] (n-1) {$n-1$};
+\node[state,right of=n-1] (n) {$n$};
+\node[right of=n] (T1) {$T_1$};
+
+
+\path[draw,thick]
+(1) edge node (12) {$12$} (2) 
+(n-1) edge node (n-1n){$n-1,n$} (n);
+
+\path [draw,dashed]
+(2) edge node (2n-1) {$$} (n-1);
+
+\node[state,below of=12] (12n) {$12$};
+\node[state,right of=12n] (23n) {$23$};
+\node[state,right of=23n] (n-1nn) {$n-1,n$};
+\node[below of=T1] (T2) {$T_2$};
+
+\path[draw,thick]
+(12n) edge node (132) {$13\mid 2$} (23n); 
+
+\path [draw,dashed]
+(23n) edge node (34n-1n) {$$} (n-1nn);
+
+\node[state,below of=132] (l1) {$1,n-1\mid \text{\b{S}}_{\backslash j-}$};
+\node[state,right of=l1] (l2) {$2,n\mid \text{\b{S}}_{\backslash j+}$};
+\node[below of=T2] (Tn) {$T_{n-1}$};
+\path[draw,thick]
+(l1) edge node (last) {$1,n\mid \text{\b{S}}_{\backslash j} $} (l2); 
+
+\path[draw,dashed]
+($($ (23n) !0.5! ($ (l1) !0.5! (l2) $) $)!0.20cm!(23n)$) edge node[near end] {$$} ($ ($ (l1) !0.5! (l2) $) !0.25! (23n) $); 
+
+\end{tikzpicture}
+\end{center}
+\doublespacing
+Note: D-vine for a sample size $n$ consists of $n-1$ trees. The first tree consists of the marginals ordered consecutively as nodes, with the edges connecting the adjacent nodes, and with the elements shared by the two nodes going in the conditioning set. The edges of each tree $T_l$ become the nodes of the tree $T_{l+1}$. In this figure, $\text{\b{S}}_{\backslash i-}$ and  $\text{\b{S}}_{\backslash j+}$ correspond to the elements $\text{\b{S}}_{\backslash j-}:=\{2,3,...,n-2\}$ and $\text{\b{S}}_{\backslash j+}:=\{3,...,n-1\}$ respectively, with $\text{\b{S}}_{\backslash j}:=\{2,3,...,n-1\}$.
+\label{fig: D-vineC3}
+\end{figure}
+To express likelihood function (\ref{eq: likelihood1}) as a D-vine decomposition, we begin by calculating the marginals $F_1,...,F_n$, where $F_t\sim Bernoulli(p_t)$, for $t=1,...,n$, with CDFs that are expressed as (\ref{eq: BernoulliCDF}). Therefore, under assumptions (\ref{eq: DGP}) and (\ref{eq: median}), we have
+\begin{equation}\label{eq: BernoulliCDF2}
+F_t(s_t\mid X)=\left\{ 
+\begin{tabular}{lll}
+$0,$ &$\text{for}$& $s_t< 0$ \\ 
+$1-P[\varepsilon_t\geq  -\beta' x_{t-1}\mid X],$ &$\text{for}$ &$0\leq s_t< 1$ \\
+$1,$& $\text{for}$& $s_t\geq 1$
+\end{tabular}%
+\right.,\quad t=1,...,n.
+\end{equation} 
+\begin{sloppypar}
+Once the marginals are obtained, the next step consists of evaluating the copulas in the first tree (i.e. $C_{12}(F_1,F_2),...,C_{n-1,n}(F_{n-1},F_n)$, corresponding to the edges $\xi(T_1)$). In the second tree, the copulas $C_{13\mid 2}(F_{1\mid 2},F_{3\mid 2}),...,C_{n-2,n \mid n-1}(F_{n-2\mid n-1},F_{n\mid n-1})$ are evaluated, next $C_{14\mid 23}(F_{1\mid 23},F_{4\mid 23}),...,C_{n-3,n\mid n-2,n-1}(F_{n-3\mid n-2,n-1},F_{n\mid n-2,n-1})$ in the third tree, and so on. 
+\end{sloppypar}
+
+In the case of continuous variables, say $\{s^*(y_t)\in \mathbb{R},t=1,...,n\}$, the construction of the D-vine involves an iterative copula evaluation process for the trees $T_1,...,T_{n-1}$. This leads to $n(n-1)/2$ copula evaluations, which corresponds to one copula evaluation for each edge [see Appendix]. On the other hand, for discrete variables, the conditional p.m.fs are expressed as in (\ref{eq: copulas}), which requires the evaluation of the following four copulas
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+C_{t,j\mid \mathbf{\backslash j}}^{++}(F_{t\mid \mathbf{\backslash j}}^+,F_{j\mid \mathbf{\backslash j}}^+),\quad C_{t,j\mid \mathbf{\backslash j}}^{+-}(F_{t\mid \mathbf{\backslash j}}^+,F_{j\mid \mathbf{\backslash j}}^-),\\
+C_{t,j\mid \mathbf{\backslash j}}^{-+}(F_{t\mid \mathbf{\backslash j}}^-,F_{j\mid \mathbf{\backslash j}}^+),\quad C_{t,j\mid \mathbf{\backslash j}}^{--}(F_{t\mid \mathbf{\backslash j}}^-,F_{j\mid \mathbf{\backslash j}}^-),
+\end{align*}
+\endgroup
+where $F_{t\mid \mathbf{\backslash j}}^+=P[s(y_t)\leq s_t \mid\text{\b{S}}_{t-1}^{\backslash j}=\text{\b{s}}_{t-1}^{\backslash j},X]$ and $F_{t\mid \mathbf{\backslash j}}^-=P[s(y_t)\leq s_t-1 \mid\text{\b{S}}_{t-1}^{\backslash j}=\text{\b{s}}_{t-1}^{\backslash j},X]$. Henceforth, $4\times n(n-1)/2$ bivariate copulas need to be evaluated in the case of discrete data. 
+
+Let us express the joint p.m.f of the signs as follows
+\begin{equation}
+P_1[s(y_1)=s_1\mid X]\times\prod\limits_{t=2}^{n}P_{t\mid 1:{t-1}}[s(y_t)=s_t\mid s(y_1)=s_1,...,s(y_{t-1})=s_{t-1},X],
+\end{equation}
+where following the result by \citet{stoeber2013simplified}, if the D-vine is expressed as a vine-array $A=(\sigma_{lt})_{1\leq l\leq t\leq n}$, where $l=2,...,n-1$ is the row with tree $T_l$, and column $t$ has the permutation $\underline{\sigma}_{t-1}=(\sigma(1,t),...,\sigma(t-1,t))$ of the previously added variables, such that
+\begin{equation*}
+\begin{bmatrix}
+- & 12 & 23 &34 &\cdots & n-1,n\\
+ &-&13\mid2&24\mid 3&\cdots&n-2,n\mid n-1\\
+& & \ddots&\cdots&\cdots&\vdots\\
+&&&-&1,n-1\mid \text{\b{S}}_{\backslash j-}&2,n \mid \text{\b{S}}_{\backslash j+}\\
+&&&&-&1,n\mid \text{\b{S}}_{\backslash j}\\
+&&&&&-
+\end{bmatrix},\quad
+A=
+\begin{bmatrix}
+1 & 1 & 2 &3 &\cdots & n-1\\
+ &2&1&2&\cdots&n-2\\
+& & \ddots&\cdots&\cdots&\vdots\\
+&&&n-2&1&2\\
+&&&&n-1&1\\
+&&&&&n
+\end{bmatrix}
+\end{equation*}
+then 
+\begin{equation}\label{eq: stober}
+P_{t\mid 1:{t-1}}[s(y_t)=s_t\mid s(y_1)=s_1:s(y_{t-1})=s_{t-1}, X]=\left\{\prod\limits_{l=t-1}^{2} c_{\sigma_{lt}t,\mid \sigma_{1t},...,\sigma_{t-1,t}}\right\}\times c_{\sigma_{lt}t}\times P_t[s(y_t)=s_t\mid X],
+\end{equation}
+where following \citet{joe2014dependence}, the copula densities in expression (\ref{eq: stober}) are calculated by
+\begin{equation}
+c_{t,j\mid \mathbf{\backslash j}}=\frac{C_{t,j\mid \mathbf{\backslash j}}^{++}(F_{t\mid \mathbf{\backslash j}}^+,F_{j\mid \mathbf{\backslash j}}^+)-C_{t,j\mid \mathbf{\backslash j}}^{-+}(F_{t\mid \mathbf{\backslash j}}^-,F_{j\mid \mathbf{\backslash j}}^+)-C_{t,j\mid \mathbf{\backslash j}}^{+-}(F_{t\mid \mathbf{\backslash j}}^+,F_{j\mid \mathbf{\backslash j}}^-)+C_{t,j\mid \mathbf{\backslash j}}^{--}(F_{t\mid \mathbf{\backslash j}}^-,F_{j\mid \mathbf{\backslash j}}^-)}{P_{t\mid \mathbf{\backslash j}}[s(y_t)=s_t\mid\text{\b{S}}_{t-1}^{\backslash j}=\text{\b{s}}_{t-1}^{\backslash j},X]P_{j\mid \mathbf{\backslash j}}[s(y_j)=s_j\mid\text{\b{S}}_{t-1}^{\backslash j}=\text{\b{s}}_{t-1}^{\backslash j},X]},
+\end{equation}
+which results in the following proposition.
+\begin{proposition}\label{coroll1}
+Let $A=(\sigma_{lt})_{1\leq l\leq t\leq n}$ be a D-vine array for the signs $s(y_1),...,s(y_n)$. Under assumptions (\ref{eq: DGP}) and (\ref{eq: median}%
+), let $H_{0}$ and $H_1$ be defined by (\ref{eq: null}) - (\ref%
+{eq: alt})$,$ 
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+SL_{n}(\beta _{1})=\sum\limits_{t=2}^{n}\sum\limits_{l=t-1}^{2}\ln c_{\sigma_{lt}t,\mid \sigma_{1t},...,\sigma_{t-1,t}}+\sum\limits_{t=2}^{n}\ln c_{\sigma_{1t}t}+\sum\limits_{t=1}^{n}s(y_t)a_t(\beta_1)>c_1(\beta_1),
+\end{align*}%
+\endgroup
+where 
+\[
+a_t(\beta_1)=\ln\left\{\frac{1-P_t[\varepsilon_t\leq -\beta' x_{t-1}\mid X]}{P_t[\varepsilon_t\leq -\beta' x_{t-1}\mid X]}\right\},
+\]
+and suppose the constant $c_{1}(\beta _{1})$ satisfies $P\left[SL_n(\beta_1)>c_{1}(\beta_1)\right] =\alpha $
+under $H_{0},$ with $0<\alpha <1.$ Then the test that rejects $H_{0}$ when 
+\begin{equation}
+SL_{n}(\beta _{1})>c_{1}(\beta_1) \label{eq: SLn critical region}
+\end{equation}%
+is most powerful for testing $H_{0}$ against $H_1$ among level-$\alpha $
+tests based on the signs $\big(s(y_{1}),...,s(y_{n})\big)%
+'.$
+\end{proposition}
+
+
+Under the null hypothesis the signs $s(y_1),...,s(y_n)$ are i.i.d. according to Bernoulli $Bi(1,0.5)$, with the distribution of $SL_n(\beta_1)$ only depending on the weights $a_t(\beta_1)$, without the presence of any nuisance parameters. Assumption (\ref{eq: median}) implies that tests based on $SL_{n}(\beta _{1})$, such as the test given by (\ref{eq: SLn critical region}), are distribution-free and robust against heteroskedasticity of unknown form. On the other hand, under the alternative hypothesis, the power function of the test depends on the form of the distribution of $\varepsilon_t$. A special case is where $\varepsilon_1,...,\varepsilon_n$ are independently distributed according to $N(0,1)$, which leads to the optimal test statistic assuming the following form
+\[
+SL_{n}(\beta _{1})=\sum\limits_{t=2}^{n}\sum\limits_{l=t-1}^{2}\ln c_{\sigma_{lt}t,\mid \sigma_{1t},...,\sigma_{t-1,t}}+\sum\limits_{t=2}^{n}\ln c_{\sigma_{1t}t}+\sum\limits_{t=1}^{n}s(y_t)a_t(\beta_1)>c_1(\beta_1),
+\]
+where 
+\[
+a_t(\beta_1)=\ln\left\{\frac{\Phi(\beta' x_{t-1})}{1-\Phi(\beta' x_{t-1})}\right\},
+\]
+where $\Phi(.)$ is the standard normal distribution function. The distibution of $SL_{n}(\beta _{1})$ can be simulated under the null hypothesis with sufficient number of repliciations, and the critical values can be obatined to any degree of precision.
+\subsection{Testing general full coefficient hypothesis in non-linear regressions \label{non-linear}}
+We now consider a non-linear regression model%
+\begin{equation}
+y_{t}=f(x_{t-1},\beta )+\varepsilon_{t},\text{ }t=1,...,\,n\text{,}
+\label{eq: modelnl}
+\end{equation}%
+where $x_{t-1}$ is an observable $(k+1)\times 1$ vector of stochastic
+explanatory variables, such that $x_{t-1}=[1,x_{1,t-1},...,x_{k,t-1}]'$, $f(\,\cdot \,)$ is a scalar function, $\beta \in 
+\mathbb{R}^{(k+1)}$ is an unknown vector of parameters and
+\begin{equation*}
+\varepsilon_{t}\mid X \sim F_{t}(.\mid X)
+\end{equation*}%
+where as before $F_{t}(.\mid X)$ is a distribution function and $X=[x_0,...,x_{n-1}]$ is an $n\times (k+1)$ matrix. Once again, we suppose that the error terms process $\{\varepsilon_t,t=1,2,\cdots\}$ is a strict conditional mediangale, such that
+
+\begin{equation}\label{eq: mediane1}
+P[\varepsilon_{t}> 0\mid \bm{{\varepsilon}}_{t-1},X]=P[\varepsilon_{t}<0\mid \bm{\varepsilon}_{t-1},X]=\frac{1}{2},
+\end{equation}%
+with
+\[
+\bm{\varepsilon}_{0}=\{\emptyset\},\quad\bm{\varepsilon}_{t-1}=\{\varepsilon_1,\cdots,\varepsilon_{t-1}\},\quad\text{for}\quad t\geq2
+\]
+and where (\ref{eq: mediane1}) entails that $\varepsilon_t\mid X$ has no mass at zero, \emph{i.e.} $P[\varepsilon_t=0\mid X]$=0 for all $t$. We do not require that the
+parameter vector $\beta $ be identified. 
+
+We consider the problem of testing the null hypothesis
+\begin{equation}\label{eq: nullnl}
+H(\beta_0):\beta=\beta_0,
+\end{equation}
+against the alternative hypothesis
+\begin{equation}\label{eq: altnl}
+H(\beta_1):\beta=\beta_1,
+\end{equation}
+We construct a test for $H(\beta_0)$ against $H(\beta_1)$ in a similar manner to Section \ref{Linear}, by first transforming model (\ref{eq: modelnl}) to 
+\[
+\tilde{y}_t=g(x_{t-1},\beta,\beta_0)+\varepsilon_t,\quad t=1,...,n
+\]
+where $\tilde{y}_t=y_t-f(x_{t-1},\beta_0)$ and $g(x_{t-1},\beta,\beta_0)=f(x_{t-1},\beta)-f(x_{t-1},\beta_0)$. Notice that testing $H(\beta_0)$ against $H(\beta_1)$ is equivalent to testing
+\[
+\bar{H}_0:g(x_{t-1}, \beta,\beta_0)=0,\quad\text{for }t=1,...,n
+\]
+against the alternative
+\[
+\bar{H}_A: g(x_{t-1},\beta,\beta_0)=f(x_t,\beta_1)-f(x_t,\beta_0),\quad\text{for }t=1,...,n
+\]
+For $\tilde{U}(n)=(s(\tilde{y}_1),...,s(\tilde{y}_n))'$, where for $1\leq t\leq n$
+\begin{equation*}
+s(\tilde{y}_{t})=\left\{ 
+\begin{tabular}{l}
+$1,$ $if$ $\tilde{y}_{t}\geq 0$ \\ 
+$0,$ $if$ $\tilde{y}_{t}<0$%
+\end{tabular}%
+\ \right. \text{.}
+\end{equation*}
+As before, the joint p.m.f of the process of signs is expressed by
+\begin{equation}\label{eq: IDKANYMORE}
+P_1[s(\tilde{y}_1)=\tilde{s}_1\mid X]\times\prod\limits_{t=2}^{n}P_{t\mid 1:{t-1}}[s(\tilde{y}_t)=\tilde{s}_t\mid s(\tilde{y}_1)=\tilde{s}_1,...,s(\tilde{y}_{t-1})=\tilde{s}_{t-1},X].
+\end{equation}
+Furthermore, the D-vine-array $\tilde{A}=(\tilde{\sigma}_{lt})_{1\leq l\leq t\leq n}$, is such that $l=2,...,n-1$ is the row with tree $T_l$, and column $t$ has the permutation $\tilde{\underline{\sigma}}_{t-1}=(\tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t})$ of the previously added variables. Then
+\begin{equation}\label{eq: stober2}
+P_{t\mid 1:{t-1}}[s(\tilde{y}_t)=\tilde{s}_t\mid s(\tilde{y}_1)=\tilde{s}_1,...,s(\tilde{y}_{t-1})=\tilde{s}_{t-1},X]=\left\{\prod\limits_{l=t-1}^{2} c_{\tilde{\sigma}_{lt}t,\mid \tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t}}\right\}\times c_{\tilde{\sigma}_{lt}t}\times P_t[s(\tilde{y}_t)=\tilde{s}_t\mid X],
+\end{equation}
+which leads to the following corollary.
+\begin{corollary}\label{coroll2}
+ Let $\tilde{A}=(\tilde{\sigma}_{lt})_{1\leq l\leq t\leq n}$ be a D-vine array for the signs $s(\tilde{y}_1),...,s(\tilde{y}_n)$. Under assumptions (\ref{eq: modelnl}) and (\ref{eq: median}%
+), let $H(\beta_{0})$ and $H(\beta_{1})$ be defined by (\ref{eq: nullnl}) - (\ref%
+{eq: altnl})$,$ 
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+SN_{n}(\beta_0\mid\beta _{1})=\sum\limits_{t=2}^{n}\sum\limits_{l=t-1}^{2}\ln c_{\tilde{\sigma}_{lt}t,\mid \tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t}}+\sum\limits_{t=2}^{n}\ln c_{\tilde{\sigma}_{1t}t}+\sum\limits_{t=1}^{n}s(y_t-f(x_{t-1},\beta_0))\tilde{a}_t(\beta_0\mid\beta_1)>c_1(\beta_0,\beta_1),
+\end{align*}%
+\endgroup
+where 
+\[
+\tilde{a}_t(\beta_0\mid\beta_1)=\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_1\mid X]}{p_t[x_{t-1},\beta_0,\beta_1\mid X]}\right\},\quad p_t[x_{t-1},\beta_0,\beta_1\mid X]=P_t[\varepsilon_t\leq f(x_{t-1},\beta_0)-f(x_{t-1},\beta_1)\mid X]
+\]
+and suppose the constant $c_{1}(\beta_0,\beta _{1})$ satisfies the constraint $P\left[SN_n(\beta_0\mid\beta_1)>c_{1}(\beta_0,\beta_1)\right] =\alpha $
+under $H(\beta_{0}),$ with $0<\alpha <1.$ Then the test that rejects $H(\beta_{0})$ when 
+\begin{equation}
+SN_{n}(\beta_0\mid\beta _{1})>c_{1}(\beta_0,\beta_1) \label{eq: SLn critical region}
+\end{equation}%
+is most powerful for testing $H(\beta_{0})$ against $H(\beta_{1})$ among level-$\alpha $
+tests based on the signs $\big(s(\tilde{y}_{1}),...,s(\tilde{y}_{n})\big)%
+'.$
+
+\end{corollary}
+Consider a linear function $f(x_{t-1},\beta)=\beta'x_{t-1}$, and assume that under the alternative hypothesis $\varepsilon_t$ for $t=1,...,n$ follows a standard normal distribution (i.e. $\varepsilon_t\sim N(0,1))$. Then the statistic for testing $H(\beta_0)$ against the alternative $H(\beta_1)$ is given by
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+SN_{n}(\beta_0\mid\beta _{1})=\sum\limits_{t=2}^{n}\sum\limits_{l=t-1}^{2}\ln c_{\tilde{\delta}_{lt}t,\mid \tilde{\delta}_{1t},...,\tilde{\delta}_{t-1,t}}+\sum\limits_{t=2}^{n}\ln c_{\tilde{\delta}_{1t}t}+\sum\limits_{t=1}^{n}s(y_t-\beta_0'x_{t-1})\tilde{\delta}_t(\beta_0\mid\beta_1)>c_1(\beta_0,\beta_1),
+\end{align*}%
+\endgroup
+where 
+\[
+\tilde{a}_t(\beta_0\mid\beta_1)=\ln\left\{\frac{\Phi((\beta_1-\beta_0)'x_{t-1})}{1-\Phi((\beta_1-\beta_0)'x_{t-1})}\right\},
+\]
+such that $\Phi(.)$ is the standard normal distribution function. As in Section \ref{Point-optimal sign test based on PCC}, the distribution of $SN_{n}(\beta_0\mid\beta _{1})$ can be simulated under the null hypothesis with sufficient number of replications and the relevant critical values can be obtained to any degree of precision.
+\section{Estimation \label{EstimationC3}}
+In this Section, we first consider the issue of estimating the bivariate copulas in the D-vine decomposition and suggest a sequential estimation strategy for the parameters of the copulas. We then turn our attention to the problem of selecting a class of parametric bivariate copulas. The choice of the latter has an important implication on introducing dependence to the vector of signs.  
+\subsection{Sequential estimation of the D-vine}
+\vspace{-3pt}
+The calculation of the test statistics in Section \ref{Point-optimal sign test based on PCC} requires four bivariate copula evaluations at $n(n-1)/2$ distinct points, leading to a total of $2n(n-1)$ copula evaluations. The estimation of the D-vine is often facilitated with the maximum likelihood (MLE). However, as the latter requires optimization with respect to at least $2n(n-1)$ copula parameters, sequential estimation procedures are favored for faster computation times, with the caveat that the increased speed comes at the cost of efficiency. Furthermore, the sequential estimates may be provided as starting points for the simultaneous numerical optimization using MLE [see \citet{czado2012maximum, haff2012comparison, dissmann2013selecting}]. We assume that the copulas are specified parametrically, given by an appropriate parameter (vector). More specifically, let $\pmb{\theta}_{l}=(\theta_{1,k}',...,\theta_{n-l,k}')'$ be the set of all the parameters to be estimated for tree $l$, $l=1,...,n-1$ of the D-vine, with $k=l-1$ conditioning variables. Therefore, $\pmb{\theta}=(\pmb{\theta}_1',...,\pmb{\theta}_{n-1}')'$ is the entire set of the parameters that needs to be estimated for the D-vine decomposition. To estimate the parameter vector $\pmb{\theta}$, we follow a sequential estimation strategy proposed by \citet{czado2012maximum}, whereby first, the parameters of the unconditional bivariate copulas are estimated. These parameters are then utilized as means of estimating the parameters of bivariate copulas with a single conditioning variable. The latter are then used to estimate the pair-copulas with two conditioning variables, and so on. This bivariate copula estimation approach is continued sequentially until all parameters have been estimated. 
+
+In the first step, the marginals are obtained by computing the Bernoulli CDFs (\ref{eq: BernoulliCDF2}) using an arbitrary distribution, such as the standard normal distribution considered in Section \ref{Point-optimal sign test based on PCC}. The second step of the process involves estimating the parameters of the unconditional copula, by fixing the marginals with their aforementioned estimates and maximizing the bivariate likelihood corresponding to each copula in each tree $l$ to obtain $\pmb{\hat{\theta}}_l=(\hat{\theta}_{1,k}',...,\hat{\theta}_{n-l,k}')$ for $l=1,...,n-1$ and $k=l-1$ . As all the variables are discrete, the log-likelihood function, say, for the unconditional copula $C_{t,t+1}$ for $t=1,...,n-1$ for the signs $\left(s(y_{i,t}),s(y_{i,t+1})\right)$, $i=1,...,n-1$ is expressed as 
+\[
+L(\theta_{t,0})=\sum\limits_{i=1}^{n-1}\log\left\{\sum\limits_{\{a_1,a_2\}\in \{-,+\}^{2}}(-1)^{a_{j}}C_{t,t+1}\left(F_t(s_{i,t}^{a_1}\mid X;\mathbf{\hat{\beta}_1}),F_{t+1}(s_{i,t+1}^{a_2}\mid X;\mathbf{\hat{\beta}_1});\theta_{t,0}\right)\right\}.
+\]
+The estimate of the copula parameter, $\hat{\theta}_{t,0}$ for $t=1,...,n-1$, is then obtained as follows
+\[
+\hat{\theta}_{t,0}=\arg \max_{\theta_{t,0}} L(\mathbf{\theta}_{t,0}),
+\] 
+which under regularity conditions solves
+\[
+\frac{\partial L(\mathbf{\theta}_{t,0})}{\partial \theta_{t,0}}=0.
+\]
+Let us illustrate this process with an example: once the marginals have been obtained, the next step involves estimating the parameters $\theta_{t,0}$ for $t=1,...,n-1$ of the unconditional copulas. Next, we are interested in estimating $\theta_{t,1}$ for $t=1,...,n-2$. Define
+\[
+\hat{u}_{t\mid t+1}=F_{t\mid t+1}\left(s_t\mid s_{t+1},X;\hat{\theta}_{t,0} \right),
+\]  
+and
+\[
+\hat{v}_{t+2\mid t+1}=F_{t+2\mid t+1}\left(s_{t+2}\mid s_{t+1},X;\hat{\theta}_{t+1,0} \right),
+\]
+for $t=1,...,n-2$. The data $\hat{u}_{t\mid t+1}$ and $\hat{v}_{t+2\mid t+1}$ is then used to estimate the parameters $\theta_{t,1}$ for $t=1,...,n-2$, denoted by $\hat{\theta}_{t,1}$. This procedure is repeated sequentially until all parameters have been estimated. \citet{haff2010simplified} show that under regularity conditions, the sequential estimates are asymptotically normal; however, as noted earlier their asymptotic covariance is \textquotedblleft intractable\textquotedblright and the faster computation time comes at the cost of efficiency. Therefore, the sequential estimates can be utilized as the starting values of the high-dimensional MLE.
+
+ It is worth mentioning that although estimating the parameters for each of the $2n(n-1)$ bivariate copulas does not present any significant issues in finite samples, this approach is not feasible as $n\rightarrow \infty$, since the estimation procedure, especially using the MLE approach becomes computationally burdensome in large samples. However, it is immediately evident that when the process $y_t$ is stationary, the parameters of the copulas for each tree $l$ are invariant to time shifts and the problem of obtaining $\pmb{\hat{\theta}}_l=(\hat{\theta}_{1,k}',...,\hat{\theta}_{n-l,k}')$ for $l=1,\cdots,n-1$ and $k=l-1$, reduces to computing a single parameter vector $\hat{\theta}_k'$. In other words, we would only have to estimate $\pmb{\hat{\theta}}_l=\hat{\theta}_k'$ for $l=1,...,n-1$ and $k=l-1$, which reduces the problem to $n-1$ parameter vector estimations. This number can further be reduced to one parameter, if we consider a $1$-truncated D-vine [see Section \ref{Truncated D-vines}].  
+
+
+Another approach for estimating one-parameter pair-copulas in the sequential estimation procedure for copula families with a known relationship to Kendall's $\tau$ consists of inverting the empirical Kendall's $\tau$ based on, say, $\hat{u}_{t}$ and $\hat{u}_{t+1}$ for $t=1,...,n-1$ for the edges of the first tree. However, we provide a caveat that the Kendall's $\tau$ of discrete data does not correspond to the Kendall's $\tau$ of the bivariate copulas [see \citet{denuit2005constraints}]. \citet{denuit2005constraints} show that by continuous extension of the discrete variables with a perturbation with values in $[0,1]$, the continuous features of Kendall's $\tau$ are adaptable to discrete data. In other words
+\[ 
+\tau(s^*(y_{t}),s^*(y_{t+1}))=4\int\int_{[0,1]^2}C_{t,t+1}^*\left(\hat{u}_{t},\hat{u}_{t+1}\right)dC_{t,t+1}^*\left(\hat{u}_{t},\hat{u}_{t+1}\right)-1
+\]
+for $t=1,...,n-1$, such that $\hat{u}_{t}=F\left(s^*_t;\hat{\beta}_1\right)$,
+\[
+s^*(y_t)=s(y_t)+U-1
+\]
+where $U$ is a continuous random variable in $[0,1]$. A natural choice for $U$ is the uniform distribution.
+\subsection{Selection of the copula family \label{Selection of the copula family}}
+Many different classes of parametric bivariate copulas have extensively been studied and reviewed by \citet{joe2014dependence} and others that can fit within the framework of the PCC POS-based tests. These include the Archimedean, elliptical, extreme value or max-id copula families that can specify the dependence structure of the vector of signs. As the dependence is introduced by the copula family, the type and the degree of the dependence between the signs depends on the choice of the copula. The literature surrounding the goodness-of-fit of copulas is extensive and has been analyzed by \citet{genest2006goodness}, \citet{genest2009goodness}, and \citet{berg2009copula}, among many others. \citet{genest2009goodness} categorize goodness-of-fit tests into three broad categories: procedures for testing particular dependence structures such as Gaussian or Clayton family; procedures that may be used for any classes of copulas, but require a strategic choice for their implementation; and finally, the so-called \textquotedblleft blanket tests\textquotedblright that apply to all classes of copulas and require no strategic choice for their use. A simple procedure proposed by \citet{joe1997multivariate} involves specifying the Akaike information critetion (AIC) to different copulas and using it as a copula selection criterion, which is particularly attractive as it allows for the automation of the copula selection process [see. \citet{czado2012maximum}]. The AIC specified to the copulas of, say, the first tree of the D-vine, can be expressed as follows
+\[
+AIC=-2\sum\limits_{i=1}^{t}\log c_{t,t+1}(\hat{u}_{i,t},\hat{u}_{i,t+1};\hat{\theta}_{1,k})+2l
+\] 
+for $t=1,....,n-1$ and $k=1,...,n-1$, and where $l$ is the number of parameters $\theta_{1,k}$. \citet{panagiotelis2012pair} suggest that while dependence structures such as tail dependence are weak in discrete data, the choice of the copulas could still have a significant effect on the joint pmf of the signs. They considered Gaussian, Clayton and Gumbel copulas in constructing the D-vines for Bernoulli margins by keeping the marginal probabilities and dependence constant, and have found that in the case where the probabilities of zero marginals and joint probabilities in the data is high, preference goes to the use of the Gumbel copula over the other two alternatives. 
+
+ In the earlier Section, we had considered standard normal distribution as the marginals. We further choose the Gaussian copula for the computation of the PCC-POS-based tests, due to its desirable properties, such as probabilistic interpretability, flexibility, and a wide range of dependence [see \citet{durante2010copula}]. Our simulation results show that the use of the Gaussian copula for the PCC-POS-based tests under different distributions and heteroskedasticities yields power that is superior to the other tests considered in our study in most circumstances. The normal copula model is equivalent to the bivariate normal distributions, as
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+F(s_t,s_{t+1})&=C_{\rho}^{\Phi}(\Phi(s_t),\Phi(s_{t+1}))\\
+&=\Phi_2\left(\Phi^{-1}\left(\Phi(s_t)\right),\Phi^{-1}\left(\Phi(s_{t+1})\right);\rho_{t,t+1}\right)\\
+&=\Phi(s_t,s_{t+1}),
+\end{align*}
+\endgroup
+for the first tree, and where $\rho_{t,t+1}$ is the correlation coefficient of the bivariate standard normal distribution. In other words
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+C_{t,t+1}^{\Phi}\left(\Phi(s_t),\Phi(s_{t+1});{\rho_{t,t+1}}\right)&=\frac{1}{2\pi\sqrt{(1-\rho^2_{t,t+1})}}\times\\
+&\textcolor{white}{=}\int\limits_{-\infty}^{\Phi^{-1}\left(\Phi(s_t)\right)}\int\limits_{-\infty}^{\Phi^{-1}\left(\Phi(s_{t+1})\right)}e^{\left\{-\frac{\Phi(s_t)^2-2\rho_{t,t+1} \Phi(s_t)\Phi(s_{t+1})+\Phi(s_{t+1})^2}{2(1-\rho_{t,t+1}^2)}\right\}}d\Phi(s_t)d\Phi(s_{t+1}).
+\end{align*}
+\endgroup
+{}
+\subsection{Truncated D-vines \label{Truncated D-vines}}
+{}
+Following \citet{joe2014dependence}, we refer to a D-vine as a $p$-truncated D-vine, if the copulas in the trees $T_{p+1},...,T_{n}$ are $C^{\perp}$, where by definition
+\[
+C^{\perp}\left(u_1,...,u_n\right)=\prod\limits_{t=1}^{n}u_t,\quad\text{with}\quad (U_1,...,U_n)\sim U(0,1), 
+\]
+implying $U_1\perp U_2 \perp ... \perp U_n$. The POS-based tests constructed using the Markov assumption of order one can be regarded as a special case of the PCC-POS based tests, whereby the former can be constructed by a $1$-truncated D-vine, which only depends on $C_{12},C_{23},...,C_{n-1,n}$, or rather $C_{12},C_{\sigma_{13}3},...,,C_{\sigma_{1n}n}$ in a vine array representation, given the following vine array
+\begin{equation*}
+\begin{bmatrix}
+- & 12 & 23 &34 &\cdots & n-1,n\\
+ &-&13\mid2^{\textcolor{red}{\perp}}&24\mid 3^{\textcolor{red}{\perp}}&\cdots&n-2,n\mid n-1^{\textcolor{red}{\perp}}\\
+& & \ddots&\cdots&\cdots&\vdots\\
+&&&-&1,n-1\mid \text{\b{S}}_{\backslash j-}^{\textcolor{red}{\perp}}&2,n \mid \text{\b{S}}_{\backslash j+}^{\textcolor{red}{\perp}}\\
+&&&&-&1,n\mid \text{\b{S}}_{\backslash j}^{\textcolor{red}{\perp}}\\
+&&&&&-
+\end{bmatrix},\quad
+A=
+\begin{bmatrix}
+1 & 1 & 2 &3 &\cdots & n-1\\
+ &2&1^{\textcolor{red}{\perp}}&2^{\textcolor{red}{\perp}}&\cdots&n-2^{\textcolor{red}{\perp}}\\
+& & \ddots&\cdots&\cdots&\vdots\\
+&&&n-2&1^{\textcolor{red}{\perp}}&2^{\textcolor{red}{\perp}}\\
+&&&&n-1&1^{\textcolor{red}{\perp}}\\
+&&&&&n
+\end{bmatrix}
+\end{equation*}
+Similarly, a $2$-truncated D-vine, depends on the copulas $C_{12},C_{23},...,C_{n-1,n}$ and $C_{13\mid 2},C_{24\mid 3},...,C_{n-2,n\mid n-1}$ or $C_{\sigma_{1t}}t$ for $t=2,...,n$ and $C_{\sigma_{2t}t\mid\sigma_{1t}}$ for $t=3,...,n$ using the vine array representation. Therefore, for a $p$-truncated D-vine, (\ref{eq: stober2}) is modified to 
+\begingroup
+\allowdisplaybreaks
+\begin{align}\label{eq: stober3}
+\begin{split}
+P_{t\mid 1:{t-1}}[s(\tilde{y}_t)=\tilde{s}_t\mid s(\tilde{y}_1)=\tilde{s}_1,...,s(\tilde{y}_{t-1})=\tilde{s}_{t-1},X]&=P_{t\mid 1:{p}}[s(\tilde{y}_t)=\tilde{s}_t\mid s(\tilde{y}_1)=\tilde{s}_1,...,s(\tilde{y}_{p})=\tilde{s}_{p},X]\\
+&=\left\{\prod\limits_{l=p\land (t-1)}^{2} c_{\tilde{\sigma}_{lt}t,\mid \tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t}}\right\}\times c_{\tilde{\sigma}_{lt}t}\times P_t[s(\tilde{y}_t)=\tilde{s}_t\mid X],
+\end{split}
+\end{align}
+\endgroup
+for $t-1\geq p$.
+\begin{corollary}\label{coroll3}
+ Let $\tilde{A}=(\tilde{\sigma}_{lt})_{1\leq l\leq t\leq n}$ be a D-vine array for the signs $s(\tilde{y}_1),...,s(\tilde{y}_n)$, where the signs $\left\{s(\tilde{y}_t)\right\}_{t=0}^{\infty}$ follow a Markov process of order $p$. Under assumptions (\ref{eq: modelnl}) and (\ref{eq: median}%
+), let $H(\beta_{0})$ and $H(\beta_{1})$ be defined by (\ref{eq: nullnl}) - (\ref%
+{eq: altnl})$,$ 
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+SN_{n}(\beta_0\mid\beta _{1})=\sum\limits_{t=2}^{n}\sum\limits_{l=p\land( t-1)}^{2}\ln c_{\tilde{\sigma}_{lt}t,\mid \tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t}}+\sum\limits_{t=2}^{n}\ln c_{\tilde{\sigma}_{1t}t}+\sum\limits_{t=1}^{n}s(y_t-f(x_{t-1},\beta_0))\tilde{a}_t(\beta_0\mid\beta_1)>c_1(\beta_0,\beta_1),
+\end{align*}%
+\endgroup
+where 
+\[
+\tilde{a}_t(\beta_0\mid\beta_1)=\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_1\mid X]}{p_t[x_{t-1},\beta_0,\beta_1\mid X]}\right\},\quad p_t[x_{t-1},\beta_0,\beta_1\mid X]=P_t[\varepsilon_t\leq f(x_{t-1},\beta_0)-f(x_{t-1},\beta_1)\mid X]
+\]
+and suppose the constant $c_{1}(\beta_0,\beta _{1})$ satisfies the constraint $P\left[SN_n(\beta_0\mid\beta_1)>c_{1}(\beta_0,\beta_1)\right] =\alpha $
+under $H(\beta_{0}),$ with $0<\alpha <1.$ Then the test that rejects $H(\beta_{0})$ when 
+\begin{equation}
+SN_{n}(\beta_0\mid\beta _{1})>c_{1}(\beta_0,\beta_1) \label{eq: SLn critical region}
+\end{equation}%
+is most powerful for testing $H(\beta_{0})$ against $H(\beta_{1})$ among level-$\alpha $
+tests based on the signs $\big(s(\tilde{y}_{1}),...,s(\tilde{y}_{n})\big)%
+'.$
+\end{corollary}
+
+\section{Choice of the optimal alternative hypothesis \label{optimal
+alternative hypothesis}}
+
+In this Section, we follow \citet{dufour2010exact} by first showing the analytical derivation of the power envelope function of the PCC-POS-based tests. We then suggest using simulations as means of approximating the said function, by showing the difficulty of inverting the latter to find the optimal alternative. Thereafter, we propose an adaptive approach based on the split-sample technique to choose an alternative which has a power function close to that of the power envelope.
+
+\subsection{Power envelope of PCC-POS tests \label{Power envelope of PCC-POS tests}}
+We make the assertion that point-optimal tests trace out the power envelope (i.e. the maximum attainable power) for any given testing problem [see \citet{king1987towards}]. However, in practice the alternative hypothesis $\beta_1$ is unknown and a problem consists of finding an approximation for it, such that the power function is maximized and is close to that of the power envelope. Following \citet{dufour2010exact} and \citet{dufour2001finite}, we propose an adaptive approach based on the split-sample technique to choose an alternative $\beta_1$ that yields the greatest power function. The details of the split-sample technique can be found in Section \ref{Choice of the optimal alternative hypothesis}. We follow \citet{dufour2010exact} by showing the analytical derivation of the power envelope of the PCC-POS tests for predictive regressions, which can be purposed as a benchmark for comparing the power functions of the PCC-POS tests for different sample splits. 
+
+We have shown in Section \ref{non-linear} that the PCC-POS test is a function of $\beta_1$. In other words,
+\[
+SN_{n}(\beta_0\mid\beta _{1})=\sum\limits_{t=2}^{n}\sum\limits_{l=t-1}^{2}\ln c_{\tilde{\sigma}_{lt}t\mid \tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t}}+\sum\limits_{t=2}^{n}\ln c_{\tilde{\sigma}_{1t}t}+\sum\limits_{t=1}^{n}\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_1\mid X]}{p_t[x_{t-1},\beta_0,\beta_1\mid X]}\right\}s(y_t-f(x_{t-1},\beta_0)).
+\]
+which in turn implies that its power function, say $\Pi(\beta_0,\beta_1)$, is also a function of $\beta_1$
+\[
+\Pi(\beta_0,\beta_1)=P[SN_{n}(\beta_0\mid\beta _{1})>c_1(\beta_0,\beta_1)\mid H(\beta_1)]
+\]
+where $c_1(\beta_0,\beta_1)$ is the smallest constant that satisfies $P[SN_n(\beta_0\mid\beta_1)>c_1(\beta_0,\beta_1)\mid H(\beta_0)]\leq \alpha$, and where $\alpha$ is an arbitrary significance level.  Theorem \ref{Theorem1} provides the theoretical results for the power function of the PCC-POS tests.
+\begin{theorem}\label{Theorem1} 
+Under assumption (\ref{eq: median}) and and given model (\ref{eq: modelnl}), and further under the condition that $s(\tilde{y}_1),...,s(\tilde{y}_t)$ follow a Regularity Markov Type process, the power function of $SN_{n}(\beta_0\mid\beta _{1})$ is given by
+\[
+\Pi(\beta_0,\beta_1)=P[SN_n(\beta_0\mid \beta_1)> c_1(\beta_0,\beta_1)\mid X]=\frac{1}{2}+\frac{1}{\pi}\int_{0}^{\infty}\frac{\Im\{\exp(iuc_1(\beta_0,\beta_1))\phi_{SN_n}(u)\}}{u}du
+\] 
+$\forall u \in \mathbb{R}$, $i=\sqrt{-1}$, and with $\Im{z}$ denoting the imaginary part of the complex number $z$. $\phi_{SN_n}(u)$ is given by
+\[
+\phi_{SN_n}(u)=\prod\limits_{t=1}^{n}\left(\E_X\left[\exp\left(iu\left\{R_{t,t-1}+\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_1\mid X]}{p_t[x_{t-1},\beta_0,\beta_1\mid X]}\right\}s(\tilde{y}_t)\right\}\right)\right]+\rho_t(u)\right),
+\]
+where $R_{1,0}=0$, $R_{t,t-1}=\sum\limits_{l=t-1}^{2}\ln c_{\tilde{\sigma}_{lt}t\mid \tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t}}+\ln c_{\tilde{\sigma}_{1t}t}$ for $t=2,...,n$, such that for D-vine-array $\tilde{A}=(\tilde{\sigma}_{lt})_{1\leq l\leq t\leq n}$, $l=2,...,n-1$ is the row with tree $T_l$, and column $t$ has the permutation $\tilde{\underline{\sigma}}_{t-1}=(\tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t})$ of the previously added variables, $p_t[x_{t-1},\beta_0,\beta_1\mid X]=P_t[\varepsilon_t\leq f(x_{t-1},\beta_0)-f(x_{t-1},\beta_1)\mid X]$, $\tilde{\text{\b{S}}}_{t-1}=s(y_{t-1}-f(x_{t-2},\beta_0)),...,s(y_{1}-f(x_{0},\beta_0))$ and 
+\[
+p_t[x_{t-1},\beta_0,\beta_1\mid \tilde{\text{\b{S}}}_{t-1}=\tilde{\text{\b{s}}}_{t-1},X]=\left\{\prod\limits_{l=t-1}^{2} c_{\tilde{\sigma}_{lt}t,\mid \tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t}}\right\}\times c_{\tilde{\sigma}_{lt}t}\times P_t[s(y_t-f(x_{t-1},\beta_0))=j\mid X]
+\]
+Finally, $c_1(\beta_0,\beta_1)$ is the smallest constant that satisfies $P[SN_n(\beta_0\mid\beta_1)>c_1(\beta_0,\beta_1)\mid H(\beta_0)]\leq \alpha$, where $\alpha$ is an arbitrary significance level. 
+\end{theorem}
+Under the assumption that the signs follow an RMT-process, $\rho_t(u)$ can be estimated using the results from Theorem 2 of \citet{heinrich1982factorization}.  Given that point-optimal tests are optimal at a specific point in the alternative parameter space, the power envelope of the PCC-POS tests, say $\bar{\Pi}(\beta_1)$, is obtained for values of $\beta$, such that $\{\beta: \beta=\beta_1, \forall \beta_1\in \mathbb{R}^{(k+1)}\}$. Finding values of $\beta_1$ for a PCC-POS test at level $\alpha$, with a power function that is close to the power envelope can be achieved by inverting the power envelope function. However, in a much simpler case of POS tests for i.n.i.d data, \citet{dufour2010exact} show that the inversion of the power function is not a straightforward task and obtaining an exact solution is not feasible. Therefore, simulations are used as means of approximating the power envelope function and finding the optimal alternative for the PCC-POS test.
+\subsection{Split-sample technique for choosing the optimal alternative \label{Choice of the optimal alternative hypothesis}}
+As we have noted in the earlier Section, the power function of the PCC-POS test statistic depends on the alternative $\beta_1$, which in practice is unknown and needs to be approximated.	To make size control easier and to choose an approximation to $\beta_1$ such that the power function of the test statistic is close to that of the power envelope, we follow \citet{dufour2010exact} by proposing an adaptive approach based on the split-sample technique for choosing the alternative. For an extensive review of adaptive statistical methods, we refer the reader to \citet{o2004applied}. Furthermore, the application of the split-sample technique in parametric settings can be studied by consulting \citet{dufour2003point} and \citet{dufour2008finite}.  
+\begin{figure}[tbph]
+\caption{Power comparisons: different split-samples. Normal error distributions with
+different values of $\rho $ in (\ref{eq: errorsim}) and $\theta =0.9$ in (\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{SS1.eps}} %
+\subfigure{\includegraphics[scale=0.58]{SS7.eps}} \\[0pt]
+%\subfigure{\includegraphics[scale=0.65]{Normalteta9roh5.eps}} %
+%\subfigure{\includegraphics[scale=0.65]{Normalteta9roh9.eps}}\\[0pt]
+\vspace{1pt}
+\end{center}
+\doublespacing
+Note: These figures compare the power
+envelope the PCC-POS test statistic using different split-samples: 10\%, 30\%, 50\%, 70\%. \textquotedblleft PE\textquotedblright refers to the power envelope of the PCC-POS test.
+\label{fig: SS17}
+\end{figure}
+The split-sample technique involves splitting a sample of size $n$ into two independent subsamples, say $n_1$ and $n_2$, such that $n=n_1+n_2$. The first subsample is then used to estimate the alternative $\beta_1$, while the other is purposed for computing the PCC-POS test statistic. Assuming that $f(x_{t-1},\beta)=x_{t-1}'\beta$, the alternative $\beta_1$ can be estimated using OLS
+\[
+\hat{\beta}_{(1)}=(X_{(1)}'X_{(1)})^{-1}X_{(1)}'y_{(1)}.
+\]
+We provide a caveat that the OLS estimator is sensitive to extreme outliers, which motivates the use of robust estimators [see. \citet{maronna2019robust} for a review of robust estimators]. Using $\hat{\beta}_{(1)}$ and the observations in the second independent subsample, we compute the test-statistic as follows
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+SN_{n}(\beta_0\mid\beta _{(1)})&=\sum\limits_{t=n_1+2}^{n}\sum\limits_{l=t-1}^{2}\ln c_{\tilde{\sigma}_{lt}t\mid \tilde{\sigma}_{(n_1+1)t},...,\tilde{\sigma}_{t-1,t}}+\sum\limits_{t=n_1+2}^{n}\ln c_{\tilde{\sigma}_{(n_1+1)t}t}+\\
+&\textcolor{white}{=}\sum\limits_{t=n_1+1}^{n}\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_{(1)}\mid X]}{p_t[x_{t-1},\beta_0,\beta_{(1)}\mid X]}\right\}s(y_t-x_{t-1}'\beta_0).
+\end{align*}
+\endgroup
+where for $t=n_1+2,...,n$ and D-vine-array $\tilde{A}=(\tilde{\sigma}_{lt})_{1\leq l\leq t\leq n}$, $l=n_1+1,...,n-1$ is the row with tree $T_l$, and column $t$ has the permutation $\tilde{\underline{\sigma}}_{t-1}=(\tilde{\sigma}_{(n_1+1)t},...,\tilde{\sigma}_{t-1,t})$ of the previously added variables, $p_t[x_{t-1},\beta_0,\beta_{(1)}\mid X]=P_t[\varepsilon_t\leq x_{t-1}'(\beta_0-\beta_1)\mid X]$, and $\tilde{\text{\b{S}}}_{t-1}=s(y_{t-1}-x_{t-2}'\beta_0),...,s(y_{n_1+2}-x_{n_1+1}'\beta_0)$.
+\begin{figure}[tbph]
+\caption{Power comparisons: different split-samples. Cauchy error distributions with
+different values of $\rho $ in (\ref{eq: errorsim}) and $\theta =0.9$ in (\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.57]{SS2.eps}} %
+\subfigure{\includegraphics[scale=0.57]{SS8.eps}} \\[0pt]
+%\subfigure{\includegraphics[scale=0.65]{Normalteta9roh5.eps}} %
+%\subfigure{\includegraphics[scale=0.65]{Normalteta9roh9.eps}}\\[0pt]
+\end{center}
+\doublespacing
+Note: These figures compare the power
+envelope the PCC-POS test statistic using different split-samples: 10\%, 30\%, 50\%, 70\%. \textquotedblleft PE\textquotedblright refers to the power envelope of the PCC-POS test.
+\label{fig: SS28}
+\end{figure}
+The choices for the subsamples $n_1$ and $n_2$ can be arbitrary. However, our simulations show that the proportions of observations retained for estimating the alternative and computing the PCC-POS test statistic has an impact on the power of the test. We find that the power function of the split-sample PCC-POS test (SS-PCC-POS test hereafter) is closest to that of the power envelope, when a relatively small number of observations is retained for estimating the alternative, with the rest used for computing the test statistic . These findings are in line with \citet{dufour2010exact}. Specifically, by considering all the DGPs in our simulations study, we find that the subsamples $n_1$ and $n_2$ must in turn contain roughly $10\%$ and $90\%$ of the observations of the entire sample respectively.  
+\begin{figure}[tbph]
+\caption{Power comparisons: different split-samples. Student's $t$ error distributions with 2 degrees of freedom [i.e $t(2)$] with
+different values of $\rho $ in (\ref{eq: errorsim}) and $\theta =0.9$ in (\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{SS3.eps}} %
+\subfigure{\includegraphics[scale=0.58]{SS9.eps}} \\[0pt]
+%\subfigure{\includegraphics[scale=0.65]{Normalteta9roh5.eps}} %
+%\subfigure{\includegraphics[scale=0.65]{Normalteta9roh9.eps}}\\[0pt]
+\end{center}
+\doublespacing
+Note: These figures compare the power
+envelope the PCC-POS test statistic using different split-samples: 10\%, 30\%, 50\%, 70\%. \textquotedblleft PE\textquotedblright refers to the power envelope of the PCC-POS test.
+\label{fig: Power comparaison using different tests Normal}
+\end{figure}
+
+
+\begin{figure}[tbph]
+\caption{Power comparisons: different split-samples. Normal error distributions with break in variance, with
+different values of $\rho $ in (\ref{eq: errorsim}) and $\theta =0.9$ in (\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{SS5.eps}} %
+\subfigure{\includegraphics[scale=0.58]{SS11.eps}} \\[0pt]
+%\subfigure{\includegraphics[scale=0.65]{Normalteta9roh5.eps}} %
+%\subfigure{\includegraphics[scale=0.65]{Normalteta9roh9.eps}}\\[0pt]
+\end{center}
+\doublespacing
+Note: These figures compare the power
+envelope the PCC-POS test statistic using different split-samples: 10\%, 30\%, 50\%, 70\%. \textquotedblleft PE\textquotedblright refers to the power envelope of the PCC-POS test.
+\label{fig: SS410}
+\end{figure}
+\section{PCC-POS confidence regions \label{projectiontechniqueC3}}
+
+In this Section, we lay out the theoretical framework for building confidence regions for a vector
+(sub-vector) of the unknown parameters $\beta $, say $C_{\beta }(\alpha )$, at a given
+significance level $\alpha $, using the proposed PCC-POS tests. Consider model (\ref{eq: modelnl}) such that $f(x_{t-1},\beta)=x_{t-1}'\beta$.
+Suppose we wish to test the null hypothesis (\ref{eq: nullnl})
+against the alternative hypothesis (\ref{eq: altnl}). Formally, this implies finding all the values of $\beta _{0}\in \mathbb{R}^{k}$ such
+that
+\begin{equation}
+SN_{n}(\beta_0\mid\beta _{1})=\sum\limits_{t=2}^{n}\sum\limits_{l=t-1}^{2}\ln c_{\tilde{\sigma}_{lt}t,\mid \tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t}}+\sum\limits_{t=2}^{n}\ln c_{\tilde{\sigma}_{1t}t}+\sum\limits_{t=1}^{n}s(y_t-\beta_0'x_{t-1})\tilde{a}_t(\beta_0\mid\beta_1)<c_1(\beta_0,\beta_1).
+\end{equation}%
+where the critical value is given by the smallest constant $c(\beta
+_{0},\beta _{1})$ such that
+\begin{equation*}
+P\left[SN_{n}(\left. \beta _{0}\right\vert \beta
+_{1})>c(\beta
+_{0},\beta _{1})|\beta =\beta _{0}\right]\leq\alpha 
+\end{equation*}%
+Thus, the confidence region of the vector of parameters $\beta $ can be
+defined as follows:
+\begin{equation*}
+C_{\beta }(\alpha )=\left\{ \beta _{0}:SN_{n}(\left. \beta _{0}\right\vert \beta
+_{1})<c(\beta _{0},\beta _{1})|P[SN_{n}(\left. \beta _{0}\right\vert \beta
+_{1})>c(\beta _{0},\beta
+_{1})|\beta =\beta _{0}]\leq \alpha \right\} .
+\end{equation*}%
+Given the confidence region $C_{\beta }(\alpha )$, confidence intervals for the components and sub-vectors of vector $\beta $ can be derived using the projection techniques [see \citet{dufour2010exact} and \citet{coudin2009finite}]. Confidence sets in the form of transformations $T$ of $\beta\in%
+\mathbb{R}^{m}$, for $m\leq (k+1)$, say $T(C_{\beta }(\alpha ))$, can easily be found using these techniques. Since, for any set $C_{\beta }(\alpha )$
+\begin{equation}
+\beta \in C_{\beta }(\alpha )\implies T(\beta )\in T(C_{\beta }(\alpha )),
+\label{cr1}
+\end{equation}%
+we have
+\begin{equation}
+P[\beta \in C_{\beta }(\alpha )]\geq 1-\alpha \implies P%
+[T(\beta )\in T(C_{\beta }(\alpha ))]\geq 1-\alpha   \label{cr2}
+\end{equation}%
+where
+\begin{equation*}
+T(C_{\beta }(\alpha ))=\{\delta \in \mathbb{R}^{m}:\exists \beta \in
+C_{\beta }(\alpha ),T(\beta )=\delta \}.
+\end{equation*}%
+\newline
+From (\ref{cr1}) and (\ref{cr2}) , the set $T(C_{\beta }(\alpha ))$ is a
+conservative confidence set for $T(\beta )$ with level $1-\alpha $. If $%
+T(\beta )$ is a scalar, then we have
+\begin{equation*}
+P[\inf \{T(\beta _{0}),\;\;\text{for}\;\;\beta _{0}\in C_{\beta
+}(\alpha )\}\leq T(\beta )\leq \sup \{T(\beta _{0}),\;\;\text{for}\;\;\beta
+_{0}\in C_{\beta }(\alpha )\}]>1-\alpha .
+\end{equation*}
+
+\section{Monte Carlo study \label{sec: Monte Carlo study}}
+In this Section, we assess the performance of the proposed 10\% SS-PCC-POS tests (in terms of size control and power) by comparing it with other tests that are intended to be robust against non-standard distributions and heteroskedasticity of unknown form. We consider DGPs under different distributional assumptions and heteroskedasticities. For each DGP, we further consider different correlation coefficients between the residuals of the predictive regressions and the disturbances of the regressors. In the first subsection, the DGPs are formally introduced and in the following subsection, the performance of the proposed 10\% SS-PCC-POS tests are compared with that of the other tests considered in our study.  
+\subsection{Simulation setup \label{Simulation setup}}
+We assess the performance of the proposed 10\% SS-PCC-POS tests in terms of size and power, by considering various DGPs with different symmetric and asymmetric distributions and forms of heteroskedasticity. The DGPs under consideration are supposed to mimic different scenarios that are often encountered in practical settings. The performance of the 10\% SS-PCC-POS tests is compared to that of a few other tests, by considering the following linear predictive regression model
+\begin{equation}
+ y_t=\beta x_{t-1}+\varepsilon_t
+\end{equation}
+where $\beta$ is an unknown parameter and
+\begin{equation}\label{eq: theta}
+x_{t}=\theta x_{t-1}+u_t
+\end{equation}
+where $\theta=0.9$ and
+\begin{equation}\label{eq: errorsim}
+u_t=\rho \varepsilon_t+w_t\sqrt{1-\rho^2}
+\end{equation}
+for $\rho=0,0.1,0.5,0.9$ and $\varepsilon_t$ and $w_t$ are assumed to be independent. The initial value of $x$ is given by: $x_0=\frac{w_0}{\sqrt{1-\theta^2}}$ and $w_t$ are generated from $N(0,1)$. 
+The residuals $\varepsilon_t$ are i.n.i.d and are categorized by two groups in our simulation study. In the first group, we consider DGPs where the residuals $\varepsilon_t$ possess symmetric and asymmetric distributions:
+\begin{enumerate}
+\item[\textbf{1.}] normal distribution: $\varepsilon_t\sim N(0,1)$;
+\item[\textbf{2.}] Cauchy distribution: $\varepsilon_t\sim Cauchy$;
+\item[\textbf{3.}] Student's $t$ distribution with two degrees of freedom: $\varepsilon_t\sim t(2)$;
+\item[\textbf{4.}] Mixture of Cauchy and normal distributions: $\varepsilon_t \sim \mid\varepsilon_t^C\mid-(1-s_t)\mid\varepsilon_t^N\mid$, where $\varepsilon_t^C$ follows Cauchy distribution, $\varepsilon_t^N$ follows $N(0,1)$ distribution, and 
+\[
+P(s_t=1)=P(s_t=0)=\frac{1}{2}
+\] 
+\end{enumerate} 
+The second group of DGPs represents different forms of heteroskedasticity:
+\begin{enumerate}
+\item[\textbf{5.}] break in variance: 
+\begin{equation*}
+\varepsilon _{t}\sim \left\{ 
+\begin{array}{cc}
+N(0,1) & \text{for}\ t\neq 25 \\ 
+\sqrt{1000}N(0,1) & \text{for}\ t=25%
+\end{array}%
+\,;\right.
+\end{equation*}%
+\item[\textbf{6.}] GARCH$(1,\,1)$ plus jump variance:%
+\begin{equation*}
+\sigma _{\varepsilon }^{2}(t)=0.00037+0.0888\varepsilon
+_{t-1}^{2}+0.9024\sigma _{\varepsilon }^{2}(t-1)\,,
+\end{equation*}%
+\begin{equation*}
+\varepsilon _{t}\sim \left\{ 
+\begin{array}{cc}
+N(0,\sigma _{\varepsilon }^{2}(t)) & \text{for}\ t\neq 25 \\ 
+50N(0,\sigma _{\varepsilon }^{2}(t)) & \text{for}\ t=25%
+\end{array}%
+\right. \,;
+\end{equation*}%
+\end{enumerate}
+We consider the problem of testing the null hypothesis $H_0: \beta=0$. Our Monte Carlo simulations compare the size and power of the 10\%-PCC-POS test to those of T-test, T-test based on \citet{white1980heteroskedasticity} variance-correction (WT-test hereafter), and the sign-based test proposed by \citet{dufour1995exact}. Due to computational constraints, we perform only $M_1=1,000$ simulations to evaluate the probability distribution of the 10\% SS-PCC-POS test statistic and $M_2=1,000$ iterations for approximating the power functions of the proposed PCC-POS test and other tests. In all simulations, we have considered a sample size of $n=50$. As the sign-based statistic of \citet{dufour1995exact} has a discrete distribution, it is not possible to obtain test with a precise size of $5\%$; therefore, the size of the test is $5.95\%$ for $n=50$. 
+\subsection{Simulation results \label{Simulation results}}
+
+The results of the Monte Carlo study corresponding to DGPs described in Section \ref{Simulation setup} are presented in figures \ref{fig: Sim17}-\ref{fig: Sim612}. These figures compare the performance of the 10\% SS-PCC-POS test in terms of size and power, to those of the T-test, T-test based on White's (1980) variance-correction, as well as the sign-based procedure proposed by \citet{dufour2010exact}. The results are descirbed in detail below.
+
+First, figure \ref{fig: Sim17} considers the case where the residuals $\varepsilon_t$ are normally distributed. At first glance, we note that all tests control size. Evidently, our test is outperformed by the T-test, as well as the T-test based on White's (1980) variance-correction. The former is expected, since for normally distributed residuals, the T-test is the most powerful test. However, the 10\% SS-PCC-POS test outperforms the sign-based procedure porposed by \citet{dufour1995exact} [CD (1995) hereafter]. Furthermore, changing the correlation coefficient $\rho$ does not seem to lead to visually significant differences in the performance of the tests.
+ 
+Second, figure \ref{fig: Sim28} presents the results of the performance of the aforementioned tests, when the residuals $\varepsilon_t$ follows Cauchy distribution. It is evident that the 10\% SS-PCC-POS test outperforms all other tests. Moreover, the T-test and WT-test do not possess much power for low correlation coefficient (0 and 0.1) values of $\rho$. However, as the correlation between $u_t$ and $w_t$ increases, the gap between the power functions narrows significantly.  
+
+Third, in figures \ref{fig: Sim39} and \ref{fig: Sim410}, we have considered the cases where the residuals in turn follow $t(2)$ and mixture distributions. In the former case of $t(2)$ distributed residuals, the 10\% SS-PCC-POS test outperforms the rest; however, for almost all correlation coefficients $\rho$, the gap between the power functions is rather small, albeit it is narrowest for $\rho=0.9$. In the case of residuals with mixture distribution, our 10\% SS-PCC-POS test is still the most powerful test. On other hand, it is evident that the T-test and WT-test do not possess much power for small values (0 and 0.1) of correlation coefficient $\rho$. However, the power functions increase and converge to those of the other tests, as the correlation increases.
+
+An interesting observation is the stark contrast between the power of the 10\% SS-PCC-POS test and the T-test, when the errors follow the Cauchy, $t(2)$ and normal distributions respectively. The Cauchy and $t(2)$ distributions possess heavy tails, in the presence of which the standard error of the regression coefficients is inflated, which in turn leads to low power when the mean is used as a measure of central tendency. For instance, the Cauchy distribution has the heaviest tails among the considered  DGPs, as a result of which the T-test and WT-test have very low power. By noting that a Student's $t$ distribution with $\nu$ degrees of freedom converges to the Cauchy distribution for $\nu=1$ and to the normal distribution as $\nu\rightarrow \infty$, it would be interesting to see at which degree of freedom the 10\% SS-PCC-POS test is outperformed by the T-test and WT-tests.  Figures \ref{fig: c21}-\ref{fig: c24} suggest that for different values of $\rho$ in (\ref{eq: errorsim}) the T-test and WT test outperform the 10\% SS-PCC-POS test for $\nu=4$. Interestingly, figure \ref{fig: c25} shows that the tails of the $t(2)$ distribution are substantially heavier than that of the $t(4)$, which may explain the transition.
+
+
+Finally, in figures \ref{fig: Sim39} and \ref{fig: Sim410}, the residuals are normally distributed with different forms of heteroskedasticity. In the first case [see figure \ref{fig: Sim39}], there is a break in variance, in the presence of which, our test outperforms the other tests. Furthermore, the T-test and WT-test do not possess any power for low correlation (0 and 0.1) values of $\rho$. However, with greater values of the correlation coefficient the power curves of all test appear to converge. In the other case [see figure \ref{fig: Sim410}], the variance follows a GARCH(1,1) model with a jump in variance. In this case, our test is only outperformed by the CD (1995) test, which has the greatest power function. Nevertheless, the 10\% SS-PCC-POS test still outperforms the T-test and WT-test.  
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Normal error distributions with
+different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protect%
+\theta =0.9$ in (\protect\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{Sim1.eps}} %
+\subfigure{\includegraphics[scale=0.58]{Sim7.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.58]{Sim13.eps}} %
+\subfigure{\includegraphics[scale=0.58]{Sim19.eps}}\\[0pt]
+\end{center}
+\doublespacing
+Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
+[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: Sim17}
+\end{figure}
+
+
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Cauchy error distributions with
+different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protect%
+\theta =0.9$ in (\protect\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.57]{Sim2.eps}} %
+\subfigure{\includegraphics[scale=0.57]{Sim8.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.57]{Sim14.eps}} %
+\subfigure{\includegraphics[scale=0.57]{Sim20.eps}}\\[0pt]
+\end{center}
+\doublespacing
+ Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
+[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: Sim28}
+\end{figure}
+
+
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Student's $t$ error distributions with 2 degrees of freedom [i.e $t(2)$], with
+different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protect%
+\theta =0.9$ in (\protect\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{Sim3.eps}} %
+\subfigure{\includegraphics[scale=0.58]{Sim9.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.58]{Sim15.eps}} %
+\subfigure{\includegraphics[scale=0.58]{Sim21.eps}}\\[0pt]
+\end{center}
+\doublespacing
+Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
+[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: Sim39}
+\end{figure}
+
+
+
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Mixture error distributions with
+different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protect%
+\theta =0.9$ in (\protect\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{Sim4.eps}} %
+\subfigure{\includegraphics[scale=0.58]{Sim10.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.58]{Sim16.eps}} %
+\subfigure{\includegraphics[scale=0.58]{Sim22.eps}}\\[0pt]
+\end{center}
+\doublespacing
+Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
+[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test].
+\label{fig: Sim410}
+\end{figure}
+
+
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Normal error distributions with break in variance,
+with different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protect%
+\theta =0.9$ in (\protect\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{Sim5.eps}} %
+\subfigure{\includegraphics[scale=0.58]{Sim11.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.58]{Sim17.eps}} %
+\subfigure{\includegraphics[scale=0.58]{Sim23.eps}}\\[0pt]
+\end{center}
+\doublespacing
+Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
+[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test].
+\label{fig: Sim511}
+\end{figure}
+
+
+
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Normal error distributions GARCH(1,1) plus jump invariance, with
+different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protect%
+\theta =0.9$ in (\protect\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{Sim6.eps}} %
+\subfigure{\includegraphics[scale=0.58]{Sim12.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.58]{Sim18.eps}} %
+\subfigure{\includegraphics[scale=0.58]{Sim24.eps}}\\[0pt]
+\end{center}
+\doublespacing
+Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
+[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: Sim612}
+\end{figure}
+\FloatBarrier
+\section{Conclusion \label{ConclusionC3}}
+In this chapter, we extended the exact point-optimal sign-based procedures proposed in the first chapter by relaxing the Markovian assumption. We had earlier provided a caveat that to obtain feasible test statistics, an assumption must be imposed on the dependence structure of process of signs; specifically, we assumed that the signs follow a finite order Markov process. In this chapter, we showed that by implementing the procedures for pair copula constructions of discrete data, we can derive exact and distribution-free sign-based statistics for dependent data in the context of linear and non-linear regressions, without any potentially restrictive assumptions. The proposed tests are valid, distribution-free and robust against heteroskedasticity of unknown form. Furthermore, they may be inverted to produce a confidence region for the vector (sub-vector) of parameters of the regression model. 
+
+We further suggested a sequential estimation strategy for the vine PCC and discussed the choice of the copula family. As the proposed sign-statistics depend on the alternative hypothesis, another problem consists of finding an alternative that controls size and maximizes the power. In line with \citet{dufour2010exact}, we find that when 10\% of sample is used to estimate the alternative and the rest to compute the test-statistic, our procedures have the optimal power and are closest to the power envelope.
+
+Finally, we presented a Monte Carlo study to assess the performance of the proposed tests in terms of size control and power, by comparing it to some other tests that are supposed to be robust against heteroskedasticity. We considered a variety of different DGPs and we showed that the 10\% split-sample point-optimal sign-test based on pair copula constructions is superior to the T-test, \citet{dufour1995exact} sign-based test,
+and the T-test based on \citet{white1980heteroskedasticity} variance correction in most cases.
+\newpage
+
+\section{Appendix}
+
+\begin{proof}[Derivation of the Neyman-Pearson type test-statistic for testing the orthogonality hypothesis for $n\leq 3$]
+The likelihood function of sample in terms of signs $s(y_{1}),...,s(y_{n})$ conditional on $X$ is
+\begin{equation*}
+L\left( U(n),\beta \right) =P\left[
+s(y_{1})=s_{1},...,s(y_{n})=s_{n}\mid X\right] =\prod\limits_{t=1}^{n}%
+P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X\right] ,
+\end{equation*}%
+for 
+\begin{equation*}
+\text{\b{S}}_{0}=\left\{ \emptyset \right\} ,\text{ \ \b{S}}_{t-1}=\left\{
+s(y_{1}),...,s(y_{t-1})\right\} ,\text{ for }t\geq 2,
+\end{equation*}%
+and%
+\begin{equation*}
+P\left[ s(y_{1})=s_{1}\mid \text{\b{S}}_{0}=\text{\b{s}}_{0},X\right] =P%
+\left[s(y_{1})=s_{1}\mid X\right] ,
+\end{equation*}%
+where each $s_{i}$, for $1\leq t\leq n$, takes two possible values $0$ and $%
+1 $. Given model (\ref{eq: DGP}) and assumption (\ref{eq: median}), under the null hypothesis the signs $s(\varepsilon_{t})$, for $1\leq t\leq n$,\ are i.i.d conditional on $X$ according to $Bi(1,0.5)$. Then, the signs $s(y_{t}),$ for $1\leq t\leq n$, will also be i.i.d conditional on $X$
+with%
+\begin{equation*}
+P\left[ s(y_{t})=1\mid X\right] =P\left[ s(y_{t})=0\mid X\right] =%
+\frac{1}{2},\text{ for }t=1,...,n.
+\end{equation*}%
+Consequently, under $H_{0}$%
+\begin{equation*}
+L_{0}\left( U(n),0\right) =\prod\limits_{t=1}^{n}
+P\left[ s(y_{t})=s_{t}\mid X\right] =\left( \frac{1}{2}\right) ^{n}
+\end{equation*}%
+and under $H_1$ we have%
+\begin{equation*}
+L_1\left( U(n),\beta _{1}\right) =\prod\limits_{t=1}^{n}%
+P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1}=\text{\b{s}}_{t-1}, X\right]
+\end{equation*}%
+where now, for $t=1,...,n,$%
+\begin{equation*}
+y_{t}=\beta_1'x_{t-1}+\varepsilon_{t}
+\end{equation*}%
+The log-likelihood ratio is given by%
+\begin{equation*}
+\ln \left\{ \frac{L_1\left( U(n),\beta _{1}\right) }{L
+_{0}\left( U(n),0\right) }\right\} =\sum\limits_{t=1}^{n}\ln \left\{
+P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X\right] \right\} -\text{n}\ln
+\left\{ \frac{1}{2}\right\} .
+\end{equation*}%
+According to Neyman-Pearson lemma [see e.g. Lehmann (1959), page 65], the
+best test to test $H_{0}$ against $H_1,$ based on $s(y_{1}),...,s(y_{n}),$
+rejects $H_{0}$ when%
+\begin{equation*}
+SL_n(\beta_1)=\ln \left\{ \frac{L_1\left( U(n),\beta _{1}\right) }{L_{0}\left( U(n),0\right) }\right\} \geq c
+\end{equation*}%
+or when%
+\begin{equation*}
+\sum\limits_{t=1}^{n}\ln \left\{ P\left[ s(y_{t})=s_{t}\mid \text{%
+\b{S}}_{t-1}=\text{%
+\b{s}}_{t-1},X\right] \right\} \geq c_1\equiv c+n\ln\left(\frac{1}{2}\right),
+\end{equation*}%
+The critical value, say $c_1$ is given by the smallest constant $c_1$ such that%
+\begin{equation*}
+P\left(\sum\limits_{t=1}^{n}\ln \left\{ P\left[ s(y_{t})=s_{t}\mid \text{%
+\b{S}}_{t-1}=\text{%
+\b{s}}_{t-1},X\right] \right\} >c_1\mid
+H_{0}\right) \leq \alpha .
+\end{equation*}
+Let $X=[x_0,...,x_{n-1}]$ be a $n\times (k+1)$ matrix of fixed or stochastic explanatory variables, from (\ref{eq: likelihood1}), we get
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\ln\left\{P[s(y_1)=s_1\mid \text{\b{S}}_{0}=\text{\b{s}}_{0},X]\right\}&=\ln\left\{P[s(y_1)=s_1\mid X]\right\}\\
+&=s(y_1)\ln \left\{\frac{P[y_1\geq 0\mid X]}{P[y_1< 0\mid X]}\right\}+ \ln P[y_1< 0\mid X]
+\end{align*}
+\endgroup
+and for $t=2,...,n$, with $n\leq3$ we have
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+ \sum\limits_{t=2}^{n} \ln P\left[s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X\right] &=\sum\limits_{t=2}^{n}\ln\left(\frac{P[s(y_t)=s_t,s(y_{t-1})=s_{t-1}\mid \text{\b{S}}%
+_{t-2}=\text{\b{s}}%
+_{t-2},X]}{P[s(y_{t-1})=s_{t-1}\mid \text{\b{S}}%
+_{t-2}=\text{\b{s}}%
+_{t-2},X]}\right)\\
+&=\sum\limits_{t=2}^{n}\ln\Bigg(\sum\limits_{k_t=0,1}\sum\limits_{k_{t-1}=0,1}(-1)^{k_t+k_{t-1}}\\
+&\textcolor{white}{=}\times\left\{P[s(y_t)\leq s_t-k_t,s(y_{t-1})\leq s_{t-1}-k_{t-1}\mid \text{\b{S}}%
+_{t-2}=\text{\b{s}}_{t-2},X]\right\}\\
+&\textcolor{white}{=}/P[s(y_{t-1})=s_{t-1}\mid \text{\b{S}}_{t-2}=\text{\b{s}}_{t-2},X]\Bigg)\\
+\textcolor{white}{\left\{ P\left[s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1}=\text{\b{s}}_{t-1}\right] \right\} }&=\sum\limits_{t=2}^{n}\ln\Bigg(\sum\limits_{k_t=0,1}\sum\limits_{k_{t-1}=0,1}(-1)^{k_t+k_{t-1}}\\
+& \textcolor{white}{=}\times\Big\{C_{s(y_t),s(y_{t-1})\mid \text{\b{S}}%
+_{t-2}}\left(F_{s(y_t)\mid \text{\b{S}}%
+_{t-2} }(s_t-k_t\mid \text{\b{s}}%
+_{t-2},X),\right.\\
+& \textcolor{white}{=}\hspace{14em}\left.F_{s(y_{t-1})\mid \text{\b{S}}_{t-2}}(s_{t-1}-k_{t-1}\mid \text{\b{s}}_{t-2},X)\right)\Big\}\\
+&\textcolor{white}{=}/P[s(y_{t-1})=s_{t-1}\mid \text{\b{S}}_{t-2}=\text{\b{s}}_{t-2},X]\Bigg)\\
+&=\sum\limits_{t=2}^{n}\ln\Bigg\{\sum\limits_{k_t=0,1}\sum\limits_{k_{t-1}=0,1}(-1)^{k_t+k_{t-1}} \\
+&\textcolor{white}{=} \times\Big\{C_{s(y_t),s(y_{t-1})\mid \text{\b{S}}%
+_{t-2}}\left(F_{s(y_t)\mid \text{\b{S}}%
+_{t-2} }(s_t-k_t\mid \text{\b{s}}%
+_{t-2},X),\right.\\
+& \textcolor{white}{=}\hspace{14em}\left.F_{s(y_{t-1})\mid \text{\b{S}}%
+_{t-2}}(s_{t-1}-k_{t-1}\mid \text{\b{s}}%
+_{t-2},X)\right)\Big\}\Bigg\}\\
+&\textcolor{white}{=}-\sum\limits_{t=2}^{n}\ln\left\{P[s(y_{t-1})=s_{t-1}\mid \text{\b{S}}_{t-2}=\text{\b{s}}_{t-2},X]\right\}
+\end{align*}%
+\endgroup
+Each argument $F_{s(y_t)\mid \text{\b{S}}%
+_{t-2}}(s_t-k_t\mid \text{\b{s}}%
+_{t-2},X)$ and $F_{s(y_{t-1})\mid \text{\b{S}}%
+_{t-2}}(s_{t-1}-k_{t-1}\mid \text{\b{s}}%
+_{t-2},X)$ in the copula expression above can be evaluated as follows
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+&F_{s(y_t)\mid\text{\b{S}}%
+_{t-2}}(s_t-k_t\mid\text{\b{s}}%
+_{t-2},X)=\\
+&\left\{C_{s(y_t),s(y_{t-2})\mid\text{\b{S}}%
+_{t-3}}(F(s_t-k_t\mid\text{\b{s}}%
+_{t-3},X),F(s_{t-2}\mid\text{\b{s}}%
+_{t-3},X))\right.\\
+&\left.-C_{s(y_t),s(y_{t-2})\mid\text{\b{S}}%
+_{t-3}}(F(s_t-k_t\mid\text{\b{s}}%
+_{t-3},X),F(s_{t-2}-1\mid\text{\b{s}}%
+_{t-3},X))\right\}/P[s(y_{t-2})=s_{t-2}\mid\text{\b{S}}%
+_{t-3}=\text{\b{s}}%
+_{t-3},X]
+\end{align*}
+ \endgroup
+and similarly
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+&F_{s(y_{t-1})\mid\text{\b{S}}%
+_{t-2}}(s_{t-1}-k_{t-1}\mid\text{\b{s}}%
+_{t-2},X)=\\
+&\left\{C_{s(y_{t-2}),s(y_{t-1})\mid\text{\b{S}}%
+_{t-3}}(F(s_{t-2}\mid\text{\b{s}}%
+_{t-3},X),F(s_{t-1}-k_{t-1}\mid\text{\b{s}}%
+_{t-3},X))\right.\\
+&\left.-C_{s(y_{t-2}),s(y_{t-1})\mid\text{\b{S}}%
+_{t-3}}(F(s_{t-2}-1\mid\text{\b{s}}%
+_{t-3},X),F(s_{t-1}-k_{t-1}\mid\text{\b{s}}%
+_{t-3},X))\right\}/P[s(y_{t-2})=s_{t-2}\mid\text{\b{S}}%
+_{t-3}=\text{\b{s}}%
+_{t-3},X]
+\end{align*}
+\endgroup
+Thus, for $n\leq 3$ the Neyman-Pearson type test statistic based on $%
+s(y_{1}),...,s(y_{n}),$ can be expressed as%
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\ln \left\{ \frac{L_1\left( U(n),\beta _{1}\right) }{L
+_{0}\left( U(n),0\right) }\right\} =\ln P[s(y_{1})=s_{1}\mid \text{\b{S}}_{0}=\text{\b{s}}_{0},X]+\sum\limits_{t=2}^{n}\ln\Bigg\{\sum\limits_{k_t=0,1}\sum\limits_{k_{t-1}=0,1}(-1)^{k_t+k_{t-1}} \\
+\textcolor{white}{=}\times \left(C_{s(y_t),s(y_{t-1})\mid \text{\b{S}}%
+_{t-2}}\left(F_{s(y_t)\mid \text{\b{S}}%
+_{t-2} }(s_t-k_t\mid \text{\b{s}}%
+_{t-2},X),F_{s(y_{t-1})\mid \text{\b{S}}%
+_{t-2}}(s_{t-1}-k_{t-1}\mid \text{\b{s}}%
+_{t-2},X)\right)\right)\Bigg\}\\
+\textcolor{white}{=}-\sum\limits_{t=2}^{n}\ln\left\{P[s(y_{t-1})=s_{t-1}\mid \text{\b{S}}_{t-2}=\text{\b{s}}_{t-2},X]\right\}-n\ln \left\{ \frac{1}{2}\right\}
+\end{align*}%
+\endgroup
+\end{proof}
+
+\begin{proof}[Vine decomposition in the continuous case]
+In Section \ref{EstimationC3}, it has been shown that the signs $s(y_1),...,s(y_n)$ may have a continuous extension with a perturbation in $[0,1]$ [see \citet{denuit2005constraints}]. This can be achieved by employing a transformation of the form $s^*(y_t)=s(y_t)+U-1$ for $t=1,...,n$, where a natural choice for $U$ is the uniform distribution. Thus, for $\{s^*(y_t)\in \mathbb{R},t=1,...,n\}$ consider the continuous equivalent of the conditional probability mass function  (\ref{eq: bayes}) - i.e. the conditional density function. Further, by letting $\text{\b{S}}_{t-1}^{*}$ be the continuous extension of $\text{\b{S}}_{t-1}$, the conditional density function may be expressed as
+\begin{equation}\label{eq: continuous}
+f_{s^*(y_t)\mid \text{\b{S}}_{t-1}^{*\backslash j}\cup s^*(y_j)}=\frac{f_{s^*(y_t),s^*(y_j)\mid \text{\b{S}}_{t-1}^{*\backslash j}}}{f_{s^*(y_j)\mid \text{\b{S}}_{t-1}^{*\backslash j}}}.
+\end{equation}
+From the Theorem of \citet{sklar1959fonctions}, we know that
+\begingroup
+\allowdisplaybreaks
+\begin{align}\label{eq: Sklar}
+\begin{split}
+f_{s^*(y_t),s^*(y_j)\mid \text{\b{S}}_{t-1}^{*\backslash j}}(s_t^*,s_j^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X)&=c_{s^*(y_t),s^*(y_j)\mid \text{\b{S}}_{t-1}^{*\backslash j}}\left(F_{s^*(y_t)\mid\text{\b{s}}_{t-1}^{*\backslash j}}(s_t^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X),F_{s^*(y_j)\mid\text{\b{S}}_{t-1}^{*\backslash j}}(s_j^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X) \right)\\
+&\times\textcolor{white}{=}f_{s^*(y_t)\mid \text{\b{S}}_{t-1}^{*\backslash j}}f_{s^*(y_j)\mid \text{\b{S}}_{t-1}^{*\backslash j}},
+\end{split}
+\end{align}
+\endgroup
+where $c()$ is the copula density function. Thus,
+\begin{equation}
+f_{s^*(y_t)\mid \text{\b{S}}_{t-1}^{*\backslash j}\cup s^*(y_j)}=c_{s^*(y_t),s^*(y_j)\mid \text{\b{S}}_{t-1}^{*\backslash j}}\left(F_{s^*(y_t)\mid\text{\b{s}}_{t-1}^{*\backslash j}}(s_t^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X),F_{s^*(y_j)\mid\text{\b{S}}_{t-1}^{*\backslash j}}(s_j^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X) \right)f_{s^*(y_t)\mid \text{\b{S}}_{t-1}^{*\backslash j}},
+\end{equation}
+with
+\begingroup
+\allowdisplaybreaks
+\begin{align}
+\begin{split}
+\begin{array}{l}
+c_{s^*(y_t),s^*(y_j)\mid \text{\b{S}}_{t-1}^{*\backslash j}}\left(F_{s^*(y_t)\mid\text{\b{S}}_{t-1}^{*\backslash j}}(s_t^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X),F_{s^*(y_j)\mid\text{\b{S}}_{t-1}^{*\backslash j}}(s_j^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X) \right)=\\
+\textcolor{white}{c_{s^*(y_t),s^*(y_j)\mid \text{\b{S}}_{t-1}^{*\backslash j}}(F_{s^*(y_t)\mid\text{\b{S}}_{t-1}^{*\backslash j}}(s_t^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X)}\frac{\partial^2C_{s^*(y_t),s^*(y_j)\mid \text{\b{S}}_{t-1}^{*\backslash j}}\left(F_{s^*(y_t)\mid\text{\b{S}}_{t-1}^{*\backslash j}}(s_t^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X),F_{s^*(y_j)\mid\text{\b{S}}_{t-1}^{*\backslash j}}(s_j^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X) \right)}{\partial F_{s^*(y_t)\mid\text{\b{S}}_{t-1}^{*\backslash j}}\left(s_t^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X\right)\partial F_{s^*(y_j)\mid\text{\b{S}}_{t-1}^{*\backslash j}}\left(s_j^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X\right)}
+\end{array}
+\end{split}
+\end{align}
+\endgroup
+ can express (\ref{eq: continuous}), and the arguments of the copulas, say, $F_{s^*(y_t)\mid\text{\b{S}}_{t-1}^{*\backslash j}}(s_t^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X)$ are obtained using the expression by \citet{joe1996families}, such that
+\begin{equation}
+F_{s^*(y_t)\mid\text{\b{S}}_{t-1}^{*\backslash j}}(s_t^*\mid \text{\b{s}}_{t-1}^{*\backslash j},X)=\frac{\partial C_{s^*(y_t),s^*(y_i)\mid \text{\b{S}}_{t-1}^{*\backslash j,i}}\left(F_{s^*(y_t)\mid\text{\b{S}}_{t-1}^{*\backslash j,i}}(s_t^*\mid \text{\b{s}}_{t-1}^{*\backslash j,i},X),F_{s^*(y_i)\mid\text{\b{S}}_{t-1}^{*\backslash j,i}}(s_i^*\mid \text{\b{s}}_{t-1}^{*\backslash j,i},X)\right)}{\partial F_{s^*(y_i)\mid\text{\b{S}}_{t-1}^{*\backslash j,i}}(s_i^*\mid \text{\b{s}}_{t-1}^{*\backslash j,i},X)}.
+\end{equation}
+Therefore, when the data is continuous, the marginals in the copula expressions of, say, the third tree, $F_{t\mid t+1,t+2}$ for $t=1,...,n-2$ and $F_{t+3\mid t+1,t+2}$ for $t=1,...,n-3$ are obtained by 
+\begin{equation}
+F_{t\mid t+1,t+2}=\frac{\partial C_{t,t+1\mid t+2}(F_{t\mid t+2}(s_t^*\mid s_{t+2}^*,X),F_{t+1\mid t+2}(s_{t+1}^*\mid s_{t+2}^*,X))}{\partial F_{t+1\mid t+2}(s_{t+1}^*\mid s_{t+2}^*,X)},
+\end{equation}
+where $F_{t+3\mid t+1,t+2}$ is obtained in a similar way.
+\end{proof}
+
+\begin{proof}[Proof of Proposition \protect\ref{coroll1}]
+The likelihood function of sample in terms of signs $s(y_{1}),...,s(y_{n})$%
+\begin{equation*}
+L\left( U(n),\beta \right) =P\left[s(y_{1})=s_{1},...,s(y_{n})=s_{n}\mid X\right] 
+\end{equation*}%
+where each $s_{i}$, for $1\leq t\leq n$, takes two possible values $0$ and $%
+1 $. Given model (\ref{eq: DGP}) and assumption (\ref{eq: median}), under the null hypothesis the signs $s(\varepsilon_{t})$, for $1\leq t\leq n$,\ are i.i.d conditional on $X$ according to $Bi(1,0.5)$. Then, the signs $s(y_{t}),$ for $1\leq t\leq n$, will also be i.i.d conditional on $X$
+\begin{equation*}
+P\left[ s(y_{t})=1\mid X\right] =P\left[ s(y_{t})=0\mid X\right] =%
+\frac{1}{2},\text{ for }t=1,...,n.
+\end{equation*}%
+Consequently, under $H_0$ we have
+\begin{equation*}
+L_{0}\left( U(n),0\right) =\prod\limits_{t=1}^{n}
+P\left( s(y_{t})=s_{t}\mid X\right) =\left( \frac{1}{2}\right) ^{n}
+\end{equation*}%
+and under $H_1$ the likelihood function can be expressed as 
+\[
+L_1\left( U(n),\beta_1 \right) =P_1[s(y_1)=s_1\mid X]\times\prod\limits_{t=2}^{n}P_{t\mid 1:{t-1}}[s(y_t)=s_t\mid s(y_1)=s_1:s(y_{t-1})=s_{t-1},X].
+\]
+which can further be decomposed using the D-vine array $A=(\sigma_{lt})_{1\leq l\leq t\leq n}$ to obtain
+\[
+L_1\left( U(n),\beta_1 \right) =P_1[s(y_1)=s_1\mid X]\times\prod\limits_{t=2}^{n}\prod\limits_{l=t-1}^{2} c_{\sigma_{lt}t,\mid \sigma_{1t},...,\sigma_{t-1,t}}\times c_{\sigma_{1t}t}\times P_t[s(y_t)=s_t\mid X]
+\]
+where now for $t=1,...,n,$%
+\begin{equation*}
+y_{t}=\beta_1'x_{t-1}+\varepsilon_{t}
+\end{equation*}%
+Under assumption (\ref{eq: DGP}) and (\ref{eq: median}), the likelihood function under the alternative can be expressed as 
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+L_1\left( U(n),\beta_1 \right)& =\left(1-P_1[\varepsilon_1< -\beta_1 x_0\mid X]\right)^{s(y_1)}\times P_1[\varepsilon_1 <- \beta_1 x_0\mid X]^{1-s(y_1)}\\
+&\textcolor{white}{=}\times\prod\limits_{t=2}^{n}\prod\limits_{l=t-1}^{2} c_{\sigma_{lt}j,\mid \sigma_{1t},...,\sigma_{t-1,t}}\times c_{\sigma_{1t}t}
+\times \left(1-P_t[\varepsilon_t< -\beta_1 x_{t-1}\mid X]\right)^{s(y_t)}\\
+&\textcolor{white}{=}\times P_t[\varepsilon_t < -\beta_1 x_{t-1}\mid X]^{1-s(y_t)}
+\end{align*}
+\endgroup
+The log-likelihood ratio is given by%
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\ln \left\{ \frac{L_1\left( U(n),\beta _{1}\right) }{L
+_{0}\left( U(n),0\right) }\right\}&=s(y_1)\ln\left\{\frac{1-P_1[\varepsilon_1<-\beta_1 x_0\mid X ]}{P_1[\varepsilon_1 < -\beta_1 x_0\mid X]}\right\}+\ln \left(1-P_1[\varepsilon_1< -\beta_1 x_0\mid X]\right)\\
+&\textcolor{white}{=}+\sum\limits_{t=2}^{n}\sum\limits_{l=t-1}^{2}\ln c_{\sigma_{lt}t,\mid \sigma_{1t},...,\sigma_{t-1,t}}+\sum\limits_{t=2}^{n}\ln c_{a_{1t}t}+\sum\limits_{t=2}^{n}s(y_t)\ln\left\{\frac{1-P_t[\varepsilon_t<- \beta_1 x_{t-1}\mid X]}{P_t[\varepsilon_t <-\beta_1 x_{t-1}\mid X]}\right\}\\
+&\textcolor{white}{=}+\sum\limits_{t=2}^{n}\ln\left(1- P_t[\varepsilon_t< -\beta_1 x_{t-1}\mid X]\right)-n\ln\left(\frac{1}{2}\right)
+\end{align*}
+\endgroup
+According to Neyman-Pearson Lemma [see e.g. Lehmann (1959), page 65], the
+best test to test $H_{0}$ against $H_1,$ based on $s(y_{1}),...,s(y_{n}),$
+rejects $H_{0}$ when%
+\begin{equation*}
+\ln \left\{ \frac{L_1\left( U(n),\beta _{1}\right) }{L_{0}\left( U(n),0\right) }\right\} \geq c
+\end{equation*}%
+or when%
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\ln \left\{ \frac{L_1\left( U(n),\beta _{1}\right) }{L
+_{0}\left( U(n),0\right) }\right\}&=\sum\limits_{t=2}^{n}\sum\limits_{l=t-1}^{2}\ln c_{\sigma_{lt}t,\mid \sigma_{1t},...,\sigma_{t-1,t}}+\sum\limits_{t=2}^{n}\ln c_{\sigma_{1t}t}\\\
+&\textcolor{white}{=}+\sum\limits_{t=1}^{n}s_t\ln\left\{\frac{1-P_t[\varepsilon_t<-\beta_1 x_{t-1}\mid X]}{P_t[\varepsilon_t< -\beta_1 x_{t-1}\mid X]}\right\}>c_1(\beta_1)
+\end{align*}
+\endgroup
+The critical value, say $c_1(\beta_1)$ is given by the smallest constant $c_1(\beta_1)$ such that%
+\begin{equation*}
+P\left( \ln \left\{ \frac{L_1\left( U(n),\beta
+_{1}\right) }{L_{0}\left( U(n),0\right) }\right\} >c_1(\beta_1)\mid
+H_{0}\right) \leq \alpha .
+\end{equation*}
+\end{proof}
+\begin{proof}[Algorithm for the likelihood function of the signs under the alternative hypothesis]
+In this Section, we adapt the algorithm for the joint pmf for D-vine for discrete variables of \citet{panagiotelis2012pair} and \citet{joe2014dependence} to the context of our study. Let $U(n)=\left(s(y_1),s(y_2),...,s(y_n)\right)'$ be a binary valued $n$-vector. Furthermore, for a vector of integers $\mathbf{i}$, let $\mathbf{S_{i}}=\{s(y_i), i\in \mathbf{i}\}$, where $\mathbf{s_i}$ is a mass point of $\mathbf{S_i}$ and $s_g$ is a mass point of $s(y_g)$. Let
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+F_{g\mid \mathbf{i}}^{+}&:=P\left[s(y_g)\leq s_g\mid \mathbf{S_i}=\mathbf{s_i},X\right],\quad F_{g\mid \mathbf{i}}^{-}:=P\left[s(y_g)< s_g\mid \mathbf{S_i}=\mathbf{s_i},X\right],\\
+f_{g\mid \mathbf{i}}&:=P[s(y_g)=s_g\mid\mathbf{S_i}=\mathbf{s_i},X].
+\end{align*}
+ \endgroup 
+noting that when $\mathbf{i}=\{\emptyset\}$, these conditional probabilities, correspond to marginal probabilities. Furthermore, let  $C_{gh\mid\mathbf{i}}$ be a bivariate copula for the conditional CDFs $F_{g\mid\mathbf{i}}$ and $F_{h\mid\mathbf{i}}$, and denote
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+C^{++}_{gh\mid\mathbf{i}}&:=C_{gh\mid\mathbf{i}}\left(F_{g\mid\mathbf{i}}^+,F_{h\mid\mathbf{i}}^+\right),\quad C^{+-}_{gh\mid\mathbf{i}}:=C_{gh\mid\mathbf{i}}\left(F_{g\mid\mathbf{i}}^+,F_{h\mid\mathbf{i}}^-\right),\\
+C^{-+}_{gh\mid\mathbf{i}}&:=C_{gh\mid\mathbf{i}}\left(F_{g\mid\mathbf{i}}^-,F_{h\mid\mathbf{i}}^+\right),\quad C^{--}_{gh\mid\mathbf{i}}:=C_{gh\mid\mathbf{i}}\left(F_{g\mid\mathbf{i}}^-,F_{h\mid\mathbf{i}}^-\right).
+\end{align*}
+\endgroup
+The main elements of the algorithm is the following recursions:
+\begin{itemize}
+\item[(\rom{1})] $F_{j-t\mid (j-t+1):(j-1)}^+=\left[C_{j-t,j-1\mid(j-t+1):(j-2)}^{++}-C_{j-t,j-1\mid(j-t+1):(j-2)}^{+-}\right]/f_{j-1\mid(j-t+1):(j-2)};$ 
+\item[(\rom{2})] $F_{j-t\mid (j-t+1):(j-1)}^-=\left[C_{j-t,j-1\mid(j-t+1):(j-2)}^{-+}-C_{j-t,j-1\mid(j-t+1):(j-2)}^{--}\right]/f_{j-1\mid(j-t+1):(j-2)};$
+\item[(\rom{3})] $f_{j-t\mid (j-t+1):(j-1)}=F_{j-t\mid (j-t+1):(j-1)}^+-F_{j-t\mid (j-t+1):(j-1)}^-;$
+\item[(\rom{4})] $F_{j\mid (j-t+1):(j-1)}^+=\left[C_{j-t+1,j\mid(j-t+2):(j-1)}^{++}-C_{j-t+1,j\mid(j-t+2):(j-1)}^{-+}\right]/f_{j-t+1\mid(j-t+2):(j-1)};$
+\item[(\rom{5})] $F_{j\mid (j-t+1):(j-1)}^-=\left[C_{j-t+1,j\mid(j-t+2):(j-1)}^{+-}-C_{j-t+1,j\mid(j-t+2):(j-1)}^{--}\right]/f_{j-t+1\mid(j-t+2):(j-1)};$
+\item[(\rom{6})] $f_{j\mid (j-t+1):(j-1)}=F_{j\mid (j-t+1):(j-1)}^+-F_{j\mid (j-t+1):(j-1)}^-;$
+\item[(\rom{7})] The values based on $C_{j-t,j\mid (j-t+1):(j-1)}$ is computed; 
+\item[(\rom{8})] $t$ is incremented by $1$ and back to (\rom{1}).
+\end{itemize}
+The identity employed in the recursions is
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\begin{array}{ll}
+P\left[s(y_g)\leq s_g\mid s(y_h)=s_h,\mathbf{S_i}=\mathbf{s_i},X\right]=\\
+\textcolor{white}{P[s(y_g)\leq s_g\mid s(y_h)=s_h,}\frac{P\left[s(y_g)\leq s_g, s(y_h)\leq s_h\mid\mathbf{S_i}=\mathbf{s_i},X\right]-P\left[s(y_g)\leq s_g, s(y_h)< s_h\mid\mathbf{S_i}=\mathbf{s_i},X\right]}{P\left[s(y_h)=s_h\mid \mathbf{S_i}=\mathbf{s_i},X\right]}.
+\end{array}
+\end{align*}
+ \endgroup
+The algorithm is as follows
+\begin{enumerate}
+\item Input $\mathbf{s}_n=\left(s_1,...,s_n\right)$.
+\item Allocate an $n\times n$ matrix $\pi$, where $\pi_{tj}=f_{(j-t+1):j}$ for $t=1,...,n$ and $j=t+1,...,n$ and the likelihood function $P[s(y_1)=s_1,...,s(y_n)=s_n]$ under the alternative will appear as $\pi_{nn}$.
+\item Allocate $C^{++}$, $C^{+-}$, $C^{-+}$, $C^{--}$, $U^{'+}$, $U^{'-}$, $U^{+}$, $U^{-}$, $u'$, $u$, $w'$, $w$, as vectors of length $n$.
+\item Evaluate $F^{+}_j$, $F^{-}_j$, and $f_j=F^{+}_j-F^{-}_j$ using (\ref{eq: BernoulliCDF2}) and let $\pi_{1j}\leftarrow f_j$ for $j=1,...,n$;  
+\item Let $C^{++}_j\leftarrow C_{j-1,j}\left(F^{+}_{j-1},F^{+}_{j}\right)$, $C^{+-}_j\leftarrow C_{j-1,j}\left(F^{+}_{j-1},F^{-}_{j}\right)$, $C^{-+}_j\leftarrow C_{j-1,j}\left(F^{-}_{j-1},F^{+}_{j}\right)$, and $C^{--}_j\leftarrow C_{j-1,j}\left(F^{-}_{j-1},F^{-}_{j}\right)$ for $j=2,...,n$;
+\item  Set $P_{2j}\leftarrow C^{++}_j-C^{+-}_j-C^{-+}_j+C^{--}_j$ for $j=2,...,n$;
+\item \textbf{for} $j=2,...,n:\left(T_1\right)$ \textbf{do}
+\item \hspace{10pt} \parbox[t]{\linegoal}{$U_j^{'+}\leftarrow F_{j-1\mid j}^{+}=\left(C^{++}_j-C^{+-}_j\right)/f_j$, $U_j^{'-}\leftarrow F_{j-1\mid j}^{-}=\left(C^{-+}_j-C^{--}_j\right)/f_j$, and $u_j'\leftarrow f_{j-1\mid j}=F_{j-1\mid j}^{+}-F_{j-1\mid j}^{-}$;}
+\item \hspace{10pt} \parbox[t]{\linegoal}{$U_j^{+}\leftarrow F_{j\mid j-1}^{+}=\left(C^{++}_j-C^{-+}_j\right)/f_{j-1}$, $U_j^{-}\leftarrow F_{j\mid j-1}^{-}=\left(C^{-+}_j-C^{--}_j\right)/f_{j-1}$, and $u_j\leftarrow f_{j\mid j-1}=F_{j\mid j-1}^{+}-F_{j\mid j-1}^{-}$;}
+\item \textbf{end for}
+\item \textbf{for} $t=2,...,n-1: \left(T_2,...,T_{n-1}\right)$ \textbf{do}
+\item\hspace{10pt} let $C^{\alpha\beta}_j\leftarrow C_{j-t,j\mid (j-t+1):(j-1)}\left(U^{'\alpha}_{j-1},U^{\beta}_j\right)$, for $j=t+1,...,n$ and $\alpha,\beta\in\{+,-\}$; 
+\item\hspace{10pt} let $w_{j}'\leftarrow u_{j}'$, $w_{j}\leftarrow u_{j}$ for $j=t,...,n;$
+\item\hspace{10pt} \textbf{for} $j=t+1,...,n:$ \textbf{do}
+\item\hspace{30pt} $U^{'+}_{j}\leftarrow \left(C^{++}_j-C^{+-}_j\right)/w_j$, $U^{'-}_{j}\leftarrow \left(C^{-+}_j-C^{--}_j\right)/w_j$ and $u_j'\leftarrow U^{'+}_{j}-U^{'-}_{j}$;
+\item\hspace{30pt} $U^{+}_{j}\leftarrow \left(C^{++}_j-C^{-+}_j\right)/w_{j-1}'$, $U^{-}_{j}\leftarrow \left(C^{+-}_j-C^{--}_j\right)/w_{j-1}'$ and $u_j\leftarrow U^{+}_{j}-U^{-}_{j}$;
+\item\hspace{10pt} \textbf{end for}
+\item\hspace{10pt} let $\pi_{t+1,j}\leftarrow \pi_{t,j-1}\times u_j$ for $j=t+1,...,n$.
+\item\textbf{end for}
+\item Return the likelihood function $\pi_{nn}$.
+\end{enumerate}
+\end{proof}
+
+\begin{proof}[Proof of Theorem \protect\ref{Theorem1}]
+ The characteristic function of the test statistic $SN_n(\beta_0\mid\beta_1)$ conditional on $X$ is given by
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\phi_{SN_n}(u)&=\mathbb{E}_{X}\left[\exp(iu SN_n(\beta_0\mid\beta_1))\right]\\
+&=\E_X\left[\exp\left(iu\left(\sum\limits_{t=1}^n R_{t,t-1}+\sum\limits_{t=1}^{n}\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_1\mid X]}{p_t[x_{t-1},\beta_0,\beta_1\mid X]}\right\}s(\tilde{y}_t)\right)\right)\right],
+\end{align*}
+\endgroup
+which may be expressed as
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\phi_{SN_n}(u)=\E_X\left[\prod\limits_{t=1}^{n}\exp\left(iu\left(R_{t,t-1}+\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_1\mid X]}{p_t[x_{t-1},\beta_0,\beta_1\mid X]}\right\}s(\tilde{y}_t)\right)\right)\right],
+\end{align*}
+\endgroup
+with $R_{1,0}=0$, and $R_{t,t-1}=\sum\limits_{l=t-1}^{2}\ln c_{\tilde{\sigma}_{lt}t\mid \tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t}}+\ln c_{\tilde{\sigma}_{1t}t}$ for $t=2,...,n$, for the D-vine-array $\tilde{A}=(\tilde{\sigma}_{lt})_{1\leq l\leq t\leq n}$, such that $l=2,...,n-1$ is the row with tree $T_l$, and column $t$ has the permutation $\tilde{\underline{\sigma}}_{t-1}=(\tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t})$ of the previously added variables, $p_t[x_{t-1},\beta_0,\beta_1\mid X]=P_t[\varepsilon_t\leq f(x_{t-1},\beta_0)-f(x_{t-1},\beta_1)\mid X]$, and $s(\tilde{y}_t)=s(y_t-f(x_{t-1},\beta_0))$. Furthermore, $u\in\mathbb{R}$ and the complex number $i=\sqrt{-1}$. Unlike \citet{dufour2010exact}, $\tilde{y}_t$ for $t=1,...,n$ are no longer necessarily independent conditional on $X$. Therefore, we follow \citet{heinrich1982factorization} by expressing the characteristic function $\phi_{SN_n}(u)$ as follows
+\[
+\phi_{SN_n}(u)=\prod\limits_{t=1}^{n}\varphi_t(u)
+\]
+where $\varphi_1(u)=\E_X\left[\exp(iu\left(\ln\left\{\frac{1-p_1[x_{0},\beta_0,\beta_1\mid X]}{p_1[x_{0},\beta_0,\beta_1\mid X]}\right\}s(\tilde{y}_1)\right))\right]$ and for $t=2,...,n$
+\[
+\varphi_t(u)=\frac{f_t(u)}{f_{t-1}(u)},\quad\text{where},\quad f_t(u)=\E_X\left[\exp(iuSN_t(\beta_0\mid\beta_1))\right]
+\] 
+\citet{heinrich1982factorization} shows that $\varphi_t(u)$ can alternatively be expressed as
+\[
+\varphi_t(u)=\E_X\left[\exp\left(iu\left\{R_{t,t-1}+\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_1\mid X]}{p_t[x_{t-1},\beta_0,\beta_1\mid X]}\right\}s(\tilde{y}_t)\right\}\right)\right]+\rho_t(u)
+\]
+where 
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\rho_t(u)&=\bigg\{\E_X\left[\exp\left(iu\left\{SN_t\left(\beta_0\mid\beta_1\right)\right\}\right)\right]-\\
+&\textcolor{white}{=}\textcolor{white}{=}\E_X\left[\exp\left(iu\left\{R_{t,t-1}+\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_1\mid X]}{p_t[x_{t-1},\beta_0,\beta_1\mid X]}\right\}s(\tilde{y}_t)\right\}\right)\right]\times\\
+&\textcolor{white}{=}\textcolor{white}{=}\E_X\left[\exp\left(iu\left\{SN_{t-1}\left(\beta_0\mid\beta_1\right)\right\}\right)\right]\bigg\}\bigg/ \E_X\left[\exp\left(iu\left\{SN_{t-1}\left(\beta_0\mid\beta_1\right)\right\}\right)\right].
+\end{align*}
+\endgroup
+Therefore, the characteristic function for the PCC-POS test statistic can be expressed as 
+\begingroup
+\allowdisplaybreaks
+\begin{align}
+\begin{split}\label{eq: Fourier-inverse}
+\phi_{SN_n}(u)&=\prod\limits_{t=1}^{n}\varphi_t(u)\\
+&=\prod\limits_{t=1}^{n}\left(\E_X\left[\exp\left(iu\left\{R_{t,t-1}+\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_1\mid X]}{p_t[x_{t-1},\beta_0,\beta_1\mid X]}\right\}s(\tilde{y}_t)\right\}\right)\right]+\rho_t(u)\right),
+\end{split}
+\end{align}
+\endgroup
+where $\rho_1(u)=0$, $R_{1,0}=\rho_1(u)=0$. 
+
+Let $Z_t=R_{t,t-1}+\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_1\mid X]}{p_t[x_{t-1},\beta_0,\beta_1\mid X]}\right\}s(\tilde{y}_t)$ for $t=1,...,n$. Then following \citet{heinrich1982factorization}, and by assuming that $Z_1,...,Z_n$ are weakly dependent, the term $\rho_t(u)$ can further be factorized. For instance, a case of such weakly dependent random variables for which a Theorem exists is the regularity Markov type process (i.e. RMT-process). Let $\mathcal{B}_s^{s+m}=\sigma(Z_s,...,Z_{s+m})$ be the Borel $\sigma$-field generated by $\{Z_t, t=s,...,s+u\}$. The process $\{Z_t\}_{t=1,2,...}$ is an RMT-process, if for $1\leq s\leq t$, the uniform mixing coefficient $\phi(m)\leq\gamma(s,t)$ with probability one, where 
+\begin{equation*}
+\phi(m)\equiv\sup_{s\geq 1}\phi(\mathcal{B}_{1}^s,\mathcal{B}_{s+m}^\infty)
+\end{equation*}
+and where $\phi(\mathcal{B}_{1}^s,\mathcal{B}_{s+m}^\infty)$
+\begin{equation*}
+\phi(\mathcal{B}_{1}^s,\mathcal{B}_{s+m}^\infty)\equiv \sup_{G\in\mathcal{B}_{s+m}^{\infty},H\in \mathcal{B}_{1}^s}\lvert P[H\mid G]-P[H]\lvert,
+\end{equation*}
+with $\sup_{s\geq1}\gamma(s,s+m)\rightarrow0$ as $m\rightarrow \infty$. Given such dependence, $\rho_t(u)$ can be factorized using the results of Theorem 2 of \citet{heinrich1982factorization}.
+The conditional CDF of $SN_n(\beta_0\mid\beta_1)$ evaluated at a constant $c_1(\beta_0,\beta_1)$, where $c_1(\beta_0,\beta_1)\in\mathbb{R}$, given by the conditional characteristic functions $\phi_{SN_n}(u)$ can then be obtained using the Fourier-inversion formula [see \citet{gil1951note}] as follows
+\[
+P[SN_n(\beta_0\mid \beta_1)\leq c_1(\beta_0,\beta_1)]=\frac{1}{2}-\frac{1}{\pi}\int_{0}^{\infty}\frac{\Im\{\exp(-iuc_1(\beta_0,\beta_1))\phi_{SN_n}(u)\}}{u}du
+\] 
+where $\forall u \in \mathbb{R}$, the conditional characteristic function $\phi_{SN_n}(u)$ is expressed by (\ref{eq: Fourier-inverse}) and $\Im{z}$ denotes the imaginary part of the complex number $z$. Therefore, the power function can be obtained as follows
+\[
+\Pi(\beta_0,\beta_1)=P[SN_n(\beta_0\mid \beta_1)> c_1(\beta_0,\beta_1)]=\frac{1}{2}+\frac{1}{\pi}\int_{0}^{\infty}\frac{\Im\{\exp(-iuc_1(\beta_0,\beta_1))\phi_{SN_n}(u)\}}{u}du
+\] 
+
+\end{proof}
+\newpage
+\begin{proof}[Additional simulations]
+
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Student's $t(\nu)$ error distributions, with
+different degrees of freedom $\nu$, $\protect\rho=0$ in (\protect\ref{eq: errorsim}) and $\protect%
+\theta =0.9$ in (\protect\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{t2rho0.eps}} %
+\subfigure{\includegraphics[scale=0.58]{t4rho0.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.58]{t6rho0.eps}} %
+\end{center}
+\doublespacing
+Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
+[10\% SS-PCC-POS test] with: (1) the T-test and (2) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: c21}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Student's $t(\nu)$ error distributions, with
+different degrees of freedom $\nu$, $\protect\rho=0.1$ in (\protect\ref{eq: errorsim}) and $\protect%
+\theta =0.9$ in (\protect\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{t2rho1.eps}} %
+\subfigure{\includegraphics[scale=0.58]{t4rho1.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.58]{t6rho1.eps}} %
+\end{center}
+\doublespacing
+Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
+[10\% SS-PCC-POS test] with: (1) the T-test and (2) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: c22}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Student's $t(\nu)$ error distributions, with
+different degrees of freedom $\nu$, $\protect\rho=0.5$ in (\protect\ref{eq: errorsim}) and $\protect%
+\theta =0.9$ in (\protect\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{t2rho5.eps}} %
+\subfigure{\includegraphics[scale=0.58]{t4rho5.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.58]{t6rho5.eps}} %
+\end{center}
+\doublespacing
+Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
+[10\% SS-PCC-POS test] with: (1) the T-test and (2) the T-test based
+on White's (1980) variance correction [WT-test].  
+\label{fig: c23}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Student's $t(\nu)$ error distributions, with
+different degrees of freedom $\nu$, $\protect\rho=0.9$ in (\protect\ref{eq: errorsim}) and $\protect%
+\theta =0.9$ in (\protect\ref{eq: theta})}
+\begin{center}
+\subfigure{\includegraphics[scale=0.58]{t2rho9.eps}} %
+\subfigure{\includegraphics[scale=0.58]{t4rho9.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.58]{t6rho9.eps}} %
+\end{center}
+\doublespacing
+Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
+[10\% SS-PCC-POS test] with: (1) the T-test and (2) the T-test based
+on White's (1980) variance correction [WT-test]. 
+\label{fig: c24}
+\end{figure}
+\FloatBarrier
+\begin{figure}
+\caption{Comparison of the student's $t$ distribution with various degrees of freedom to the normal distribution}
+\includegraphics[width=\textwidth]{tdistsc2.eps}\label{fig: distos1}
+Note: In this figure, we compare the Normal and Student's distribution with two, four and six degrees of freedom - i.e. $\nu=2,\quad \nu=4,\quad \nu=6$.
+\label{fig: c25}
+\end{figure}
+\FloatBarrier
+\end{proof}
+\newpage
+\bibliographystyle{apa}
+\bibliography{References_Final}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
