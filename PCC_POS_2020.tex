@@ -101,12 +101,12 @@
 
 
 
-\title{{Pair copula constructions of point-optimal sign-based tests for predictive linear and non-linear regressions}}
+\title{{Pair copula constructions of point-optimal sign-based tests for predictive linear and nonlinear regressions}}
 \author{Kaveh Salehzadeh Nobari\thanks{%
 Department of Economics and Finance, Durham University Business School, Durham DH1 3LB, UK
-(\href{emailto: kaveh.salehzadeh-nobari@durham.ac.uk}{kaveh.salehzadeh-nobari@durham.ac.uk}), 
+(\href{emailto: kaveh.salehzadeh-nobari@durham.ac.uk}{kaveh.salehzadeh-nobari@durham.ac.uk}),}
 %EndAName
-Durham University	}}
+\\Durham University}
 \date{\today}
 \maketitle
 \begin{center}
@@ -115,36 +115,34 @@ Durham University	}}
 
 
 \begin{abstract}
-We propose pair copula constructed point-optimal sign tests in the context of predictive regressions with endogenous, persistent regressors, and disturbances exhibiting serial (nonlinear) dependence. The proposed approaches entail considering the entire dependence structure of the signs and building feasible test statistics based on pair copula constructions of the sign process. The tests are exact and valid in the presence of heavy tailed and nonstandard errors, as well as heterogeneous and persistent volatility. Furthermore, they may be inverted to build confidence regions for the parameters of the regression function. Finally, we adopt an adaptive approach based on the split-sample technique to Maximize the power of the test. In a Monte Carlo study, we compare the performance of the proposed \textquotedblleft quasi\textquotedblright-point-optimal sign tests based on pair copula constructions by comparing its size and power to those of certain existing tests that are intended to be robust against heteroskedasticity. The simulation results maintain the superiority of our procedures to existing popular tests.   
+We propose pair copula constructed point-optimal sign tests in the context of linear and nonlinear predictive regressions with endogenous, persistent regressors, and disturbances exhibiting serial (nonlinear) dependence. The proposed approaches entail considering the entire dependence structure of the signs and building feasible test statistics based on pair copula constructions of the sign process. The tests are exact and valid in the presence of heavy tailed and nonstandard errors, as well as heterogeneous and persistent volatility. Furthermore, they may be inverted to build confidence regions for the parameters of the regression function. Finally, we adopt an adaptive approach based on the split-sample technique to Maximize the power of the test. In a Monte Carlo study, we compare the performance of the proposed \textquotedblleft quasi\textquotedblright-point-optimal sign tests based on pair copula constructions by comparing its size and power to those of certain existing tests that are intended to be robust against heteroskedasticity. The simulation results maintain the superiority of our procedures to existing popular tests.   
 \end{abstract}
 
 
-\noindent \textbf{Keywords}: predictive regressions, D-vine, truncation, sequential estimation, persistent regressors, sign test, exact inference, adaptive method, power envelope.
+\noindent \textbf{Keywords}: Predictive regressions, D-vine, truncation, sequential estimation, persistent regressors, sign test, exact inference, adaptive method, power envelope.
 
 \noindent \textbf{JEL Codes}: C12, C13, C15, C22, C52
 
 \newpage
 \section{Introduction \label{Introduction}}
 
- The disturbances of regressions often exhibit non-normal distributions and heteroskedasiticty of unknown form, in the presence of which parametric tests perform poorly in terms of size control and power in finite samples. In an extensive simulations exercise, \citet{dufour2010exact} show that the heteroskedasticity and autocorrelation corrected tests developed by \citet{white1980heteroskedasticity} (more commonly referred to as \textquotedblleft HAC\textquotedblright procedures) are plagued with low power when the errors follow GARCH structures or there is a break in the variance. To address these issues, \citet{dufour2010exact} propose point-optimal sign-based inference to test whether the conditional median of a response variable is zero against a linear regression alternative, where this procedure is further extended to non-linear models. These tests are constructed by considering fixed regressors and error terms that are independent with zero median conditional on the explanatory variables. In an earlier paper we proposed we propose an extension of the sign tests developed by \citet{dufour2010exact}, in which exact point-optimal sign-based tests (POS-based tests hereafter) to test for predictability in the presence of highly persistent stochastic regressors for both  linear and non-linear models. However, in order to obtain \textit{feasible} POS-based test statistics, we had to impose a Markovian assumption on the sign process. The aim of this paper is to relax the Markovianity assumption for the POS-based tests. This can be achieved using the models introduced by \citet{panagiotelis2012pair} for multivariate discrete data based on pair copula constructions (PCC hereafter). These models would allow us to build feasible test statistics that are robust against heavy-tailed and asymmetric distributions, provided that the errors have zero median conditional on their own past and the explanatory variables, without the necessity to impose any additional (and potentially restrictive) assumptions.
+{\hskip 1.5em} Predictive regressions are frequently encountered in the economics and finance literature. Within this framework, the regressors are often highly persistent (and potentially nonstationary) with errors that exhibit contemporaneous correlation with the disturbances of the predictive regression. This leads to endogeneity, as a result of which the least-squared estimator of the regression parameters is biased. In such settings, \textit{t}-type tests possess a non-standard distribution and inference using asymptotic critical values is no longer valid [see \citet{mankiw1986we} and \citet{stambaugh1999predictive} among others]. The econometric analysis of predictive regressions has been addressed extensively and numerous papers have suggested solutions to overcome this problem. These include reducing the bias in finite samples [see \citet{nelson1993predictable} and \citet{stambaugh1999predictive} among others] or self generated instrumental variables (IVs) that eliminate endogeneity [see \citet{magdalinos2009limit}, \citet{phillips2013predictive} among others]. However, many of these studies impose strict assumptions on the degree of persistency of the regressors  [see \citet{phillips2014confidence} for an overview]. In this paper, we propose pair copula constructed point-optimal sign-based tests (PCC-POS-based tests hereafter) in the context of linear and nonlinear predictive regressions. The proposed tests are robust in the presence of persistent/endogenous regressors and errors, heterogeneous and persistent volatility, and disturbances that exhibit serial (nonlinear) dependence. Moreover, they are exact, consider the entire dependence structure of the signs and may be inverted to build confidence regions for the parameters of the regression function.
+
+Sign-based tests, such as those proposed by \citet{dufour1995exact, campbell1997exact}, \citet{ luger2003exact}, and \citet{dufour2010exact} are randomized tests with a randomized distribution under the null hypothesis of unpredictability [see \citet{pratt2012concepts} for a review of randomized tests]. Hence, under mild assumptions these procedures are distribution-free and do not suffer from the issues encountered by \textit{t}-type statistics in finite samples. These class of tests are valid in the presence of non-normal distributions and heteroskedasiticty of unknown form [see \citet{boldin1997sign} and \citet{taamouti2015finite} for a review of sign-based tests]. Furthermore, \citet{dufour2010exact} show that the heteroskedasticity and autocorrelation corrected tests developed by \citet{white1980heteroskedasticity} (more commonly referred to as \textquotedblleft HAC\textquotedblright{ }procedures) are plagued with low power when the errors follow GARCH-type structures or there is a break in variance. To address these issues, \citet{dufour2010exact} propose point-optimal sign-based (POS-based) inference to test whether the conditional median of a response variable is zero against a linear regression alternative, where this procedure is further extended to nonlinear models. 
 
 
- When the predictors follow a local-to-unity autoregression, there is a high degree of contemporaneous correlation between the errors in the regressors and the disturbances of the predictive regresssion. In such situation, least-squares based T-type tests possess a non-standard distribution and inference using asymptotic critical values is no longer valid [see \citet{mankiw1986we} and \citet{stambaugh1999predictive} among others]. As the POS-based type tests such as those introduced by \citet{dufour2010exact} are randomized tests with a randomized distribution under the null hypothesis [see \citet{pratt2012concepts}], the said procedures do not suffer from the issues encountered by T-type statistics in finite samples. Therefore, by relaxing the independence assumption on the error terms and by allowing the disturbances to exhibit serial (non-linear) dependence, the POS-based tests are easily extended to a predictive regression framework. The POS-based tests are shown to be robust against non-standard distributions and heteroskedasticity of unknown form and to have the highest power among parametric and nonparametric tests that are supposed to be robust against heteroskedasticity. Moreover, as in \citet{dufour2010exact} they can be inverted to produce a confidence region for the vector (sub-vector) of parameters.  
+In an earlier paper, we proposed an extension of the POS-based tests within a predictive regression framework. However, in order to obtain \textit{feasible} test statistics, we imposed a Markovian assumption on the sign process. This paper relaxes the Markovian assumption on the signs, by decomposing the joint distribution of the signs using models proposed by \citet{panagiotelis2012pair} for multivariate discrete data based on pair copula constructions. The latter allow us to build feasible test statistics that are robust against heavy-tailed and asymmetric distributions, provided that the errors have zero median conditional on their own past and the explanatory variables. The PCC-POS-based tests are shown to be robust against non-standard distributions and heteroskedasticity of unknown form and have the highest power among certain parametric and nonparametric tests that are intended to be robust against heteroskedasticity. Moreover, as in \citet{dufour2010exact}, they can be inverted to produce a confidence region for the vector (sub-vector) of the parameters.  
 
-Although, the literature surrounding sign-based and sign-ranked inference is vast [see \citet{taamouti2015finite} and \citet{boldin1997sign} among others], the focus of the POS-based tests constructed by \citet{dufour2010exact} is to maximize power at a nominated point in the alternative parameter space. As such, the power of the POS-based test is close to that of the power envelope - i.e. maximum attainable power for a given testing problem [see \citet{king1987towards}]. Therefore, the POS-based tests in \citet{dufour2010exact} and those developed in this paper using the pair copula construction of discrete data (PCC-POS-based tests hereafter) are Neyman-Pearson type tests based on the signs, and as in \citet{dufour2010exact} a practical problem concerns finding an alternative at which the power of the PCC-POS-based tests is close to that of the power envelope. By  conducting an intensive simulations exercise, \citet{dufour2010exact}  find that when 10\% of the sample is used to estimate the alternative and the remaining portion is used to calculate the test-statistic, the power of the POS-based test traces out the power envelope. Our simulations results using the 10\% split-sample PCC-POS-based tests confirm these findings.
-
-
-Many studies have developed distribution-free sign and sign-ranked statistics that are exact and robust against different forms of heteroskedasticity. These range from the procedures proposed for bivariate regressions [see. \citet{campbell1991over, dufour1995exact, campbell1997exact} and \citet{luger2003exact} among others], to those for multivariate regressions [see \citet{dufour2010exact}]. In the context of dependent data, \citet{coudin2009finite} extend the procedures proposed by \citet{boldin1997sign} to further consider serial dependence, as well as discrete distributions. The work in this paper, as well as the POS-based test for predictive regressions fall within the latter category (i.e. sign-based testing procedures for dependent data), and they are particularly motivated by the regressions capturing the predictability of stock returns. Predictors of stock returns, such as earnings-price and dividend price ratios often possess relatively static numerators and contain the non-stationary price series in their denominator; hence, as noted earlier, these predictors are shown to be highly persistent, with innovations that are correlated with the residuals of the predictive regressions, which lead to invalid inference [see \citet{mankiw1986we} and \citet{stambaugh1985bias,stambaugh1999predictive}]. 
-
-Due to the non-linear nature of the signs, there is inherent uncertainty regarding the structure of sign dependence. Therefore, it is important to consider the entire dependence structure of the signs. One approach for computing the joint distribution of the signs $s(y_1),...,s(y_n)$, where $s(y_i)=\mathbbm{1}_{\R^+ \cup\{0\} }\{y_i\}$, entails taking advantage of copula functions [see \citet{sklar1959fonctions}], which express the joint distribution of the signs in terms of the i) marginal distributions of the individual signs; and ii) copula models capturing the dependence of the $n$ signs. As the signs are discrete, the likelihood function of the POS-based tests under the alternative hypothesis can then be calculated using rectangle probabilities and in turn estimated using copulas with closed analytical form. However, this approach would not yield feasible test statistics, as the number of \textit{multivariate} copulas that need to be evaluated increase at an exponential rate as the sample size $n$ increases. As a result of this curse of dimensionality, the literature surrounding calculating probability mass functions (p.m.f hereafter) using discrete data is limited to low-dimensional data and copulas that are fast to calculate [see \citet{nikoloulopoulos2008multivariate,nikoloulopoulos2009finite} and \citet{li2010two}]. 
-
-To propose feasible test statistics, we build POS-based tests in the context of stochastic regressors for linear and non-linear models, using a discrete analogue of the vine PCCs proposed by \citet{panagiotelis2012pair}. The likelihood function of the signs under the alternative hypothesis can be decomposed as a vine PCC under a set of conditions that are later outlined in the paper. The most important advantage of the latter method is that for a sample of size $n$, only $2n(n-1)$ \textit{bivariate} copula evaluations are required, as opposed to $2^n$ \textit{multivariate} copula evaluations using the rectangle probabilities approach. Another advantage of the vine PCC methodology is that model selection techniques can be used to identify the conditional independence in the process of signs in order to create more parsimonious PCC models. 
+Although, the literature surrounding sign-based and sign-ranked inference is vast, the focus of the POS-based tests constructed by \citet{dufour2010exact} is to maximize power at a nominated point in the alternative parameter space, such that the power of the POS-based test is close to that of the power envelope - i.e. maximum attainable power for a given testing problem [see \citet{king1987towards}]. Similarly, the PCC-POS-based tests are Neyman-Pearson type tests based on the signs, and as in \citet{dufour2010exact} a practical problem concerns finding an alternative at which the power of the PCC-POS-based tests is close to that of the power envelope. By conducting simulations exercises, \citet{dufour2010exact} find that the power of the POS-based tests is shifted close to the power envelope, when 10\% of the sample is used to estimate the alternative and the remaining portion to calculate the test-statistic. Our simulations using a variety of split-sample PCC-POS-based tests confirm these findings.
 
 
- An issue that needs considerable attention is whether estimating $2n(n-1)$ parameters for evaluating the bivariate copulas in the PCC-POS-based tests is feasible as $n$ tends to infinity. Even when more parsimonius PCC models are selected, this approach is only feasible in finite samples. However, in a strict stationarity framework, the parameters are invariant to time shifts and as such this number drastically reduces to $n-1$ parameter estimates, which may further reduce to as small as one parameter in the case of truncated PCC models. A Monte Carlo study reveals that pair copula constructions of POS-based tests are valid. Furthermore, under \textit{most} distributional assumptions, they possess the maximum power among tests that are intended to be robust against non-standard distributions and heteroskedasticity of unknown form.  
+Due to the nonlinear nature of the signs, there is inherent uncertainty regarding the structure of sign dependence. Therefore, it is important to consider the entire dependence structure of the signs. One approach for computing the joint distribution of the signs $s(y_1),...,s(y_n)$, where $s(y_i)=\mathbbm{1}_{\R^+ \cup\{0\} }\{y_i\}$, entails taking advantage of copula functions [see \citet{sklar1959fonctions}], which express the joint distribution of the signs in terms of the i) marginal distributions of the individual signs; and ii) copula models capturing the dependence of the $n$ signs. As the signs are discrete, the likelihood function of the POS-based tests under the alternative hypothesis can then be calculated using rectangle probabilities and in turn estimated using copulas with closed analytical form. However, this approach would not yield feasible test statistics, as the number of \textit{multivariate} copulas that need to be evaluated increase at an exponential rate as the sample size $n$ increases. As a result of this curse of dimensionality, the literature concerning calculating probability mass functions (p.m.f hereafter) using discrete data is limited to low-dimensional data and copulas that are fast to calculate [see \citet{nikoloulopoulos2008multivariate,nikoloulopoulos2009finite} and \citet{li2010two}]. 
+
+To propose feasible POS-based test statistics within a predictive regression framework, we use a discrete analogue of the vine PCCs introduced by \citet{panagiotelis2012pair}. The likelihood function of the signs under the alternative hypothesis can then be decomposed as a vine PCC under certain set of conditions. The most important advantage of this method is that for a sample of size $n$, only $2n(n-1)$ \textit{bivariate} copula evaluations are required, as opposed to $2^n$ \textit{multivariate} copula evaluations using rectangle probabilities. Another advantage of the vine PCC methodology is that model selection techniques can be used to identify the conditional independence in the process of signs in order to create more parsimonious PCC models. 
+
 
 The outline of the paper is as follows: in Section \ref{Framework}, we motivate the use of the discrete analogue of the vine PCC for building POS-based tests. In Section \ref{Point-optimal sign
-test based on PCC}, we outline the conditions under which vine PCCs can be implemented and we also discuss the choice of the PCC model. We then propose PCC-POS-based tests for linear and non-linear models. In secion \ref{EstimationC3}, we discuss the estimation approach implemented for the vine PCCs. In Section \ref{optimal alternative hypothesis}, we discuss the choice of the alternative hypothesis for computing the PCC-POS-based test statistic. In Section \ref{projectiontechniqueC3}, we discuss the problem of finding a confidence set for a vector (subvector) of parameters using the projection techniques. In Section \ref{sec: Monte Carlo study}, we assess the performance of the proposed tests in terms of size and power. Finally, in Section \ref{ConclusionC3} we conclude the findings of the paper.
+test based on PCC}, we outline the conditions under which vine PCCs can be implemented and we also discuss the choice of the PCC model. We then propose PCC-POS-based tests for linear and nonlinear models. In secion \ref{EstimationC3}, we discuss the estimation approach implemented for the vine PCCs. In Section \ref{optimal alternative hypothesis}, we discuss the choice of the alternative hypothesis for computing the PCC-POS-based test statistic. In Section \ref{projectiontechniqueC3}, we discuss the problem of finding a confidence set for a vector (subvector) of parameters using the projection techniques. In Section \ref{sec: Monte Carlo study}, we assess the performance of the proposed tests in terms of size and power. Finally, in Section \ref{ConclusionC3}, we conclude the findings of the paper.
 
 \section{Framework \label{Framework}}
 
@@ -286,7 +284,7 @@ P[s(y_1)=s_1,...,s(y_n)=s_n\mid X]&=\sum\limits_{i_1=0,1}...\sum\limits_{i_n=0,1
 \endgroup 
 Evidently, the calculation of likelihood function (\ref{eq: likelihood}) using this approach would require $2^n$ \textit{multi\-variate} copula evaluations, which is not computationally feasible. However, by employing the vine PCC introduced later in the paper, we will show that this number can be reduced to only $2n(n-1)$ \textit{bivariate} copula evaluations. The latter method provides us with flexibility, since any multivariate discrete distribution can be decomposed as a vine PCC under a set of conditions that are discussed in the following Section. 
 \section{Pair copula constructions of point-optimal tests \label{Point-optimal sign test based on PCC}}
-In this Section, we derive POS-based tests in the context of linear and non-linear regression models based on vine PCC decomposition. Following a structure similar to \citet{dufour2010exact}, we first consider the problem of testing whether the conditional median of a vector of observations is zero against a linear regression alternative. We further consider the conditions under which the likelihood function under the alternative can be decomposed as a vine PCC, and as such, choose an appropriate vine model. These results are later generalized to test whether the coefficients of a possibly non-linear median regression function have a given value against an alternative non-linear median regression.  
+In this Section, we derive POS-based tests in the context of linear and nonlinear regression models based on vine PCC decomposition. Following a structure similar to \citet{dufour2010exact}, we first consider the problem of testing whether the conditional median of a vector of observations is zero against a linear regression alternative. We further consider the conditions under which the likelihood function under the alternative can be decomposed as a vine PCC, and as such, choose an appropriate vine model. These results are later generalized to test whether the coefficients of a possibly nonlinear median regression function have a given value against an alternative nonlinear median regression.  
 \subsection[Testing independence (zero coefficients) hypothesis in linear regressions ]{Testing independence (zero coefficients) hypothesis in linear reg\-ressions \label{Linear}}
 Consider the problem of testing the null hypothesis (\ref{eq: null}) against the alternative (\ref{eq: alt}), using the test statistic (\ref{eq: teststat}) and given the assumptions (\ref{eq: DGP}) and (\ref{eq: median}). As it was shown in Section \ref{Framework}, under the alternative hypothesis the likelihood function can be expressed as
 \begin{equation}\label{eq: likelihood1}
@@ -521,8 +519,8 @@ where
 a_t(\beta_1)=\ln\left\{\frac{\Phi(\beta' x_{t-1})}{1-\Phi(\beta' x_{t-1})}\right\},
 \]
 where $\Phi(.)$ is the standard normal distribution function. The distibution of $SL_{n}(\beta _{1})$ can be simulated under the null hypothesis with sufficient number of repliciations, and the critical values can be obatined to any degree of precision.
-\subsection{Testing general full coefficient hypothesis in non-linear regressions \label{non-linear}}
-We now consider a non-linear regression model%
+\subsection{Testing general full coefficient hypothesis in nonlinear regressions \label{nonlinear}}
+We now consider a nonlinear regression model%
 \begin{equation}
 y_{t}=f(x_{t-1},\beta )+\varepsilon_{t},\text{ }t=1,...,\,n\text{,}
 \label{eq: modelnl}
@@ -753,7 +751,7 @@ In this Section, we follow \citet{dufour2010exact} by first showing the analytic
 \subsection{Power envelope of PCC-POS tests \label{Power envelope of PCC-POS tests}}
 We make the assertion that point-optimal tests trace out the power envelope (i.e. the maximum attainable power) for any given testing problem [see \citet{king1987towards}]. However, in practice the alternative hypothesis $\beta_1$ is unknown and a problem consists of finding an approximation for it, such that the power function is maximized and is close to that of the power envelope. Following \citet{dufour2010exact} and \citet{dufour2001finite}, we propose an adaptive approach based on the split-sample technique to choose an alternative $\beta_1$ that yields the greatest power function. The details of the split-sample technique can be found in Section \ref{Choice of the optimal alternative hypothesis}. We follow \citet{dufour2010exact} by showing the analytical derivation of the power envelope of the PCC-POS tests for predictive regressions, which can be purposed as a benchmark for comparing the power functions of the PCC-POS tests for different sample splits. 
 
-We have shown in Section \ref{non-linear} that the PCC-POS test is a function of $\beta_1$. In other words,
+We have shown in Section \ref{nonlinear} that the PCC-POS test is a function of $\beta_1$. In other words,
 \[
 SN_{n}(\beta_0\mid\beta _{1})=\sum\limits_{t=2}^{n}\sum\limits_{l=t-1}^{2}\ln c_{\tilde{\sigma}_{lt}t\mid \tilde{\sigma}_{1t},...,\tilde{\sigma}_{t-1,t}}+\sum\limits_{t=2}^{n}\ln c_{\tilde{\sigma}_{1t}t}+\sum\limits_{t=1}^{n}\ln\left\{\frac{1-p_t[x_{t-1},\beta_0,\beta_1\mid X]}{p_t[x_{t-1},\beta_0,\beta_1\mid X]}\right\}s(y_t-f(x_{t-1},\beta_0)).
 \]
@@ -956,21 +954,21 @@ N(0,\sigma _{\varepsilon }^{2}(t)) & \text{for}\ t\neq 25 \\
 \right. \,;
 \end{equation*}%
 \end{enumerate}
-We consider the problem of testing the null hypothesis $H_0: \beta=0$. Our Monte Carlo simulations compare the size and power of the 10\%-PCC-POS test to those of T-test, T-test based on \citet{white1980heteroskedasticity} variance-correction (WT-test hereafter), and the sign-based test proposed by \citet{dufour1995exact}. Due to computational constraints, we perform only $M_1=1,000$ simulations to evaluate the probability distribution of the 10\% SS-PCC-POS test statistic and $M_2=1,000$ iterations for approximating the power functions of the proposed PCC-POS test and other tests. In all simulations, we have considered a sample size of $n=50$. As the sign-based statistic of \citet{dufour1995exact} has a discrete distribution, it is not possible to obtain test with a precise size of $5\%$; therefore, the size of the test is $5.95\%$ for $n=50$. 
+We consider the problem of testing the null hypothesis $H_0: \beta=0$. Our Monte Carlo simulations compare the size and power of the 10\%-PCC-POS test to those of \textit{t}-test, \textit{t}-test based on \citet{white1980heteroskedasticity} variance-correction (W\textit{t}-test hereafter), and the sign-based test proposed by \citet{dufour1995exact}. Due to computational constraints, we perform only $M_1=1,000$ simulations to evaluate the probability distribution of the 10\% SS-PCC-POS test statistic and $M_2=1,000$ iterations for approximating the power functions of the proposed PCC-POS test and other tests. In all simulations, we have considered a sample size of $n=50$. As the sign-based statistic of \citet{dufour1995exact} has a discrete distribution, it is not possible to obtain test with a precise size of $5\%$; therefore, the size of the test is $5.95\%$ for $n=50$. 
 \subsection{Simulation results \label{Simulation results}}
 
-The results of the Monte Carlo study corresponding to DGPs described in Section \ref{Simulation setup} are presented in figures \ref{fig: Sim17}-\ref{fig: Sim612}. These figures compare the performance of the 10\% SS-PCC-POS test in terms of size and power, to those of the T-test, T-test based on White's (1980) variance-correction, as well as the sign-based procedure proposed by \citet{dufour2010exact}. The results are descirbed in detail below.
+The results of the Monte Carlo study corresponding to DGPs described in Section \ref{Simulation setup} are presented in figures \ref{fig: Sim17}-\ref{fig: Sim612}. These figures compare the performance of the 10\% SS-PCC-POS test in terms of size and power, to those of the \textit{t}-test, \textit{t}-test based on White's (1980) variance-correction, as well as the sign-based procedure proposed by \citet{dufour2010exact}. The results are descirbed in detail below.
 
-First, figure \ref{fig: Sim17} considers the case where the residuals $\varepsilon_t$ are normally distributed. At first glance, we note that all tests control size. Evidently, our test is outperformed by the T-test, as well as the T-test based on White's (1980) variance-correction. The former is expected, since for normally distributed residuals, the T-test is the most powerful test. However, the 10\% SS-PCC-POS test outperforms the sign-based procedure porposed by \citet{dufour1995exact} [CD (1995) hereafter]. Furthermore, changing the correlation coefficient $\rho$ does not seem to lead to visually significant differences in the performance of the tests.
+First, figure \ref{fig: Sim17} considers the case where the residuals $\varepsilon_t$ are normally distributed. At first glance, we note that all tests control size. Evidently, our test is outperformed by the \textit{t}-test, as well as the \textit{t}-test based on White's (1980) variance-correction. The former is expected, since for normally distributed residuals, the \textit{t}-test is the most powerful test. However, the 10\% SS-PCC-POS test outperforms the sign-based procedure porposed by \citet{dufour1995exact} [CD (1995) hereafter]. Furthermore, changing the correlation coefficient $\rho$ does not seem to lead to visually significant differences in the performance of the tests.
  
-Second, figure \ref{fig: Sim28} presents the results of the performance of the aforementioned tests, when the residuals $\varepsilon_t$ follows Cauchy distribution. It is evident that the 10\% SS-PCC-POS test outperforms all other tests. Moreover, the T-test and WT-test do not possess much power for low correlation coefficient (0 and 0.1) values of $\rho$. However, as the correlation between $u_t$ and $w_t$ increases, the gap between the power functions narrows significantly.  
+Second, figure \ref{fig: Sim28} presents the results of the performance of the aforementioned tests, when the residuals $\varepsilon_t$ follows Cauchy distribution. It is evident that the 10\% SS-PCC-POS test outperforms all other tests. Moreover, the \textit{t}-test and W\textit{t}-test do not possess much power for low correlation coefficient (0 and 0.1) values of $\rho$. However, as the correlation between $u_t$ and $w_t$ increases, the gap between the power functions narrows significantly.  
 
-Third, in figures \ref{fig: Sim39} and \ref{fig: Sim410}, we have considered the cases where the residuals in turn follow $t(2)$ and mixture distributions. In the former case of $t(2)$ distributed residuals, the 10\% SS-PCC-POS test outperforms the rest; however, for almost all correlation coefficients $\rho$, the gap between the power functions is rather small, albeit it is narrowest for $\rho=0.9$. In the case of residuals with mixture distribution, our 10\% SS-PCC-POS test is still the most powerful test. On other hand, it is evident that the T-test and WT-test do not possess much power for small values (0 and 0.1) of correlation coefficient $\rho$. However, the power functions increase and converge to those of the other tests, as the correlation increases.
+Third, in figures \ref{fig: Sim39} and \ref{fig: Sim410}, we have considered the cases where the residuals in turn follow $t(2)$ and mixture distributions. In the former case of $t(2)$ distributed residuals, the 10\% SS-PCC-POS test outperforms the rest; however, for almost all correlation coefficients $\rho$, the gap between the power functions is rather small, albeit it is narrowest for $\rho=0.9$. In the case of residuals with mixture distribution, our 10\% SS-PCC-POS test is still the most powerful test. On other hand, it is evident that the \textit{t}-test and W\textit{t}-test do not possess much power for small values (0 and 0.1) of correlation coefficient $\rho$. However, the power functions increase and converge to those of the other tests, as the correlation increases.
 
-An interesting observation is the stark contrast between the power of the 10\% SS-PCC-POS test and the T-test, when the errors follow the Cauchy, $t(2)$ and normal distributions respectively. The Cauchy and $t(2)$ distributions possess heavy tails, in the presence of which the standard error of the regression coefficients is inflated, which in turn leads to low power when the mean is used as a measure of central tendency. For instance, the Cauchy distribution has the heaviest tails among the considered  DGPs, as a result of which the T-test and WT-test have very low power. By noting that a Student's $t$ distribution with $\nu$ degrees of freedom converges to the Cauchy distribution for $\nu=1$ and to the normal distribution as $\nu\rightarrow \infty$, it would be interesting to see at which degree of freedom the 10\% SS-PCC-POS test is outperformed by the T-test and WT-tests.  Figures \ref{fig: c21}-\ref{fig: c24} suggest that for different values of $\rho$ in (\ref{eq: errorsim}) the T-test and WT test outperform the 10\% SS-PCC-POS test for $\nu=4$. Interestingly, figure \ref{fig: c25} shows that the tails of the $t(2)$ distribution are substantially heavier than that of the $t(4)$, which may explain the transition.
+An interesting observation is the stark contrast between the power of the 10\% SS-PCC-POS test and the \textit{t}-test, when the errors follow the Cauchy, $t(2)$ and normal distributions respectively. The Cauchy and $t(2)$ distributions possess heavy tails, in the presence of which the standard error of the regression coefficients is inflated, which in turn leads to low power when the mean is used as a measure of central tendency. For instance, the Cauchy distribution has the heaviest tails among the considered  DGPs, as a result of which the \textit{t}-test and W\textit{t}-test have very low power. By noting that a Student's $t$ distribution with $\nu$ degrees of freedom converges to the Cauchy distribution for $\nu=1$ and to the normal distribution as $\nu\rightarrow \infty$, it would be interesting to see at which degree of freedom the 10\% SS-PCC-POS test is outperformed by the \textit{t}-test and W\textit{t}-tests.  Figures \ref{fig: c21}-\ref{fig: c24} suggest that for different values of $\rho$ in (\ref{eq: errorsim}) the \textit{t}-test and WT test outperform the 10\% SS-PCC-POS test for $\nu=4$. Interestingly, figure \ref{fig: c25} shows that the tails of the $t(2)$ distribution are substantially heavier than that of the $t(4)$, which may explain the transition.
 
 
-Finally, in figures \ref{fig: Sim39} and \ref{fig: Sim410}, the residuals are normally distributed with different forms of heteroskedasticity. In the first case [see figure \ref{fig: Sim39}], there is a break in variance, in the presence of which, our test outperforms the other tests. Furthermore, the T-test and WT-test do not possess any power for low correlation (0 and 0.1) values of $\rho$. However, with greater values of the correlation coefficient the power curves of all test appear to converge. In the other case [see figure \ref{fig: Sim410}], the variance follows a GARCH(1,1) model with a jump in variance. In this case, our test is only outperformed by the CD (1995) test, which has the greatest power function. Nevertheless, the 10\% SS-PCC-POS test still outperforms the T-test and WT-test.  
+Finally, in figures \ref{fig: Sim39} and \ref{fig: Sim410}, the residuals are normally distributed with different forms of heteroskedasticity. In the first case [see figure \ref{fig: Sim39}], there is a break in variance, in the presence of which, our test outperforms the other tests. Furthermore, the \textit{t}-test and W\textit{t}-test do not possess any power for low correlation (0 and 0.1) values of $\rho$. However, with greater values of the correlation coefficient the power curves of all test appear to converge. In the other case [see figure \ref{fig: Sim410}], the variance follows a GARCH(1,1) model with a jump in variance. In this case, our test is only outperformed by the CD (1995) test, which has the greatest power function. Nevertheless, the 10\% SS-PCC-POS test still outperforms the \textit{t}-test and W\textit{t}-test.  
 \begin{figure}[tbph]
 \caption{Power comparisons: different tests. Normal error distributions with
 different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protect%
@@ -983,9 +981,9 @@ different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protec
 \end{center}
 \doublespacing
 Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
-[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
-proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
-on White's (1980) variance correction [WT-test]. 
+[10\% SS-PCC-POS test] with: (1) the \textit{t}-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the \textit{t}-test based
+on White's (1980) variance correction [W\textit{t}-test]. 
 \label{fig: Sim17}
 \end{figure}
 
@@ -1002,9 +1000,9 @@ different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protec
 \end{center}
 \doublespacing
  Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
-[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
-proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
-on White's (1980) variance correction [WT-test]. 
+[10\% SS-PCC-POS test] with: (1) the \textit{t}-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the \textit{t}-test based
+on White's (1980) variance correction [W\textit{t}-test]. 
 \label{fig: Sim28}
 \end{figure}
 
@@ -1021,9 +1019,9 @@ different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protec
 \end{center}
 \doublespacing
 Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
-[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
-proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
-on White's (1980) variance correction [WT-test]. 
+[10\% SS-PCC-POS test] with: (1) the \textit{t}-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the \textit{t}-test based
+on White's (1980) variance correction [W\textit{t}-test]. 
 \label{fig: Sim39}
 \end{figure}
 
@@ -1041,9 +1039,9 @@ different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protec
 \end{center}
 \doublespacing
 Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
-[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
-proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
-on White's (1980) variance correction [WT-test].
+[10\% SS-PCC-POS test] with: (1) the \textit{t}-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the \textit{t}-test based
+on White's (1980) variance correction [W\textit{t}-test].
 \label{fig: Sim410}
 \end{figure}
 
@@ -1060,9 +1058,9 @@ with different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\p
 \end{center}
 \doublespacing
 Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
-[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
-proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
-on White's (1980) variance correction [WT-test].
+[10\% SS-PCC-POS test] with: (1) the \textit{t}-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the \textit{t}-test based
+on White's (1980) variance correction [W\textit{t}-test].
 \label{fig: Sim511}
 \end{figure}
 
@@ -1080,19 +1078,19 @@ different values of $\protect\rho $ in (\protect\ref{eq: errorsim}) and $\protec
 \end{center}
 \doublespacing
 Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
-[10\% SS-PCC-POS test] with: (1) the T-test; (2) the sign-based test
-proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the T-test based
-on White's (1980) variance correction [WT-test]. 
+[10\% SS-PCC-POS test] with: (1) the \textit{t}-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the \textit{t}-test based
+on White's (1980) variance correction [W\textit{t}-test]. 
 \label{fig: Sim612}
 \end{figure}
 \FloatBarrier
 \section{Conclusion \label{ConclusionC3}}
-In this chapter, we extended the exact point-optimal sign-based procedures proposed in the first chapter by relaxing the Markovian assumption. We had earlier provided a caveat that to obtain feasible test statistics, an assumption must be imposed on the dependence structure of process of signs; specifically, we assumed that the signs follow a finite order Markov process. In this chapter, we showed that by implementing the procedures for pair copula constructions of discrete data, we can derive exact and distribution-free sign-based statistics for dependent data in the context of linear and non-linear regressions, without any potentially restrictive assumptions. The proposed tests are valid, distribution-free and robust against heteroskedasticity of unknown form. Furthermore, they may be inverted to produce a confidence region for the vector (sub-vector) of parameters of the regression model. 
+In this chapter, we extended the exact point-optimal sign-based procedures proposed in the first chapter by relaxing the Markovian assumption. We had earlier provided a caveat that to obtain feasible test statistics, an assumption must be imposed on the dependence structure of process of signs; specifically, we assumed that the signs follow a finite order Markov process. In this chapter, we showed that by implementing the procedures for pair copula constructions of discrete data, we can derive exact and distribution-free sign-based statistics for dependent data in the context of linear and nonlinear regressions, without any potentially restrictive assumptions. The proposed tests are valid, distribution-free and robust against heteroskedasticity of unknown form. Furthermore, they may be inverted to produce a confidence region for the vector (sub-vector) of parameters of the regression model. 
 
 We further suggested a sequential estimation strategy for the vine PCC and discussed the choice of the copula family. As the proposed sign-statistics depend on the alternative hypothesis, another problem consists of finding an alternative that controls size and maximizes the power. In line with \citet{dufour2010exact}, we find that when 10\% of sample is used to estimate the alternative and the rest to compute the test-statistic, our procedures have the optimal power and are closest to the power envelope.
 
-Finally, we presented a Monte Carlo study to assess the performance of the proposed tests in terms of size control and power, by comparing it to some other tests that are supposed to be robust against heteroskedasticity. We considered a variety of different DGPs and we showed that the 10\% split-sample point-optimal sign-test based on pair copula constructions is superior to the T-test, \citet{dufour1995exact} sign-based test,
-and the T-test based on \citet{white1980heteroskedasticity} variance correction in most cases.
+Finally, we presented a Monte Carlo study to assess the performance of the proposed tests in terms of size control and power, by comparing it to some other tests that are supposed to be robust against heteroskedasticity. We considered a variety of different DGPs and we showed that the 10\% split-sample point-optimal sign-test based on pair copula constructions is superior to the \textit{t}-test, \citet{dufour1995exact} sign-based test,
+and the \textit{t}-test based on \citet{white1980heteroskedasticity} variance correction in most cases.
 \newpage
 
 \section{Appendix}
@@ -1517,8 +1515,8 @@ different degrees of freedom $\nu$, $\protect\rho=0$ in (\protect\ref{eq: errors
 \end{center}
 \doublespacing
 Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
-[10\% SS-PCC-POS test] with: (1) the T-test and (2) the T-test based
-on White's (1980) variance correction [WT-test]. 
+[10\% SS-PCC-POS test] with: (1) the \textit{t}-test and (2) the \textit{t}-test based
+on White's (1980) variance correction [W\textit{t}-test]. 
 \label{fig: c21}
 \end{figure}
 \FloatBarrier
@@ -1534,8 +1532,8 @@ different degrees of freedom $\nu$, $\protect\rho=0.1$ in (\protect\ref{eq: erro
 \end{center}
 \doublespacing
 Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
-[10\% SS-PCC-POS test] with: (1) the T-test and (2) the T-test based
-on White's (1980) variance correction [WT-test]. 
+[10\% SS-PCC-POS test] with: (1) the \textit{t}-test and (2) the \textit{t}-test based
+on White's (1980) variance correction [W\textit{t}-test]. 
 \label{fig: c22}
 \end{figure}
 \FloatBarrier
@@ -1551,8 +1549,8 @@ different degrees of freedom $\nu$, $\protect\rho=0.5$ in (\protect\ref{eq: erro
 \end{center}
 \doublespacing
 Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
-[10\% SS-PCC-POS test] with: (1) the T-test and (2) the T-test based
-on White's (1980) variance correction [WT-test].  
+[10\% SS-PCC-POS test] with: (1) the \textit{t}-test and (2) the \textit{t}-test based
+on White's (1980) variance correction [W\textit{t}-test].  
 \label{fig: c23}
 \end{figure}
 \FloatBarrier
@@ -1568,8 +1566,8 @@ different degrees of freedom $\nu$, $\protect\rho=0.9$ in (\protect\ref{eq: erro
 \end{center}
 \doublespacing
 Note: These figures compare the power curves of the 10\% split-sample PCC-POS test
-[10\% SS-PCC-POS test] with: (1) the T-test and (2) the T-test based
-on White's (1980) variance correction [WT-test]. 
+[10\% SS-PCC-POS test] with: (1) the \textit{t}-test and (2) the \textit{t}-test based
+on White's (1980) variance correction [W\textit{t}-test]. 
 \label{fig: c24}
 \end{figure}
 \FloatBarrier
