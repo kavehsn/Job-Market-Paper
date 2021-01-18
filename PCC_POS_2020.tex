@@ -1265,14 +1265,14 @@ s(y_{1}),\cdots,s(y_{T}),$ can be expressed as%
 \begingroup
 \allowdisplaybreaks
 \begin{align*}
-SL_T(\bm{\beta}_1)&=s(y_1)\ln \left\{\frac{P[\varepsilon_1\geq -\bm{\beta}_1' \bm{x}_{t-1}\mid X]}{P[\varepsilon_1< -\bm{\beta}_1'\bm{x}_{t-1}\mid X]}\right\}+ \ln P[\varepsilon_1< -\bm{\beta}_1'\bm{x}_{t-1}\mid X]+\sum\limits_{t=2}^{n}\ln\Bigg\{\sum\limits_{k_t=0,1}\sum\limits_{k_{t-1}=0,1}(-1)^{k_t+k_{t-1}} \\
+SL_T(\bm{\beta}_1)&=s(y_1)\ln \left\{\frac{P[\varepsilon_1\geq -\bm{\beta}_1' \bm{x}_{t-1}\mid X]}{P[\varepsilon_1< -\bm{\beta}_1'\bm{x}_{t-1}\mid X]}\right\}+ \ln P[\varepsilon_1< -\bm{\beta}_1'\bm{x}_{t-1}\mid X]+\sum\limits_{t=2}^{T}\ln\Bigg\{\sum\limits_{k_t=0,1}\sum\limits_{k_{t-1}=0,1}(-1)^{k_t+k_{t-1}} \\
 &\textcolor{white}{=}\times \left(C_{s(y_t),s(y_{t-1})\mid \text{\b{S}}%
 _{t-2}}\left(F_{s(y_t)\mid \text{\b{S}}%
 _{t-2} }(s_t-k_t\mid \text{\b{s}}%
 _{t-2},X),F_{s(y_{t-1})\mid \text{\b{S}}%
 _{t-2}}(s_{t-1}-k_{t-1}\mid \text{\b{s}}%
 _{t-2},X)\right)\right)\Bigg\}\\
-&\textcolor{white}{=}-\sum\limits_{t=2}^{n}\ln\left\{P[s(y_{t-1})=s_{t-1}\mid \text{\b{S}}_{t-2}=\text{\b{s}}_{t-2},X]\right\}-n\ln \left\{ \frac{1}{2}\right\}
+&\textcolor{white}{=}-\sum\limits_{t=2}^{T}\ln\left\{P[s(y_{t-1})=s_{t-1}\mid \text{\b{S}}_{t-2}=\text{\b{s}}_{t-2},X]\right\}-n\ln \left\{ \frac{1}{2}\right\}
 \end{align*}%
 \endgroup
 \end{proof}
@@ -1392,7 +1392,7 @@ H_{0}\right) \leq \alpha .
 \end{proof}
 \begin{proof}[Algorithm for the likelihood function of the signs under the alternative hypothesis]
 
-In this Section, we adapt the algorithm for the joint pmf for D-vine for discrete variables of \citet{panagiotelis2012pair} and \citet{joe2014dependence} to the context of our study. Let $U(n)=\left(s(y_1),s(y_2),\cdots,s(y_n)\right)'$ be a binary valued $n$-vector. Furthermore, for a vector of integers $\mathbf{i}$, let $\mathbf{S_{i}}=\{s(y_i), i\in \mathbf{i}\}$, where $\mathbf{s_i}$ is a mass point of $\mathbf{S_i}$ and $s_g$ is a mass point of $s(y_g)$. Let
+In this Section, we adapt the algorithm for the joint pmf for D-vine for discrete variables of \citet{panagiotelis2012pair} and \citet{joe2014dependence} to the context of our study. Let $U(n)=\left(s(y_1),s(y_2),\cdots,s(y_T)\right)'$ be a binary valued $T$-vector. Furthermore, for a vector of integers $\mathbf{i}$, let $\mathbf{S_{i}}=\{s(y_i), i\in \mathbf{i}\}$, where $\mathbf{s_i}$ is a mass point of $\mathbf{S_i}$ and $s_g$ is a mass point of $s(y_g)$. Let
 \begingroup
 \allowdisplaybreaks
 \begin{align*}
@@ -1431,26 +1431,26 @@ P\left[s(y_g)\leq s_g\mid s(y_h)=s_h,\mathbf{S_i}=\mathbf{s_i},X\right]=\\
  \endgroup
 The algorithm is as follows
 \begin{enumerate}
-\item Input $\mathbf{s}_n=\left(s_1,\cdots,s_n\right)$.
-\item Allocate an $n\times n$ matrix $\pi$, where $\pi_{tj}=f_{(j-t+1):j}$ for $t=1,\cdots,n$ and $j=t+1,\cdots,n$ and the likelihood function $P[s(y_1)=s_1,\cdots,s(y_n)=s_n]$ under the alternative will appear as $\pi_{nn}$.
-\item Allocate $C^{++}$, $C^{+-}$, $C^{-+}$, $C^{--}$, $U^{'+}$, $U^{'-}$, $U^{+}$, $U^{-}$, $u'$, $u$, $w'$, $w$, as vectors of length $n$.
-\item Evaluate $F^{+}_j$, $F^{-}_j$, and $f_j=F^{+}_j-F^{-}_j$ using (\ref{eq: BernoulliCDF2}) and let $\pi_{1j}\leftarrow f_j$ for $j=1,\cdots,n$;  
-\item Let $C^{++}_j\leftarrow C_{j-1,j}\left(F^{+}_{j-1},F^{+}_{j}\right)$, $C^{+-}_j\leftarrow C_{j-1,j}\left(F^{+}_{j-1},F^{-}_{j}\right)$, $C^{-+}_j\leftarrow C_{j-1,j}\left(F^{-}_{j-1},F^{+}_{j}\right)$, and $C^{--}_j\leftarrow C_{j-1,j}\left(F^{-}_{j-1},F^{-}_{j}\right)$ for $j=2,\cdots,n$;
-\item  Set $P_{2j}\leftarrow C^{++}_j-C^{+-}_j-C^{-+}_j+C^{--}_j$ for $j=2,\cdots,n$;
-\item \textbf{for} $j=2,\cdots,n:\left(T_1\right)$ \textbf{do}
+\item Input $\mathbf{s}_T=\left(s_1,\cdots,s_T\right)$.
+\item Allocate an $T\times T$ matrix $\pi$, where $\pi_{tj}=f_{(j-t+1):j}$ for $t=1,\cdots,T$ and $j=t+1,\cdots,T$ and the likelihood function $P[s(y_1)=s_1,\cdots,s(y_T)=s_T]$ under the alternative will appear as $\pi_{TT}$.
+\item Allocate $C^{++}$, $C^{+-}$, $C^{-+}$, $C^{--}$, $U^{'+}$, $U^{'-}$, $U^{+}$, $U^{-}$, $u'$, $u$, $w'$, $w$, as vectors of length $T$.
+\item Evaluate $F^{+}_j$, $F^{-}_j$, and $f_j=F^{+}_j-F^{-}_j$ using (\ref{eq: BernoulliCDF2}) and let $\pi_{1j}\leftarrow f_j$ for $j=1,\cdots,T$;  
+\item Let $C^{++}_j\leftarrow C_{j-1,j}\left(F^{+}_{j-1},F^{+}_{j}\right)$, $C^{+-}_j\leftarrow C_{j-1,j}\left(F^{+}_{j-1},F^{-}_{j}\right)$, $C^{-+}_j\leftarrow C_{j-1,j}\left(F^{-}_{j-1},F^{+}_{j}\right)$, and $C^{--}_j\leftarrow C_{j-1,j}\left(F^{-}_{j-1},F^{-}_{j}\right)$ for $j=2,\cdots,T$;
+\item  Set $P_{2j}\leftarrow C^{++}_j-C^{+-}_j-C^{-+}_j+C^{--}_j$ for $j=2,\cdots,T$;
+\item \textbf{for} $j=2,\cdots,T:\left(\mathcal{T}_1\right)$ \textbf{do}
 \item \hspace{10pt} \parbox[t]{\linegoal}{$U_j^{'+}\leftarrow F_{j-1\mid j}^{+}=\left(C^{++}_j-C^{+-}_j\right)/f_j$, $U_j^{'-}\leftarrow F_{j-1\mid j}^{-}=\left(C^{-+}_j-C^{--}_j\right)/f_j$, and $u_j'\leftarrow f_{j-1\mid j}=F_{j-1\mid j}^{+}-F_{j-1\mid j}^{-}$;}
 \item \hspace{10pt} \parbox[t]{\linegoal}{$U_j^{+}\leftarrow F_{j\mid j-1}^{+}=\left(C^{++}_j-C^{-+}_j\right)/f_{j-1}$, $U_j^{-}\leftarrow F_{j\mid j-1}^{-}=\left(C^{-+}_j-C^{--}_j\right)/f_{j-1}$, and $u_j\leftarrow f_{j\mid j-1}=F_{j\mid j-1}^{+}-F_{j\mid j-1}^{-}$;}
 \item \textbf{end for}
-\item \textbf{for} $t=2,\cdots,n-1: \left(T_2,\cdots,T_{n-1}\right)$ \textbf{do}
-\item\hspace{10pt} let $C^{\alpha\beta}_j\leftarrow C_{j-t,j\mid (j-t+1):(j-1)}\left(U^{'\alpha}_{j-1},U^{\beta}_j\right)$, for $j=t+1,\cdots,n$ and $\alpha,\beta\in\{+,-\}$; 
-\item\hspace{10pt} let $w_{j}'\leftarrow u_{j}'$, $w_{j}\leftarrow u_{j}$ for $j=t,\cdots,n;$
-\item\hspace{10pt} \textbf{for} $j=t+1,\cdots,n:$ \textbf{do}
+\item \textbf{for} $t=2,\cdots,T-1: \left(\mathcal{T}_2,\cdots,\mathcal{T}_{T-1}\right)$ \textbf{do}
+\item\hspace{10pt} let $C^{\alpha\beta}_j\leftarrow C_{j-t,j\mid (j-t+1):(j-1)}\left(U^{'\alpha}_{j-1},U^{\beta}_j\right)$, for $j=t+1,\cdots,T$ and $\alpha,\beta\in\{+,-\}$; 
+\item\hspace{10pt} let $w_{j}'\leftarrow u_{j}'$, $w_{j}\leftarrow u_{j}$ for $j=t,\cdots,T;$
+\item\hspace{10pt} \textbf{for} $j=t+1,\cdots,T:$ \textbf{do}
 \item\hspace{30pt} $U^{'+}_{j}\leftarrow \left(C^{++}_j-C^{+-}_j\right)/w_j$, $U^{'-}_{j}\leftarrow \left(C^{-+}_j-C^{--}_j\right)/w_j$ and $u_j'\leftarrow U^{'+}_{j}-U^{'-}_{j}$;
 \item\hspace{30pt} $U^{+}_{j}\leftarrow \left(C^{++}_j-C^{-+}_j\right)/w_{j-1}'$, $U^{-}_{j}\leftarrow \left(C^{+-}_j-C^{--}_j\right)/w_{j-1}'$ and $u_j\leftarrow U^{+}_{j}-U^{-}_{j}$;
 \item\hspace{10pt} \textbf{end for}
-\item\hspace{10pt} let $\pi_{t+1,j}\leftarrow \pi_{t,j-1}\times u_j$ for $j=t+1,\cdots,n$.
+\item\hspace{10pt} let $\pi_{t+1,j}\leftarrow \pi_{t,j-1}\times u_j$ for $j=t+1,\cdots,T$.
 \item\textbf{end for}
-\item Return the likelihood function $\pi_{nn}$.
+\item Return the likelihood function $\pi_{TT}$.
 \end{enumerate}
 \end{proof}
 
