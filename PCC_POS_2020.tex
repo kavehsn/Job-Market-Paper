@@ -115,7 +115,7 @@ Department of Economics and Finance, Durham University Business School, Durham D
 
 
 \begin{abstract}
-We propose pair copula constructed point-optimal sign tests in the context of linear and nonlinear predictive regressions with endogenous, persistent regressors, and disturbances exhibiting serial (nonlinear) dependence. The proposed approaches entail considering the entire dependence structure of the signs and building feasible test statistics based on pair copula constructions of the sign process. The tests are exact and valid in the presence of heavy tailed and nonstandard errors, as well as heterogeneous and persistent volatility. Furthermore, they may be inverted to build confidence regions for the parameters of the regression function. Finally, we adopt an adaptive approach based on the split-sample technique to maximize the power of the test. In a Monte Carlo study, we compare the performance of the proposed \textquotedblleft quasi\textquotedblright-point-optimal sign tests based on pair copula constructions by comparing its size and power to those of certain existing tests that are intended to be robust against heteroskedasticity. The simulation results maintain the superiority of our procedures to existing popular tests.   
+We propose pair copula constructed point-optimal sign tests in the context of linear and nonlinear predictive regressions with endogenous, persistent regressors, and disturbances exhibiting serial (nonlinear) dependence. The proposed approach entails considering the entire dependence structure of the signs to capture the serial dependence, and building feasible test statistics based on pair copula constructions of the sign process. The tests are exact and valid in the presence of heavy tailed and nonstandard errors, as well as heterogeneous and persistent volatility. Furthermore, they may be inverted to build confidence regions for the parameters of the regression function. Finally, we adopt an adaptive approach based on the split-sample technique to maximize the power of the test by finding an appropriate alternative hypothesis. In a Monte Carlo study, we compare the performance of the proposed \textquotedblleft quasi\textquotedblright-point-optimal sign tests based on pair copula constructions by comparing its size and power to those of certain existing tests that are intended to be robust against heteroskedasticity. The simulation results maintain the superiority of our procedures to existing popular tests.   
 \end{abstract}
 
 
@@ -164,7 +164,7 @@ P[\varepsilon_{t}> 0\mid \bm{{\varepsilon}}_{t-1},X]=P[\varepsilon_{t}<0\mid \bm
 \end{equation}%
 with
 \[
-\bm{\varepsilon}_{0}=\{\emptyset\},\quad\bm{\varepsilon}_{t-1}=\{\varepsilon_1,\cdots,\varepsilon_{t-1}\},\quad\text{for}\quad t\geq2
+\bm{\varepsilon}_{0}=\{\emptyset\},\quad\bm{\varepsilon}_{t-1}=\{\varepsilon_1,\cdots,\varepsilon_{t-1}\},\quad\text{for}\quad t\geq2.
 \]
 
  Note (\ref{eq: median}) entails
@@ -213,7 +213,7 @@ This results holds true iff for any combination of $t=1,\cdots,T$ there is a per
 \begin{equation}
 P[s(y_t)=1\mid X]=P[s(y_t)=0\mid X]=\frac{1}{2},\quad t=1,\cdots,T.
 \end{equation}
-Consequently, under the null hypothesis of orthogonality, the log-likelihood function is given by
+Consequently, under the null hypothesis of orthogonality, the log-likelihood function conditional on $X$ is given by
 \[
 L_0(U(T),\bm{0},X)=\prod\limits_{t=1}^{T}P[s(y_t)=s_t\mid X]=\left(\frac{1}{2}\right)^T.
 \]
@@ -221,26 +221,26 @@ On the other hand, under the alternative we have
 \[
 L_1(U(T),\bm{\beta}_1,X)=\prod\limits_{t=1}^{T}P[s(y_t)=s_t\mid \text{\b{S}}_{t-1}=\text{\b{s}}_{t-1}, X],
 \]
-where now for $t=1,..,T$
+where now for $t=1,\cdots,T$
 \[
 y_t=\bm{\beta}_1'\bm{x}_{t-1}+\varepsilon_t.
 \]
 
 In an earlier paper, we considered optimal sign-based tests (in the Neyman-Pearson sense), which maximize power under the constraint $P[\text{Reject }  H_0\mid H_0]\leq \alpha$, where $\alpha$ is an arbitrary significance level [see \citet{lehmann2006testing}]. Let $H_0$ and $H_1$ be defined by (\ref{eq: null}) and (\ref{eq: alt}) respectively. Then under the assumptions (\ref{eq: DGP}) and (\ref{eq: median}), the log-likelihood ratio
 \begin{equation}\label{eq: teststat}
-SL_n(\bm{\beta_1})=\ln\left\{\frac{L_1(U(T),\bm{\beta}_1,X)}{L_0(U(T),\bm{0},X)}\right\}>c,
+SL_T(\bm{\beta_1})=\ln\left\{\frac{L_1(U(T),\bm{\beta}_1,X)}{L_0(U(T),\bm{0},X)}\right\}>c,
 \end{equation} 
 is most powerful for testing $H_0$ against $H_1$ among level $\alpha$ tests based on the signs $(s(y_1),\cdots,s(y_T))'$, where $c$ is the smallest constant such that 
 \[
 P[SL_T(\bm{\beta}_1)>c\mid H_0]\leq \alpha,
 \]
-where $\alpha$ is an arbitrary significance level.
+and $\alpha$ is an arbitrary significance level.
 
- For POS-based tests within a predictive regression framework, the test statistic requires the calculation of $P[y_t\geq0\mid\text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X]$ and $P[y_t<0\mid\text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X]$. The latter is not easy to compute, as it involves the distribution of the joint process of signs  $s(y_1),\cdots,s(y_T)$,conditional on $X$, which is unknown. Therefore, to obtain feasible test statistics, we imposed a Markovian assumption on the sign process. However, it may be important to capture the dependence structure of the entire process.
+ For POS-based tests within a predictive regression framework, the test statistic requires the calculation of $P[y_t\geq0\mid\text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X]$ and $P[y_t<0\mid\text{\b{S}}_{t-1}=\text{\b{s}}_{t-1},X]$. The latter is not easy to compute, as it involves the distribution of the joint process of signs  $s(y_1),\cdots,s(y_T)$,conditional on $X$, which is unknown. Therefore, to obtain feasible test statistics, we may impose a Markovian assumption on the sign process. However, it may be important to capture the dependence structure of the entire process.
 
 In this paper, we consider the entire dependence structure of the vector of signs by taking advantage of copulas. The Theorem of  \citet{sklar1959fonctions} states that there exists a copula $C$ such that
 \begin{equation}
-F(s_1,\cdots,s_n\mid X)=C(F_1(s_1\mid X),\cdots,F_T(s_T\mid X)),
+F(s_1,\cdots,s_T\mid X)=C(F_1(s_1\mid X),\cdots,F_T(s_T\mid X)),
 \end{equation}
 where $F$ is a conditional joint cumulative distribution function (CDF hereafter) of the signs vector $\text{\b{S}}=(s(y_1),\cdots,s(y_T))'$ with conditional marginal distribution functions $F_j$ for $j=1,2,\cdots,T$. Copula $C(.)$ is unique for continuous variables, but for discrete variables, it is unique only on the set
 \[
