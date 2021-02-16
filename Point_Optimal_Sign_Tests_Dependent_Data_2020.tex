@@ -101,7 +101,7 @@
 %\input{tcilatex}
 \begin{document}
 
-\title{{Exact point-optimal sign-based tests for predictive linear and nonlinear regressions}}
+\title{{Exact point-optimal sign-based inference for linear and nonlinear predictive regressions}}
 \author{Jean-Marie Dufour\thanks{%
 William Dow Professor of Economics, McGill University, Centre interuniversitaire de recherche en analyse des
 organisations (CIRANO), and Centre interuniversitaire de recherche en économie quantitative (CIREQ).Mailing address:
@@ -202,7 +202,7 @@ benchmark against which other testing procedures can be evaluated. Finally, our
 tests may be inverted to build confidence regions for the parameters
 of the regression function.
 
-As point-optimal tests maximize power at a nominated point in the alternative hypothesis parameter space, a practical problem concerns finding an alternative at which the power curve of the POS-based test is close to that of the power envelope. Following \citet{dufour1998union}, \citet{dufour2001finite} and \citet{dufour2010exact}, we propose an adaptive approach based on the split-sample technique to choose the alternative hypothesis. The latter consists of splitting the sample into two independent sub-samples, where the first part is used to estimate the alternative hypothesis and the second part to compute the POS-based test statistic [see \citet{2008finite}]. In a simulations exercise, \citet{dufour2010exact} find that using the first 10\% of the sample to estimate the alternative and the rest to compute the test statistic, achieves a power that traces out the power envelope. We present a Monte Carlo study to assess the performance of the proposed \textquotedblleft quasi\textquotedblright-POS-based tests by comparing its size and power to certain existing tests that are intended to be robust against heteroskedasticity. We show the superiority of our procedures in the presence of nearly integrated regressors and under different distributional assumptions and forms of heteroskedasticity. 
+As point-optimal tests maximize power at a nominated point in the alternative hypothesis parameter space, a practical problem concerns finding an alternative at which the power curve of the POS-based test is close to that of the power envelope. Following \citet{dufour1998union}, \citet{dufour2001finite} and \citet{dufour2010exact}, we propose an adaptive approach based on the split-sample technique to choose the alternative hypothesis. The latter consists of splitting the sample into two independent subsamples, where the first part is used to estimate the alternative hypothesis and the second part to compute the POS-based test statistic [see \citet{2008finite}]. In a simulations exercise, \citet{dufour2010exact} find that using the first 10\% of the sample to estimate the alternative and the rest to compute the test statistic, achieves a power that traces out the power envelope. We present a Monte Carlo study to assess the performance of the proposed \textquotedblleft quasi\textquotedblright-POS-based tests by comparing its size and power to certain existing tests that are intended to be robust against heteroskedasticity. We show the superiority of our procedures in the presence of nearly integrated regressors and under different distributional assumptions and forms of heteroskedasticity. 
 
 
 The rest of the paper is organized as follows: in Section \ref{Point-optimal sign testC1}, we
@@ -222,10 +222,10 @@ ProofsC1}.
 
 {\hskip 1.5em} In this Section, we adapt the framework by \citet{coudin2009finite} to a predictive regression setup. Consider a stochastic process $Z=\{Z_t=(y_t,\bm{x}_{t-1}'):\Omega\rightarrow\R^{(k+1)}, t=1,2,\cdots\}$ defined on a probability space $(\Omega,\mathcal{F},P)$. Suppose that $y_{t}$ can linearly be explained by the vector variable $\bm{x}_{t-1}$%
 \begin{equation}
-y_{t}=\bm{\beta}'\bm{x}_{t-1}+\varepsilon_{t},\quad t=1,...,T,  \label{model}
+y_{t}=\bm{\beta}'\bm{x}_{t-1}+\varepsilon_{t},\quad t=1,\cdots,T,  \label{model}
 \end{equation}%
 where $y_t$ is a dependent variable and $\bm{x}_{t-1}$ is an $(k+1)\times 1$ vector of stochastic explanatory 
-variables, say $\bm{x}_{t-1}=[1,x_{1,t-1},...,x_{k,t-1}]'$, $\bm{\beta} \in \mathbb{R}^{(k+1)}$ is an unknown vector of parameters with $\bm{\beta}=[\beta_0,\beta_1,...,\beta_k]'$ and
+variables, say $\bm{x}_{t-1}=[1,x_{1,t-1},\cdots,x_{k,t-1}]'$, $\bm{\beta} \in \mathbb{R}^{(k+1)}$ is an unknown vector of parameters with $\bm{\beta}=[\beta_0,\beta_1,\cdots,\beta_k]'$ and
 \[
  \varepsilon_t\mid X\sim F_t(.\mid X),
 \] 
@@ -266,16 +266,15 @@ against the alternative $H_{1}$%
 \end{equation}%
 where $\bm{0}$ is a $(k+1)\times 1$ zero vector. We define the following vector of signs%
 \begin{equation*}
-U(T)=(s(y_{1}),...,s(y_{T}))',
+U(T)=(s(y_{1}),\cdots,s(y_{T}))',
 \end{equation*}%
 where, for $1\leq t\leq T,$%
 \begin{equation*}
-s(y_{t})=\left\{ 
-\begin{tabular}{l}
-$1,$ $if$ $y_{t}\geq 0$ \\ 
-$0,$ $if$ $y_{t}<0$%
-\end{tabular}%
-\ \right. \text{.}
+s(y_{t})=
+\begin{cases}
+1,\quad \text{if}\quad y_{t}\geq 0 \\ 
+0,\quad \text{if}\quad y_{t}<0%
+\end{cases}%
 \end{equation*}
 
 The test is Neyman-Pearson type test based on signs [see \citet{lehmann2006testing}] which maximize the
@@ -284,15 +283,15 @@ H_{0}\mid H_{0}\right] \leq \alpha$. The idea is to build
 point-optimal sign-based tests to test the null hypothesis (\ref{eq:
 hypothesis1}) against the alternative hypothesis (\ref{alternative}). To do
 so, we first define the likelihood function of sample in terms of signs $%
-s(y_{1}),...,s(y_{T})$ conditional on $X$%
+s(y_{1}),\cdots,s(y_{T})$ conditional on $X$%
 \begin{equation*}
 L\left( U(T),\bm{\beta}, X \right) =P\left[
-s(y_{1})=s_{1},...,s(y_{T})=s_{T}\mid X\right] =\prod\limits_{t=1}^{T} P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1}, X\right] ,
+s(y_{1})=s_{1},\cdots,s(y_{T})=s_{T}\mid X\right] =\prod\limits_{t=1}^{T} P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1}, X\right] ,
 \end{equation*}%
 with 
 \begin{equation*}
 \text{\b{S}}_{0}=\left\{ \emptyset \right\} ,\text{ \ \b{S}}_{t-1}=\left\{
-s(y_{1})=s_{1},...,s(y_{t-1})=s_{t-1}\right\} ,\text{ for }t\geq 2,
+s(y_{1})=s_{1},\cdots,s(y_{t-1})=s_{t-1}\right\} ,\text{ for }t\geq 2,
 \end{equation*}%
 and%
 \begin{equation*}
@@ -321,7 +320,7 @@ following proposition:
 \begin{equation*}
 SL_{T}(\bm{\beta} _{1})=\sum\limits_{t=1}^{T}a_{t}(\bm{\beta}_{1})s(y_{t}),
 \end{equation*}%
-where, for $t=1,...,T,$%
+where, for $t=1,\cdots,T,$%
 \begin{equation}
 a_{t}(\bm{\beta}_{1})=\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid \text{%
 \b{S}}_{t-1},X\right] }{P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] 
@@ -333,8 +332,8 @@ under $H_{0},$ with $0<\alpha <1.$ Then the test that rejects $H_{0}$ when
 \begin{equation}
 SL_{T}(\bm{\beta} _{1})>c_{1}(\bm{\beta}_{1})  \label{eq: SLn critical region}
 \end{equation}%
-is most powerful for testing $H_{0}$ against $H_{1}$ among level-$\alpha $
-tests based on the signs $\big(s(y_{1}),...,s(y_{T})\big)%
+is most powerful (conditional on $X$) for testing $H_{0}$ against $H_{1}$ among level-$\alpha $
+tests based on the signs $\big(s(y_{1}),\cdots,s(y_{T})\big)%
 '.$
 \end{proposition}
 \begin{sloppypar}
@@ -343,13 +342,13 @@ depends on the weights $a_{t}(\bm{\beta}_{1}),$ which in turn depends on the
 calculation of the conditional probabilities $P\left[ y_{t}\geq 0\mid \text{\b{S%
 }}_{t-1},X\right] $ and $P\left[ y_{t}<0\mid \text{\b{S}}%
 _{t-1},X\right] .$ The latter involves the
-distribution of the joint process of signs $\big(s(y_{1}),...,s(y_{T})\big)'$ conditional on $X$, which is unknown. An alternative way to compute the
+distribution of the joint process of signs $\big(s(y_{1}),\cdots,s(y_{T})\big)'$ conditional on $X$, which is unknown. An alternative way to compute the
 terms $P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] $ and $%
 P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] $ is to use
-simulations, however this will be computationally burdensome, as it requires to
-simulate the joint distribution of the process of signs $\big(%
-s(y_{1}),...,s(y_{T})\big)',$ which depends on the sample size $T$.
-Hence, to propose a feasible test statistic $SL_{T}(\bm{\beta}_{1})$, we impose the following assumption.
+simulations, however this will be computationally burdensome, as it requires tge
+simulation of the joint distribution of the process of signs $\big(%
+s(y_{1}),\cdots,s(y_{T})\big)'$ conditional on $X$, which depends on the sample size $T$.
+Hence, to propose a feasible test statistic, say $\widetilde{SL}_{T}(\bm{\beta}_{1})$, we impose the following assumption.
 \end{sloppypar}
 
 \noindent \textbf{Assumption A1: }\textit{Under the alternative hypothesis, the sign process }$\left\{
@@ -360,17 +359,15 @@ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] $ and $P\left[
 y_{t}<0\mid \text{\b{S}}_{t-1},X\right] $ in the weight function $a_{t}(\bm{\beta}
 _{1})$ can be written as follows:%
 \begin{equation*}
-\left\{ 
-\begin{tabular}{l}
-$P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] =P%
+\begin{cases}
+P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] =P%
 \left[ y_{t}\geq 0\mid y_{t-1}\geq 0,X\right] ^{s(y_{t-1})}P\left[
-y_{t}\geq 0\mid y_{t-1}<0,X\right] ^{1-s(y_{t-1})},$ \\ 
+y_{t}\geq 0\mid y_{t-1}<0,X\right] ^{1-s(y_{t-1})},\\ 
 \\ 
-$P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] =P\left[
+P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] =P\left[
 y_{t}<0\mid y_{t-1}\geq 0,X\right] ^{s(y_{t-1})}P\left[ y_{t}<0\mid
-y_{t-1}<0,X\right] ^{1-s(y_{t-1})}.$%
-\end{tabular}%
-\right. 
+y_{t-1}<0,X\right] ^{1-s(y_{t-1})}.%
+\end{cases}% 
 \end{equation*}%
 Expressions $P\left[ y_{t}\geq 0\mid \text{%
 \b{S}}_{t-1},X\right] $ and $P\left[ y_{t}<0\mid \text{\b{S}}%
@@ -382,7 +379,7 @@ SL_{T}(\bm{\beta}_{1})$ and lead to the following result:
 let $H_{0}$ and $H_{1}$ be defined by (\ref{eq: hypothesis1}) - (\ref%
 {alternative})$,$%
 \begin{equation*}
-\tilde{S}L_{T}(\bm{\beta}_{1})=\sum\limits_{t=1}^{T}\tilde{a}_{t}(\bm{\beta}_{1})%
+\widetilde{SL}_{T}(\bm{\beta}_{1})=\sum\limits_{t=1}^{T}\tilde{a}_{t}(\bm{\beta}_{1})%
 s(y_{t})+\sum\limits_{t=1}^{T}\tilde{b}_{t}(\bm{\beta}_{1})%
 s(y_{t})s(y_{t-1}),
 \end{equation*}%
@@ -392,7 +389,7 @@ where%
 _{1}'\bm{x}_{0}\mid X\right] }{P\left[ \varepsilon_{1}<-\bm{\beta}_{1}^{^{\prime
 }}\bm{x}_{0}\mid X\right] }\right\} ,\quad\tilde{b}_{1}(\bm{\beta}_{1})=0,
 \end{equation*}%
-and for $t=2,...,T,$%
+and for $t=2,\cdots,T,$%
 \begin{equation*}
 \begin{tabular}{l}
 $\tilde{a}_{t}(\bm{\beta}_{1})=\ln \left\{ \frac{1-\frac{P\left[
@@ -422,31 +419,31 @@ P\left[ \varepsilon_{t}<-\bm{\beta}_1'\bm{x}_{t-1},\text{ }%
 \end{tabular}%
 \end{equation*}%
 and suppose the constant $\tilde{c}_{1}(\bm{\beta}_{1})$ satisfies $P%
-\left[ \sum\limits_{t=1}^{T}\tilde{a}_{t}(\bm{\beta}_{1})\text{ }%
-s(y_{t})+\sum\limits_{t=1}^{T}\tilde{b}_{t}(\bm{\beta}_{1})\text{ }%
+\left[ \sum\limits_{t=1}^{T}\tilde{a}_{t}(\bm{\beta}_{1})%
+s(y_{t})+\sum\limits_{t=1}^{T}\tilde{b}_{t}(\bm{\beta}_{1})%
 s(y_{t})s(y_{t-1})>\tilde{c}_{1}(\bm{\beta}_{1})\right] =\alpha $ under $H_{0},$
 with $0<\alpha <1.$ Then the test that rejects $H_{0}$ when 
 \begin{equation}
-\tilde{S}L_{T}(\bm{\beta}_{1})>\tilde{c}_{1}(\bm{\beta}_{1})
+\widetilde{SL}_{T}(\bm{\beta}_{1})>\tilde{c}_{1}(\bm{\beta}_{1})
 \label{eq: SLn critical region2}
 \end{equation}%
-is most powerful for testing $H_{0}$ against $H_{1}$ among level-$\alpha $
-tests based on the signs $\big(s(y_{1}),...,s(y_{T})\big)%
+is most powerful (conditional on $X$) for testing $H_{0}$ against $H_{1}$ among level-$\alpha $
+tests based on the signs $\big(s(y_{1}),\cdots,s(y_{T})\big)%
 '.$
 
 \end{corollary}
-Now the calculation of the test statistic $\tilde{S}L_{T}(\bm{\beta}_{1})$
+Now the calculation of the test statistic $\widetilde{SL}_{T}(\bm{\beta}_{1})$
 depends on the univariate and bivariate conditional probabilities $%
 P\left[ \varepsilon_{t}<\cdot \mid X \right] $ and $P\left[ \text{ }%
 \varepsilon_{t-1}<\cdot ,\text{ }\varepsilon_{t}<\cdot \mid X\right]$.
 
 \begin{sloppypar}
-Observe that under the null hypothesis of unpredictability, the signs $s(y_{1}),...
+Observe that under the null hypothesis of unpredictability, the signs $s(y_{1}),\cdots
 ,s(y_{T})$ are i.i.d. according to a Bernoulli $Bi(1,$\thinspace $0.5)$.
-Thus, the under the null hypothesis, the distribution of the test statistic $\tilde{S}L_{T}(\bm{\beta}_{1})$
+Thus, the under the null hypothesis, the distribution of the test statistic $\widetilde{SL}_{T}(\bm{\beta}_{1})$
 only depends on the known weights $\tilde{a}_{t}(\bm{\beta}_{1})$ and $\tilde{b}%
 _{t}(\bm{\beta}_{1})$ and does not involve any nuisance parameters. Nonparametric assumption (\ref{eq:
-mediane}) implies that tests based on $\tilde{S}L_{T}(\bm{\beta}_{1})$, such
+mediane}) implies that tests based on $\widetilde{SL}_{T}(\bm{\beta}_{1})$, such
 as the test given by (\ref{eq: SLn critical region2}), are distribution-free
 and robust against heteroskedasticity of unknown form, and thus, a nonparametric 
 \emph{pivotal function}. Under the alternative hypothesis, however, the
@@ -459,11 +456,11 @@ power function of the test depends on the form of the bivariate and the marginal
 %standard normal distribution functions.
 
 
-One approach for calculating these probabilities entails fitting copula models, which provides the means of separating the marginal distributions of the process from their respective dependence structure. The latter stems from \citet{sklar1959fonctions}, which decomposes the joint distribution of $\bm{Y}=[y_1,\cdots,y_T]'$ conditional on $X$ as
+One approach for calculating these probabilities entails fitting copula models, which provide the means of separating the marginal distributions of the process from their respective dependence structure. The latter stems from \citet{sklar1959fonctions}, which decomposes the joint distribution of $\bm{Y}=[y_1,\cdots,y_T]'$ conditional on $X$ as
 \[
 \bm{Y}\mid X \sim H(.\mid X)=C\left(F_1(.\mid X),\cdots,F_T(.\mid X)\right),
 \] 
-where $F_t(.\mid X)$ for $t=1,\cdots,T$ are uniformly distributed marginals - i.e. $F_t(.\mid X):= u_t\sim U[0,1]$. Note that the elements of $\bm{Y}$ are uncorrelated, yet exhibit serial nonlinear dependence which is captured by the copula $C(.)$. The implication of the latter for specifying a copula for $\bm{Y}$ conditional on $X$ is an identity correlation matrix. As a result, in the literature, the means of allowing for nonlinear serial dependence for processes which are linearly unrelated is often accompanied by assuming that $\bm{Y}$ conditional on $X$ is distributed as a multivariate Student's $t$ distribution - i.e. $\bm{Y}\mid X\sim t_{\nu}(0,I)$, where $I$ is an identity matrix. When $I$ is imposed on the multivariate Student's $t$ distribution, the conditional joint distribution of $\bm{Y}$ does not factorize into the product of its marginals. Alternatively, we may consider the \textquotedblleft jointly symmetric\textquotedblright{ }copulas proposed by \citet{oh2016high}, where the latter can be constructed with any given (possibly asymmetric) copula family. In addition, when they are combined with symmetric marginals, they ensure an identity correlation matrix. A \textquotedblleft jointly symmetric\textquotedblright{ }copula is defined as follows
+where $F_t(.\mid X)$ for $t=1,\cdots,T$ are uniformly distributed marginals - i.e. $F_t(.\mid X):= u_t\sim U[0,1]$. Note that the elements of $\bm{Y}$ are uncorrelated, yet exhibit serial nonlinear dependence which is captured by the copula $C(.)$. The implication of the latter for specifying a copula function for the joint distribution of $\bm{Y}$ conditional on $X$, is imposing an identity correlation matrix. In the literature, the means of allowing for nonlinear serial dependence for processes which are linearly unrelated is often accompanied by assuming that $\bm{Y}$ conditional on $X$ is distributed as a multivariate Student's $t$ distribution - i.e. $\bm{Y}\mid X\sim \bm{t}_{\nu}(\bm{0},I)$, where $\bm{0}$ is a zero vector corresponding to the location parameter, and  $I$ is an identity matrix. When $I$ is imposed on the multivariate Student's $t$ distribution, the conditional joint distribution of $\bm{Y}$ does not factorize into the product of its marginals. Alternatively, we may consider the \textquotedblleft jointly symmetric\textquotedblright{ }copulas proposed by \citet{oh2016high}, where the latter can be constructed with any given (possibly asymmetric) copula family. In addition, when they are combined with symmetric marginals, they ensure an identity correlation matrix. A \textquotedblleft jointly symmetric\textquotedblright{ }copula is defined as follows:
 \begin{definition}
 The $n$ dimensional copula $C^{JS}$, is jointly symmetric:
 \[
@@ -480,53 +477,52 @@ u_i,&k_i=1\\
  \end{definition}
  The general idea is that the average of mirror image rotations of a possibly asymmetric copula along each axis generates a jointly symmetric copula [see \citet{oh2016high}]. For instance, the marginals can be assumed to possess standard normal distributions, while the nonlinear dependency is modeled using jointly symmetric copulas. %The Markovian assumption can then be tested by considering in turn, the independent, bivariate, trivariate and higher order multivariate copulae (or multivariate Student's $t$ distributions of varying orders), where the model with the lowest Akaike Information Criterion (AIC hereafter) is then chosen. However, in an extensive simulation analysis, we observe that the order of the Markovianity does not have a significant impact on the power of the test, and as such the assumption that under the alternative hypothesis $\{y_t:t=1,\cdots,n\}$ and in turn $\{s(y_t):t=1,\cdots,n\}$ follow a Markov process of order one is sufficient for testing the null hypothesis of orthogonality. 
 
- A special case is where $\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_{T-1},\varepsilon_T$ are distributed according to $N(0,1)$. As suggested earlier, since the errors exhibit serial nonlinear dependence, as such, we may calculate the bivariate probabilities using \textquotedblleft jointly-symmetric\textquotedblright copulas by considering the Archimedean Frank, Clayton or Gumbel as the copula family [see \citet{joe2014dependence}]. Alternatively, we may evaluate the bivariate probabilities $P\left[ \text{ }\varepsilon_{t-1}<\cdot ,\-
-\text{ }\varepsilon_{t}<\cdot \mid X\right]$ using a multivariate Student's $t$ distribution by imposing the identity matrix $I$.
- Then the optimal test statistic takes the form 
+ A special case is where $\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_{T-1},\varepsilon_T$ are distributed according to Student's $t$ distribution $t(\nu)$, with $\nu$ degrees of freedom. As suggested earlier, since the errors exhibit serial nonlinear dependence, we may calculate the bivariate probabilities using \textquotedblleft jointly-symmetric\textquotedblright{ }copulas by considering the Archimedean Frank, Clayton or Gumbel as the copula family [see \citet{joe2014dependence}]. Alternatively, we may evaluate the bivariate probabilities $P\left[\varepsilon_{t-1}<\cdot ,\-
+\varepsilon_{t}<\cdot \mid X\right]$ using a multivariate Student's $t$ distribution $\bm{t}_\nu(\bm{0},I)$, by imposing a zero location parameter vector and the identity correlation matrix $I$.
+ Then the optimal test statistic, $\widetilde{SL}_{T}(\bm{\beta}_{1})$, takes the form:
 \begin{equation*}
-\tilde{S}L_{T}(\bm{\beta}_{1})=\sum\limits_{t=1}^{T}\tilde{a}_{t}(\bm{\beta}_{1})%
+\widetilde{SL}_{T}(\bm{\beta}_{1})=\sum\limits_{t=1}^{T}\tilde{a}_{t}(\bm{\beta}_{1})%
 s(y_{t})+\sum\limits_{t=1}^{T}\tilde{b}_{t}(\bm{\beta}_{1})%
 s(y_{t})s(y_{t-1}),
 \end{equation*}%
 where%
 \begin{equation*}
-\tilde{a}_{1}(\bm{\beta}_{1})=\ln \left\{ \frac{\phi(\bm{\beta}_1'\bm{x}_0) }{1-\phi(\bm{\beta}_1'\bm{x}_0)}\right\} ,\text{ }\tilde{b}_{1}(\bm{\beta}_{1})=0,
+\tilde{a}_{1}(\bm{\beta}_{1})=\ln \left\{ \frac{\tau_{\nu}(\bm{\beta}_1'\bm{x}_0) }{1-\tau_{\nu}(\bm{\beta}_1'\bm{x}_0)}\right\} ,\text{ }\tilde{b}_{1}(\bm{\beta}_{1})=0,
 \end{equation*}%
-and for $t=2,...,T,$%
+and for $t=2,\cdots,T,$%
 \begin{equation*}
 \begin{tabular}{l}
-$\tilde{a}_{t}(\bm{\beta} _{1})=\ln \left\{ \frac{1-\frac{\Phi(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{1-\phi\left(\bm{\beta}_1'\bm{x}_{t-2}\right)}}{\frac{\Phi(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{1-\phi\left(\bm{\beta}_1'\bm{x}_{t-2}\right)}}\right\}, $ \\ 
+$\tilde{a}_{t}(\bm{\beta} _{1})=\ln \left\{ \frac{1-\frac{\bm{\mathcal{T}}_{\nu}(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{1-\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right)}}{\frac{\bm{\mathcal{T}}_{\nu}(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{1-\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right)}}\right\}, $ \\ 
 \\ 
-$\tilde{b}_{t}(\bm{\beta}_{1})=\ln \left\{ \frac{1-\left( \frac{1-\phi\left(\bm{\beta}_1'\bm{x}_{t-1}\right) }{\phi\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }-\frac{\Phi(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{\phi\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }\right) }{\frac{1-\phi\left(\bm{\beta}_1'\bm{x}_{t-1}\right)}{\phi\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }-\frac{\Phi(\bm{-\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{\phi\left(\bm{\beta}_1'\bm{x}_{t-2}\right)}}\right\} -\ln \left\{ \frac{1-\frac{\Phi(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{1-\phi\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }}{\frac{\Phi(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2})}{1-\phi\left(\bm{\beta}_1'\bm{x}_{t-2}\right)}}\right\}, $%
+$\tilde{b}_{t}(\bm{\beta}_{1})=\ln \left\{ \frac{1-\left( \frac{1-\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-1}\right) }{\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }-\frac{\bm{\mathcal{T}}_{\nu}(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }\right) }{\frac{1-\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-1}\right)}{\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }-\frac{\bm{\mathcal{T}}_{\nu}(\bm{-\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right)}}\right\} -\ln \left\{ \frac{1-\frac{\bm{\mathcal{T}}_{\nu}(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{1-\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }}{\frac{\bm{\mathcal{T}}_{\nu}(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2})}{1-\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right)}}\right\}, $%
 \end{tabular}%
 \end{equation*}%
-where $\phi(.)$ is the standard normal distribution function, $\Phi(.,.)$ is the bivariate $t$-distribution with $\nu$ degrees of freedom with location and shape parameters $0$ and $I$ respectively, and where $I$ is the identity matrix.
+where $\tau_{\nu}(.)$ is the Student's $t$ distribution function with $\nu$ degrees of freedom, $\bm{\mathcal{T}}_{\nu}(.,.)$ is the bivariate $t$ distribution with $\nu$ degrees of freedom, and with location and shape parameters $0$ and $I$ respectively, where $0$ is a zero vector and $I$ is the identity correlation matrix.
 
-The distribution of $\tilde{S}%
-L_{T}(\bm{\beta} _{1}),$ can be simulated under the null
+The distribution of $\widetilde{SL}_{T}(\bm{\beta} _{1}),$ can be simulated under the null
 hypothesis and the relevant critical values can be evaluated to any degree
 of precision with a sufficient number of replications. %Consider the special case
-%where $u_{1},...,u_{n}$ are i.i.d. and distributed according to a standard
+%where $u_{1},\cdots,u_{n}$ are i.i.d. and distributed according to a standard
 %normal distribution, thus the weights $\tilde{a}_{t}(\beta _{1})$ and $%
 %\tilde{b}_{t}(\beta _{1})$ in the test statistic $\tilde{S}L_{n}(\beta _{1})$
 %can be expressed in terms of standard normal distribution functions. 
-Since the test statistic $\tilde{S}L_{T}(\bm{\beta}_{1})$ is a continuous random variable, its quantiles are easy to compute. To simulate the distribution of 
-$\tilde{S}L_{T}(\bm{\beta}_{1}),$ the following algorithm is implemented:
+Since the test statistic $\widetilde{SL}_{T}(\bm{\beta}_{1})$ is a continuous random variable, its quantiles are easy to compute. To simulate the distribution of 
+$\widetilde{SL}_{T}(\bm{\beta}_{1}),$ the following algorithm is implemented:
 \begin{enumerate}
-\item Compute the test statistic $\tilde{S}L_{T}(\bm{\beta}_{1})$ based on the
-observed data, say $\tilde{S}L_{T}^{0}(\bm{\beta}_{1})$;
+\item Compute the test statistic $\widetilde{SL}_{T}(\bm{\beta}_{1})$ based on the
+observed data, say $\widetilde{SL}_{T}^{0}(\bm{\beta}_{1})$;
 
 \item Generate a sample $\left\{ y_{t}\right\} _{t=1}^{T}$ of length $T$
-under the null $H_{0}$ and compute $\tilde{S}L_{T}^{j}(\beta _{1})$ using
+under the null $H_{0}$ and compute $\widetilde{SL}_{T}^{j}(\bm{\beta}_{1})$ using
 that generated sample;
 
 \item Choose $B$ such that $\alpha (B+1)$ is an integer and repeat steps 1-2
 $B$ times;
 
-\item Computer the $(1-\alpha )\%$ quantile, say $\tilde{c}_{1}(\bm{\beta}_{1})$%
-, of the sequence $\{\tilde{S}L_{T}^{j}(\bm{\beta}_{1})\}_{j=1}^{B}$;
+\item Compute the $(1-\alpha )\%$ quantile, say $\tilde{c}_{1}(\bm{\beta}_{1})$%
+, of the sequence $\{\widetilde{SL}_{T}^{j}(\bm{\beta}_{1})\}_{j=1}^{B}$;
 
-\item Reject the null hypothesis at level $\alpha $ if $\tilde{S}L_{T}^{0}(\bm{\beta}
+\item Reject the null hypothesis at level $\alpha $ if $\widetilde{SL}_{T}^{0}(\bm{\beta}
 _{1})\geq c(\bm{\beta}_{1})$.
 \end{enumerate}
 
@@ -540,12 +536,12 @@ y_{t}=f(\bm{x}_{t-1},\bm{\beta} )+\varepsilon_{t},\quad t=1,\cdots,T,
 \label{nonlinearC1}
 \end{equation}%
 where $\bm{x}_{t-1}$ is an observable $(k+1)\times 1$ vector of stochastic
-explanatory variables, such that $\bm{x}_{t-1}=[1,x_{1,t-1},...,x_{k,t-1}]'$, $f(\,\cdot \,)$ is a scalar function, $\bm{\beta} \in 
+explanatory variables, such that $\bm{x}_{t-1}=[1,x_{1,t-1},\cdots,x_{k,t-1}]'$, $f(\,\cdot \,)$ is a scalar function, $\bm{\beta} \in 
 \mathbb{R}^{(k+1)}$ is an unknown vector of parameters and
 \begin{equation*}
 \varepsilon_{t}\mid X \sim F_{t}(.\mid X),
 \end{equation*}%
-where as before $F_{t}(.\mid X)$ is a distribution function and $X=[\bm{x}_0',...,\bm{x}_{T-1}']'$ is an $T\times (k+1)$ matrix. Once again, we suppose that the error terms process $\{\varepsilon_t,t=1,2,\cdots\}$ is a strict conditional mediangale, such that
+where as before $F_{t}(.\mid X)$ is a distribution function and $X=[\bm{x}_0',\cdots,\bm{x}_{T-1}']'$ is an $T\times (k+1)$ matrix. Once again, we suppose that the error terms process $\{\varepsilon_t,t=1,2,\cdots\}$ is a strict conditional mediangale, such that
 
 \begin{equation}\label{eq: mediane1}
 P[\varepsilon_{t}> 0\mid \bm{{\varepsilon}}_{t-1},X]=P[\varepsilon_{t}<0\mid \bm{\varepsilon}_{t-1},X]=\frac{1}{2},
@@ -581,27 +577,26 @@ against%
 \bar{H}_{1}:g(\bm{x}_{t-1},\bm{\beta} ,\bm{\beta}_{0})=f(\bm{x}_{t-1},\bm{\beta}_{1})-f(\bm{x}_{t-1},\bm{\beta}
 _{0}),\quad\text{for}\quad t=1,\cdots,T.
 \end{equation*}%
-For $\tilde{U}(T)=(s(\tilde{y}_{1}),...,s(\tilde{y}_{T}))',$
+For $\tilde{U}(T)=(s(\tilde{y}_{1}),\cdots,s(\tilde{y}_{T}))',$
 where, for $1\leq t\leq T,$%
 \begin{equation*}
-s(\tilde{y}_{t})=\left\{ 
-\begin{tabular}{l}
-$1,$ $if$ $\tilde{y}_{t}\geq 0$ \\ 
-$0,$ $if$ $\tilde{y}_{t}<0$%
-\end{tabular}%
-\ \right. \text{,}
+s(\tilde{y}_{t})= 
+\begin{cases}
+1,\quad\text{if}\quad\tilde{y}_{t}\geq 0 \\ 
+0,\quad\text{if}\quad\tilde{y}_{t}<0%
+\end{cases}%
 \end{equation*}%
 the likelihood function of new random sample $\left\{ s(\tilde{y}_{t})\right\}
 _{t=1}^{T}$ conditional on $X$ is given by:%
 \begin{equation*}
 L\left( \tilde{U}(T),\bm{\beta}, X \right) =P\left[ s(\tilde{y}%
-_{1})=\tilde{s}_{1},...,s(\tilde{y}_{T})=\tilde{s}_{T}\mid X\right] =\prod\limits_{t=1}^{T} P\left[ s(\tilde{y}_{t})=\tilde{s}_{t}\mid 
+_{1})=\tilde{s}_{1},\cdots,s(\tilde{y}_{T})=\tilde{s}_{T}\mid X\right] =\prod\limits_{t=1}^{T} P\left[ s(\tilde{y}_{t})=\tilde{s}_{t}\mid 
 \text{\~{S}}_{t-1},X\right] ,
 \end{equation*}%
 with 
 \begin{equation*}
 \text{\~{S}}_{0}=\left\{ \emptyset \right\} ,\text{\ \~{S}}_{t-1}=\left\{
-s(\tilde{y}_{1})=\tilde{s}_{1},...,s(\tilde{y}_{t-1})=\tilde{s}%
+s(\tilde{y}_{1})=\tilde{s}_{1},\cdots,s(\tilde{y}_{t-1})=\tilde{s}%
 _{t-1}\right\} ,\quad\text{for}\quad t\geq 2,
 \end{equation*}%
 and%
@@ -621,22 +616,22 @@ _{0})$ and $H(\bm{\beta}_{1})$ be defined by $(\ref{h01})$ - $(\ref{h02}),$%
 SN_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})=\sum\limits_{t=1}^{T}a_{t}(\bm{\beta}_{0}\mid\bm{\beta}
 _{1})s\left( y_{t}-f(\bm{x}_{t-1},\bm{\beta}_{0})\right) 
 \end{equation*}%
-where, for $t=1,...,T,$%
+where, for $t=1,\cdots,T,$%
 \begin{equation*}
 a_{t}(\bm{\beta}_{0}\mid\bm{\beta}_{1})=\ln \left\{ \frac{P\left[ \tilde{y}%
 _{t}\geq 0\mid \text{\~{S}}_{t-1},X\right] }{P\left[ \tilde{y}%
 _{t}<0\mid \text{\~{S}}_{t-1},X\right] }\right\} \,,
 \end{equation*}%
 and suppose the constant $c_{1}(\bm{\beta} _{0},\,\bm{\beta}_{1})$ satisfies $%
-P\left[ \sum\limits_{t=1}^{T}a_{t}(\bm{\beta}_{0}\mid\bm{\beta}_{1})\text{ }s\left(
+P\left[ \sum\limits_{t=1}^{T}a_{t}(\bm{\beta}_{0}\mid\bm{\beta}_{1})s\left(
 y_{t}-f(\bm{x}_{t-1},\bm{\beta}_{0})\right) >c_{1}(\bm{\beta}_{0},\,\bm{\beta}_{1})\right]
 =\alpha $ under $H(\bm{\beta}_{0}),$ with $0<\alpha <1.$ Then the test that
 rejects $H(\bm{\beta}_{0})$ when 
 \begin{equation*}
 SN_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})>c_{1}(\bm{\beta}_{0},\,\bm{\beta}_{1})
 \end{equation*}%
-is most powerful for testing $H(\bm{\beta}_{0})$ against $H(\bm{\beta}_{1})$ among
-level-$\alpha $ tests based on the signs $\big(s(\tilde{y}_{1}),...,s(\tilde{y}_{T})\big)'.$
+is most powerful (conditional on $X$) for testing $H(\bm{\beta}_{0})$ against $H(\bm{\beta}_{1})$ among
+level-$\alpha $ tests based on the signs $\big(s(\tilde{y}_{1}),\cdots,s(\tilde{y}_{T})\big)'.$
 \end{proposition}
 
 As in Section \ref{sec: Testing zero coefficient hypothesis in linear model}%
@@ -650,7 +645,7 @@ let $H(\bm{\beta}_{0})$ and $H(\bm{\beta}_{1})$ be defined by $(\ref{h01})$ - $(
 {h02}),$%
 \begin{equation*}
 \widehat{SN}_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})=\sum\limits_{t=1}^{T}\tilde{a}%
-_{t}(\bm{\beta}_{0}\mid\bm{\beta}_{1})s(y_{t}-f(\bm{x}_{t-1},\bm{\beta}_{0}))+\sum\limits_{t=1}^{T}\tilde{b}_{t}(\bm{\beta}_{1})\text{ }%
+_{t}(\bm{\beta}_{0}\mid\bm{\beta}_{1})s(y_{t}-f(\bm{x}_{t-1},\bm{\beta}_{0}))+\sum\limits_{t=1}^{T}\tilde{b}_{t}(\bm{\beta_{0}\mid\beta}_{1})
 s(y_{t}-f(\bm{x}_{t-1},\bm{\beta}_{0}))s(y_{t-1}-f(\bm{x}_{t-2},\bm{\beta}_{0})),
 \end{equation*}%
 where%
@@ -660,7 +655,7 @@ where%
 \varepsilon_{1}<f(\bm{x}_{0},\bm{\beta} _{0})-f(\bm{x}_{0},\bm{\beta}_{1})\mid X\right] }\right\} ,\quad%
 \tilde{b}_{1}(\bm{\beta}_{0}\mid\bm{\beta}_{1})=0,
 \end{equation*}%
-and for $t=2,...,T,$%
+and for $t=2,\cdots,T,$%
 \begin{equation*}
 \tilde{a}_{t}(\bm{\beta}_{0}\mid\bm{\beta}_{1})=\ln \left\{ \frac{1-\frac{P%
 \left[ \varepsilon_{t}<f(\bm{x}_{t-1},\bm{\beta}_{0})-f(\bm{x}_{t-1},\bm{\beta}_{1}),\text{ }%
@@ -703,34 +698,35 @@ Then the test that rejects $H(\bm{\beta}_{0})$ when
 \begin{equation*}
 \widehat{SN}_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})>\tilde{c}_{1}(\bm{\beta}_{0},\bm{\beta}_{1})
 \end{equation*}%
-is most powerful for testing $H(\beta _{0})$ against $H(\beta _{1})$ among
-level-$\alpha $ tests based on the signs $\big(s(\tilde{y}_{1}),...,s(\tilde{y}_{T})\big)'.$
+is most powerful (conditional on $X$) for testing $H(\bm{\beta}_{0})$ against $H(\bm{\beta}_{1})$ among
+level-$\alpha $ tests based on the signs $\big(s(\tilde{y}_{1}),\cdots,s(\tilde{y}_{T})\big)'.$
 \end{corollary}
 
-A special case is to consider a linear function $f(\bm{x}_{t-1}',\bm{\beta})=\bm{\beta}'\bm{x}_{t-1}$, whee as before we may suppose that $\varepsilon_{t}$ for $t=1,\cdots,T$ follow $N(0,1)$, and where the bivariate probabilities can be calculated by utilizing the \textquotedblleft jointly symmetric\textquotedblright{ }copulas with standard Normal marginals, or alternatively by imposing the a multivariate Student's $t$ distribution with an identity matrix to capture the serial nonlinear dependence. Then the statistic for testing the null hypothesis $H(\bm{\beta}_0)$ against the alternative $H(\bm{\beta}_1)$ is given by
+
+A special case entails considering a linear function $f(\bm{x}_{t-1}',\bm{\beta})=\bm{\beta}'\bm{x}_{t-1}$, where as before we may suppose that $\varepsilon_{t}$ for $t=1,\cdots,T$  are distributed according to Student's $t$ distribution $t(\nu)$, with $\nu$ degrees of freedom, and where the bivariate probabilities can be calculated by imposing a bivariate Student's $t$ distribution $\bm{t}_\nu(\bm{0},I)$, with a zero location parameter an identity matrix to capture the serial (nonlinear) dependence. Then the statistic for testing the null hypothesis $H(\bm{\beta}_0)$ against the alternative $H(\bm{\beta}_1)$ is given by
 \begin{equation*}
 \widehat{SN}_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})=\sum\limits_{t=1}^{T}\tilde{a}%
-_{t}(\bm{\beta}_{0}\mid\bm{\beta}_{1})s(y_{t}-\bm{\beta}_0'\bm{x}_{t-1})+\sum\limits_{t=1}^{T}\tilde{b}_{t}(\bm{\beta}_{1})%
+_{t}(\bm{\beta}_{0}\mid\bm{\beta}_{1})s(y_{t}-\bm{\beta}_0'\bm{x}_{t-1})+\sum\limits_{t=1}^{T}\tilde{b}_{t}(\bm{\beta}_0\mid\bm{\beta}_{1})%
 s(y_{t}-\bm{\beta}_0'\bm{x}_{t-1})s(y_{t-1}-\bm{\beta}_0'\bm{x}_{t-2}),
 \end{equation*}%
 where%
 \begin{equation*}
-\tilde{a}_{1}(\bm{\beta}_{0}\mid\bm{\beta}_{1})=\ln \left\{ \frac{\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_0\right) }{1-\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_0\right) }\right\} ,\quad%
+\tilde{a}_{1}(\bm{\beta}_{0}\mid\bm{\beta}_{1})=\ln \left\{ \frac{\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_0\right) }{1-\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_0\right) }\right\} ,\quad%
 \tilde{b}_{1}(\bm{\beta}_{0}\mid\bm{\beta}_{1})=0,
 \end{equation*}%
-and for $t=2,...,T,$%
+and for $t=2,\cdots,T,$%
 \begin{equation*}
 \begin{tabular}{l}
-$\tilde{a}_{t}(\bm{\beta} _{0}\mid\bm{\beta}_{1})=\ln \left\{ \frac{1-\frac{\Phi((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} ) }{1-\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}}{\frac{\Phi((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} )}{1-\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}}\right\} 
+$\tilde{a}_{t}(\bm{\beta} _{0}\mid\bm{\beta}_{1})=\ln\left\{ \frac{1-\frac{\bm{\mathcal{T}}_{\nu}((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} ) }{1-\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}}{\frac{\bm{\mathcal{T}}_{\nu}((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} )}{1-\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}}\right\} 
 $ ,\\ 
 \\ 
-$\tilde{b}_{t}(\bm{\beta} _{0}\mid\bm{\beta} _{1})=\ln \left\{ \frac{1-\left( \frac{1-\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-1}\right) }{\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}-\frac{\Phi((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} )}{\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right) }\right) }{\frac{1-\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-1}\right)}{\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}-\frac{\Phi((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} ) }{\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}}\right\} $ \\ 
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \  \\ 
-\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ $-\ln \left\{ \frac{1-\frac{\Phi((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} ) }{1-\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right) }}{\frac{\Phi((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} )}{1-\phi\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}}\right\}, 
+$\tilde{b}_{t}(\bm{\beta} _{0}\mid\bm{\beta} _{1})=\ln \left\{ \frac{1-\left( \frac{1-\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-1}\right) }{\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}-\frac{\bm{\mathcal{T}}_{\nu}((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} )}{\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right) }\right) }{\frac{1-\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-1}\right)}{\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}-\frac{\tau_{\nu}((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} ) }{\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}}\right\}-\ln \left\{ \frac{1-\frac{\tau_{\nu}((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} ) }{1-\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right) }}{\frac{\tau_{\nu}((\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-1},(\bm{\beta}_0-\bm{\beta}_1)'\bm{x}_{t-2} )}{1-\tau_{\nu}\left(\left(\bm{\beta}_1-\bm{\beta}_0\right)'\bm{x}_{t-2}\right)}}\right\}, 
 $%
 \end{tabular}%
 \end{equation*}%
-where as before, $\phi(.)$ is the standard normal distribution function, $\Phi(.,.)$ is the bivariate $t$-distribution with $\nu$ degrees of freedom with location and shape parameters $0$ and $I$ respectively, and where $I$ is the identity matrix. As in Section \ref{sec: Testing zero coefficient hypothesis in linear model}%
+where $\tau_{\nu}(.)$ is the Student's $t$ distribution function with $\nu$ degrees of freedom, $\bm{\mathcal{T}}_{\nu}(.,.)$ is the bivariate $t$ distribution with $\nu$ degrees of freedom, and with location and shape parameters $0$ and $I$ respectively, where $0$ is a zero vector and $I$ is the identity correlation matrix.
+
+ {\hskip 1.5em}As in Section \ref{sec: Testing zero coefficient hypothesis in linear model}%
 , the test statistic $\widehat{SN}_{T}(\bm{\beta} _{0}\mid\bm{\beta} _{1})$ depends on a
 predetermined alternative hypothesis $\bm{\beta}_{1}$, which in practice is unknown.
 Therefore, in Section \ref{optimal alternative hypothesisC1} we will suggest an
@@ -741,13 +737,13 @@ power of the test is maximized.
 \section{Choice of the optimal alternative hypothesis \label{optimal
 alternative hypothesisC1}}
 
-{\hskip 1.5em}Point-optimal tests depend on the alternative $\bm{\beta}=\bm{\beta}_1$, which in practice is unknown. Formally, the test statistic $\widehat{SN}_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})$ for testing the linear full-coefficient hypothesis (\ref{h01}) is a function
+{\hskip 1.5em}Point-optimal tests depend on the alternative $\bm{\beta}=\bm{\beta}_1$, which in practice is unknown. Formally, the test statistic $\widehat{SN}_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})$ for testing the full-coefficient hypothesis (\ref{h01}) is a function
 of $\bm{\beta}_{1}$
 \begin{equation*}
 \widehat{SN}_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})=\sum\limits_{t=1}^{T}\tilde{a}%
-_{t}(\bm{\beta} _{0}\mid\bm{\beta}_{1})s(y_{t}-\bm{x}_{t-1}'\bm{\beta}
-_{0})+\sum\limits_{t=1}^{T}\tilde{b}_{t}(\bm{\beta}_{1})%
-s(y_{t}-\bm{x}_{t-1}'\bm{\beta} _{0})s(y_{t-1}-\bm{x}_{t-2}'\bm{\beta}_{0}),
+_{t}(\bm{\beta} _{0}\mid\bm{\beta}_{1})s(y_{t}-f(\bm{x}_{t-1},\bm{\beta}
+_{0}))+\sum\limits_{t=1}^{T}\tilde{b}_{t}(\bm{\beta}_0\mid\bm{\beta}_{1})%
+s(y_{t}-f(\bm{x}_{t-1},\bm{\beta} _{0}))s(y_{t-1}-f(\bm{x}_{t-2},\bm{\beta}_{0})),
 \end{equation*}%
 which in turn implies that its power function, say $\Pi (\bm{\beta}_0 ,\bm{\beta}_{1})$, is also a
 function of $\bm{\beta}_{1}$. Therefore, the choice of the alternative $\bm{\beta}_1$ has a direct impact on its power function. In other words,
@@ -760,31 +756,45 @@ where $\tilde{c}_{1}(\bm{\beta}_0,\bm{\beta} _{1})$ satisfies the constraint
 P[\widehat{SN}_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})>\tilde{c}_{1}(\bm{\beta}_0,\bm{\beta}_{1})|H(\bm{\beta}_0)]\leq
 \alpha. 
 \end{equation*}
-Our objective is to choose the value of $\bm{\beta}_1$ at which the power of the POS-based test statistic is maximized and is close to that of the power envelope. This can be accomplished in a number of ways.
-\citet{dufour2010exact} suggest an adaptive approach based on the split-sample technique [see \citet{dufour2001finite}] to estimate the optimal alternative and calculating the test statistic to make size control easier and maximize the power. For a review of adaptive approach for parametric tests with non-standard distributions see \citet{dufour2003point} and \citet{dufour2008finite}.
+
+Our objective is to choose the value of $\bm{\beta}_1$ at which the power function of the POS-based test statistic is maximized and is close to that of the power envelope. This can be accomplished in a number of ways.
+\citet{dufour2010exact} suggest an adaptive approach based on the split-sample technique [see \citet{dufour2001finite}] to estimate the optimal alternative and calculating the test statistic to make size control easier and maximize the power. For a review of adaptive approach for parametric tests with nonstandard distributions see \citet{dufour2003point} and \citet{dufour2008finite}.
 
  This approach consists in splitting the sample into two independent parts, where
 the alternative $\bm{\beta}_1$ is estimated using the first part, while the POS-based test statistic $\widehat{SN}_{T}(\bm{\beta} _{0}\mid\bm{\beta} _{1})%
-$ is calculated using the second part of the sample, along with the alternative $\bm{\beta}_1$ estimated using the first sub-sample. By adopting this technique, size control is easier and the power function of the POS-based test traces out the power envelope.
+$ is calculated using the second part of the sample and the alternative $\bm{\beta}_1$ estimated using the first subsample. By adopting this technique, size control is easier and the power function of the POS-based test traces out the power envelope.
 Let $T=T_{1}+T_{2}$, $y=(y_{(1)}',y_{(2)}')'$, $X=(X_{(1)}',X_{(2)}')'$, and $\varepsilon=(\varepsilon_{(1)}',\varepsilon_{(2)}')'$, where $y_{(i)}$, $X_{(i)}$ and $\varepsilon_{(i)}$ for $i\in \{1,2\}$ each have $%
 T_{i}$ rows. The first $T_{1}$ observations of $y$ and $X$ can thus be denoted by $y_{(1)}$ and $X_{(1)}$, which
-are used to estimate the alternative hypothesis $\bm{\beta}_{1}$ with the OLS estimator: 
+are used to estimate the alternative hypothesis $\bm{\beta}_{1}$.  If the function $f(\bm{x}_{t-1},\bm{\beta})$ is linear - i.e. $f(\bm{x}_{t-1},\bm{\beta})=\bm{\beta}_0'\bm{x}_{t-1}$, then $\bm{\beta}_1$ can be obtained using the OLS estimator: 
 \begin{equation*}
 \hat{\bm{\beta}} _{(1)}=(X_{(1)}'X_{(1)})^{-1}X_{(1)}'y_{(1)}.
 \end{equation*}%
-Alternatively, in the case of extreme observations other robust estimators that are less sensitive to outliers can be utilized [see \citet{maronna2019robust} for a review of robust estimators]. Since $\hat{\bm{\beta}}_{(1)}$ is independent of $X_{(2)}$, the last $T_{2}$
+Alternatively, in the case of extreme observations, other robust estimators that are less sensitive to outliers can be utilized [see \citet{maronna2019robust} for a review of robust estimators]. Since $\hat{\bm{\beta}}_{(1)}$ is independent of $X_{(2)}$, the last $T_{2}$
 observations can be used to calculate the test statistic and obtain a valid POS-based
 test
 \begin{equation*}
 \widehat{SN}_{T}(\bm{\beta} _{0}\mid\bm{\beta}_{(1)})=\sum\limits_{t=T_1+1}^{T}\tilde{a}%
 _{t}(\bm{\beta}_{0}\mid\bm{\beta}_{(1)})s(y_{t}-\bm{x}_{t-1}'\bm{\beta}
-_{0})+\sum\limits_{t=T_1+1}^{T}\tilde{b}_{t}(\bm{\beta}_{(1)})%
+_{0})+\sum\limits_{t=T_1+1}^{T}\tilde{b}_{t}(\bm{\beta}_0\mid\bm{\beta}_{(1)})%
 s(y_{t}-\bm{x}_{t-1}'\bm{\beta}_{0})s(y_{t-1}-\bm{x}_{t-2}'\bm{\beta}_{0}),
 \end{equation*}%
 
-An array of different possibilities exist for choosing the dimensions of the independent sub-samples $T_{1}$ and $T_{2}$. However, as
+When $f(\bm{x}_{t-1},\bm{\beta})$ is a nonlinear function of $\bm{\beta}$, we resort to nonlinear least squares or the maximum likelihood estimation method to obtain the alternative hypothesis $\bm{\beta}_1$. Similar to the linear case, this entails splitting the sample into two independent subsamples $T_1$ and $T_2$, such that $y_{(1)}$ and $X_{(1)}$ correspond to the first subsample $T_1$ , using which the alternative hypothesis $\beta_1$ can be estimated using a nonlinear least squares method
+\begin{equation*}   
+\hat{\bm{\beta}}_{(1)}=\arg\min_{\bm{\beta}_1}\sum\limits_{t=1}^{T_1}\left[y_t-f(\bm{x}_{t-1},\bm{\beta}_1)\right]^2
+\end{equation*}
+and where $y_{(2)}$ and $X_{(2)}$ which correspond to the second subsample are used to calculate the test statistic:
+\begin{align*}
+\widehat{SN}_{T}(\bm{\beta} _{0}\mid\bm{\beta}_{(1)})&=\sum\limits_{t=T_1+1}^{T}\tilde{a}%
+_{t}(\bm{\beta}_{0}\mid\bm{\beta}_{(1)})s(y_{t}-f(\bm{x}_{t-1},\bm{\beta}
+_{0}))\\
+&\textcolor{white}{=}+\sum\limits_{t=T_1+1}^{T}\tilde{b}_{t}(\bm{\beta}_{0}\mid\bm{\beta}_{(1)})%
+s(y_{t}-f(\bm{x}_{t-1},\bm{\beta}_{0}))s(y_{t-1}-f(\bm{x}_{t-2},\bm{\beta}_{0})),
+\end{align*}%
+
+An array of different possibilities exist for choosing the dimensions of the independent subsamples $T_{1}$ and $T_{2}$. However, as
 \citet{dufour2010exact} have noted, the number of observations retained
-in the first and the second sub-samples respectively has a direct impact on the power of
+in the first and the second subsamples respectively has a direct impact on the power of
 the test. A more powerful test is obtained
 when relatively small number of observations is used to estimate the
 alternative and the rest are reserved to calculate
@@ -1360,7 +1370,7 @@ P[\varepsilon_t\geq0\mid \text{\b{S}}^{\varepsilon}_{t-1}, X]=P[\varepsilon_t\ge
 with
 \[
 \text{\b{S}}^{\varepsilon}_{0}=\left\{ \emptyset \right\} ,\text{ \ \b{S}}^{\varepsilon}_{t-1}=\left\{
-s(\varepsilon_{1})=s_{1},...,s(\varepsilon_{t-1})=s_{t-1}\right\} ,\text{ for }t\geq 2,
+s(\varepsilon_{1})=s_{1},\cdots,s(\varepsilon_{t-1})=s_{t-1}\right\} ,\text{ for }t\geq 2,
 \]
 We define the vector of signs $U(T)=(s(y_1),\cdots,s(y_T))'$, where $s(y_t)=\mathbbm{1}_{\mathbb{R}^+\cup 0}\{y_t\}$. Thus, given model (\ref{model}), under the null hypothesis of unpredictability, $(s(y_1),\cdots,s(y_T))'$ is equivalent to the signs of error terms $(s(\varepsilon_1),\cdots,s(\varepsilon_T))'$. Thus, under the null hypothesis, the likelihood function of the sample in terms of the signs is given by
 \begingroup
@@ -1377,16 +1387,16 @@ Hence, it can be concluded that conditional on $X$ and under the null hypothesis
 \end{proof}
 
 \begin{proof}[Proof of Proposition \protect\ref{proposition1C1}]
-The likelihood function of sample in terms of signs $s(y_{1}),...,s(y_{T})$%
+The likelihood function of sample in terms of signs $s(y_{1}),\cdots,s(y_{T})$%
 \begin{equation*}
 L\left( U(T),\bm{\beta},X \right) =P\left[
-s(y_{1})=s_{1},...,s(y_{T})=s_{T}\mid X\right] =\prod\limits_{t=1}^{T}%
+s(y_{1})=s_{1},\cdots,s(y_{T})=s_{T}\mid X\right] =\prod\limits_{t=1}^{T}%
 P\left( s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right) ,
 \end{equation*}%
 for 
 \begin{equation*}
 \text{\b{S}}_{0}=\left\{ \emptyset \right\} ,\text{ \ \b{S}}_{t-1}=\left\{
-s(y_{1})=s_{1},...,s(y_{t-1})=s_{t-1}\right\} ,\text{ for }t\geq 2,
+s(y_{1})=s_{1},\cdots,s(y_{t-1})=s_{t-1}\right\} ,\text{ for }t\geq 2,
 \end{equation*}%
 and%
 \begin{equation*}
@@ -1397,7 +1407,7 @@ where each $s_{t}$, for $1\leq t\leq T$, takes two possible values $0$ and $%
 1 $. According to model (\ref{model}) and assumption (\ref{eq: mediane}), under the null hypothesis the signs $s(y_1),\cdots,s(y_T)$ are i.i.d according to $Bi(1,0.5)$,
 \begin{equation*}
 P\left[ s(y_{t})=1\mid X\right] =P\left[ s(y_{t})=0\mid X\right] =%
-\frac{1}{2},\text{ for }t=1,...,T,
+\frac{1}{2},\text{ for }t=1,\cdots,T,
 \end{equation*}%
 Consequently, under $H_{0}$%
 \begin{equation*}
@@ -1408,7 +1418,7 @@ and under $H_{1}$ we have%
 L_{1}\left( U(T),\bm{\beta}_{1},X\right) =\prod\limits_{t=1}^{T}%
 P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1}, X\right]
 \end{equation*}%
-where now, for $t=1,...,T,$%
+where now, for $t=1,\cdots,T,$%
 \begin{equation*}
 y_{t}=\bm{\beta}_1'\bm{x}_{t-1}+\varepsilon_{t}
 \end{equation*}%
@@ -1420,7 +1430,7 @@ P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] \right\} -\text{T}\ln
 \left\{ \frac{1}{2}\right\} .
 \end{equation*}%
 According to Neyman-Pearson lemma [see e.g. Lehmann (1959), page 65], the
-best test to test $H_{0}$ against $H_{1},$ based on $s(y_{1}),...,s(y_{T}),$
+best test to test $H_{0}$ against $H_{1},$ based on $s(y_{1}),\cdots,s(y_{T}),$
 rejects $H_{0}$ when%
 \begin{equation*}
 \ln \left\{ \frac{L_{1}\left( U(T),\bm{\beta} _{1},X\right) }{L%
@@ -1437,11 +1447,11 @@ P\left( \ln \left\{ \frac{L_{1}\left( U(T),\bm{\beta}
 _{1},X\right) }{L_{0}\left( U(T),\bm{0},X\right) }\right\} >c\mid
 H_{0}\right) \leq \alpha .
 \end{equation*}%
-Notice that, for $t=1,...,T$%
+Notice that, for $t=1,\cdots,T$%
 \begin{equation}
 P\left[ s(y_{t})=s_{t}\mid \text{\b{S}}_{t-1},X\right] =P%
 \left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] ^{s(y_t)}P\left[
-y_{t}<0\mid \text{\b{S}}_{t-1},X\right] ^{(1-s(y_t))},\text{ for }t=1,...,T.
+y_{t}<0\mid \text{\b{S}}_{t-1},X\right] ^{(1-s(y_t))},\text{ for }t=1,\cdots,T.
 \label{probC1}
 \end{equation}%
 From (\ref{probC1}), we have%
@@ -1470,7 +1480,7 @@ _{t-1},X\right] }\right\} +\sum\limits_{t=1}^{T}\ln \left\{ P%
 \end{align*}%
  \endgroup
 Thus, the best test to test $H_{0}$ against $H_{1},$ based on $%
-s(y_{1}),...,s(y_{T}),$ rejects $H_{0}$ when%
+s(y_{1}),\cdots,s(y_{T}),$ rejects $H_{0}$ when%
 \begin{equation*}
 \ln \left\{ \frac{L_{1}\left( U(T),\bm{\beta} _{1},X\right) }{L%
 _{0}\left( U(T),\bm{0},X\right) }\right\} =\sum\limits_{t=1}^{T}s(y_{t})\ln \left\{ 
@@ -1611,7 +1621,7 @@ P\left[ y_{1}<0\mid X\right] }\right\} -\ln \left\{ \frac{P%
 \left[ y_{1}\geq 0\mid X\right] }{P\left[ y_{1}<0\mid X\right] }\right\} =0
 \end{align*}%
 \endgroup
-and for $t=2,...,T$%
+and for $t=2,\cdots,T$%
 \begin{align*}
 a_{t} &=\ln \left\{ \frac{P\left[ y_{t}\geq 0\mid y_{t}<0,X\right] }{%
 P\left[ y_{t}<0\mid y_{t}<0,X\right] }\right\} , \\
