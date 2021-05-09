@@ -1,6 +1,8 @@
 ## This function calculates the POS-based test statistic in the context of dependent data for any given inputs 'y' and 'x'.
 ## To generate data with various distribution and forms of heteroskedasticiy, it is advised that the data is generate using
-## the package 'PredictiveDGP. '   
+## the package 'PredictiveDGP.'. The instructions for installing this package can be found in:
+## https://sites.google.com/view/kavehnobari/packges-toolboxes.
+
 
 
 
@@ -8,7 +10,7 @@ library(MASS)
 library(mvtnorm)
 
 
-POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,...){
+POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,simul=FALSE,...){
 
 
 	# Determine if input x is a matrix or a vector
@@ -98,10 +100,13 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,...){
 
 			POSStat<-sum(a1*sgn_y)+sum(b1[1:(length(b1)-1)]*sgn_y[1:(length(sgn_y)-1)]*sgn_y[2:(length(sgn_y))])
 
+			if(simul==FALSE){
 
-			print(POSStat)
-			print(paste("POS_Dependent test statistic: ",POSStat))
-			invisible(POSStat)
+				print(POSStat)
+				print(paste("POS_Dependent test statistic: ",POSStat))
+				invisible(POSStat)
+
+			}
 
 			POSStat_Sim <- rep(0, times = B)
 
@@ -119,21 +124,43 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,...){
 
 			CritVal<-quantile(POSStat_Sim,1-level)
 
-			print(paste("The critical value at ",level," level is", CritVal))
+			if(simul==FALSE){
+
+				print(paste("The critical value at ",level," level is", CritVal))
+
+			}
 
 			# Decision of the test
 
-			if(POSStat>CritVal){
+			if(simul==FALSE){
 
-				print(paste("Rejected the null hypotehsis at ",level," level"))
+				if(POSStat>CritVal){
+
+					print(paste("Rejected the null hypotehsis at ",level," level"))
+
+				}else{
+
+					print(paste("Failed to Reject the null hypothesis at ",level," level"))
+
+				}
 
 			}else{
 
-				print(paste("Failed to Reject the null hypothesis at ",level," level"))
+
+				if(POSStat>CritVal){
+
+					RejCounter <- 1
+
+				}else{
+
+					RejCounter <- 0
+
+				}
 
 			}
 
 
+			RejCounter <<- RejCounter
 
 
 		}
@@ -179,7 +206,7 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,...){
 
 			# Estimate the parameter betahat using OLS or any other robust estimators
 
-			betahat<-rlm(y_Alt[1:(length(y_Alt)-1)]~x_Alt[2:length(y_Alt),])
+			betahat<-rlm(y_Alt[1:(length(y_Alt)-1)]~x_Alt[2:length(y_Alt)])
 
 
 			# Declare the weights of the test statistc - i.e., a1 and b1
@@ -189,7 +216,7 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,...){
 
 
 			# The test statistic weights for t=1
-	
+
 			UniPhi<-pt(X_Test[2:nrow(X_Test),]%*%(betahat$coefficients-null),df=1)
 			a1[length(UniPhi)]<-log(1/((1/UniPhi[length(UniPhi)])-1))
 			b1[length(UniPhi)]<-0
@@ -229,9 +256,13 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,...){
 			POSStat<-sum(a1*sgn_y)+sum(b1[1:(length(b1)-1)]*sgn_y[1:(length(sgn_y)-1)]*sgn_y[2:(length(sgn_y))])
 
 
-			print(POSStat)
-			print(paste("POS_Dependent test statistic: ",POSStat))
-			invisible(POSStat)
+			if(simul==FALSE){
+
+				print(POSStat)
+				print(paste("POS_Dependent test statistic: ",POSStat))
+				invisible(POSStat)
+
+			}
 
 			POSStat_Sim <- rep(0, times = B)
 
@@ -251,21 +282,46 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,...){
 
 			# Calculate the (1-alpha)% critical value
 
+
 			CritVal<-quantile(POSStat_Sim,1-level)
 
-			print(paste("The critical value at ",level," level is", CritVal))
+			if(simul==FALSE){
+
+				print(paste("The critical value at ",level," level is", CritVal))
+
+			}
 
 			# Decision of the test
 
-			if(POSStat>CritVal){
+			if(simul==FALSE){
 
-				print(paste("Rejected the null hypotehsis at ",level," level"))
+				if(POSStat>CritVal){
+
+					print(paste("Rejected the null hypotehsis at ",level," level"))
+
+				}else{
+
+					print(paste("Failed to Reject the null hypothesis at ",level," level"))
+
+				}
 
 			}else{
 
-				print(paste("Failed to Reject the null hypothesis at ",level," level"))
+
+				if(POSStat>CritVal){
+
+					RejCounter <- 1
+
+				}else{
+
+					RejCounter <- 0
+
+				}
 
 			}
+
+
+			RejCounter <<- RejCounter
 
 
 		}
