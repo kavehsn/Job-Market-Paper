@@ -10,7 +10,7 @@ library(MASS)
 library(mvtnorm)
 
 
-POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,simul=FALSE,...){
+POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,simul=FALSE,trueBeta=NULL,...){
 
 
 	# Determine if input x is a matrix or a vector
@@ -53,7 +53,15 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,simul=FALSE,...){
 
 			# Estimate the parameter betahat using OLS or any other robust estimators
 
-			betahat<-rlm(y_Alt[1:(length(y_Alt)-1)]~x_Alt[2:length(y_Alt),])
+			if(is.null(trueBeta)==TRUE){
+
+				betahat <- rlm(y_Alt[1:(length(y_Alt)-1)]~x_Alt[2:length(y_Alt),])
+
+			}else{
+
+				betahat <- c(0,trueBeta)
+			}
+
 
 
 			# Declare the weights of the test statistc - i.e., a1 and b1
@@ -62,8 +70,17 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,simul=FALSE,...){
 			b1<-rep(0,times=length(sgn_y))
 
 			# The test statistic weights for t=1
+			if(is.null(trueBeta)==TRUE){
 
-			UniPhi<-pt(X_Test[2:nrow(X_Test),]%*%(betahat$coefficients-null),df=1)
+				UniPhi<-pt(X_Test[2:nrow(X_Test),]%*%(betahat$coefficients-null),df=n)
+
+			}else{
+
+				UniPhi<-pt(X_Test[2:nrow(X_Test),]%*%(betahat-null),df=n)
+
+			}
+
+
 			a1[length(UniPhi)]<-log(1/((1/UniPhi[length(UniPhi)])-1))
 			b1[length(UniPhi)]<-0
 
@@ -73,15 +90,24 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,simul=FALSE,...){
 
 			# The test statistic weights for t= 2,...,n
 
-			bvrateU<-matrix(data=c(X_Test[2:(nrow(X_Test)-1),]%*%(null-betahat$coefficients),X_Test[3:nrow(X_Test),]%*%(null-betahat$coefficients)),nrow=nrow(X_Test[2:(nrow(X_Test)-1),]),ncol=2)
-			
+			if(isn.null(trueBeta)==TRUE){
+
+				bvrateU<-matrix(data=c(X_Test[2:(nrow(X_Test)-1),]%*%(null-betahat$coefficients),X_Test[3:nrow(X_Test),]%*%(null-betahat$coefficients)),nrow=nrow(X_Test[2:(nrow(X_Test)-1),]),ncol=2)
+
+			}else{
+
+				bvrateU<-matrix(data=c(X_Test[2:(nrow(X_Test)-1),]%*%(null-betahat),X_Test[3:nrow(X_Test),]%*%(null-betahat)),nrow=nrow(X_Test[2:(nrow(X_Test)-1),]),ncol=2)
+
+			}
+
+
 			BiPhi<-rep(0,times=nrow(bvrateU))
 			
 
 
 			for(i in 1:nrow(bvrateU)){
 
-				BiPhi[i]<-pmvt(lower=-Inf,upper=bvrateU[i,],delta=mu,sigma=Sigma,df=1)	
+				BiPhi[i]<-pmvt(lower=-Inf,upper=bvrateU[i,],delta=mu,sigma=Sigma,df=n)	
 				
 			}
 
@@ -206,7 +232,15 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,simul=FALSE,...){
 
 			# Estimate the parameter betahat using OLS or any other robust estimators
 
-			betahat<-rlm(y_Alt[1:(length(y_Alt)-1)]~x_Alt[2:length(y_Alt)])
+			if(is.null(trueBeta)==TRUE){
+
+				betahat<-rlm(y_Alt[1:(length(y_Alt)-1)]~x_Alt[2:length(y_Alt)])
+
+			}else{
+
+				betahat <- c(0,trueBeta)
+
+			}
 
 
 			# Declare the weights of the test statistc - i.e., a1 and b1
@@ -217,7 +251,17 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,simul=FALSE,...){
 
 			# The test statistic weights for t=1
 
-			UniPhi<-pt(X_Test[2:nrow(X_Test),]%*%(betahat$coefficients-null),df=1)
+			if(is.null(trueBeta)==TRUE){
+
+				UniPhi<-pt(X_Test[2:nrow(X_Test),]%*%(betahat$coefficients-null),df=n)
+
+			}else{
+
+				UniPhi<-pt(X_Test[2:nrow(X_Test),]%*%(betahat-null),df=n)
+
+			}
+
+
 			a1[length(UniPhi)]<-log(1/((1/UniPhi[length(UniPhi)])-1))
 			b1[length(UniPhi)]<-0
 
@@ -227,15 +271,24 @@ POS_Dep <-function(y,x,null=c(0,0),level=0.05,p=0.5,B=10000,simul=FALSE,...){
 
 			# The test statistic weights for t= 2,...,n
 
-			bvrateU<-matrix(data=c(X_Test[2:(nrow(X_Test)-1),]%*%(null-betahat$coefficients),X_Test[3:nrow(X_Test),]%*%(null-betahat$coefficients)),nrow=nrow(X_Test[2:(nrow(X_Test)-1),]),ncol=2)
+			if(is.null(trueBeta)==TRUE){
+
+				bvrateU<-matrix(data=c(X_Test[2:(nrow(X_Test)-1),]%*%(null-betahat$coefficients),X_Test[3:nrow(X_Test),]%*%(null-betahat$coefficients)),nrow=nrow(X_Test[2:(nrow(X_Test)-1),]),ncol=2)
 			
+			}else{
+
+				bvrateU<-matrix(data=c(X_Test[2:(nrow(X_Test)-1),]%*%(null-betahat),X_Test[3:nrow(X_Test),]%*%(null-betahat)),nrow=nrow(X_Test[2:(nrow(X_Test)-1),]),ncol=2)
+
+			}
+
+
 			BiPhi<-rep(0,times=nrow(bvrateU))
 			
 
 
 			for(i in 1:nrow(bvrateU)){
 
-				BiPhi[i]<-pmvt(lower=-Inf,upper=bvrateU[i,],delta=mu,sigma=Sigma,df=1)	
+				BiPhi[i]<-pmvt(lower=-Inf,upper=bvrateU[i,],delta=mu,sigma=Sigma,df=n)	
 				
 			}
 
