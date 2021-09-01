@@ -1,4 +1,4 @@
-%2multibyte Version: 5.50.0.2960 CodePage: 65001
+	%2multibyte Version: 5.50.0.2960 CodePage: 65001
 %\input{tcilatex}
 %\usepackage[latin1]{inputenc}
 %\input{tcilatex}
@@ -970,7 +970,7 @@ u_{t}=\rho \varepsilon _{t}+w_{t}\sqrt{1-\rho ^{2}}  \label{error}
 for $\rho =0,$ $0.1$, $0.5$, $0.9$, where $\varepsilon _{t}$ and $w_{t}$ are
 assumed to be independent. The initial value of $x$ is given by: $x_{0}=%
 \frac{w_{0}}{\sqrt{1-\theta ^{2}}}.$ Further, $w_{t}$ are generated from $%
-N\left( 0,1\right)$ and we assign $\theta=0.9$. 
+N\left( 0,1\right)$ and we assign $\theta=0.999$. 
 
 The errors $\varepsilon_t$ are i.n.i.d and are categorized by two groups in our simulation study. In the first group, we consider DGPs where the error terms $\varepsilon_t$ possess symmetric and asymmetric distributions:
 \begin{enumerate}
@@ -979,8 +979,8 @@ The errors $\varepsilon_t$ are i.n.i.d and are categorized by two groups in our 
 \item[\textbf{3.}] Student $t$ distribution with two degrees of freedom: $%
 \varepsilon _{t}\sim t(2);$
 \item[\textbf{4.}] Mixture of normal and Cauchy distributions: $%
-\varepsilon _{t}\sim s_{t}\mid \varepsilon _{t}^{C}\mid -(1-s_{t})\mid
-\varepsilon _{t}^{N}\mid ,$ where $\varepsilon _{t}^{C}$ follows Cauchy
+\varepsilon _{t}\sim s_{t}\lvert \varepsilon _{t}^{C}\rvert-(1-s_{t})\lvert
+\varepsilon _{t}^{N}\rvert ,$ where $\varepsilon _{t}^{C}$ follows Cauchy
 distribution, $\varepsilon _{t}^{N}$ follows $N(0,1)$ distribution$,$ and 
 \begin{equation*}
 P\left( s_{t}=1\right) =P\left( s_{t}=0\right) =\frac{1}{2}%
@@ -1043,15 +1043,16 @@ The DGPs considered in this paper have been inspired by the simulation exercises
 comparison using different tests NormalC1}-\ref{fig: Power comparison using different tests Normal ExpC1}. These results correspond to different DGPs
 described in Section \ref{sec: Simulated models}. The figures compare the
 power of the $10\%$ SS-POS test to the $t$-test, W$t$-test, and CD (1995) test. The results are detailed below. 
+
 \begin{figure}[tbph]
 \caption{Power comparisons: different tests. Normal error distributions with
 different values of $\protect\rho $ in (\protect\ref{error}) and $\protect%
 \theta =0.9$ in (\protect\ref{x}).}
 \begin{center}
-\subfigure{\includegraphics[scale=0.65]{normalteta9roh0.eps}} %
-\subfigure{\includegraphics[scale=0.65]{Normalteta9roh1.eps}} \\[0pt]
-\subfigure{\includegraphics[scale=0.65]{Normalteta9roh5.eps}} %
-\subfigure{\includegraphics[scale=0.65]{Normalteta9roh9.eps}}\\[0pt]
+\subfigure{\includegraphics[scale=0.45]{NormalTheta0.999Rho0.eps}} %
+\subfigure{\includegraphics[scale=0.45]{NormalTheta0.999Rho0.1.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.45]{NormalTheta0.999Rho0.5.eps}} %
+\subfigure{\includegraphics[scale=0.45]{NormalTheta0.999Rho0.9.eps}}\\[0pt]
 \end{center}
 
 Note: These figures compare the power
@@ -1060,6 +1061,27 @@ proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the $t$-test ba
 on White's (1980) variance correction [W$t$-test]. 
 \label{fig: Power comparison using different tests NormalC1}
 \end{figure}
+
+
+\begin{figure}[tbph]
+\caption{Power comparisons: different tests. Student's $t(2)$ distributions with
+different values of $\protect\rho $ in (\protect\ref{error}) and $\protect%
+\theta =0.9$ in (\protect\ref{x}).}
+\begin{center}
+\subfigure{\includegraphics[scale=0.45]{Student0.999Rho0.eps}} %
+\subfigure{\includegraphics[scale=0.45]{Student0.999Rho0.1.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.45]{Student0.999Rho0.5.eps}} %
+\subfigure{\includegraphics[scale=0.45]{Student0.999Rho0.9.eps}}\\[0pt]
+\end{center}
+
+Note: These figures compare the power
+function of the 10\% SS-POS test with: (1) the $t$-test; (2) the sign-based test
+proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the $t$-test based
+on White's (1980) variance correction [W$t$-test]. 
+\label{fig: Power comparaison using different tests CauchyC1}
+\end{figure}
+
+
 
 First, Figure \ref{fig: Power comparison using different tests NormalC1}
 compares the power function of the above tests in the case where the error
@@ -1078,10 +1100,10 @@ test become closer to each other.
 different values of $\protect\rho $ in (\protect\ref{error}) and $\protect%
 \theta =0.9$ in (\protect\ref{x}).}
 \begin{center}
-\subfigure{\includegraphics[scale=0.65]{cauchyteta9roh0.eps}} %
-\subfigure{\includegraphics[scale=0.65]{cauchyteta9roh1.eps}} \\[0pt]
-\subfigure{\includegraphics[scale=0.65]{cauchyteta9roh5.eps}} %
-\subfigure{\includegraphics[scale=0.65]{cauchyteta9roh9.eps}}\\[0pt]
+\subfigure{\includegraphics[scale=0.45]{CauchyTheta0.999Rho0.eps}} %
+\subfigure{\includegraphics[scale=0.45]{CauchyTheta0.999Rho0.1.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.45]{CauchyTheta0.999Rho0.5.eps}} %
+\subfigure{\includegraphics[scale=0.45]{CauchyTheta0.999Rho0.9.eps}}\\[0pt]
 \end{center}
 
 Note: These figures compare the power
@@ -1104,10 +1126,10 @@ coefficient $\rho ,$ but the difference in power decreases when we increase $%
 with different values of $\protect\rho $ in (\protect\ref{error}) and $%
 \protect\theta =0.9$ in (\protect\ref{x}).}
 \begin{center}
-\subfigure{\includegraphics[scale=0.65]{mixtureteta9roh0.eps}} %
-\subfigure{\includegraphics[scale=0.65]{mixtureteta9roh1.eps}} \\[0pt]
-\subfigure{\includegraphics[scale=0.65]{mixtureteta9roh5.eps}} %
-\subfigure{\includegraphics[scale=0.65]{mixtureteta9roh9.eps}}\\[0pt]
+\subfigure{\includegraphics[scale=0.45]{MixTheta0.999Rho0.eps}} %
+\subfigure{\includegraphics[scale=0.45]{MixTheta0.999Rho0.1.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.45]{MixTheta0.999Rho0.5.eps}} %
+\subfigure{\includegraphics[scale=0.45]{MixTheta0.999Rho0.9.eps}}\\[0pt]
 \end{center}
 
 Note: These figures compare the power
@@ -1128,10 +1150,10 @@ difference in power is much more significant when the correlation coefficient $%
 break in variance, different values of $\protect\rho $ in (\protect\ref%
 {error}) and $\protect\theta =0.9$ in (\protect\ref{x}).} 
 \begin{center}
-\subfigure{\includegraphics[scale=0.65]{breakteta9roh0.eps}} %
-\subfigure{\includegraphics[scale=0.65]{breakteta9roh1.eps}} \\[0pt]
-\subfigure{\includegraphics[scale=0.65]{breakteta9roh5.eps}} %
-\subfigure{\includegraphics[scale=0.65]{breakteta9roh9.eps}}\\[0pt]
+\subfigure{\includegraphics[scale=0.45]{BIV0.999Rho0.eps}} %
+\subfigure{\includegraphics[scale=0.45]{BIV0.999Rho0.1.eps}} \\[0pt]
+\subfigure{\includegraphics[scale=0.45]{BIV0.999Rho0.5.eps}} %
+\subfigure{\includegraphics[scale=0.45]{BIV0.999Rho0.9.eps}}\\[0pt]
 \end{center}
 
 Note: These figures compare the power
@@ -1140,23 +1162,7 @@ proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the $t$-test ba
 on White's (1980) variance correction [W$t$-test]. 
 \label{fig: Power comparison using different tests Normal BreakC1}
 \end{figure}
-\begin{figure}[tbph]
-\caption{Power comparisons: different tests. Normal error distributions with
-Exp(t) variance, different values of $\protect\rho $ in (\protect\ref{error}%
-) and $\protect\theta =0.9$ in (\protect\ref{x}).}
-\begin{center}
-\subfigure{\includegraphics[scale=0.65]{expteta9roh0.eps}} %
-\subfigure{\includegraphics[scale=0.65]{expteta9roh1.eps}} \\[0pt]
-\subfigure{\includegraphics[scale=0.65]{expteta9roh5.eps}} %
-\subfigure{\includegraphics[scale=0.65]{expteta9roh9.eps}}\\[0pt]
-\end{center}
 
-Note: These figures compare the power
-function of the 10\% SS-POS test with: (1) the $t$-test; (2) the sign-based test
-proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the $t$-test based
-on White's (1980) variance correction [W$t$-test]. 
-\label{fig: Power comparison using different tests Normal ExpC1}
-\end{figure}
 
 Finally, Figures \ref{fig: Power comparison using different tests Normal
 BreakC1} and \ref{fig: Power comparison using different tests Normal ExpC1}
@@ -1700,7 +1706,7 @@ P\left[ y_{1}<0\mid X\right] }\right\} -\ln \left\{ \frac{P%
 \end{align*}
 \endgroup
 \end{proof}
-
+\newpage 
 \begin{proof}[Additional simulations]
 \begin{figure}[hbtp!]
 \caption{Power comparisons: different tests. Normal distributions with contemporaneous correlation of $\rho=1$, in (\protect\ref%
