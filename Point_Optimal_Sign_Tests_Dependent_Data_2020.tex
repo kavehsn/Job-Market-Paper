@@ -36,8 +36,10 @@
 \usepackage{caption}
 \usepackage{tabu}
 \usepackage{amsmath}
+\usepackage{algorithm}
 \usepackage{physics}
 \usepackage{booktabs}
+\usepackage{algpseudocode}
 \usepackage{graphicx,epstopdf}
 \usepackage{setspace,caption}
 \captionsetup{font=doublespacing}%
@@ -72,7 +74,6 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newtheorem{theorem}{Theorem}
 \newtheorem{acknowledgement}[theorem]{Acknowledgement}
-\newtheorem{algorithm}[theorem]{Algorithm}
 \newtheorem{axiom}[theorem]{Axiom}
 \newtheorem{case}[theorem]{Case}
 \newtheorem{claim}[theorem]{Claim}
@@ -103,17 +104,19 @@
 
 \title{{Exact point-optimal sign-based inference for linear and nonlinear predictive regressions}}
 \author{Jean-Marie Dufour\thanks{%
-William Dow Professor of Economics, McGill University, Centre interuniversitaire de recherche en analyse des
-organisations (CIRANO), and Centre interuniversitaire de recherche en économie quantitative (CIREQ).Mailing address:
+%William Dow Professor of Economics, McGill University, Centre interuniversitaire de recherche en analyse des
+%organisations (CIRANO), and Centre interuniversitaire de recherche en économie quantitative (CIREQ).Mailing address:
 Department of Economics, McGill University, Leacock Building, Room 519, 855 Sherbrooke Street West, Montréal,
 Québec H3A 2T7, Canada. TEL: (1) 514 398 8879; FAX: (1) 514 398 4938; e-mail: \href{emailto:jean-marie.dufour@mcgill.ca}{jean-marie.dufour@mcgill.ca}. Web
 page: \href{http://www.jeanmariedufour.com}{http://www.jeanmariedufour.com}}\\
 %EndAName
 McGill University\and Kaveh Salehzadeh Nobari\thanks{%
-Department of Economics and Finance, Durham University Business School, Durham DH1 3LB, UK
-(\href{emailto: kaveh.salehzadeh-nobari@durham.ac.uk)}{kaveh.salehzadeh-nobari@durham.ac.uk}, \href{emailto: abderrahim.taamouti@durham.ac.uk)}{abderrahim.taamouti@durham.ac.uk})}\\
+Department of Mathematics and Statistics, Lancaster University, Lancaster, LA1 4YR, UK
+\href{emailto: k.salehzadehnobari@lancaster.ac.uk}{k.salehzadehnobari@lancaster.ac.uk}}\\
 %EndAName
-Durham University \and Abderrahim Taamouti\samethanks[2]\\
+Lancaster University \and Abderrahim Taamouti\thanks{%
+Department of Economics and Finance, Durham University Business School, Durham, DH1 3LB, UK
+\href{emailto: abderrahim.taamouti@durham.ac.uk}{abderrahim.taamouti@durham.ac.uk}}\\
 %EndAName
 Durham University}
 \date{\today}
@@ -151,7 +154,7 @@ coefficients, although consistent, will suffer from significant bias [see \citet
 \citet{nelson1993predictable} reduce the small-sample bias using bootstrap simulations and  \citet{stambaugh1999predictive} shows that in the case of stationary regressors said bias can be corrected. However, in later studies \citet{phillips2013predictive} and \citet{phillips2014confidence} show this to be infeasible in the presence of predictors that exhibit local-to-unity, unit-root or explosive persistency. Therefore, many inference procedures in this context address the issue of size distortions by considering local-to-unity asymptotics, where the key predictor variable is assumed to be integrated
 [\citet{lewellen2004predicting}], or can be modeled as having a local-to-unit root [\citet{elliott1994inference}, \citet{torous2004predicting}, and \citet{campbell2006efficient}, among others]. Notable studies under the local-to-unity dynamics employ an array of procedures, such as Bonferroni corrections [e.g. \citet{cavanagh1995inference} and \citet{campbell2006efficient}], a conditional likelihood based approach [e.g. \citet{jansson2006optimal}], as well as the nearly optimal tests proposed by \citet{elliott2015nearly}. In more recent works, \citet{kostakis2015robust} and \citet{phillips2016robust} expand on the predictability literature by utilizing an extension of the instrumental variable procedure suggested by \citet{phillips2009econometric} to generalize inference to multivariate regressors with integrated and mildly explosive persistency. 
 
-The contribution of the POS-based tests proposed in our study is twofold: firstly, as the tests are distribution-free, they are valid in the presence of regressors with general persistency and different forms of nonlinear dependencies in finite samples, and do not suffer from discontinuity in the limiting distribution of conventional test statistics between stationary, local-to-unity and explosive autoregressions. Secondly, our tests possess the greatest power among certain parametric and non-parametric tests that are frequently encountered in practice and can easily be extended to multivariate testing problems. 
+The contribution of the POS-based tests proposed in our study is twofold: firstly, as the tests are distribution-free, they are valid in the presence of regressors with general persistency and different forms of nonlinear dependencies in finite samples, and do not suffer from discontinuity in the limiting distribution of conventional test statistics between stationary, local-to-unity and explosive autoregressions. Secondly, our tests possess the greatest power among certain parametric and nonparametric tests that are frequently encountered in practice and can easily be extended to multivariate testing problems. 
 
 
 %In addition to these issues, many financial models suggest nonlinear relationships between returns and the predictors, and use linear approximations [see
@@ -185,8 +188,7 @@ hetero\-skedasticity of unknown form, and may be inverted to build confidence
 regions for the vector of unknown parameters. This work, however, is
 developed under the assumption that the errors are independent. The
 main motivation is to build point-optimal sign-based tests for linear and
-nonlinear predictive regressions that retain the advantages of the POS-based tests proposed by \citet{dufour2010exact}. To extend this work, we recognize that under the alternative hypothesis the signs are no longer necessarily independent and the tes$t$-statistic now depends on calculating the joint distribution of the signs, which is computationally infeasible. Therefore, an additional
-assumption on the dependence structure of the conditional signs is needed to obtain \textit{feasible} test
+nonlinear predictive regressions that retain the advantages of the POS-based tests proposed by \citet{dufour2010exact}. To extend this work, we recognize that under the alternative hypothesis the signs are no longer necessarily independent and the test statistic now depends on calculating the joint conditional distribution of the signs, which is computationally infeasible. Therefore, an additional assumption on the dependence structure of the conditional signs is needed to obtain \textit{feasible} test
 statistics; namely, a Markovian assumption on the conditional signs. 
 
 By construction, our POS-based tests control size for any given sample. Under the null hypothesis of unpredictability, the
@@ -231,7 +233,7 @@ variables, say $\bm{x}_{t-1}=[1,x_{1,t-1},\cdots,x_{k,t-1}]'$, $\bm{\beta} \in \
 \] 
 where $F_{t}(.\mid X)$ is an unknown conditional distribution function and $X=[\bm{x}_0',\cdots,\bm{x}_{T-1}']'$ is an $T\times (k+1)$ information matrix. 
 
- Let $\{Z_t,\mathcal{F}_t\}_{t=1,2,\cdots}$ be an adapted stochastic sequence, such that $\mathcal{F}_t$ is a $\sigma$-field in $\Omega$, $\mathcal{F}_s\subseteq \mathcal{F}_t$ for $s< t$, $\sigma(Z_1,\cdots,Z_t)\subset \mathcal{F}_t$, where $\sigma(Z_1,\cdots,Z_t)$ is the $\sigma$-field generated by $Z_1,\cdots,Z_t$. In the context of general forms of serial (nonlinear) dependence, an assumption commonly imposed on the error terms $\{\varepsilon_t,t=1,2,\cdots\}$ is that the error process is a martingale difference sequence (MDS hereafter) with respect to $\mathcal{F}_t=\sigma(Z_1,\cdots,Z_t)$ for $t=1,2,\cdots$, - i.e. $\E\{\varepsilon_t\mid \mathcal{F}_{t-1}\}=0$,\quad $\forall t\geq1$. We follow \citet{coudin2009finite} by departing from this assumption and considering the median as an alternative measure of central tendency. This implies imposing a median-based analogue of the MDS on the error process - namely we suppose that $\varepsilon_t$ is a strict conditional mediangale as defined as follows
+ Let $\{Z_t,\mathcal{F}_t\}_{t=1,2,\cdots}$ be an adapted stochastic sequence, such that $\mathcal{F}_t$ is a $\sigma$-field in $\Omega$, $\mathcal{F}_s\subseteq \mathcal{F}_t$ for $s< t$, $\sigma( Z_1,\cdots,Z_t)\subset \mathcal{F}_t$, where $\sigma(Z_1,\cdots,Z_t)$ is the $\sigma$-field generated by $Z_1,\cdots,Z_t$. In the context of general forms of serial (nonlinear) dependence, an assumption commonly imposed on the error terms $\{\varepsilon_t,t=1,2,\cdots\}$ is that the error process is a martingale difference sequence (MDS hereafter) with respect to $\mathcal{F}_t=\sigma(Z_1,\cdots,Z_t)$ for $t=1,2,\cdots$, - i.e. $\E\{\varepsilon_t\mid \mathcal{F}_{t-1}\}=0$,\quad $\forall t\geq1$. We follow \citet{coudin2009finite} by departing from this assumption and considering the median as an alternative measure of central tendency. This implies imposing a median-based analogue of the MDS on the error process - namely we suppose that $\varepsilon_t$ is a strict conditional mediangale as defined as follows
 \begin{definition}
 Let $S(\bm{\varepsilon},\mathcal{F})=\{\varepsilon_t,\mathcal{F}_{t}\}_{t=1,2,\cdots}$ be an adapted stochastic sequence, where $\mathcal{F}_{t-1}=\sigma(\varepsilon_1,\cdots,\varepsilon_t,X)$. Then $\bm{\varepsilon}_t$ in $S(\bm{\varepsilon},\mathcal{F})$ is a strict conditional mediangale if
 \begin{equation}
@@ -243,15 +245,14 @@ with
 \bm{\varepsilon}_{0}=\{\emptyset\},\quad\bm{\varepsilon}_{t-1}=\{\varepsilon_1,\cdots,\varepsilon_{t-1}\},\quad\text{for}\quad t\geq2.
 \]
 \end{definition}
-
+\begin{sloppypar}
  Note (\ref{eq: mediane}) entails that $\varepsilon _{t}\mid X$ has no mass at zero for all $t$, which is only true if $\varepsilon_{t}\mid X$\ is continuous. Model (\ref{model}) in conjunction with assumption (\ref{eq: mediane}) allows the error terms to possess asymmetric, heteroskedastic and serially (nonlinear) dependent distributions, so long as the conditional medians are zero. Assumption \ref{eq: mediane} allows for many dependent schemes, such as those of the form $\varepsilon_1=\sigma_1(x_0,\cdots,x_{t-2})\epsilon_1$, $\varepsilon_t=\sigma_t(x_0,\cdots,x_{t-2},\varepsilon_1,\cdots,\varepsilon_{t-1})\epsilon_t$, $t=2,\cdots,T$, where $\epsilon_1,\cdots,\epsilon_T$ are independent with a zero median. In time-series context this includes models such as ARCH, GARCH or stochastic volatility with non-Gaussian errors. Furthermore, in the mediangale framework the disturbances need not be second order stationary.
- 
+\end{sloppypar} 
 %As pointed out by \citet{coudin2009finite}, the strict mediangale assumption on the error process $\bm{\varepsilon}$ with respect to $\mathcal{F}$ is equivalent to the MDS assumption on the sign process $s(\bm{\varepsilon})=\{s(\varepsilon)_t, t=1,2,\cdots\}$, where $s(\nu)=\mathbbm{1}_{\mathbb{R}^+\cup 0}$, $\forall{\nu}\in\mathbb{R}$, with respect to the same sub-$\sigma$ fields $\mathcal{F}$. However, in their study the errors are conditioned on the entire process $X=[\bm{x}_0',\cdots,\bm{x}_{T-1}']'$, which violates the MDS assumption unless the matrix $\bm{x}_t$s are strongly exogenous. However, within a predictive regression framework, the error process is conditioned on the past values, as such the MDS assumption on the sign process holds without imposing any strong exogeneity assumptions.
 
 \section{POS tests in linear and nonlinear predictive regressions \label{Point-optimal sign testC1}}
 
-{\hskip 1.5em}In this Section, we derive POS-based tests in the context of linear and nonlinear predictive regressions. First, we divert our attention to the problem of testing the null hypothesis of unpredictability in a linear model, which is later generalized to testing unpredictability
-in a nonlinear model. Although the former problem is a special case of the latter, for simplicity of exposition the linear predictive  regression model is considered first.
+{\hskip 1.5em}In this Section, we derive POS-based tests in the context of linear and nonlinear predictive regressions. First, we divert our attention to the problem of testing the null hypothesis of unpredictability in a linear model, which is later generalized to testing unpredictability in a nonlinear model. Although the former problem is a special case of the latter, for simplicity of exposition the linear predictive  regression model is considered first.
 
 
 \subsection{Testing (un)predictability in linear models \label{sec: Testing zero coefficient hypothesis in linear model}}
@@ -303,15 +304,15 @@ $.
 
 
 \begin{theorem}\label{Theorem1}
-Under model (\ref{model}) and assumption (\ref{eq: mediane}), the variables $s(\varepsilon_1),\cdots,s(\varepsilon_T)$ (and $s(y_1),\cdots,s(y_T)$ under the null hypothesis of unpredictability), are i.i.d conditional on $X$ according to the distribution
+\begin{sloppypar}
+Under model (\ref{model}) and assumption (\ref{eq: mediane}), the variables $s(\varepsilon_1),\cdots,s(\varepsilon_T)$, and subsequently $s(y_1),\cdots,s(y_T)$ under the null hypothesis of unpredictability, are i.i.d conditional on $X$ according to the distribution
+\end{sloppypar}
 \[
 P[s(\varepsilon_1)=1\mid X]=P[s(\varepsilon_1)=0\mid X]=\frac{1}{2},\quad t=1,\cdots,T.
 \]
 This result holds true iff for any combination of $t=1,\cdots,T$ there is a permutation $\pi: i\rightarrow j$ such that the mediangale assumption holds for $j$. Then the signs $s(\varepsilon_1),\cdots,s(\varepsilon_T)$ are i.i.d.
 
-\end{theorem}  As the errors satisfy the strict conditional mediangale assumption (\ref{eq: mediane}), the distribution of the signs $s(\varepsilon_1),\cdots,s(\varepsilon_T)$, and in turn $s(y_1),\cdots, s(y_T)$ under the null hypothesis of unpredictability, is well-specified and the signs are mutually independent [see \citet{coudin2009finite}]. Thus, a sign-based test for testing the null hypothesis (\ref{eq: hypothesis1})
-against the alternative hypothesis (\ref{alternative}) is given by the
-following proposition:
+\end{theorem}  As the errors satisfy the strict conditional mediangale assumption (\ref{eq: mediane}), the distribution of the signs $s(\varepsilon_1),\cdots,s(\varepsilon_T)$, and in turn $s(y_1),\cdots, s(y_T)$ under the null hypothesis of unpredictability, is well-specified, and the signs are mutually independent [see \citet{coudin2009finite}]. However, note that under the alternative hypothesis, the strict conditional mediangale assumption no longer holds. Thus, a sign-based test for testing the null hypothesis (\ref{eq: hypothesis1}) against the alternative hypothesis (\ref{alternative}) is given by the following proposition:
 
 \begin{proposition}
 \label{proposition1C1} Under assumptions (\ref{model}%
@@ -338,14 +339,14 @@ tests based on the signs $\big(s(y_{1}),\cdots,s(y_{T})\big)%
 \end{proposition}
 \begin{sloppypar}
 Notice that the calculation of the test statistic $SL_{T}(\bm{\beta}_{1})$
-depends on the weights $a_{t}(\bm{\beta}_{1}),$ which in turn depends on the
+depends on the weights $a_{t}(\bm{\beta}_{1}),$ which in turn depend on the
 calculation of the conditional probabilities $P\left[ y_{t}\geq 0\mid \text{\b{S%
 }}_{t-1},X\right] $ and $P\left[ y_{t}<0\mid \text{\b{S}}%
-_{t-1},X\right] .$ The latter involves the
+_{t-1},X\right] .$ The latter two terms involve the
 distribution of the joint process of signs $\big(s(y_{1}),\cdots,s(y_{T})\big)'$ conditional on $X$, which is unknown. An alternative way to compute the
 terms $P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] $ and $%
 P\left[ y_{t}<0\mid \text{\b{S}}_{t-1},X\right] $ is to use
-simulations, however this will be computationally burdensome, as it requires tge
+simulations, however, this will be computationally burdensome as it requires the
 simulation of the joint distribution of the process of signs $\big(%
 s(y_{1}),\cdots,s(y_{T})\big)'$ conditional on $X$, which depends on the sample size $T$.
 Hence, to propose a feasible test statistic, say $\widetilde{SL}_{T}(\bm{\beta}_{1})$, we impose the following assumption.
@@ -357,7 +358,7 @@ s(y_{t})\right\} _{t=0}^{\infty }$\textit{ conditional on $X$ follows a Markov p
 Now, under assumption \textbf{A1}, the probability terms $P\left[
 y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] $ and $P\left[
 y_{t}<0\mid \text{\b{S}}_{t-1},X\right] $ in the weight function $a_{t}(\bm{\beta}
-_{1})$ can be written as follows:%
+_{1})$ can be expressed as follows:%
 \begin{equation*}
 \begin{cases}
 P\left[ y_{t}\geq 0\mid \text{\b{S}}_{t-1},X\right] =P%
@@ -369,7 +370,7 @@ y_{t}<0\mid y_{t-1}\geq 0,X\right] ^{s(y_{t-1})}P\left[ y_{t}<0\mid
 y_{t-1}<0,X\right] ^{1-s(y_{t-1})}.%
 \end{cases}% 
 \end{equation*}%
-Expressions $P\left[ y_{t}\geq 0\mid \text{%
+Under this assumption, expressions $P\left[ y_{t}\geq 0\mid \text{%
 \b{S}}_{t-1},X\right] $ and $P\left[ y_{t}<0\mid \text{\b{S}}%
 _{t-1},X\right] $ simplify the calculation of the test statistic $%
 SL_{T}(\bm{\beta}_{1})$ and lead to the following result:
@@ -439,8 +440,8 @@ P\left[ \varepsilon_{t}<\cdot \mid X \right] $ and $P\left[ \text{ }%
 
 \begin{sloppypar}
 Observe that under the null hypothesis of unpredictability, the signs $s(y_{1}),\cdots
-,s(y_{T})$ are i.i.d. according to a Bernoulli $Bi(1,$\thinspace $0.5)$.
-Thus, the under the null hypothesis, the distribution of the test statistic $\widetilde{SL}_{T}(\bm{\beta}_{1})$
+,s(y_{T})$ are i.i.d. according to a Bernoulli $Bin(1,$\thinspace $0.5)$.
+Therefore, under the null hypothesis, the distribution of the test statistic $\widetilde{SL}_{T}(\bm{\beta}_{1})$
 only depends on the known weights $\tilde{a}_{t}(\bm{\beta}_{1})$ and $\tilde{b}%
 _{t}(\bm{\beta}_{1})$ and does not involve any nuisance parameters. Nonparametric assumption (\ref{eq:
 mediane}) implies that tests based on $\widetilde{SL}_{T}(\bm{\beta}_{1})$, such
@@ -460,7 +461,7 @@ One approach for calculating these probabilities entails fitting copula models, 
 \[
 \bm{Y}\mid X \sim H(.\mid X)=C\left(F_1(.\mid X),\cdots,F_T(.\mid X)\right),
 \] 
-where $F_t(.\mid X)$ for $t=1,\cdots,T$ are uniformly distributed marginals - i.e. $F_t(.\mid X):= u_t\sim U[0,1]$. Note that the elements of $\bm{Y}$ are uncorrelated, yet exhibit serial nonlinear dependence which is captured by the copula $C(.)$. The implication of the latter for specifying a copula function for the joint distribution of $\bm{Y}$ conditional on $X$, is imposing an identity correlation matrix. In the literature, the means of allowing for nonlinear serial dependence for processes which are linearly unrelated is often accompanied by assuming that $\bm{Y}$ conditional on $X$ is distributed as a multivariate Student's $t$ distribution - i.e. $\bm{Y}\mid X\sim \bm{t}_{\nu}(\bm{0},I)$, where $\bm{0}$ is a zero vector corresponding to the location parameter, and  $I$ is an identity matrix. When $I$ is imposed on the multivariate Student's $t$ distribution, the conditional joint distribution of $\bm{Y}$ does not factorize into the product of its marginals. Alternatively, we may consider the \textquotedblleft jointly symmetric\textquotedblright{ }copulas proposed by \citet{oh2016high}, where the latter can be constructed with any given (possibly asymmetric) copula family. In addition, when they are combined with symmetric marginals, they ensure an identity correlation matrix. A \textquotedblleft jointly symmetric\textquotedblright{ }copula is defined as follows:
+where $F_t(.\mid X)$ for $t=1,\cdots,T$ are uniformly distributed marginals - i.e. $F_t(.\mid X):= u_t\sim U[0,1]$. In our context the elements of $\bm{Y}$ are uncorrelated, yet exhibit serial nonlinear dependence which is captured by the copula function $C(.)$. The implication of this for specifying a copula function for the joint distribution of $\bm{Y}$ conditional on $X$ is imposing an identity correlation matrix. We may consider the \textquotedblleft jointly symmetric\textquotedblright{ }copulas proposed by \citet{oh2016high}, which can be constructed with any given (possibly asymmetric) copula family. In addition, when they are combined with symmetric marginals, they ensure an identity correlation matrix. A \textquotedblleft jointly symmetric\textquotedblright{ }copula is defined as follows:
 \begin{definition}
 The $n$ dimensional copula $C^{JS}$, is jointly symmetric:
 \[
@@ -477,7 +478,7 @@ u_i,&k_i=1\\
  \end{definition}
  The general idea is that the average of mirror image rotations of a possibly asymmetric copula along each axis generates a jointly symmetric copula [see \citet{oh2016high}]. For instance, the marginals can be assumed to possess standard normal distributions, while the nonlinear dependency is modeled using jointly symmetric copulas. %The Markovian assumption can then be tested by considering in turn, the independent, bivariate, trivariate and higher order multivariate copulae (or multivariate Student's $t$ distributions of varying orders), where the model with the lowest Akaike Information Criterion (AIC hereafter) is then chosen. However, in an extensive simulation analysis, we observe that the order of the Markovianity does not have a significant impact on the power of the test, and as such the assumption that under the alternative hypothesis $\{y_t:t=1,\cdots,n\}$ and in turn $\{s(y_t):t=1,\cdots,n\}$ follow a Markov process of order one is sufficient for testing the null hypothesis of orthogonality. 
 
- A special case is where $\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_{T-1},\varepsilon_T$ are distributed according to Student's $t$ distribution $t(\nu)$, with $\nu$ degrees of freedom. As suggested earlier, since the errors exhibit serial nonlinear dependence, we may calculate the bivariate probabilities using \textquotedblleft jointly-symmetric\textquotedblright{ }copulas by considering the Archimedean Frank, Clayton or Gumbel as the copula family [see \citet{joe2014dependence}]. Alternatively, we may evaluate the bivariate probabilities $P\left[\varepsilon_{t-1}<\cdot ,\-
+ In the literature, the means of allowing for nonlinear serial dependence for processes which are linearly unrelated is often accompanied by the assumption that $\bm{Y}$ conditional on $X$ is distributed according to a multivariate Student's $t$ distribution - i.e. $\bm{Y}\mid X\sim \bm{t}_{\nu}(\bm{0},I)$, where $\bm{0}$ is a zero vector corresponding to the location parameter, and  $I$ is an identity matrix. When $I$ is imposed on the multivariate Student's $t$ distribution, the conditional joint distribution of $\bm{Y}$ does not factorize into the product of its marginals. Thus, a special case we may consider consists in $\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_{T-1},\varepsilon_T$ distributed according to Student's $t$ distribution $t(\nu)$, with $\nu$ degrees of freedom.  We may evaluate the bivariate probabilities $P\left[\varepsilon_{t-1}<\cdot ,\-
 \varepsilon_{t}<\cdot \mid X\right]$ using a multivariate Student's $t$ distribution $\bm{t}_\nu(\bm{0},I)$, by imposing a zero location parameter vector and the identity correlation matrix $I$.
  Then the optimal test statistic, $\widetilde{SL}_{T}(\bm{\beta}_{1})$, takes the form:
 \begin{equation*}
@@ -497,7 +498,7 @@ $\tilde{a}_{t}(\bm{\beta} _{1})=\ln \left\{ \frac{1-\frac{\bm{\mathcal{T}}_{\nu}
 $\tilde{b}_{t}(\bm{\beta}_{1})=\ln \left\{ \frac{1-\left( \frac{1-\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-1}\right) }{\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }-\frac{\bm{\mathcal{T}}_{\nu}(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }\right) }{\frac{1-\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-1}\right)}{\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }-\frac{\bm{\mathcal{T}}_{\nu}(\bm{-\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right)}}\right\} -\ln \left\{ \frac{1-\frac{\bm{\mathcal{T}}_{\nu}(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2}) }{1-\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right) }}{\frac{\bm{\mathcal{T}}_{\nu}(-\bm{\beta}_1'\bm{x}_{t-1},-\bm{\beta}_1'\bm{x}_{t-2})}{1-\tau_{\nu}\left(\bm{\beta}_1'\bm{x}_{t-2}\right)}}\right\}, $%
 \end{tabular}%
 \end{equation*}%
-where $\tau_{\nu}(.)$ is the Student's $t$ distribution function with $\nu$ degrees of freedom, $\bm{\mathcal{T}}_{\nu}(.,.)$ is the bivariate $t$ distribution with $\nu$ degrees of freedom, and with location and shape parameters $0$ and $I$ respectively, where $0$ is a zero vector and $I$ is the identity correlation matrix.
+where $\tau_{\nu}(.)$ is the Student's $t$ distribution function with $\nu$ degrees of freedom, $\bm{\mathcal{T}}_{\nu}(.,.)$ is the bivariate $t$ distribution with $\nu$ degrees of freedom, and with location and shape parameters $\bm{0}$ and $I$ respectively.
 
 The distribution of $\widetilde{SL}_{T}(\bm{\beta} _{1}),$ can be simulated under the null
 hypothesis and the relevant critical values can be evaluated to any degree
@@ -508,29 +509,29 @@ of precision with a sufficient number of replications. %Consider the special cas
 %can be expressed in terms of standard normal distribution functions. 
 Since the test statistic $\widetilde{SL}_{T}(\bm{\beta}_{1})$ is a continuous random variable, its quantiles are easy to compute. To simulate the distribution of 
 $\widetilde{SL}_{T}(\bm{\beta}_{1}),$ the following algorithm is implemented:
-\begin{enumerate}
-\item Compute the test statistic $\widetilde{SL}_{T}(\bm{\beta}_{1})$ based on the
-observed data, say $\widetilde{SL}_{T}^{0}(\bm{\beta}_{1})$;
-
-\item Generate a sample $\left\{ y_{t}\right\} _{t=1}^{T}$ of length $T$
-under the null $H_{0}$ and compute $\widetilde{SL}_{T}^{j}(\bm{\beta}_{1})$ using
-that generated sample;
-
-\item Choose $B$ such that $\alpha (B+1)$ is an integer and repeat steps 1-2
-$B$ times;
-
-\item Compute the $(1-\alpha )\%$ quantile, say $\tilde{c}_{1}(\bm{\beta}_{1})$%
-, of the sequence $\{\widetilde{SL}_{T}^{j}(\bm{\beta}_{1})\}_{j=1}^{B}$;
-
-\item Reject the null hypothesis at level $\alpha $ if $\widetilde{SL}_{T}^{0}(\bm{\beta}
-_{1})\geq c(\bm{\beta}_{1})$.
-\end{enumerate}
-
-\subsection{Testing general full coefficient hypotheses in nonlinear
-models \label{sec: Testing general full coefficient hypotheses in
+\begin{algorithm}
+\caption{Algorithm for utilizing the POS-based tests }
+\begin{algorithmic}[1]
+\State Compute $\widetilde{SL}_{T}^{0}(\bm{\beta}_{1})\leftarrow\widetilde{SL}_{T}(\bm{\beta}_{1})$ based on the
+observed data;
+\State Choose $B$ such that $\alpha (B+1) \in \N$;
+\For{$j$ in $1:B$}
+\State Generate $\{s_t^{(j)}\}_{t=1}^T$, s.t. $s_{t}^{(j)}\sim Bin(n = 1, p = 0.5)$;
+\State Compute $\widetilde{SL}_{T}^{(j)}(\bm{\beta}_{1})$ using
+the generated sample;
+\EndFor
+\State Compute $\tilde{c}_{1}(\bm{\beta}_{1})\leftarrow (1-\alpha )\%$ quantile of $\{\widetilde{SL}_{T}^{j}(\bm{\beta}_{1})\}_{j=1}^{B}$;
+\If{$\widetilde{SL}_{T}^{0}(\bm{\beta}
+_{1})\geq c(\bm{\beta}_{1})$}
+\State Reject $H_0$
+\EndIf 
+\end{algorithmic}
+\end{algorithm}
+\FloatBarrier
+\subsection{Testing general full coefficient hypotheses in nonlinear predictive regressions \label{sec: Testing general full coefficient hypotheses in
 nonlinear regressions}}
 
-{\hskip 1.5em}We now consider a nonlinear predictive regression model of the form%
+{\hskip 1.5em}Following \citet{dufour2010exact}, we may extend the earlier results by considering a nonlinear predictive regression model of the form%
 \begin{equation}
 y_{t}=f(\bm{x}_{t-1},\bm{\beta} )+\varepsilon_{t},\quad t=1,\cdots,T,
 \label{nonlinearC1}
@@ -606,8 +607,8 @@ P\left[ s(\tilde{y}_{1})=\tilde{s}_{1}\mid X\right] ,
 \end{equation*}%
 where each $\tilde{s}_{t}$, for $1\leq t\leq T$, takes two possible values $%
 0 $ and $1$. Thus, we can use the result of Proposition \ref{proposition1C1}
-to derive a sign-based test to test the null hypothesis $H(\bm{\beta} _{0})$ against
-the alternative hypothesis $H(\bm{\beta}_{1})$, which leads to the following proposition:
+to derive a sign-based test to test the null hypothesis (\ref{h01}) against
+the alternative hypothesis (\ref{h02}), which leads to the following proposition:
 
 \begin{proposition}\label{proposition2C1}
 Under assumptions (\ref{nonlinearC1}) and (\ref{eq: mediane1}), let $H(\bm{\beta}
@@ -633,12 +634,13 @@ SN_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})>c_{1}(\bm{\beta}_{0},\,\bm{\beta}_{1})
 is most powerful (conditional on $X$) for testing $H(\bm{\beta}_{0})$ against $H(\bm{\beta}_{1})$ among
 level-$\alpha $ tests based on the signs $\big(s(\tilde{y}_{1}),\cdots,s(\tilde{y}_{T})\big)'.$
 \end{proposition}
-
+\begin{sloppypar}
 As in Section \ref{sec: Testing zero coefficient hypothesis in linear model}%
 , the calculation of the weights $a_{t}(\bm{\beta}_{0}\mid\bm{\beta}_{1})$, which depend on the terms $P\left[ \tilde{y}_{t}\geq 0\mid \text{\b{S%
 }}_{t-1},X\right] $ and $P\left[ \tilde{y}_{t}<0\mid \text{\b{S}}%
-_{t-1},X\right] $ is made feasible by considering assumption \textbf{A1}, which extends to the process $\{s(\tilde{y}_t),t=0,1,\cdots\}$. Thus, under the alternative hypothesis, the sign process $\left\{
-s(\tilde{y}_{t})\right\} _{t=0}^{\infty }$ is a Markov process, which leads to the following Corollary [see Appendix for proof]:
+_{t-1},X\right] $, is made feasible by considering assumption \textbf{A1} which extends to the process $\{s(\tilde{y}_t),t=0,1,\cdots\}$. Thus, under the alternative hypothesis, the sign process $\left\{
+s(\tilde{y}_{t})\right\} _{t=0}^{\infty }$ is a Markov process, which leads to the following Corollary:
+\end{sloppypar}
 \begin{corollary}
 \label{Corollary2} Under assumptions (\ref{model}) and  (\ref{eq: mediane}),
 let $H(\bm{\beta}_{0})$ and $H(\bm{\beta}_{1})$ be defined by $(\ref{h01})$ - $(\ref%
@@ -703,7 +705,7 @@ level-$\alpha $ tests based on the signs $\big(s(\tilde{y}_{1}),\cdots,s(\tilde{
 \end{corollary}
 
 
-A special case entails considering a linear function $f(\bm{x}_{t-1}',\bm{\beta})=\bm{\beta}'\bm{x}_{t-1}$, where as before we may suppose that $\varepsilon_{t}$ for $t=1,\cdots,T$  are distributed according to Student's $t$ distribution $t(\nu)$, with $\nu$ degrees of freedom, and where the bivariate probabilities can be calculated by imposing a bivariate Student's $t$ distribution $\bm{t}_\nu(\bm{0},I)$, with a zero location parameter an identity matrix to capture the serial (nonlinear) dependence. Then the statistic for testing the null hypothesis $H(\bm{\beta}_0)$ against the alternative $H(\bm{\beta}_1)$ is given by
+A special case entails considering a linear function $f(\bm{x}_{t-1},\bm{\beta})=\bm{\beta}'\bm{x}_{t-1}$, where as before we may suppose that $\varepsilon_{t}$ for $t=1,\cdots,T$  are distributed according to Student's $t$ distribution $t(\nu)$, with $\nu$ degrees of freedom, and where the bivariate probabilities can be calculated by imposing a bivariate Student's $t$ distribution $\bm{t}_\nu(\bm{0},I)$, with a zero location parameter an identity matrix to capture the serial (nonlinear) dependence. Then the statistic for testing the null hypothesis $H(\bm{\beta}_0)$ against the alternative $H(\bm{\beta}_1)$ is given by
 \begin{equation*}
 \widehat{SN}_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})=\sum\limits_{t=1}^{T}\tilde{a}%
 _{t}(\bm{\beta}_{0}\mid\bm{\beta}_{1})s(y_{t}-\bm{\beta}_0'\bm{x}_{t-1})+\sum\limits_{t=1}^{T}\tilde{b}_{t}(\bm{\beta}_0\mid\bm{\beta}_{1})%
@@ -724,7 +726,7 @@ $\tilde{b}_{t}(\bm{\beta} _{0}\mid\bm{\beta} _{1})=\ln \left\{ \frac{1-\left( \f
 $%
 \end{tabular}%
 \end{equation*}%
-where $\tau_{\nu}(.)$ is the Student's $t$ distribution function with $\nu$ degrees of freedom, $\bm{\mathcal{T}}_{\nu}(.,.)$ is the bivariate $t$ distribution with $\nu$ degrees of freedom, and with location and shape parameters $0$ and $I$ respectively, where $0$ is a zero vector and $I$ is the identity correlation matrix.
+where $\tau_{\nu}(.)$ is the Student's $t$ distribution function with $\nu$ degrees of freedom, $\bm{\mathcal{T}}_{\nu}(.,.)$ is the bivariate $t$ distribution with $\nu$ degrees of freedom, and with location and shape parameters $0$ and $I$ respectively.
 
  {\hskip 1.5em}As in Section \ref{sec: Testing zero coefficient hypothesis in linear model}%
 , the test statistic $\widehat{SN}_{T}(\bm{\beta} _{0}\mid\bm{\beta} _{1})$ depends on a
@@ -758,11 +760,11 @@ P[\widehat{SN}_{T}(\bm{\beta}_{0}\mid\bm{\beta}_{1})>\tilde{c}_{1}(\bm{\beta}_0,
 \end{equation*}
 
 Our objective is to choose the value of $\bm{\beta}_1$ at which the power function of the POS-based test statistic is maximized and is close to that of the power envelope. This can be accomplished in a number of ways.
-\citet{dufour2010exact} suggest an adaptive approach based on the split-sample technique [see \citet{dufour2001finite}] to estimate the optimal alternative and calculating the test statistic to make size control easier and maximize the power. For a review of adaptive approach for parametric tests with nonstandard distributions see \citet{dufour2003point} and \citet{dufour2008finite}.
+\citet{dufour2010exact} suggest an adaptive approach based on the split-sample technique [see \citet{dufour2001finite}] to estimate the optimal alternative and to calculate the test statistic, to make size control easier and maximize power. For a review of adaptive approach for parametric tests with nonstandard distributions see \citet{dufour2003point} and \citet{dufour2008finite}.
 
  This approach consists in splitting the sample into two independent parts, where
 the alternative $\bm{\beta}_1$ is estimated using the first part, while the POS-based test statistic $\widehat{SN}_{T}(\bm{\beta} _{0}\mid\bm{\beta} _{1})%
-$ is calculated using the second part of the sample and the alternative $\bm{\beta}_1$ estimated using the first subsample. By adopting this technique, size control is easier and the power function of the POS-based test traces out the power envelope.
+$ is calculated using the second part of the sample and the alternative $\bm{\beta}_1$ that had been estimated using the first subsample. By adopting this technique, size control is easier and the power function of the POS-based test traces out the power envelope.
 Let $T=T_{1}+T_{2}$, $y=(y_{(1)}',y_{(2)}')'$, $X=(X_{(1)}',X_{(2)}')'$, and $\varepsilon=(\varepsilon_{(1)}',\varepsilon_{(2)}')'$, where $y_{(i)}$, $X_{(i)}$ and $\varepsilon_{(i)}$ for $i\in \{1,2\}$ each have $%
 T_{i}$ rows. The first $T_{1}$ observations of $y$ and $X$ can thus be denoted by $y_{(1)}$ and $X_{(1)}$, which
 are used to estimate the alternative hypothesis $\bm{\beta}_{1}$.  If the function $f(\bm{x}_{t-1},\bm{\beta})$ is linear - i.e. $f(\bm{x}_{t-1},\bm{\beta})=\bm{\beta}_0'\bm{x}_{t-1}$, then $\bm{\beta}_1$ can be obtained using the OLS estimator: 
@@ -781,9 +783,9 @@ s(y_{t}-\bm{x}_{t-1}'\bm{\beta}_{0})s(y_{t-1}-\bm{x}_{t-2}'\bm{\beta}_{0}),
 
 When $f(\bm{x}_{t-1},\bm{\beta})$ is a nonlinear function of $\bm{\beta}$, we resort to nonlinear least squares or the maximum likelihood estimation method to obtain the alternative hypothesis $\bm{\beta}_1$. Similar to the linear case, this entails splitting the sample into two independent subsamples $T_1$ and $T_2$, such that $y_{(1)}$ and $X_{(1)}$ correspond to the first subsample $T_1$ , using which the alternative hypothesis $\beta_1$ can be estimated using a nonlinear least squares method
 \begin{equation*}   
-\hat{\bm{\beta}}_{(1)}=\arg\min_{\bm{\beta}_1}\sum\limits_{t=1}^{T_1}\left[y_t-f(\bm{x}_{t-1},\bm{\beta}_1)\right]^2
+\hat{\bm{\beta}}_{(1)}=\arg\min_{\bm{\beta}_1}\sum\limits_{t=1}^{T_1}\left[y_t-f(\bm{x}_{t-1},\bm{\beta}_1)\right]^2.
 \end{equation*}
-and where $y_{(2)}$ and $X_{(2)}$ which correspond to the second subsample are used to calculate the test statistic:
+Similarly, $y_{(2)}$ and $X_{(2)}$ which correspond to the second subsample are used to calculate the test statistic:
 \begin{align*}
 \widehat{SN}_{T}(\bm{\beta} _{0}\mid\bm{\beta}_{(1)})&=\sum\limits_{t=T_1+1}^{T}\tilde{a}%
 _{t}(\bm{\beta}_{0}\mid\bm{\beta}_{(1)})s(y_{t}-f(\bm{x}_{t-1},\bm{\beta}
@@ -938,7 +940,7 @@ It is evident that the 10\% split-sample POS-based test outperforms the $t$-test
 \section{Monte Carlo study \label{sec: Monte Carlo studyC1}}
 
 {\hskip 1.5em}In this Section, we provide simulation results that illustrate the performance
-of the 10\%SS-POS-based tests proposed earlier. We have limited our
+of the 10\% SS-POS-based tests proposed earlier. We have limited our
 results to two groups of data generating processes (DGPs) which correspond
 to different symmetric and asymmetric distributions and different forms of
 heteroskedasticity and serial non-linear dependence.
@@ -963,7 +965,7 @@ such that $u_t$ are mutually independent, and each $u_t$ is independent of $x_{t
 \]
 Therefore, there is feedback from $u_t$ to $x_t$ through $\varepsilon_t$, which implies that $corr(\varepsilon_t,x_{t+k})\neq 0$ for $k\geq0$. Thus, as the disturbance vector $[\varepsilon_1,\cdots,\varepsilon_T]'$ is not independent of the regressor vector $[x_0,\cdots,x_{T-1}]'$, the OLS estimator is biased in finite-samples and the $t$-statistic has a non-standard distribution. \citet{mankiw1986we} perform an extensive simulations exercise by considering different values of the correlation between $u_t$ and $\varepsilon_t$ (say $\rho$) and find that in small samples, as $\theta$ and $\rho$ approach unity, the $t$-test using asymptotic critical values leads to over rejection of the null hypothesis of unpredictability; however, the size distortions improve as $T\rightarrow \infty$.
 
-To compare the performance of certain parametric and non-parametric tests to that of the 10\% SS-POS-based test, the data is generated from model (\ref{DGP}), with the stationary process $x_t$ specified as (\ref{x}), and by further setting
+To compare the performance of certain parametric and nonparametric tests to that of the 10\% SS-POS-based test, the data is generated from model (\ref{DGP}), with the stationary process $x_t$ specified as (\ref{x}), and by further setting
 \begin{equation}
 u_{t}=\rho \varepsilon _{t}+w_{t}\sqrt{1-\rho ^{2}}  \label{error}
 \end{equation}%
@@ -1033,16 +1035,16 @@ Note that the sign-based test statistic of \citet{dufour1995exact} possesses a d
 (without randomization) to attain test whose size is exactly $5\%.$ In our
 simulations study, the size of the aforementioned test is $5.95\%$ for $T=50$.
 
-As in \citet{mankiw1986we}, it is further possible to consider values of $\rho$ and $\theta$ closer to unity at which the size distortions of T-type tests are magnified. For instance, the size of the $t$-test in their study is shown to be severely distorted with values of $\theta=0.999$ and $\rho=1.0$, given a sample size of $T=50$. The simulations for the latter scenario can be found in the Appendix for standard normal disturbances. It must be noted that as the exact finite-sample distribution of the POS-based tests are simulated, our tests control size regardless of the values of $\rho$ and $\theta$ - the results in figure (\ref{fig: Power comparison using different n}) confirm these findings. It is further evident that although the size distortions for the $t$-test and $t$-test based on \citet{white1980heteroskedasticity} variance correction improve in large samples, these tests still reject the null hypothesis at twice and thrice their nominal level respectively given a sample of $n=500$ observations.
+As in \citet{mankiw1986we}, it is further possible to consider values of $\rho$ and $\theta$ closer to unity at which the size distortions of T-type tests are magnified. For instance, the size of the $t$-test in their study is shown to be severely distorted with values of $\theta=0.999$ and $\rho=1.0$, given a sample size of $T=50$. The simulations for the latter scenario can be found in the Appendix for standard normal disturbances. It must be noted that as the exact finite-sample distribution of the POS-based tests are simulated, our tests control size regardless of the values of $\rho$ and $\theta$ - the results in figure \ref{fig: Power comparison using different n} confirm these findings. It is further evident that although the size distortions for the $t$-test and $t$-test based on \citet{white1980heteroskedasticity} variance correction improve in large samples, these tests still reject the null hypothesis at twice and thrice their nominal level respectively given a sample of $n=500$ observations.
 
 The DGPs considered in this paper have been inspired by the simulation exercises conducted in previous studies [see \citet{mankiw1986we}, \citet{dufour1995exact}, \citet{coudin2009finite} and \citet{dufour2010exact}]. The first three DGPs all possess symmetrical distributions that are independent and identical across different observations $t=1,\cdots,T$. The Cauchy and the Student's $t$ distribution possess heavier tails in comparison to that of the normal distribution. The standard error of the coefficients are inflated in the presence of heavy tails, as a result of which the power of the $t$-type tests tend to be poor in comparison to other measures of central tendency (such as the median). Furthermore, the length of the confidence intervals are extended when the data is sampled from heavy tailed distributions. DGP 4 is a mixture of Cauchy and Gaussian distribution; as such, while the errors are independent, they are not identically distributed across different observations. DGP 4 is inspired by \citet{magdalinos2009limit}, who note that when $x_t$ is moderately explosive (with $\theta>1$), the least squares estimator is mixed normal with Cauchy-type tail behavior and an explosive convergence rate. The second group of DGPs covers different forms of heteroskedasticity, such as conditional heteroskedasticity (e.g. stationary and non-stationary GARCH models) and other forms of nonlinear dependencies. \citet{dufour2010exact} show that under certain forms of heteroskedasticity, $t$-type tests are not valid; hence, these DGPs fit well within the domains of our study.  
 
 \subsection{Simulation results \label{sec: Simulation results}}
 
 {\hskip 1.5em}Monte Carlo simulation results are presented in Figures \ref{fig: Power
-comparison using different tests NormalC1}-\ref{fig: Power comparison using different tests Normal ExpC1}. These results correspond to different DGPs
+comparison using different tests NormalC1}-\ref{fig: Power comparison using different tests Normal BreakC1}. These results correspond to different DGPs
 described in Section \ref{sec: Simulated models}. The figures compare the
-power of the $10\%$ SS-POS test to the $t$-test, W$t$-test, and CD (1995) test. The results are detailed below. 
+power of the $10\%$ SS-POS test to the $t$-test, WT-test, and CD (1995) test. The results are detailed below. 
 
 \begin{figure}[tbph]
 \caption{Power comparisons: different tests. Normal error distributions with
@@ -1058,7 +1060,7 @@ different values of $\protect\rho $ in (\protect\ref{error}) and $\protect%
 Note: These figures compare the power
 function of the 10\% SS-POS test with: (1) the $t$-test; (2) the sign-based test
 proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the $t$-test based
-on White's (1980) variance correction [W$t$-test]. 
+on White's (1980) variance correction [WT-test]. 
 \label{fig: Power comparison using different tests NormalC1}
 \end{figure}
 
@@ -1077,7 +1079,7 @@ different values of $\protect\rho $ in (\protect\ref{error}) and $\protect%
 Note: These figures compare the power
 function of the 10\% SS-POS test with: (1) the $t$-test; (2) the sign-based test
 proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the $t$-test based
-on White's (1980) variance correction [W$t$-test]. 
+on White's (1980) variance correction [WT-test]. 
 \label{fig: Power comparaison using different tests CauchyC1}
 \end{figure}
 
@@ -1085,16 +1087,16 @@ on White's (1980) variance correction [W$t$-test].
 
 First, Figure \ref{fig: Power comparison using different tests NormalC1}
 compares the power function of the above tests in the case where the error
-term $\varepsilon _{t}$ in the model (\ref{DGP}) is normally distributed.
-From this we see that all these tests control size, except W$t$-test which is
+term $\varepsilon _{t}$ in model (\ref{DGP}) is normally distributed.
+Evidently, all tests control size, except for the WT-test which is
 undersized. We also find that $t$-test is more powerful than $10\%$ SS-POS
-test, CD (1995) test, and W$t$-test\textit{.} This result is expected since under
-normality $t$-test is the most powerful test. However, the power of $10\%$
-SS-POS test has the second best power among the other tests. These results
-are still the same when we increase the correlation coefficient $\rho ,$
-except that when there high correlation between the error terms $\varepsilon
+test, CD (1995) test, and the WT-test\textit{.} This result is expected since under
+normality $t$-test is the most powerful test. However, the power of the $10\%$
+SS-POS test has the second greatest power among the other tests. These results
+hold when the correlation coefficient $\rho $ is increased ,
+except that when there is high correlation between the error terms $\varepsilon
 _{t}$ and $w_{t}$ the power curves of $t$-test, $10\%$ SS-POS test and CD (1995)
-test become closer to each other. 
+test get closer to one another. 
 \begin{figure}[tbph]
 \caption{Power comparisons: different tests. Cauchy error distributions with
 different values of $\protect\rho $ in (\protect\ref{error}) and $\protect%
@@ -1109,18 +1111,18 @@ different values of $\protect\rho $ in (\protect\ref{error}) and $\protect%
 Note: These figures compare the power
 function of the 10\% SS-POS test with: (1) the $t$-test; (2) the sign-based test
 proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the $t$-test based
-on White's (1980) variance correction [W$t$-test]. 
+on White's (1980) variance correction [WT-test]. 
 \label{fig: Power comparaison using different tests CauchyC1}
 \end{figure}
 
 Second, Figure \ref{fig: Power comparaison using different tests CauchyC1}
-corresponds to the cases where the error term $\varepsilon _{t}$ follows
-Cauchy distribution. From this we see that $10\%$ SS-POS test is more
-powerful than CD (1995) test, W$t$-test, and the $t$-test. It seems that the latter two
-tests are undersized. $10\%$ SS-POS test and CD (1995) test have much more power
-than W$t$-test and $t$-test for small values (0 and 0.1) of correlation
+corresponds to the scenario where the error term $\varepsilon _{t}$ follows a
+Cauchy distribution. We can observe that the $10\%$ SS-POS test is more
+powerful than the CD (1995) test, WT-test, and the $t$-test. It appears that the latter two
+tests are undersized.  The $10\%$ SS-POS test and CD (1995) test have significantly greater power
+than the WT-test and the $t$-test for small values (0 and 0.1) of the correlation
 coefficient $\rho ,$ but the difference in power decreases when we increase $%
-\rho $ even if it still quite important. 
+\rho $. 
 \begin{figure}[tbph]
 \caption{Power comparisons: different tests. Mixture error distributions
 with different values of $\protect\rho $ in (\protect\ref{error}) and $%
@@ -1135,14 +1137,14 @@ with different values of $\protect\rho $ in (\protect\ref{error}) and $%
 Note: These figures compare the power
 function of the 10\% SS-POS test with: (1) the $t$-test; (2) the sign-based test
 proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the $t$-test based
-on White's (1980) variance correction [W$t$-test]. 
+on White's (1980) variance correction [WT-test]. 
 \label{fig: Power comparaison using different tests MixtureC1}
 \end{figure}
 
 Third, Figure \ref{fig: Power comparaison using different tests MixtureC1}
-corresponds to the cases where the error term $\varepsilon _{t}$ follows a
-mixture of normal and Cauchy distributions. The results show that $10\%$
-SS-POS test is again more powerful than CD (1995), $t$-test, and the W$t$-test. The
+corresponds to the case where the error term $\varepsilon _{t}$ follows a
+mixture of normal and Cauchy distributions. The results suggest that the $t$-test is invalid, as it over rejects under the null hypothesis of unpredictability for all values of $\rho$. Moreover, the $10\%$
+SS-POS test is again more powerful than the CD (1995), $t$-test, and the WT-test. The
 difference in power is much more significant when the correlation coefficient $%
 \rho $ is smaller. 
 \begin{figure}[tbph]
@@ -1159,29 +1161,21 @@ break in variance, different values of $\protect\rho $ in (\protect\ref%
 Note: These figures compare the power
 function of the 10\% SS-POS test with: (1) the $t$-test; (2) the sign-based test
 proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the $t$-test based
-on White's (1980) variance correction [W$t$-test]. 
+on White's (1980) variance correction [WT-test]. 
 \label{fig: Power comparison using different tests Normal BreakC1}
 \end{figure}
 
 
 Finally, Figures \ref{fig: Power comparison using different tests Normal
-BreakC1} and \ref{fig: Power comparison using different tests Normal ExpC1}
-compare the power function of the $10\%$ SS-POS test, CD (1995) test, W$t$-test,
+BreakC1} compare the power function of the $10\%$ SS-POS test, CD (1995) test, WT-test,
 and $t$-test \ in the case where $\varepsilon _{t}$ follows normal
-distribution with a break in variance and an exponential variance,
-respectively. Figure \ref{fig: Power comparison using different tests
-Normal BreakC1} shows that in the presence of break in variance, W$t$-test and
-$t$-test are undesized, whereas $10\%$ SS-POS test and CD (1995) test control size.
+distribution with a break in variance. Figure \ref{fig: Power comparison using different tests
+Normal BreakC1} shows that in the presence of break in variance, the WT-test and
+the $t$-test are undersized, whereas $10\%$ SS-POS test and CD (1995) test control size.
 In addition, $10\%$ SS-POS test has more power that the other tests. The
-CD (1995) test has the second best power followed by W$t$-test and $t$-test. The
-power of these tests improve when we increase the correlation coefficient $%
-\rho .$ Figure \ref{fig: Power comparison using different tests Normal ExpC1}
-shows that in the case of exponential variance, the W$t$-test, and $t$-test are
-oversized. We find that $10\%$ SS-POS test has more power than CD (1995) test
-when $\rho $ is equal to zero. However, CD (1995) test becomes more powerful than 
-$10\%$ SS-POS test when correlation coefficient $\rho $ increases. The
-difference in power between the latter two tests becomes small for higher
-values of $\rho .$
+CD (1995) test has the second best power, whereas the $t$-test and WT-test are plagued with poor power. The
+power of these tests improve when the correlation coefficient is increased $%
+\rho .$ 
 \FloatBarrier
 \section{Empirical application \label{Empirical
 ApplicationC1}}
@@ -1276,7 +1270,7 @@ The corresponding test statistics are reported in turn for the general form of t
 \begin{tabu} to \textwidth{XXXXX}
 \hline
 Series               &Predictor           & $\hat{\beta}$ & \multicolumn{2}{c}{$95\%$ confidence interval}                                                              \\ \hline
-                        &           &               & 10\% SS-POST                       &W$t$-test \\ \cline{4-5} 
+                        &           &               & 10\% SS-POST                       &WT-test \\ \cline{4-5} 
 \multicolumn{3}{l}{\textit{Panel A: 1980-2002}}  & &\\
 Monthly         & $d/p_t$ &0.002         &$[-0.024,0.036]$                           &$[-0.008,0.011]$                                             \\
          & $e/p_t^{'}$ &-0.001          &$[-0.044,0.046]$                           & $[-0.009,0.008]$                                            \\
@@ -1720,7 +1714,7 @@ P\left[ y_{1}<0\mid X\right] }\right\} -\ln \left\{ \frac{P%
 Note: These figures compare the power
 function of the 10\% SS-POS test with: (1) the $t$-test; (2) the sign-based test
 proposed by Campbell and Dufour (1995) [CD (1995) test]; and (3) the $t$-test based
-on White's (1980) variance correction [W$t$-test]. 
+on White's (1980) variance correction [WT-test]. 
 \label{fig: Power comparison using different n}
 \end{figure}
 \FloatBarrier
