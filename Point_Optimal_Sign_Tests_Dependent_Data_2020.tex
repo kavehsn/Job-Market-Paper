@@ -147,7 +147,7 @@ predictability of stock returns.
 \newpage
 
 \section{Introduction \label{Introduction}}
-{\hskip 1.5em} Numerous studies investigate the predictability of financial and economic variables using the past values of one or more predictors, as well as the horizon at which evidence in favor of predictability is prevalent. Most commonly encountered examples concern the predictability of stock returns using the lag of certain fundamental variables, such as the dividend-price and earnings-price ratios or the interest rates [see \citet{campbell1988dividend}, \citet{fama1988dividend,fama1988permanent}, \citet{campbell2006efficient}, \citet{campbell2008predicting}, and \citet{golez2018four} among others]. Predictability in this context is generally assessed using the OLS regression of returns against said predictors and tested with conventional \textit{t}-type tests. For instance, by utilizing this approach, \citet{fama1988dividend,fama1988permanent} and \citet{welch2008comprehensive} conclude that predictability in stock returns is not of economic significance at short horizons, yet the predictability power of said predictors increase at longer horizons. 
+{\hskip 1.5em} Numerous studies investigate the predictability of financial and economic variables using the past values of one or more predictors, as well as the horizon at which evidence in favor of predictability is prevalent. Most commonly encountered examples concern the predictability of stock returns using the lag of certain fundamental variables, such as the dividend-price and earnings-price ratios or the interest rates [see \citet{campbell1988dividend}, \citet{fama1988dividend,fama1988permanent}, \citet{campbell2006efficient}, \citet{campbell2008predicting}, and \citet{golez2018four} among others]. Predictability in this context is generally assessed using the OLS regression of returns against said predictors and tested with conventional \textit{t}-type tests. For instance, by utilizing this approach, \citet{fama1988dividend,fama1988permanent} and \citet{welch2008comprehensive} conclude that predictability in stock returns is not of economic significance at short horizons, yet the predictability power of the predictors increase at longer horizons. 
 However, the regressors frequently considered in these studies are often highly persistent (near nonstationarity) with 
 innovations that are correlated with the disturbances in the predictive
 regression of returns [see \citet{phillips2015halbert} for a review]. In such situations, unless the predictor is strictly exogenous, we know that the OLS estimator of the
@@ -222,9 +222,9 @@ Section \ref{ConclusionC1}. Proofs are presented in Appendix \ref{Appendix:
 ProofsC1}.
 
 
-\section{Framework}
+\section{Framework}\label{Framework}
 
-{\hskip 1.5em} In this Section, we adapt the framework by \citet{coudin2009finite} to a predictive regression setup. Consider a stochastic process $Z=\{Z_t=(y_t,\bm{x}_{t-1}'):\Omega\rightarrow\R^{(k+1)}, t=1,2,\cdots\}$ defined on a probability space $(\Omega,\mathcal{F},P)$. Suppose that $y_{t}$ can linearly be explained by the vector variable $\bm{x}_{t-1}$%
+{\hskip 1.5em} In this Section, we adapt the framework considered by \citet{coudin2009finite} to a predictive regression setup, where the dependent variable is now regressed against a lagged predictor. Consider a stochastic process $Z=\{Z_t=(y_t,\bm{x}_{t-1}'):\Omega\rightarrow\R^{(k+1)}, t=1,2,\cdots\}$ defined on a probability space $(\Omega,\mathcal{F},P)$. Suppose that $y_{t}$ can linearly be explained by the vector variable $\bm{x}_{t-1}$%
 \begin{equation}
 y_{t}=\bm{\beta}'\bm{x}_{t-1}+\varepsilon_{t},\quad t=1,\cdots,T,  \label{model}
 \end{equation}%
@@ -253,12 +253,15 @@ Before proceeding further, it is important to emphasize that \citet{linton2007qu
 P[\varepsilon_{t}> 0\mid \bm{{\varepsilon}}_{t-1},\mathcal{X}_{t-1}]=P[\varepsilon_{t}<0\mid \bm{\varepsilon}_{t-1},\mathcal{X}_{t-1}]=\frac{1}{2},
 \end{equation}
 where $\mathcal{X}_{t-1}=\{x_0,\cdots,x_{t-1}\}$.
-Additionally, assumption (\ref{eq: mediane}) entails that $\varepsilon _{t}\mid X$ has no mass at zero for all $t$, which is only true if $\varepsilon_{t}\mid X$\ is continuous. Following Definition 2.1 of \citet{coudin2009finite}, the strict conditional mediangale assumption can be relaxed, by substituting $P[\varepsilon_{t}> 0\mid \bm{{\varepsilon}}_{t-1},X]=P[\varepsilon_{t}<0\mid \bm{\varepsilon}_{t-1},X]$ in equation (\ref{eq: mediane}), which in turn allows $\varepsilon_t$ to have discrete distribution, with a non-zero probability mass at zero. In this case, \citet{coudin2009finite} show that the sign transformation $\mathcal{S}(x, U)=s(x)+[1-s(x)^2]s(U-0.5)$ for $U\sim \mathcal{U}(0,1)$, and as long as $U and \varepsilon_t$ are independent, conform to 
+Additionally, assumption (\ref{eq: mediane}) entails that $\varepsilon _{t}\mid X$ has no mass at zero for all $t$, which is only true if $\varepsilon_{t}\mid X$\ is continuous. Following Definition 2.1 of \citet{coudin2009finite}, the strict conditional mediangale assumption can be relaxed, by substituting $P[\varepsilon_{t}> 0\mid \bm{{\varepsilon}}_{t-1},X]=P[\varepsilon_{t}<0\mid \bm{\varepsilon}_{t-1},X]$ in equation (\ref{eq: mediane}), which in turn allows $\varepsilon_t$ to have discrete distribution, with a non-zero probability mass at zero. In this case, \citet{coudin2009finite} show that the sign transformation $\mathcal{S}(x, U)=s(x)+[1-s(x)^2]s(U-0.5)$ for $U\sim \mathcal{U}(0,1)$, and as long as $U$ and $\varepsilon_t$ are independent, conforms to 
 \begin{equation}
 P[\mathcal{S}(\varepsilon_t, U_t)=1]=P[\mathcal{S}(\varepsilon_t, U_t)=0]=\frac{1}{2},
 \end{equation}
-irrespective of the distribution of $\varepsilon_t$. 
- (\ref{model}) in conjunction with assumption (\ref{eq: mediane}) allows the error terms to possess asymmetric, heteroskedastic and serially (nonlinear) dependent distributions, so long as the conditional medians are zero. Assumption \ref{eq: mediane} allows for many dependent schemes, such as those of the form $\varepsilon_1=\sigma_1(x_0,\cdots,x_{t-2})\epsilon_1$, $\varepsilon_t=\sigma_t(x_0,\cdots,x_{t-2},\varepsilon_1,\cdots,\varepsilon_{t-1})\epsilon_t$, $t=2,\cdots,T$, where $\epsilon_1,\cdots,\epsilon_T$ are independent with a zero median. In time-series context this includes models such as ARCH, GARCH or stochastic volatility with non-Gaussian errors. Furthermore, in the mediangale framework the disturbances need not be second order stationary.
+irrespective of the distribution of $\varepsilon_t$. However,  for the simplicity of exposition, we only consider continuous distributions.
+ 
+ Equation (\ref{model}) in conjunction with assumption (\ref{eq: mediane}) allows the error terms to possess asymmetric, heteroskedastic and serially (nonlinear) dependent distributions, so long as the conditional medians are zero. Assumption \ref{eq: mediane} allows for many dependent schemes, such as those of the form $\varepsilon_1=\sigma_1(x_0,\cdots,x_{t-2})\epsilon_1$, $\varepsilon_t=\sigma_t(x_0,\cdots,x_{t-2},\varepsilon_1,\cdots,\varepsilon_{t-1})\epsilon_t$, $t=2,\cdots,T$, where $\epsilon_1,\cdots,\epsilon_T$ are independent with a zero median. In time-series context this includes models such as ARCH, GARCH or stochastic volatility with non-Gaussian errors. Furthermore, in the mediangale framework the disturbances need not be second order stationary.
+
+Finally, we reiterate \citet{coudin2009finite} by noting that modifying assumption (\ref{eq: mediane}) to $P[\varepsilon_t <0 \mid \mathcal{F}_{t-1} ]$ allows us to consider other quantiles. 
 \end{sloppypar} 
 %As pointed out by \citet{coudin2009finite}, the strict mediangale assumption on the error process $\bm{\varepsilon}$ with respect to $\mathcal{F}$ is equivalent to the MDS assumption on the sign process $s(\bm{\varepsilon})=\{s(\varepsilon)_t, t=1,2,\cdots\}$, where $s(\nu)=\mathbbm{1}_{\mathbb{R}^+\cup 0}$, $\forall{\nu}\in\mathbb{R}$, with respect to the same sub-$\sigma$ fields $\mathcal{F}$. However, in their study the errors are conditioned on the entire process $X=[\bm{x}_0',\cdots,\bm{x}_{T-1}']'$, which violates the MDS assumption unless the matrix $\bm{x}_t$s are strongly exogenous. However, within a predictive regression framework, the error process is conditioned on the past values, as such the MDS assumption on the sign process holds without imposing any strong exogeneity assumptions.
 
@@ -487,18 +490,29 @@ _{1}'\bm{x}_{t-2})\\
 \pi_{t}^c(\bm{\beta}_1)&=1-\pi_{t}(\bm{\beta}_1),
 \end{align}
 where $\tau_{\nu}(.)$ is the Student's $t$ distribution function with $\nu$ degrees of freedom, $\bm{\mathcal{T}}_{\nu}(.,.)$ is the bivariate $t$ distribution with $\nu$ degrees of freedom, and with location and shape parameters $\bm{0}$ and $I$ respectively.
+\subsection{Monte Carlo tests}\label{Monte Carlo tests}
 
-The distribution of $\widetilde{SL}_{T}(\bm{\beta} _{1}),$ can be simulated under the null
+
+{\hskip 1.5em}We may obtain exact critical values and confidence intervals in finite samples whose distribution is intractable by simulations using Monte Carlo test techniques [see \citet{dwass1957modified}, \citet{barnard1963discussion}, \citet{dufour2006monte}, \citet{coudin2009finite}]. Under the null hypothesis of unpredictability, the distribution of the test statistic, $\widetilde{SL}_{T}(\bm{\beta} _{1})$, does not involve any nuisance parameters and is a pivotal function. As such, performing Monte Carlo tests is rather straightforward\footnote{\citet{dufour2006monte} consider extensions involving nuisance parameters using maximized Monte Carlo tests (MMC).}. Hence, the distribution of $\widetilde{SL}_{T}(\bm{\beta} _{1})$, can be simulated under the null
 hypothesis and the relevant critical values can be evaluated to any degree
 of precision with a sufficient number of replications. %Consider the special case
 %where $u_{1},\cdots,u_{n}$ are i.i.d. and distributed according to a standard
 %normal distribution, thus the weights $\tilde{a}_{t}(\beta _{1})$ and $%
 %\tilde{b}_{t}(\beta _{1})$ in the test statistic $\tilde{S}L_{n}(\beta _{1})$
 %can be expressed in terms of standard normal distribution functions. 
-Since the test statistic $\widetilde{SL}_{T}(\bm{\beta}_{1})$ is a continuous random variable, its quantiles are easy to compute. To simulate the distribution of 
+Since the test statistic $\widetilde{SL}_{T}(\bm{\beta}_{1})$ is a continuous random variable, its quantiles $F^{-1}(\alpha)$ are easy to compute, where for any probability distribution $F(x)$ the quantile function is defined as follows:
+\begin{equation}
+F^{-1}(\alpha)=
+\begin{cases}
+\inf\{x: F(x)\geq \alpha)\}\quad &\text{if }0<\alpha<1\\
+\inf\{x: F(x)>0\}\quad &\text{if }\alpha=0\\
+\sup\{x: F(x)<1\}\quad &\text{if }\alpha=1.
+\end{cases}
+\end{equation}
+ To simulate the distribution of 
 $\widetilde{SL}_{T}(\bm{\beta}_{1}),$ the following algorithm is implemented:
 \begin{algorithm}
-\caption{Algorithm for utilizing the POS-based tests }
+\caption{Algorithm for utilizing the POS-based tests (continuous $\varepsilon_t$) }
 \begin{algorithmic}[1]
 \State Compute $\widetilde{SL}_{T}^{0}(\bm{\beta}_{1})\leftarrow\widetilde{SL}_{T}(\bm{\beta}_{1})$ based on the
 observed data;
@@ -508,7 +522,7 @@ observed data;
 \State Compute $\widetilde{SL}_{T}^{(j)}(\bm{\beta}_{1})$ using
 the generated sample;
 \EndFor
-\State Compute $\tilde{c}_{1}(\bm{\beta}_{1})\leftarrow (1-\alpha )\%$ quantile of $\{\widetilde{SL}_{T}^{j}(\bm{\beta}_{1})\}_{j=1}^{B}$;
+\State Compute $\tilde{c}_{1}(\bm{\beta}_{1})\leftarrow (1-\alpha )\%$ quantile of $\{\widetilde{SL}_{T}^{(j)}(\bm{\beta}_{1})\}_{j=1}^{B}$;
 \If{$\widetilde{SL}_{T}^{0}(\bm{\beta}
 _{1})\geq c(\bm{\beta}_{1})$}
 \State Reject $H_0$
@@ -516,6 +530,57 @@ _{1})\geq c(\bm{\beta}_{1})$}
 \end{algorithmic}
 \end{algorithm}
 \FloatBarrier
+
+As discussed in Section \ref{Framework}, suppose the errors $\varepsilon_t$ possess a discrete distribution, and the test-statistic is subsequently modified to reflect this. Then $\widetilde{SL}_{T}(\bm{\beta} _{1})$ is no longer continuous, such that for the replications $\widetilde{SL}_{T}^{(1)}(\bm{\beta} _{1}),\cdots,\widetilde{SL}_{T}^{(B)}(\bm{\beta} _{1})$
+\begin{equation}
+P\left[\widetilde{SL}_{T}^{(l)}(\bm{\beta} _{1})=\widetilde{SL}_{T}^{(m)}(\bm{\beta} _{1})\right]\neq 0,\quad \text{for} \quad l\neq m\quad \text{and}\quad i,j=1,\cdots,B,
+\end{equation}
+and Monte Carlo tests with randomized tie-breaking approach suggested by \citet{dufour2006monte} and \citet{coudin2009finite} may be used to perform hypothesis tests. The latter entails \textquotedblleft breaking\textquotedblright{ }ties according to a uniform distribution. In other words, for each variable $\widetilde{SL}_{T}^{(j)}(\bm{\beta} _{1}), j=1,\cdots, B$, we introduce a random variable $W^{(j)},j=1,\cdots, B$, where $W^{(j)}\sim \mathcal{U}(0,1)$, such that $W(B)=(W^{(1)},\cdots,W^{(B)})'$ is independent of $S(B)=(\widetilde{SL}_{T}^{(1)}(\bm{\beta} _{1}),\cdots,\widetilde{SL}_{T}^{(B)}(\bm{\beta} _{1}))'$. Then we consider the pairs $(\widetilde{SL}_{T}^{(j)}(\bm{\beta}_{1}),W^{(j)}),j=1,\cdots,B$, ordered lexicographically - i.e., 
+\begin{align}
+\begin{split}
+&\left(\widetilde{SL}_{T}^{(n)}(\bm{\beta}_{1}),W^{(n)}\right)\geq \left(\widetilde{SL}_{T}^{(m)}(\bm{\beta}_{1}),W^{(m)}\right) \Leftrightarrow\\
+&\left\{\widetilde{SL}_{T}^{(n)}(\bm{\beta}_{1})>\widetilde{SL}_{T}^{(m)}(\bm{\beta}_{1})\quad\text{or}\quad \left(\widetilde{SL}_{T}^{(n)}(\bm{\beta}_{1})=\widetilde{SL}_{T}^{(m)}(\bm{\beta}_{1})\quad\text{and}\quad W^{(n)}\geq W^{(m)}\right)\right\}
+\end{split}
+\end{align}
+where using the indicator and Kronecker delta functions, 
+\begin{align}\label{eq: tiebreaking}
+\begin{split}
+&\mathbbm{1}\left[\left(\widetilde{SL}_{T}^{(n)}(\bm{\beta}_{1}),W^{(n)}\right)\geq \left(\widetilde{SL}_{T}^{(m)}(\bm{\beta}_{1}),W^{(m)}\right)\right] =\\
+&\mathbbm{1}\left[\widetilde{SL}_{T}^{(n)}(\bm{\beta}_{1})>\widetilde{SL}_{T}^{(m)}(\bm{\beta}_{1})\right]+\delta\left (\widetilde{SL}_{T}^{(n)}(\bm{\beta}_{1})-\widetilde{SL}_{T}^{(m)}(\bm{\beta}_{1})\right)\mathbbm{1}\left[W^{(n)}\geq W^{(m)}\right].
+\end{split}
+\end{align}
+and thus according to (\ref{eq: tiebreaking}), $\widetilde{SL}_{T}^{(1)}(\bm{\beta} _{1}),\cdots,\widetilde{SL}_{T}^{(B)}(\bm{\beta} _{1})$ is ordered as the pairs $(\widetilde{SL}_{T}^{(j)}(\bm{\beta}_{1}),W^{(j)}),j=1,\cdots,B$. The algorithm for the latter is as follows: 
+\begin{algorithm}
+\caption{Algorithm for utilizing the POS-based tests (discrete $\varepsilon_t$)}
+\begin{algorithmic}[1]
+\State Compute $\widetilde{SL}_{T}^{0}(\bm{\beta}_{1})\leftarrow\widetilde{SL}_{T}(\bm{\beta}_{1})$ based on the
+observed data;
+\State Choose $B$ such that $\alpha (B+1) \in \N$;
+\For{$j$ in $1:B$}
+\State Generate $\{\mathcal{S}_t^{(j)}\}_{t=1}^T$, s.t. $\mathcal{S}_{t}^{(j)}\sim Bin(n = 1, p = 0.5)$;
+\State Compute $\widetilde{SL}_{T}^{(j)}(\bm{\beta}_{1})$ using
+the generated sample;
+\State Generate $W^{(j)}\sim\mathcal{U}(0,1)$ to produce the pairs $(\widetilde{SL}_{T}^{(j)}(\bm{\beta}_{1}),W^{(j)})$;
+\EndFor
+\State Order the pairs: $(\widetilde{SL}_{T}^{(n)}(\bm{\beta}_{1}),W^{(n)})\geq (\widetilde{SL}_{T}^{(m)}(\bm{\beta}_{1}),W^{(m)}) \Leftrightarrow\newline\{\widetilde{SL}_{T}^{(n)}(\bm{\beta}_{1})>\widetilde{SL}_{T}^{(m)}(\bm{\beta}_{1})$ or $(\widetilde{SL}_{T}^{(n)}(\bm{\beta}_{1})=\widetilde{SL}_{T}^{(m)}(\bm{\beta}_{1})$  and $W^{(n)}\geq W^{(m)})\}$.
+\State Compute $\tilde{c}_{1}(\bm{\beta}_{1})\leftarrow (1-\alpha )\%$ quantile of $\{\widetilde{SL}_{T}^{(j)}(\bm{\beta}_{1})\}_{j=1}^{B}$;
+\If{$\widetilde{SL}_{T}^{0}(\bm{\beta}
+_{1})\geq c(\bm{\beta}_{1})$}
+\State Reject $H_0$
+\EndIf 
+\end{algorithmic}
+\end{algorithm}
+\FloatBarrier
+
+
+
+
+
+
+
+
+
+ 
 \subsection{Testing general full coefficient hypotheses in nonlinear predictive regressions \label{sec: Testing general full coefficient hypotheses in
 nonlinear regressions}}
 
